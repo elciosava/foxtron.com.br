@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: greenyellow;
+            padding: 10px 20px;
+            height: 60px;
+            position: fixed;
+            width: 100%;
+        }
+
+        ul,
+        li {
+            display: inline-block;
+            list-style: none;
+            padding: 10px;
+        }
+
+        li {
+            width: 70px;
+            margin: 10px;
+        }
+
+        section {
+            padding-top: 80px;
+            height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid red;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #container{
+            width: 980px;
+            background: grey;
+            height: calc(100% - 80px);
+            padding: 30px;
+        }
+
+        #contato #container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .cards{
+            width: 100%;
+            background: yellow;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .card{
+            height: 280px;
+            width: 240px;
+            background: blueviolet;
+            margin: 20px;
+        }
+
+        .form{
+            background: hotpink;
+            width: 500px;
+            padding: 20px;            
+            margin-top: 40px;
+        }
+        .form span, input, textarea{
+            width: 100%;
+            margin: 5px;
+            padding: 5px;            
+            box-sizing: border-box;
+        }
+        textarea{
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h3>LOGO DA LOJA</h3>
+        </div>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio">
+        <div id="container">
+            <h2>Apresentação</h2>
+            <p>
+                Bem vindo ao nosso site de venda de açai, fique a vontade para explorar todos
+                os nossos produtos. Aqui voce vai encontar muita variedade e sabores.
+            </p>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div id="container">
+            <h2>Sobre</h2>
+            <p>
+                Nossa empresa atua no mercado a mais de 10 anos oferecendo produtos de qualidade
+                para nossa comunidade, sendo referencia em um bom atendimento.
+            </p>
+        </div>
+    </section>
+
+    <section id="produtos">
+        <div id="container">
+            <h2>Produtos</h2>
+            <p>
+                Conheça nossos produtos.
+            </p>
+            <div class="cards">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <div id="container">
+            <h2>Entrar em contato</h2>
+            <form action="" method="post">
+                <div class="form">
+                    <span><label for="nome">Nome</label></span>
+                    <input type="text" name="nome" id="">
+                    <span><label for="email">Email</label></span>
+                    <input type="email" name="email" id="">
+                    <span>Mensagem</span>
+                    <textarea name="mensagem" id=""></textarea>
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>
