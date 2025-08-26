@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Modo Dia/Noite</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      transition: background-color 0.5s, color 0.5s;
+      background-color: white;
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+    }
+
+    body.noite {
+      background-color: #121212;
+      color: white;
+    }
+
+    .container {
+      width: 70px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 24px;
+    }
+
+    input[type="checkbox"] {
+      width: 40px;
+      height: 20px;
+      accent-color: #444;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span id="iconeTema">☀️</span>
+    <input type="checkbox" id="modoNoturno">
+  </div>
+
+  <script>
+    const checkbox = document.getElementById('modoNoturno');
+    const icone = document.getElementById('iconeTema');
+
+    checkbox.addEventListener('change', function () {
+      document.body.classList.toggle('noite', this.checked);
+      icone.textContent = this.checked ? '🌙' : '☀️';
+    });
+  </script>
+</body>
+</html>

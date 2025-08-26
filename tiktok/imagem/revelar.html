@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            --dur: 1.8s;
+            --focal-x: 50%;
+            --focal-y: 50%;
+        }
+
+        html, body{
+            height: 100%;
+            margin: 0;
+            background: #0b1220;
+        }
+        .stage{
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        input[type="checkbox"]{
+            position: absolute;
+            opacity: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .base{
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(1200px 1200px at 80% 15%,
+            #1a2544 0%, #0b1220 60%, #070c17 100%);
+        }
+        .revela{
+            position: absolute;
+            inset: 0;
+            background: #000 url('https://images.unsplash.com/photo-1449034446853-66c86144b0ad') center/cover no-repeat;
+            clip-path: circle(0 at var(--focal-x) var(--focal-y));
+            transition: clip-path var(--dur) ease-out;
+            z-index: 1;
+        }
+        input:checked ~ .revela{
+            clip-path: circle(150vmax at var(--focal-x)
+            var(--focal-y));
+        }
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <input type="checkbox" id="revelar">
+        <div class="base"></div>
+        <div class="revela"></div>
+    </div>
+</body>
+</html>

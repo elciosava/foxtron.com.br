@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            background: #e5e5e5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            margin: 0;
+            gap: 20px;
+            font-family: 'Courier New', Courier;
+        }
+
+        .card-html,
+        .card-css{
+            position: relative;
+            display: inline-block;
+        }
+
+        .card{
+            width: 150px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            padding: 15px, 30px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+
+        .card-html::after{
+            content: "HTML é a estrutura de uma pagina web.";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding: 10px 0 10px 0;
+            background-color: #00bcd4;
+            color: white;
+            text-align: center;
+            z-index: -1;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .card-html:hover::after{
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .card-css::after{
+            content: "CSS é o estilo de uma pagina web.";
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding: 10px 0 10px 0;
+            background-color: #00bcd4;
+            color: white;
+            text-align: center;
+            z-index: -1;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .card-css:hover::after{
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-html">
+        <div class="card">
+            <h2>HTML</h2>
+        </div>
+    </div>
+    <div class="card-css">
+        <div class="card">
+            <h2>CSS</h2>
+        </div>
+    </div>
+</body>
+</html>

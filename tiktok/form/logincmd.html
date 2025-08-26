@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3a0ca3;
+            font-family: 'Fira Code', monospace;
+            color: #dcdcdc
+        }
+
+        .terminal{
+            width: 600px;
+            max-width: 95%;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        .terminal-header{
+            background: #2b2b2b;
+            padding: 8px 12px;
+            color: #eee;
+            font-size: 14px;
+        }
+
+        .terminal-body{
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .prompt{
+            color: #4ade80;
+        }
+        .inpu-line{
+            display: flex;
+            align-items: center;
+        }
+
+        input{
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: #93c5fd;
+            font-family: inherit;
+            font: inherit;
+            flex: 1;
+        }
+
+        .link{
+            color: #93c5fd;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            contato@foxtron.com
+        </div>
+        <div class="terminal-body">
+            Olá estamos empolgados em ter você aqui. <br>
+            ------------------------------------------------------------<br><br>
+            Para começar coloque seu <span class="link">email</span> e senha<br><br>
+
+            <div class="inpu-line">
+                <span class="prompt">➜ ~ Entre com o email:</span>
+                <input type="email" placeholder="seuemail@exemplo.com" autocomplete="new-email">
+            </div>
+            <br>
+
+            <div class="input-line">
+                <span class="prompt">➜ ~ Entre com a senha:</span>
+                <input type="password" placeholder="***********" autocomplete="new-password">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
