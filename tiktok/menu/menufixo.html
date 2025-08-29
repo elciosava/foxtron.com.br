@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
         html{
             scroll-behavior: smooth;
         }
-        body{ 
-            height: 100vh;            
+        body{
+            height: 100vh;
             font-family: 'Roboto';
         }
         header{
@@ -27,9 +27,13 @@
             width: 100%;
         }
         li{
+            list-style: none;
             display: inline-block;
-            color: #fff;
             padding: 10px;
+        }
+        a{
+            text-decoration: none;
+            color: #fff;
         }
         section{
             height: calc(100vh - 80px);
@@ -37,10 +41,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        a{
-            text-decoration: none;
-            color: #fff;
         }
     </style>
 </head>
@@ -50,7 +50,7 @@
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#produto">Produtos</a></li>
                 <li><a href="#servicos">Serviços</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
@@ -63,7 +63,7 @@
     <section id="sobre">
         <h2>Sobre</h2>
     </section>
-    <section id="produtos">
+    <section id="produto">
         <h2>Produtos</h2>
     </section>
     <section id="servicos">
