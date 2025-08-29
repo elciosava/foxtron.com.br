@@ -79,7 +79,7 @@
             font-size: 1.2rem;
         }
 
-        button{
+        button {
             background-color: #64a19d;
             color: #e2e2e2;
             padding: 15px 30px;
@@ -88,6 +88,25 @@
             font-size: 0.8rem;
             letter-spacing: 2px;
             margin-top: 45px;
+        }
+
+        #sobre {
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #sobre .container {
+            height: calc(100vh - 80px);
+            width: 1000px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+        
+        .b {
+            background: #282828;
         }
     </style>
 </head>
@@ -110,6 +129,15 @@
                 Criando experiências digitais que conectam <br>pessoas e inspiram novas ideias.
             </p>
             <button>COMEÇAR</button>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container">
+            <div class="card a"></div>
+            <div class="card b"></div>
+            <div class="card b"></div>
+            <div class="card a"></div>
         </div>
     </section>
 </body>
