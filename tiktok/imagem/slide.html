@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 70vh;
+            background: #111;
+            font-family: system-ui;
+        }
+
+        .auto-slider {
+            width: 90%;
+            max-width: 1000px;
+            height: 480px;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .auto-slides {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            animation: slide 10s infinite;
+        }
+
+        .auto-slide{
+            width: 100%;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            color: #fff;
+            font-size: 1.6rem;
+        }
+
+        .a1{
+            background-image: url('https://images.unsplash.com/photo-1756054271968-726cf7e15ca9');
+        }
+
+        .a2{
+            background-image: url('https://images.unsplash.com/photo-1756321444243-de805b2ee484');
+        }
+
+        .a3{
+            background-image: url('https://images.unsplash.com/photo-1756260897483-7cfc313b7534');
+        }
+        .a4{
+            background-image: url('https://plus.unsplash.com/premium_photo-1756131939046-9afd45e5d376');
+        }
+
+        .auto-slider:hover .auto-slides{
+            animation-play-state: paused;
+        }
+
+        @keyframes slide{
+            0% {
+                transform: translateX(0%);
+            }
+            33%{
+                transform: translateX(0%);
+            }
+            34%{
+                transform: translateX(-100%);
+            }
+            66%{
+                transform: translateX(-100%);
+            }
+            67%{
+                transform: translateX(-200%);
+            }
+            100%{
+                transform: translateX(-200%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auto-slider" aria-label="Slider automatico">
+        <div class="auto-slides">
+            <div class="auto-slide a1">
+                <div>Slide automatico 1</div>
+            </div>
+            <div class="auto-slide a2">
+                <div>Slide automatico 2</div>
+            </div>
+            <div class="auto-slide a3">
+                <div>Slide automatico 3</div>
+            </div>
+            <div class="auto-slide a4">
+                <div>Slide automatico 4</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,76 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Slider CSS - Autoplay</title>
     <style>
-        *{
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #111;
             margin: 0;
-            padding: 0;
+            font-family: system-ui
         }
-        html{
-            scroll-behavior: smooth;
+
+        .auto-slider {
+            width: 90%;
+            max-width: 1000px;
+            height: 480px;
+            overflow: hidden;
+            border-radius: 14px;
+            position: relative
         }
-        body{ 
-            height: 100vh;            
-            font-family: 'Roboto';
-        }
-        header{
-            height: 60px;
-            padding: 10px;
-            background: #5a5a5a;
+
+        .auto-slides {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
+            width: 300%;
+            height: 100%;
+            animation: slide 12s infinite;
+        }
+
+        .auto-slide {
             width: 100%;
-        }
-        li{
-            display: inline-block;
-            color: #fff;
-            padding: 10px;
-        }
-        section{
-            height: calc(100vh - 80px);
-            padding-top: 80px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
             display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        a{
-            text-decoration: none;
+            align-items: flex-end;
+            padding: 20px;
             color: #fff;
+            font-size: 1.6rem
+        }
+
+        .a1 {
+            background-image: url('https://picsum.photos/id/1018/1200/800')
+        }
+
+        .a2 {
+            background-image: url('https://picsum.photos/id/1015/1200/800')
+        }
+
+        .a3 {
+            background-image: url('https://picsum.photos/id/1016/1200/800')
+        }
+
+        /* pausar ao passar o mouse */
+        .auto-slider:hover .auto-slides {
+            animation-play-state: paused
+        }
+
+        /* keyframes: divide o tempo igualmente entre slides */
+        @keyframes slide {
+            0% {
+                transform: translateX(0%);
+            }
+
+            33% {
+                transform: translateX(0%);
+            }
+
+            34% {
+                transform: translateX(-100%);
+            }
+
+            66% {
+                transform: translateX(-100%);
+            }
+
+            67% {
+                transform: translateX(-200%);
+            }
+
+            100% {
+                transform: translateX(-200%);
+            }
         }
     </style>
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="inicio">
-        <h2>Inicio</h2>
-    </section>
-    <section id="sobre">
-        <h2>Sobre</h2>
-    </section>
-    <section id="produtos">
-        <h2>Produtos</h2>
-    </section>
-    <section id="servicos">
-        <h2>Serviços</h2>
-    </section>
-    <section id="contato">
-        <h2>Contato</h2>
-    </section>
+<body>
+
+    <div class="auto-slider" aria-label="Slider automático">
+        <div class="auto-slides">
+            <div class="auto-slide a1">
+                <div>Slide automático 1</div>
+            </div>
+            <div class="auto-slide a2">
+                <div>Slide automático 2</div>
+            </div>
+            <div class="auto-slide a3">
+                <div>Slide automático 3</div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>
