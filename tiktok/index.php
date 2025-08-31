@@ -36,14 +36,59 @@ $parentPath = dirname($relativePath);
 <head>
     <meta charset="UTF-8">
     <title>Meus Projetos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@400;600&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial; padding: 20px; background: #f5f5f5; }
-        h1 { text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-        .item { background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
-        .folder { font-weight: bold; color: #2a7ae2; text-decoration: none; display: block; }
-        .file { color: #333; text-decoration: none; display: block; }
-        .back { margin-bottom: 20px; display: inline-block; color: #ff5722; text-decoration: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Exo', sans-serif;
+            background: #0f0f1f;
+            color: #fff;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #ff0048;
+            margin-bottom: 40px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            padding: 20px;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            color: #ff0048;
+        }
+        .card p {
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        .back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #ff0048;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
     </style>
 </head>
 <body>
@@ -55,21 +100,30 @@ $parentPath = dirname($relativePath);
 
     <div class="grid">
         <?php foreach ($arquivos as $item): ?>
+            <?php
+                $fileExt = pathinfo($item['name'], PATHINFO_EXTENSION);
+                $filePath = ($relativePath === '' ? $item['name'] : $relativePath . '/' . $item['name']);
+            ?>
             <?php if ($item['isDir']): ?>
-                <a class="item folder" href="?path=<?= urlencode($relativePath === '' ? $item['name'] : $relativePath . '/' . $item['name']) ?>">
-                    <?= htmlspecialchars($item['name']) ?>
+                <a href="?path=<?= urlencode($relativePath === '' ? $item['name'] : $relativePath . '/' . $item['name']) ?>">
+                    <div class="card">
+                        <h3>📁 <?= htmlspecialchars($item['name']) ?></h3>
+                        <p>Pasta de projetos</p>
+                    </div>
                 </a>
             <?php else: ?>
-                <?php
-                    $fileExt = pathinfo($item['name'], PATHINFO_EXTENSION);
-                    $filePath = ($relativePath === '' ? $item['name'] : $relativePath . '/' . $item['name']);
-                ?>
                 <?php if (strtolower($fileExt) === 'html'): ?>
-                    <a class="item file" href=".<?= $filePath ?>" target="_blank">
-                        <?= htmlspecialchars($item['name']) ?>
+                    <a href=".<?= $filePath ?>" target="_blank">
+                        <div class="card">
+                            <h3>📄 <?= htmlspecialchars($item['name']) ?></h3>
+                            <p>Abrir no navegador</p>
+                        </div>
                     </a>
                 <?php else: ?>
-                    <div class="item file"><?= htmlspecialchars($item['name']) ?></div>
+                    <div class="card">
+                        <h3>📄 <?= htmlspecialchars($item['name']) ?></h3>
+                        <p>Arquivo</p>
+                    </div>
                 <?php endif; ?>
             <?php endif; ?>
         <?php endforeach; ?>
