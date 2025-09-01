@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        header {
+            height: 130px;
+            border-bottom: 1px solid rgb(215, 215, 215);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+        }
+
+        .faixinha {
+            background: #F5A623;
+            height: 34px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            justify-content: space-between;
+            padding: 5px 20px;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        li {
+            display: inline;
+            list-style: none;
+            margin: 10px 10px;
+        }
+
+        .usuario {
+            display: inline;
+            display: flex;
+            align-items: center;
+        }
+
+        .usuario img {
+            width: 25px;
+        }
+
+        .usuario span {
+            margin: 0 5px;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 230px;
+            gap: 30px;
+        }
+
+        .card1 {
+            background: lightcoral;
+            grid-row: span 2;
+            grid-column: span 2;
+            border-radius: 20px;
+        }
+
+        .card2 {
+            background-color: lightgreen;            
+            border-radius: 20px;
+        }
+
+        .card3 {
+            background-color: lightskyblue;
+            border-radius: 20px;
+        }
+        
+        #grid{
+            padding: 60px 30px;
+        }
+
+        #seila {
+            background: rgb(242, 242, 242);
+            margin: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .icones {
+            display: flex;
+            height: 90px;
+            padding: 10px;
+        }
+
+        .icone {
+            height: 100%;
+            width: 25%;
+            display: flex;
+            align-items: center;
+        }
+
+        .texto {
+            display: flex;
+            flex-direction: column;
+            padding: 5px;
+        }
+
+        .icone img {
+            width: 70px;
+        }
+
+        .rede-social {
+            display: flex;
+        }
+
+        .rede-social img {
+            width: 20px;
+            padding: 2px 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="faixinha">
+            <div>
+                <span><strong>ENTREGA INSTANTANEA 24/7 - COMPROU, RECEBEU!</strong></span>
+            </div>
+            <div class="rede-social">
+                <img src="img/facebook-f-brands-solid-full.svg" alt="">
+                <img src="img/x-twitter-brands-solid-full.svg" alt="">
+                <img src="img/square-instagram-brands-solid-full.svg" alt="">
+                <img src="img/youtube-brands-solid-full.svg" alt="">
+                <img src="img/whatsapp-brands-solid-full.svg" alt="">
+            </div>
+        </div>
+        <div class="menu">
+            <h2>LOGO</h2>
+            <nav>
+                <ul>
+                    <li>LOJA</li>
+                    <li>XBOX</li>
+                    <li>PLAYSTATION</li>
+                    <li>GOOGLE PLAY</li>
+                    <li>JOGOS</li>
+                    <li>SOBRE NÓS</li>
+                </ul>
+            </nav>
+            <div class="usuario">
+                <span>ENTRAR / </span><span>REGISTRAR</span>
+                <span><img src="img/heart-regular-full.svg" alt=""></span>
+                <span><img src="img/truck-regular-full.svg" alt=""></span>
+                <span>R$ 0,00</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="grid">
+        <div id="container">
+            <div class="card1"></div>
+            <div class="card2"></div>
+            <div class="card3"></div>
+        </div>
+    </section>
+
+    <section id="seila">
+        <div class="icones">
+            <div class="icone">
+                <img src="img/pix-brands-solid-full.svg" alt="">
+                <div class="texto">
+                    <span><strong>Pagamento com PIX</strong></span>
+                    <span>Envio automatico e imediato</span>
+                </div>
+            </div>
+            <div class="icone">
+                <img src="img/earth-americas-solid-full.svg" alt="">
+                <div class="texto">
+                    <span><strong>Os melhores preços</strong></span>
+                    <span>Em todo o Brasil</span>
+                </div>
+            </div>
+            <div class="icone">
+                <img src="img/credit-card-solid-full.svg" alt="">
+                <div class="texto">
+                    <span><strong>Parcelamentos</strong></span>
+                    <span>Em ate 12x no Cartão</span>
+                </div>
+            </div>
+            <div class="icone">
+                <img src="img/shield-dog-solid-full.svg" alt="">
+                <div class="texto">
+                    <span><strong>Segurança</strong></span>
+                    <span>Loja com SSL de Proteção</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
