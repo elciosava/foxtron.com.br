@@ -1,96 +1,59 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Loader – 3 círculos concêntricos</title>
+<title>Loader 2x2 Cores Rápido</title>
 <style>
   :root{
-    --bg: #0b0f14;
-    --gap: 70deg;          /* tamanho do “buraco” (arco faltando) */
-    --thick: 10px;         /* espessura do anel */
-    --size: 160px;         /* tamanho total do loader */
+    --size: 80px;    /* tamanho dos quadrados */
+    --gap: 16px;     /* espaçamento */
+    --speed: 0.2s;     /* tempo que cada quadrado fica vermelho */
+    --c1: #000000;   /* cor base (azul) */
+    --c2: #ffffff;   /* cor destaque (vermelho) */
   }
 
-  * { box-sizing: border-box; }
   body{
-    min-height:100svh;
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#0b0d12;
+  }
+
+  .grid{
     display:grid;
-    place-items:center;
-    background: var(--bg);
-    color:#cbd5e1;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+    grid-template-columns: repeat(2, var(--size));
+    grid-template-rows: repeat(2, var(--size));
+    gap: var(--gap);
   }
 
-  .loader{
-    position: relative;
-    width: var(--size);
-    height: var(--size);
-    display:grid;
-    place-items:center;
-    filter: drop-shadow(0 6px 16px rgba(0,0,0,.35));
+  .dot{
+    width:var(--size);
+    height:var(--size);
+    border-radius:12px;
+    background:var(--c1);
+    animation: cycle calc(4 * var(--speed)) linear infinite;
   }
 
-  /* estilo base de cada anel */
-  .ring{
-    position:absolute;
-    border-radius:50%;
-    /* cria um anel (donut) com “buraco” usando máscara */
-    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - var(--thick)), #000 0);
-            mask: radial-gradient(farthest-side, transparent calc(100% - var(--thick)), #000 0);
-    animation: spin linear infinite;
-    will-change: transform;
-  }
+  /* sentido horário: topo-esq → topo-dir → baixo-dir → baixo-esq */
+  .dot:nth-child(1){ animation-delay: 0s; }
+  .dot:nth-child(2){ animation-delay: var(--speed); }
+  .dot:nth-child(4){ animation-delay: calc(2 * var(--speed)); }
+  .dot:nth-child(3){ animation-delay: calc(3 * var(--speed)); }
 
-  /* cada anel tem sua própria cor, tamanho e duração */
-  .ring.r1{
-    width: 100%; height: 100%;
-    background:
-      conic-gradient(#22d3ee 0 calc(360deg - var(--gap)),
-                     transparent calc(360deg - var(--gap)) 360deg);
-    animation-duration: 2s;   /* mais rápido */
-  }
-  .ring.r2{
-    width: 72%; height: 72%;
-    background:
-      conic-gradient(#a78bfa 0 calc(360deg - var(--gap)),
-                     transparent calc(360deg - var(--gap)) 360deg);
-    animation-duration: 3s;   /* velocidade média */
-  }
-  .ring.r3{
-    width: 44%; height: 44%;
-    background:
-      conic-gradient(#f472b6 0 calc(360deg - var(--gap)),
-                     transparent calc(360deg - var(--gap)) 360deg);
-    animation-duration: 6s;   /* mais lento */
-  }
-
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-
-  /* acessibilidade: reduz movimento */
-  @media (prefers-reduced-motion: reduce){
-    .ring{ animation-duration: 12s; }
-  }
-
-  /* opcional: label “carregando” */
-  .label{
-    position:absolute;
-    inset:auto 0  -48px 0;
-    text-align:center;
-    font-size:.9rem;
-    letter-spacing:.08em;
-    opacity:.8;
+  @keyframes cycle{
+    0%, 25%   { background: var(--c2); } /* vermelho */
+    26%, 100% { background: var(--c1); } /* volta azul */
   }
 </style>
 </head>
 <body>
-  <div class="loader" role="status" aria-live="polite" aria-label="Carregando">
-    <div class="ring r1"></div>
-    <div class="ring r2"></div>
-    <div class="ring r3"></div>
-    <div class="label">carregando…</div>
+  <div class="grid">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
   </div>
 </body>
 </html>
