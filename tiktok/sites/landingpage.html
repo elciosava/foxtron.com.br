@@ -22,13 +22,29 @@
 
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
-            background: greenyellow;
             padding: 10px 20px;
             height: 60px;
             position: fixed;
             width: 100%;
+            color: #fff;
+            background: transparent;
+        }
+
+        header.scrolled {
+            background: #fff;
+            color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header.scrolled a {
+            color: #000;
+        }
+
+        header a {
+            color: #fff;
+            font-size: 1.4rem;
         }
 
         ul,
@@ -49,28 +65,73 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border-bottom: 1px solid red;
+        }
+
+        #inicio {
+            background-image: url('img-açai/acai-2709077_1920.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #fff;
         }
 
         a {
             text-decoration: none;
-            color: black;
         }
 
-        #container{
-            width: 980px;
-            background: grey;
+        .container {
+            width: 1400px;
             height: calc(100% - 80px);
             padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        #contato #container{
+        .apresentacao {
+            font-size: 2.4rem;
+            text-align: left;
+            color: rgb(255, 255, 255);
+        }
+
+        .apresentacao h2 {
+            text-align: letf;
+            width: 100%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px 100px;
+        }
+
+        .sobre {
+            height: 100%;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
         }
-        .cards{
+
+        .sobre img {
+            width: 80px;
+            padding: 30px;
+        }
+
+        .sobre h2 {
+            padding-bottom: 10px;
+        }
+
+        #contato #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .cards {
             width: 100%;
             background: yellow;
             display: flex;
@@ -78,33 +139,37 @@
             flex-wrap: wrap;
         }
 
-        .card{
+        .card {
             height: 280px;
             width: 240px;
             background: blueviolet;
             margin: 20px;
         }
 
-        .form{
+        .form {
             background: hotpink;
             width: 500px;
-            padding: 20px;            
+            padding: 20px;
             margin-top: 40px;
         }
-        .form span, input, textarea{
+
+        .form span,
+        input,
+        textarea {
             width: 100%;
             margin: 5px;
-            padding: 5px;            
+            padding: 5px;
             box-sizing: border-box;
         }
-        textarea{
+
+        textarea {
             height: 100px;
         }
     </style>
 </head>
 
 <body>
-    <header>
+    <header id="menu">
         <div class="logo">
             <h3>LOGO DA LOJA</h3>
         </div>
@@ -121,7 +186,7 @@
     </header>
 
     <section id="inicio">
-        <div id="container">
+        <div class="container apresentacao">
             <h2>Apresentação</h2>
             <p>
                 Bem vindo ao nosso site de venda de açai, fique a vontade para explorar todos
@@ -131,17 +196,32 @@
     </section>
 
     <section id="sobre">
-        <div id="container">
-            <h2>Sobre</h2>
-            <p>
-                Nossa empresa atua no mercado a mais de 10 anos oferecendo produtos de qualidade
-                para nossa comunidade, sendo referencia em um bom atendimento.
-            </p>
+        <div class="container grid">
+            <div class="sobre">
+                <img src="img-açai/landmark-solid-full.svg" alt="">
+                <h2><strong>Nossa hitoria</strong></h2>
+                <span>Mais de 10 anos trazendo sabor e qualidade para nossa comunidade.</span>
+            </div>
+            <div class="sobre">
+                <img src="img-açai/medal-solid-full.svg" alt="">
+                    <h2><strong>Qualidade garantida</strong></h2>
+                    <span>Usamos apenas ingredientes selecionados para oferecer sempre o melhor.</span>
+            </div>
+            <div class="sobre">
+                <img src="img-açai/bowl-food-solid-full.svg" alt="">
+                    <h2><strong>Variedade de sabores</strong></h2>
+                    <span>Do tradicional ao premium, temos opções para todos os gostos.</span>
+            </div>
+            <div class="sobre">
+                <img src="img-açai/bell-concierge-solid-full.svg" alt="">
+                    <h2><strong>Atendimento especial</strong></h2>
+                    <span>Nossa equipe está pronta para receber você com carinho e dedicação.</span>
+            </div>
         </div>
     </section>
 
     <section id="produtos">
-        <div id="container">
+        <div class="container">
             <h2>Produtos</h2>
             <p>
                 Conheça nossos produtos.
@@ -158,7 +238,7 @@
     </section>
 
     <section id="contato">
-        <div id="container">
+        <div class="container">
             <h2>Entrar em contato</h2>
             <form action="" method="post">
                 <div class="form">
@@ -173,6 +253,18 @@
             </form>
         </div>
     </section>
+
+    <script>
+        const header = document.getElementById("menu");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+    </script>
 </body>
 
 </html>

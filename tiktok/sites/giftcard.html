@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -50,7 +50,6 @@
         }
 
         .usuario {
-            display: inline;
             display: flex;
             align-items: center;
         }
@@ -63,7 +62,16 @@
             margin: 0 5px;
         }
 
-        #container {
+        /* Centralização principal */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            /* centraliza horizontalmente */
+            width: 100%;
+        }
+
+        /* Grid */
+        #grid .container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-auto-rows: 230px;
@@ -78,7 +86,7 @@
         }
 
         .card2 {
-            background-color: lightgreen;            
+            background-color: lightgreen;
             border-radius: 20px;
         }
 
@@ -86,8 +94,8 @@
             background-color: lightskyblue;
             border-radius: 20px;
         }
-        
-        #grid{
+
+        #grid {
             padding: 60px 30px;
         }
 
@@ -95,6 +103,10 @@
             background: rgb(242, 242, 242);
             margin: 10px 20px;
             border-radius: 10px;
+        }
+
+        .faixacontainer{
+            width: auto;
         }
 
         .icones {
@@ -129,6 +141,78 @@
             padding: 2px 5px;
             cursor: pointer;
         }
+
+        #faixa_icones .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 60px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .icone_plataforma {
+            background: rgb(213, 212, 212);
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px;
+            border-radius: 20px;
+            width: 110px;
+        }
+
+        .icone_plataforma img {
+            width: 85px;
+            padding-bottom: 10px;
+        }
+
+        #bannerf1 {
+            padding-top: 100px;
+        }
+
+        #bannerf1 .container {
+            background-image: url('img/F677_still_04_v11_169.png');
+            background-size: cover;
+            height: 410px;
+            background-position: center;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 50px 50px;
+            align-items: flex-end;
+            border-radius: 15px;
+        }
+
+        #bannerf1 h2 {
+            font-size: 2.7rem;
+        }
+
+        #bannerf1 p {
+            font-size: 1.2rem;
+        }
+
+        #bannerf1 .f1botoes {
+            color: #F5A623;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        #bannerf1 button {
+            background-color: #F5A623;
+            color: #fff;
+            padding: 15px 25px;
+            border: 0;
+            border-radius: 8px;
+        }
+
+        .f1botoes {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 300px;
+        }
     </style>
 </head>
 
@@ -146,7 +230,7 @@
                 <img src="img/whatsapp-brands-solid-full.svg" alt="">
             </div>
         </div>
-        <div class="menu">
+        <div class="menu container">
             <h2>LOGO</h2>
             <nav>
                 <ul>
@@ -168,7 +252,7 @@
     </header>
 
     <section id="grid">
-        <div id="container">
+        <div class="container">
             <div class="card1"></div>
             <div class="card2"></div>
             <div class="card3"></div>
@@ -176,35 +260,103 @@
     </section>
 
     <section id="seila">
-        <div class="icones">
-            <div class="icone">
-                <img src="img/pix-brands-solid-full.svg" alt="">
-                <div class="texto">
-                    <span><strong>Pagamento com PIX</strong></span>
-                    <span>Envio automatico e imediato</span>
+        <div class="faixacontainer">
+            <div class="icones">
+                <div class="icone">
+                    <img src="img/pix-brands-solid-full.svg" alt="">
+                    <div class="texto">
+                        <span><strong>Pagamento com PIX</strong></span>
+                        <span>Envio automatico e imediato</span>
+                    </div>
+                </div>
+                <div class="icone">
+                    <img src="img/earth-americas-solid-full.svg" alt="">
+                    <div class="texto">
+                        <span><strong>Os melhores preços</strong></span>
+                        <span>Em todo o Brasil</span>
+                    </div>
+                </div>
+                <div class="icone">
+                    <img src="img/credit-card-solid-full.svg" alt="">
+                    <div class="texto">
+                        <span><strong>Parcelamentos</strong></span>
+                        <span>Em ate 12x no Cartão</span>
+                    </div>
+                </div>
+                <div class="icone">
+                    <img src="img/shield-dog-solid-full.svg" alt="">
+                    <div class="texto">
+                        <span><strong>Segurança</strong></span>
+                        <span>Loja com SSL de Proteção</span>
+                    </div>
                 </div>
             </div>
-            <div class="icone">
-                <img src="img/earth-americas-solid-full.svg" alt="">
-                <div class="texto">
-                    <span><strong>Os melhores preços</strong></span>
-                    <span>Em todo o Brasil</span>
-                </div>
+        </div>
+    </section>
+
+    <section id="faixa_icones">
+        <div class="container">
+            <div class="icone_plataforma">
+                <img src="faixa_icones/apple.png" alt="">
+                <span>Apple</span>
             </div>
-            <div class="icone">
-                <img src="img/credit-card-solid-full.svg" alt="">
-                <div class="texto">
-                    <span><strong>Parcelamentos</strong></span>
-                    <span>Em ate 12x no Cartão</span>
-                </div>
+            <div class="icone_plataforma">
+                <img src="faixa_icones/netflix.png" alt="">
+                <span>Netflix</span>
             </div>
-            <div class="icone">
-                <img src="img/shield-dog-solid-full.svg" alt="">
-                <div class="texto">
-                    <span><strong>Segurança</strong></span>
-                    <span>Loja com SSL de Proteção</span>
-                </div>
+            <div class="icone_plataforma">
+                <img src="faixa_icones/nintendo-switch.png" alt="">
+                <span>Nintendo</span>
             </div>
+            <div class="icone_plataforma">
+                <img src="faixa_icones/playstation.png" alt="">
+                <span>Playstation</span>
+            </div>
+            <div class="icone_plataforma">
+                <img src="faixa_icones/playstore.png" alt="">
+                <span>Google</span>
+            </div>
+            <div class="icone_plataforma">
+                <img src="faixa_icones/spotify.png" alt="">
+                <span>Spotify</span>
+            </div>
+            <div class="icone_plataforma">
+                <img src="faixa_icones/social.png" alt="">
+                <span>Spotify</span>
+            </div>
+            <div class="icone_plataforma">
+                <img src="faixa_icones/xbox.png" alt="">
+                <span>Spotify</span>
+            </div>
+            <div class="icone_plataforma">
+                <img src="faixa_icones/microsoft.png" alt="">
+                <span>Spotify</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="bannerf1">
+        <div class="container">
+            <div class="f1texto">
+                <h2>F1 25 - Sinta a velocidade</h2>
+                <p>Conteudo oficial 2025. Codigo de 25 digitos para Xbox</p>
+            </div>
+
+            <div class="f1botoes">
+                <span>R$ 338,99</span>
+                <button>COMPRA</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="produtos">
+        <div class="container">
+            <div class="steam"></div>
+            <div class="steam"></div>
+            <div class="steam"></div>
+            <div class="steam"></div>
+            <div class="steam"></div>
+            <div class="steam"></div>
         </div>
     </section>
 </body>
