@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #perfil .container {
+            background-image: url(202102171440487.jpeg);
+            background-size: cover;
+            
+        }
+
+        .container .inicio {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 80px);
+            gap: 20px;
+            background-color: rgba(211, 211, 211, 0.541);
+        }
+
+        .texto {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .texto h2 {
+            margin-bottom: 4px;
+        }
+
+        .texto h4 {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        
+        .imagens img {
+            width: 40px;
+            margin-top: 0;
+            margin: 4px 2px 0px 0px;
+        }
+
+        .container .imgperfil {
+            border: solid black 3px;
+            width: 80px;
+            border-radius: 80px;
+        }
+
+        header {
+            width: 100%;
+            display: flex;
+            height: 80px;
+            align-items: center;
+            justify-content: space-around;
+            position: fixed;
+            background-color: white;
+            border-bottom: 2px solid lightgray;
+        }
+
+        header ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header li {
+            margin: 0px 20px;
+        }
+
+        header h2 {
+            color: rgb(80, 80, 80);
+        }
+
+        header a {
+            color: rgb(80, 80, 80);
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        #sobre .container{
+            padding-top: 80px;
+            height: 100vh;
+        }
+
+        #contato .container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: lightgray;
+        }
+
+        .form {
+            width: 400px;
+            background-color: rgb(80, 80, 80);
+            padding: 20px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        input, textarea {
+            width: 100%;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        .container h2 {
+            color: rgb(80, 80, 80);
+        }
+
+        #sobre .container {
+            display: flex;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 300px;
+            gap: 20px;
+            padding-top: 120px;
+            height: 100vh;
+            flex-direction: column;
+            background-color: white;
+        }
+        .card {
+            background-color: lightgrey;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0px 180px 0px 180px;
+        }
+
+        .card img {
+            width: 80px;
+            padding-bottom: 40px;
+        }
+
+        .card p {
+            padding-top: 20px;
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>Marcel Ferreira Martins</h2>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="perfil">
+        <div class="container">
+            <div class="inicio">
+                <img class="imgperfil" src="perfil.jpg" alt="">
+                <div class="texto">
+                    <h2 style="color: black;">Marcel Ferreira Martins</h2>
+                    <h4>Meu nome é Marcel Ferreira Martins, tenho 17 anos, faço Ensino Médio no SESI e fiz 2 anos de
+                        Curso Técnico.</h4>
+                    <div class="imagens">
+                        <a href="https://github.com/MarcelFMartins" target="_blank"><img src="github-brands-solid-full.svg" alt=""></a>
+                        <a href="https://instagram.com/marcelf_martins" target="_blank"><img src="instagram-brands-solid-full.svg" alt=""></a>
+                        <a href="https://x.com/martins2k7?s=21" target="_blank"><img src="x-twitter-brands-solid-full.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container">
+
+            <div class="card">
+                <img src="img/landmark-solid-full.svg" alt="">
+                <h3>Minha História</h3>
+                <p>A minha História começa em 2007, nasci na cidade de União da Vitória - PR. Cresci no município de Matos Costa, porém, com uma oportunidade de me mudar para a minha cidade natal, e poder fazer o Curso Técnico, eu nao disperdicei...</p>
+            </div>
+
+            <div class="card">
+                <img src="img/medal-solid-full.svg" alt="">
+                <h3>Meus Serviços</h3>
+                <p>Formatação de PC, Limpeza e Cuidados em geral com a sua máquina.</p>
+            </div>
+
+            <div class="card">
+                <img src="img/money-bill-1-solid-full.svg" alt="">
+                <h3>Curiosidades</h3>
+                <p>Não tenho</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <div class="container">
+            <h2>Contato</h2>
+            
+            <div class="form">
+                <form action="">
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome">
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+
+                    <label for="mensagem">Mensagem</label>
+                    <textarea name="mensagem" id="mensagem"></textarea>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,97 +1,32 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Editor de Pixel Art</title>
+  <title>Exemplo Grid</title>
   <style>
-    body {
-      margin: 0;
+    .container {
+      display: grid; 
+      grid-template-columns: 300px auto; /* 2 colunas */
+      grid-template-rows: 100px 150px; /* 2 linhas */
+      gap: 10px; /* Espaço entre os itens */
+    }
+
+    .item {
+      background: lightblue;
+      border: 1px solid #333;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      background: #222;
-      color: white;
-      font-family: sans-serif;
-    }
-
-    .toolbar {
-      margin: 10px;
-      display: flex;
-      gap: 10px;
-    }
-
-    input[type="color"], button {
-      padding: 5px 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(60, 20px);
-      grid-template-rows: repeat(300, 20px);
-      gap: 1px;
-      background: #444;
-    }
-
-    .pixel {
-      width: 20px;
-      height: 20px;
-      background: #eee;
-      cursor: pointer;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <h1>🎨 Editor de Pixel Art</h1>
-  
-  <div class="toolbar">
-    <input type="color" id="colorPicker" value="#ff0000">
-    <button id="clearBtn">Limpar</button>
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
   </div>
-  
-  <div class="grid" id="grid"></div>
-
-  <script>
-    const grid = document.getElementById("grid");
-    const colorPicker = document.getElementById("colorPicker");
-    const clearBtn = document.getElementById("clearBtn");
-
-    let isDrawing = false;
-
-    // cria 18000 pixels
-    for (let i = 0; i < 18000; i++) {
-      const pixel = document.createElement("div");
-      pixel.classList.add("pixel");
-      grid.appendChild(pixel);
-    }
-
-    // eventos de desenho
-    grid.addEventListener("mousedown", e => {
-      if (e.target.classList.contains("pixel")) {
-        e.target.style.backgroundColor = colorPicker.value;
-        isDrawing = true;
-      }
-    });
-
-    grid.addEventListener("mousemove", e => {
-      if (isDrawing && e.target.classList.contains("pixel")) {
-        e.target.style.backgroundColor = colorPicker.value;
-      }
-    });
-
-    window.addEventListener("mouseup", () => {
-      isDrawing = false;
-    });
-
-    // botão limpar
-    clearBtn.addEventListener("click", () => {
-      document.querySelectorAll(".pixel").forEach(pixel => {
-        pixel.style.backgroundColor = "#eee";
-      });
-    });
-  </script>
 </body>
 </html>
