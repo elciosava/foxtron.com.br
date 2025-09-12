@@ -2,31 +2,44 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Exemplo Grid</title>
+  <title>Texto com Gradiente Animado</title>
   <style>
-    .container {
-      display: grid; 
-      grid-template-columns: 300px auto; /* 2 colunas */
-      grid-template-rows: 100px 150px; /* 2 linhas */
-      gap: 10px; /* Espaço entre os itens */
-    }
-
-    .item {
-      background: lightblue;
-      border: 1px solid #333;
+    body {
       display: flex;
       justify-content: center;
       align-items: center;
+      height: 60vh;
+      background: #111;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    h1 {
+      font-size: 3em;
       font-weight: bold;
+      background: linear-gradient(270deg,
+        rgb(255,0,0),
+        rgb(0,255,0),
+        rgb(0,0,255),
+        rgb(255,0,255),
+        rgb(255,255,0),
+        rgb(0,255,255),
+        rgb(255,0,0)
+      );
+      background-size: 1000% 1000%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: moverGradiente 10s ease infinite;
+    }
+
+    @keyframes moverGradiente {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="item">1</div>
-    <div class="item">2</div>
-    <div class="item">3</div>
-    <div class="item">4</div>
-  </div>
+  <h1>TEXTO RGB ANIMADO</h1>
 </body>
 </html>

@@ -107,7 +107,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(2, 1fr);
-            gap: 20px 100px;
+            gap: 20px;
         }
 
         .sobre {
@@ -137,17 +137,67 @@
 
         .cards {
             width: 100%;
-            background: yellow;
             display: flex;
             justify-content: space-evenly;
             flex-wrap: wrap;
         }
 
+        .card:nth-child(1) {
+            background-color: lightcoral;
+        }
+
+        .card:nth-child(2) {
+            background-color: lightblue;
+        }
+
+        .card:nth-child(3) {
+            background-color: lightgreen;
+        }
+
+        .card:nth-child(4) {
+            background-color: lightpink;
+        }
+
+
         .card {
-            height: 280px;
+            height: 380px;
             width: 240px;
             background: blueviolet;
-            margin: 20px;
+            margin: 10px;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            color: #fff;            
+            text-shadow: 0px 2px 6px #000000;
+        }
+
+        .card img {
+            margin-top: -100px;
+        }
+
+        #produtos .container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .card button {
+            background: #2a0146;
+            color: #fff;
+            width: 130px;
+            padding: 12px 10px;
+            border-radius: 20px;
+            border: solid 1px #fff;
+            display: flex;
+            align-items: center;
+            background-image: url('img-açai/arrow-right-solid-full.svg');
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: 30px;
+            text-align: left;
         }
 
         .form {
@@ -226,17 +276,44 @@
 
     <section id="produtos">
         <div class="container">
-            <h2>Produtos</h2>
-            <p>
-                Conheça nossos produtos.
-            </p>
+            <h2>Conheça nossos produtos.</h2>
             <div class="cards">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
+                <div class="card">
+                    <img src="img-açai/01.png" alt="">
+                    <h2>AÇAÍ</h2>
+                    <p>
+                        Nosso açaí tem o sabor e textura unica, e com opção zero açucar, sem conservantes,
+                        sem gorduras vegetais e sem corantes.
+                    </p>
+                    <button>SAIBA MAIS</button>
+                </div>
+                <div class="card">
+                    <img src="img-açai/03.png" alt="">
+                    <h2>SORVETES</h2>
+                    <p>
+                        Os sorvetes possuiem sabores deliciosos e exclusivos para misturar com diferentes
+                        opções, inclusive sem lactose.
+                    </p>
+                    <button>SAIBA MAIS</button>
+                </div>
+                <div class="card">
+                    <img src="img-açai/02.png" alt="">
+                    <h2>PICOLÉS</h2>
+                    <p>
+                        Todos os picolés são 100% artesanais e feitos com ingredientes naturais em
+                        deliciosas versões.
+                    </p>
+                    <button>SAIBA MAIS</button>
+                </div>
+                <div class="card">
+                    <img src="img-açai/04.png" alt="">
+                    <h2>MILKSHAKES</h2>
+                    <p>
+                        Combinações incriveis que você encontra aqui, o milkshake que você sempre quis
+                        do jeitinho que você sempre sonhou.
+                    </p>
+                    <button>SAIBA MAIS</button>
+                </div>
             </div>
         </div>
     </section>
