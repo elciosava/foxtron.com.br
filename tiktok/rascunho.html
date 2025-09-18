@@ -1,131 +1,253 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Calculadora - Grid</title>
   <style>
-    body {
-      background-color: #252525;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 70vh;
-      flex-direction: column;
-    }
+:root {
+            --bg: #9b9b9b;
+            --panel: #111827;
+            --accent: #08a0f7;
+            --muted: #9aa4b2;
+            --btn: #1f2937;
+            --btn-accent: #0b75b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            font-family: Roboto;
+        }
 
-    .interruptor {
-      position: relative;
-      width: 210px;
-      height: 50px;
-      box-sizing: border-box;
-      padding: 3px;
-      background: #0d0d0d;
-      border-radius: 6px;
-      box-shadow:
-        inset 0 1px 1px 1px rgba(0, 0, 0, 0.5),
-        0 1px 0 0 rgba(255, 255, 255, 0.1);
-      margin: 10px;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    .interruptor input[type="checkbox"] {
-      position: absolute;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      cursor: pointer;
-    }
+        html,
+        body {
+            height: 100vh;
+            margin: 0;
+        }
 
-    .interruptor input[type="checkbox"]+label {
-      position: relative;
-      display: block;
-      left: 0;
-      width: 50%;
-      height: 100%;
-      background: #1b1c1c;
-      border-radius: 3px;
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-      transition: all 0.5s ease-in-out;
-    }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                linear-gradient(180deg, var(--bg), #071019);
+            padding: 24px;
+            color: #e6eef6;
+        }
 
-    .interruptor input[type="checkbox"]+label:before {
-      content: "";
-      display: inline-block;
-      width: 5px;
-      height: 5px;
-      margin-left: 10px;
-      background: #fff;
-      border-radius: 50%;
-      vertical-align: middle;
-      box-shadow:
-        0 0 5px 2px rgba(255, 0, 0, 0.9),
-        0 0 3px 1px rgba(255, 0, 0, 0.9);
-      transition: all 0.5s ease-in-out;
-    }
+        .calc {
+            width: 360px;
+            max-width: 92vw;
+            background: linear-gradient(180deg, var(--panel), #0b1220);
+            border-radius: 14px;
+            padding: 16px;
+            box-shadow:
+                0 10px 30px rgba(2, 6, 23, 0.6) 
+                inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        }
 
-    .interruptor input[type="checkbox"]+label:after {
-      content: "";
-      display: inline-block;
-      width: 0;
-      height: 100%;
-      vertical-align: middle;
-    }
+        .display {
+            background: var(--glass);
+            border-radius: 10px;
+            padding: 14px;
+            min-height: 76px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 14px;
+            word-break: break-all;
+        }
 
-    .interruptor input[type="checkbox"]+label i {
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 3px;
-      height: 24px;
-      margin-top: -12px;
-      margin-left: -1.5px;
-      border-radius: 2px;
-      background: #0d0d0d;
-      box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.3);
-    }
+        .small {
+            font-size: 0.82rem;
+            color: var(--muted);
+            text-align: right;
+            opacity: 0.95;
+        }
 
-    .interruptor input[type="checkbox"]+label i:before,
-    .interruptor input[type="checkbox"]+label i:after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 2px;
-      background: #0d0d0d;
-      box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.3);
-    }
+        .large {
+            font-size: 1.6rem;
+            text-align: right;
+            font-weight: bold;
+            letter-spacing: 0.6px;
+            word-wrap: break-word ;
+        }
 
-    .interruptor input[type="checkbox"]+label i:before {
-      left: -7px;
-    }
+        /* grid de botoes */
+        .pad {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
 
-    .interruptor input[type="checkbox"]+label i:after {
-      left: 7px;
-    }
+        button {
+            background: var(--btn);
+            border: 0;
+            color: inherit;
+            padding: 14px 12px;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: transform 0.08s ease, 
+                box-shadow 0.08s ease,
+                background 0.12s ease;
+            box-shadow: 0 4px 8px rgba(2, 6, 23, 0.5);
+            user-select: none;
+        }
 
-    .interruptor input[type="checkbox"]:checked+label {
-      left: 50%;
-    }
+        button:active {
+            transform: translateY(1px) scale(0.997);
+        }
 
-    .interruptor input[type="checkbox"]:checked+label:before {
-      box-shadow:
-        0 0 5px 2px rgba(17, 255, 0, 0.9),
-        0 0 3px 1px rgba(17, 255, 0, 0.9);
-    }
+        .btn-op {
+            background: linear-gradient(
+                180deg, var(--btn-accent), #095e95 
+            );
+            color: #fff;
+        }
+
+        .btn-igual {
+            grid-column: span 2;
+        }
+
+        .btn-accent-soft {
+            background: linear-gradient(
+                180deg, #13202b, #0f1b24
+            );
+            color: var(--muted);
+        }
   </style>
 </head>
-
 <body>
-  <div class="interruptor">
-    <input id="alternar" type="checkbox" />
-    <label class="alternar" for="alternar">
-      <i></i>
-    </label>
-  </div>
-</body>
+  <div class="calc" role="application" aria-label="Calculadora simples">
+    <div class="display" id="display">
+      <div class="small" id="history">&nbsp;</div>
+      <div class="large" id="output">0</div>
+    </div>
 
+    <div class="pad" role="group" aria-label="Teclado da calculadora">
+      <button class="btn-accent-soft" data-action="clear">C</button>
+      <button class="btn-accent-soft" data-action="back">⌫</button>
+      <button class="btn-accent-soft" data-action="percent">%</button>
+      <button class="btn-op" data-action="op">÷</button>
+
+      <button data-num>7</button>
+      <button data-num>8</button>
+      <button data-num>9</button>
+      <button class="btn-op" data-action="op">×</button>
+
+      <button data-num>4</button>
+      <button data-num>5</button>
+      <button data-num>6</button>
+      <button class="btn-op" data-action="op">−</button>
+
+      <button data-num>1</button>
+      <button data-num>2</button>
+      <button data-num>3</button>
+      <button class="btn-op" data-action="op">+</button>
+
+      <button data-num>0</button>
+      <button data-num>.</button>
+      <button class="btn-wide btn-op" data-action="equals">=</button>
+    </div>
+  </div>
+
+  <script>
+    // Lógica simples da calculadora
+    (function(){
+      const out = document.getElementById('output');
+      const hist = document.getElementById('history');
+      const container = document.querySelector('.pad');
+
+      let current = '0';
+      let previous = null;
+      let operator = null;
+      let justEvaluated = false;
+
+      function update(){
+        out.textContent = current;
+        hist.textContent = previous ? (previous + (operator || '')) : '';
+      }
+
+      function inputDigit(d){
+        if(justEvaluated){ current = d === '.' ? '0.' : d; justEvaluated = false; return; }
+        if(d === '.'){
+          if(current.includes('.')) return;
+          current += '.';
+          return;
+        }
+        if(current === '0') current = d; else current += d;
+      }
+
+      function chooseOp(op){
+        if(op === '%' ){
+          current = String(parseFloat(current || 0) / 100);
+          update();
+          return;
+        }
+        if(operator && !justEvaluated){ // calcular primeiro
+          compute();
+        }
+        operator = op;
+        previous = current;
+        current = '0';
+      }
+
+      function compute(){
+        const a = parseFloat(previous);
+        const b = parseFloat(current);
+        if(isNaN(a) || isNaN(b)) return;
+        let res;
+        switch(operator){
+          case '+': res = a + b; break;
+          case '−': res = a - b; break;
+          case '×': res = a * b; break;
+          case '÷': res = b === 0 ? 'Erro' : a / b; break;
+          default: return;
+        }
+        current = String(res);
+        previous = null;
+        operator = null;
+        justEvaluated = true;
+      }
+
+      function clearAll(){ current = '0'; previous = null; operator = null; justEvaluated = false; }
+      function backspace(){ if(justEvaluated){ current = '0'; justEvaluated = false; return;} 
+      current = current.length > 1 ? current.slice(0,-1) : '0'; }
+
+      container.addEventListener('click', (e)=>{
+        const t = e.target;
+        if(!t.matches('button')) return;
+        if(t.hasAttribute('data-num')){
+          inputDigit(t.textContent.trim());
+          update();
+          return;
+        }
+        const action = t.getAttribute('data-action');
+        if(action === 'clear') { clearAll(); update(); return; }
+        if(action === 'back') { backspace(); update(); return; }
+        if(action === 'percent'){ chooseOp('%'); return; }
+        if(action === 'op') { chooseOp(t.textContent.trim()); update(); return; }
+        if(action === 'equals') { compute(); update(); return; }
+      });
+
+      // Suporte básico ao teclado
+      window.addEventListener('keydown', (e)=>{
+        if(e.key >= '0' && e.key <= '9') { inputDigit(e.key); update(); return; }
+        if(e.key === '.' || e.key === ','){ inputDigit('.'); update(); return; }
+        if(e.key === 'Backspace'){ backspace(); update(); return; }
+        if(e.key === 'Escape'){ clearAll(); update(); return; }
+        if(e.key === 'Enter' || e.key === '='){ compute(); update(); return; }
+        if(['+','-','*','/'].includes(e.key)){
+          const map = {'+':'+','-':'−','*':'×','/':'÷'};
+          chooseOp(map[e.key]); update(); return;
+        }
+      });
+
+      update();
+    })();
+  </script>
+</body>
 </html>
