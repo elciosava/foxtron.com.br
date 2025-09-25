@@ -1,22 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 30px;
+            background-color: rgb(255, 163, 213);
+            height: 55px;
+            color: rgb(56, 54, 55);
+        }
+
+        .texto h2{
+            margin-bottom: 20px;
+        }
+        
+
+        img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            margin-right: 50px;
+        }
+
+        .icones img {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .container{
+
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+        }
+
+        body {
+            height: 100vh;
+            background-color: rgb(241, 208, 226);
+            font-family: cursive;
+        }
+
+        .texto {
+            width: 800px;
+        }
+    </style>
 </head>
+
 <body>
     <header>
-        <h1>LalaLand</h1>
+        <h2>Naiara Oswald</h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
     </header>
     <div class="container">
-        <div class="exercicios">
-            <h2>Operações Matemeticas</h2>
-        <img src="HEHE.png" alt="">
+        <div class="imagem">
+            <img src="gato nerd.jpg" alt="">
+
         </div>
-        <div class="container">
-            <h2>Médias</h2>
-            <img src="HIHI.png" alt="">
+        <div class="texto">
+            <h2>Naiara Oswald</h2>
+            <p>Seja qual for o país, capitalista ou socialista, o homem foi em todo o lado arrasado pela tecnologia, alienado do seu próprio trabalho, feito prisioneiro, forçado a um estado de estupidez.</p>
+            <div class="icones">
+                <img src="discord-brands-solid-full.svg" alt="">
+                <img src="instagram-brands-solid-full.svg" alt="">
+                <img src="reddit-alien-brands-solid-full.svg" alt="">
+            </div>
+
         </div>
+        <div class="trabalho">
+          <a href="aula2409.html">Aula 24/09/25</a>
+          <a href="cadastro.html">Matricula 24/09/2025</a>
+        </div>
+    </div>
+
 </body>
+
 </html>

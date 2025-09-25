@@ -1,12 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vinicius</title>
+    <title>Document</title>
+    <style>
+        * {
+           margin: 0;
+           padding: 0;
+        }
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background: rgb(22, 172, 223);
+            height: 50px;
+            color: white;
+        }
+
+        .texto h2 {
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img{
+            width: 40px;
+            height: 40px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        body {
+            height: 100vh;
+            background-color: rgb(78, 183, 218);
+            font-family: sans-serif;
+        }
+
+        .texto {
+            width: 800px;
+        }
+
+    </style>
 </head>
+
 <body>
-    <h2>Meus trabalhos</h2>
+    <header>
+        <h2>Vinicius Braun</h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="imagem">
+            <img src="ProfessorGirafales1979.webp" alt="">
+        </div>
+        <div class="texto">
+            <h2>Vinicius Braun</h2>
+            <p>Não se ensina matemática com pancadas, Kiko!</p>
+            
+            <div class="icones">
+                <img src="instagram-brands-solid-full.svg" alt="">
+                <img src="discord-brands-solid-full.svg" alt="">
+                <img src="whatsapp-brands-solid-full.svg" alt="">
+
+            </div>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2409.html">Aula 24/09/2025</a>
+        </div>
+    </div>
 </body>
+
 </html>

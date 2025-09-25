@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            display: inline-block;
+            margin: 0px 15px;
+        }
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding:  3px 3px 3px 3px;
+            background: lightblue;
+            height: 60px;
+        }
+        .texto h2{
+            margin-bottom: 10px;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        body{
+            height: 100vh;
+            background: pink;
+            font-family: sans-serif;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h2>Escola Elcio Sava</h2>
+    <nav>
+        <ul>
+            <li>comentarios</li>
+            <li>sobre</li>
+            <li>avaliações</li>
+        </ul>
+    </nav>
+    </header>
+    <div class="container">
+        <form action="formulariopt2.php" method = "post">
+            <label for="nome">nome do estudante</label>
+            <input type="text" name="nome" id="">
+
+            <label for="emailres">email do responsavel</label>
+            <input type="email" name="emailres" id="">
+
+            <label for="emailal">email do aluno</label>
+            <input type="email" name="emailal" id="">
+            <button type="submit">enviar</button>
+        </div>
+</body>
+</html>

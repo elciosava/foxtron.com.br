@@ -1,16 +1,87 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lucas barbosa</title>
+    <title>Document</title>
     <style>
-        body {background:#fff;
+       * {
+            margin: 0;
+            padding: 0;
+        }
 
-        ]
+        li{
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background: rgb(250, 5, 5);
+            height: 50px;
+            color: rgb(252, 252, 253);
+        }
+
+        .texto h2{
+            margin-bottom: 10px;
+        }
+
+        img{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .icones img{
+            width: 40px;
+            height: 40px;
+        }
+        .container{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        body{
+            height: 100vh;
+            background: rgb(41, 2, 150);
+            font-family: sans-serif;
+        }
     </style>
 </head>
 <body>
-    <h2>meus trabalhos</h2>
+     <header>
+        <h2>lucas brbs</h2>
+        <nav>
+            <ul>
+                <li>inicio</li>
+                <li>sobre</li>
+                <li>contato</li>
+            </ul>
+        </nav>
+     </header>
+     <div class="container">
+        <div class="imagem">
+        <img src="OIP.webp" alt="">
+        </div>
+        <div class="texto">
+            <h2>lucas brbs</h2>
+            <p>Disciplina vence o cansaço</p>
+            <div class="icones">
+                <img src="steam-brands-solid-full (1).svg" alt="">
+                <img src="discord-brands-solid-full.svg" alt="">
+                <img src="instagram-brands-solid-full.svg" alt="">
+            </div>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2409.html">aula 24/09/25</a>
+        </div>
+     </div>
+    
 </body>
 </html>

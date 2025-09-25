@@ -1,253 +1,73 @@
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Calculadora - Grid</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efeito Lanterna</title>
   <style>
-:root {
-            --bg: #9b9b9b;
-            --panel: #111827;
-            --accent: #08a0f7;
-            --muted: #9aa4b2;
-            --btn: #1f2937;
-            --btn-accent: #0b75b8;
-            --glass: rgba(255, 255, 255, 0.03);
-            font-family: Roboto;
-        }
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;      
+      cursor: default;
+    }
 
-        * {
-            box-sizing: border-box;
-        }
+    .lanterna {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
-        html,
-        body {
-            height: 100vh;
-            margin: 0;
-        }
+    .lanterna::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle 150px at var(--x, 50%) var(--y, 50%),
+          transparent 0%,
+          rgba(0, 0, 0, 1) 100%);
+      pointer-events: none;
+    }
 
-        body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background:
-                linear-gradient(180deg, var(--bg), #071019);
-            padding: 24px;
-            color: #e6eef6;
-        }
 
-        .calc {
-            width: 360px;
-            max-width: 92vw;
-            background: linear-gradient(180deg, var(--panel), #0b1220);
-            border-radius: 14px;
-            padding: 16px;
-            box-shadow:
-                0 10px 30px rgba(2, 6, 23, 0.6) 
-                inset 0 1px 0 rgba(255, 255, 255, 0.02);
-        }
-
-        .display {
-            background: var(--glass);
-            border-radius: 10px;
-            padding: 14px;
-            min-height: 76px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 6px;
-            margin-bottom: 14px;
-            word-break: break-all;
-        }
-
-        .small {
-            font-size: 0.82rem;
-            color: var(--muted);
-            text-align: right;
-            opacity: 0.95;
-        }
-
-        .large {
-            font-size: 1.6rem;
-            text-align: right;
-            font-weight: bold;
-            letter-spacing: 0.6px;
-            word-wrap: break-word ;
-        }
-
-        /* grid de botoes */
-        .pad {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        button {
-            background: var(--btn);
-            border: 0;
-            color: inherit;
-            padding: 14px 12px;
-            border-radius: 10px;
-            font-size: 1.05rem;
-            cursor: pointer;
-            transition: transform 0.08s ease, 
-                box-shadow 0.08s ease,
-                background 0.12s ease;
-            box-shadow: 0 4px 8px rgba(2, 6, 23, 0.5);
-            user-select: none;
-        }
-
-        button:active {
-            transform: translateY(1px) scale(0.997);
-        }
-
-        .btn-op {
-            background: linear-gradient(
-                180deg, var(--btn-accent), #095e95 
-            );
-            color: #fff;
-        }
-
-        .btn-igual {
-            grid-column: span 2;
-        }
-
-        .btn-accent-soft {
-            background: linear-gradient(
-                180deg, #13202b, #0f1b24
-            );
-            color: var(--muted);
-        }
+    img {
+      width: 200px;
+    }
   </style>
 </head>
+
 <body>
-  <div class="calc" role="application" aria-label="Calculadora simples">
-    <div class="display" id="display">
-      <div class="small" id="history">&nbsp;</div>
-      <div class="large" id="output">0</div>
-    </div>
-
-    <div class="pad" role="group" aria-label="Teclado da calculadora">
-      <button class="btn-accent-soft" data-action="clear">C</button>
-      <button class="btn-accent-soft" data-action="back">⌫</button>
-      <button class="btn-accent-soft" data-action="percent">%</button>
-      <button class="btn-op" data-action="op">÷</button>
-
-      <button data-num>7</button>
-      <button data-num>8</button>
-      <button data-num>9</button>
-      <button class="btn-op" data-action="op">×</button>
-
-      <button data-num>4</button>
-      <button data-num>5</button>
-      <button data-num>6</button>
-      <button class="btn-op" data-action="op">−</button>
-
-      <button data-num>1</button>
-      <button data-num>2</button>
-      <button data-num>3</button>
-      <button class="btn-op" data-action="op">+</button>
-
-      <button data-num>0</button>
-      <button data-num>.</button>
-      <button class="btn-wide btn-op" data-action="equals">=</button>
-    </div>
+  <div class="lanterna">
+    <img src="digital_illustration_of_a_f_0.png" alt="">
+    <h1>Codigo em Foco</h1>
+    <p>Aprenda a programar de maneira divertida!</p>
+    <p>Me siga tambem no YouTube.</p>
   </div>
 
   <script>
-    // Lógica simples da calculadora
-    (function(){
-      const out = document.getElementById('output');
-      const hist = document.getElementById('history');
-      const container = document.querySelector('.pad');
+    const lanterna = document.querySelector('.lanterna');
 
-      let current = '0';
-      let previous = null;
-      let operator = null;
-      let justEvaluated = false;
-
-      function update(){
-        out.textContent = current;
-        hist.textContent = previous ? (previous + (operator || '')) : '';
-      }
-
-      function inputDigit(d){
-        if(justEvaluated){ current = d === '.' ? '0.' : d; justEvaluated = false; return; }
-        if(d === '.'){
-          if(current.includes('.')) return;
-          current += '.';
-          return;
-        }
-        if(current === '0') current = d; else current += d;
-      }
-
-      function chooseOp(op){
-        if(op === '%' ){
-          current = String(parseFloat(current || 0) / 100);
-          update();
-          return;
-        }
-        if(operator && !justEvaluated){ // calcular primeiro
-          compute();
-        }
-        operator = op;
-        previous = current;
-        current = '0';
-      }
-
-      function compute(){
-        const a = parseFloat(previous);
-        const b = parseFloat(current);
-        if(isNaN(a) || isNaN(b)) return;
-        let res;
-        switch(operator){
-          case '+': res = a + b; break;
-          case '−': res = a - b; break;
-          case '×': res = a * b; break;
-          case '÷': res = b === 0 ? 'Erro' : a / b; break;
-          default: return;
-        }
-        current = String(res);
-        previous = null;
-        operator = null;
-        justEvaluated = true;
-      }
-
-      function clearAll(){ current = '0'; previous = null; operator = null; justEvaluated = false; }
-      function backspace(){ if(justEvaluated){ current = '0'; justEvaluated = false; return;} 
-      current = current.length > 1 ? current.slice(0,-1) : '0'; }
-
-      container.addEventListener('click', (e)=>{
-        const t = e.target;
-        if(!t.matches('button')) return;
-        if(t.hasAttribute('data-num')){
-          inputDigit(t.textContent.trim());
-          update();
-          return;
-        }
-        const action = t.getAttribute('data-action');
-        if(action === 'clear') { clearAll(); update(); return; }
-        if(action === 'back') { backspace(); update(); return; }
-        if(action === 'percent'){ chooseOp('%'); return; }
-        if(action === 'op') { chooseOp(t.textContent.trim()); update(); return; }
-        if(action === 'equals') { compute(); update(); return; }
-      });
-
-      // Suporte básico ao teclado
-      window.addEventListener('keydown', (e)=>{
-        if(e.key >= '0' && e.key <= '9') { inputDigit(e.key); update(); return; }
-        if(e.key === '.' || e.key === ','){ inputDigit('.'); update(); return; }
-        if(e.key === 'Backspace'){ backspace(); update(); return; }
-        if(e.key === 'Escape'){ clearAll(); update(); return; }
-        if(e.key === 'Enter' || e.key === '='){ compute(); update(); return; }
-        if(['+','-','*','/'].includes(e.key)){
-          const map = {'+':'+','-':'−','*':'×','/':'÷'};
-          chooseOp(map[e.key]); update(); return;
-        }
-      });
-
-      update();
-    })();
+    lanterna.addEventListener('mousemove', e => {
+      const rect = lanterna.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      lanterna.style.setProperty('--x', `${x}px`);
+      lanterna.style.setProperty('--y', `${y}px`);
+    });
   </script>
 </body>
+
 </html>

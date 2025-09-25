@@ -1,28 +1,97 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
 
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background: rgb(247, 147, 147);
+            height: 50px;
+            color: white;
+        }
+        
+        .texto h2 {
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img{
+            width: 40px;
+            height: 40px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        body {
+            height: 100vh;
+            background: black;
+            font-family: sans-serif;
+        }
+
+        .texto {
+            width: 800px;
+            color: white;
+        }
+
+    </style>
+</head>
 <body>
     <header>
-        <h1>luiz</h1>
+        <h2>Luiz</h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
     </header>
     <div class="container">
-        <div class="exercicios">
-            <h2>Operações matématicas</h2>
-            <img src="calculadora.png" alt="">
-        </div>
+        <div class="imagem">
+            <img src="perfil.jpg" alt="">
 
-        <div class="exercicios">
-            <h2>
-                <img src="media de dois alunos.png" alt="">
-            </h2>
+        </div>
+        <div class="texto">
+            <h2>Luiz</h2>
+            <p>OihgdsjlahghsdhgshdjklgdghjdlshjlkdhjfhjasdhfjdsafhldsakjfljkdsajkdfsalhkdfaslhkfslksafdlhkdasflhkfsdahkdfsahdsadjahsfldsjkffdaafdsdsOihg
+                dsjlahghsdhgshdjklgdghjdlshjlkdhjfhjasdhfjdsafhldsakjfljkdsajkdfsalhkdfaslhkfslksafdlhkdasflhkfsdahkdfsahdsadjahsfldsjkffdaafdsdsOihgdsj
+                lahghsdhgshdjklgdghjdlshjlkdhjfhjasdhfjdsafhldsakjfljkdsajkdfsalhkdfaslhkfslksafdlhkdasflhkfsdahkdfsahdsadjahsfldsjkffdaafdsds</p>
+            <div class="icones">
+                <img src="discord.svg" alt="">
+                <img src="steam.svg" alt="">
+                <img src="instagram.svg" alt="">
+            </div>
+            <div class="trabalhos">
+                <a href="aula2409.html">Aula 24/09/2025</a>
+            </div>
         </div>
     </div>
 </body>
-
 </html>

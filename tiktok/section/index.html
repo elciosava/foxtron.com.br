@@ -5,40 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        :root {
-            --bg: #b39d62;
-        }
-        
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
 
-        section{
-            height: 100vh;
-            padding: 40px;
-            border: solid 3px black;
+        html{
+            font-family: sans-serif;
         }
 
-        #inicio{
-            background-image: url('https://images.unsplash.com/photo-1757353071874-38ba5deb546e');
-            background-position: center;
-            background-size: cover;
-            border: none;
+        li {
+            display: inline-block;
+            padding: 5px;
+            margin: 0px 10px;
+            font-size: 1.2rem;
         }
 
-        #contato{
-            background: var(--bg);
+        header {
+            background: lightcoral;
+            height: 40px;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
+        section {
+            height: calc(100vh - 50px);
+        }
+
+        #inicio {            
+            background: lightgreen;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            height: calc(100vh - 50px);
+            gap: 10px;
+        }
+
+        .card {
+            background: lightgoldenrodyellow;
+        }
+
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
     <section id="inicio">
-        <h1>INICIO</h1>
-    </section>
-
-    <section id="contato">
-        <h1>CONTATO</h1>
+        <div id="container">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
     </section>
 </body>
 </html>

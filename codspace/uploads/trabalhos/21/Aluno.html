@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background: rgb(123, 128, 211);
+            height: 50px;
+            color: 
+        }
+
+        .texto h2 {
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .container {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        body {
+            height: 100vh;
+            background: rgb(176, 235, 240);
+            font-family: sans-serif;
+
+        }
+
+        .texto {
+            width: 800px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <form action="cadastro.php" method="post">
+            <div class="formulairo">
+                <label for="nome">nome</label>
+                <input type="text" name="nome" id="">
+                <label for="sobrenome">sobrenome</label>
+                <input type="text" name="sobrenome" id="">
+                <label for="email">email</label>
+                <input type="email" name="email" id="">
+                <label for="cidade">cidade</label>
+                <input type="text" name="cidade" id="">
+                <label for="estado">estado</label>
+                <input type="text" name="estado" id="">
+
+            </div>
+            <label for="serie">serie</label>
+            <input type="text" name="serie" id="">
+            <label for="cpf">cpf</label>
+            <input type="text" name="cpf" id="">
+
+            <button type="submit">Enviar</button>
+        </form>
+ 
+     </body>
+    </div>
+
+
+</body>
+
+</html>

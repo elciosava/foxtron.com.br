@@ -1,36 +1,92 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            display: inline-block;
+            margin:  0 10px;
+        }
 
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 30px;
+            background-color: rgb(95, 150, 39);
+            height: 50px;
+            color: blanchedalmond;                  
+        }
+           
+           .texto h2 {
+               margin-bottom: 10px;
+           }
+
+        img{
+            width: 100px;
+            height: 100px;
+            border-radius:  50%;
+            margin-right:  15px;
+        }
+
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .icones img{
+            width: 40px;
+            height: 40px;
+        }
+        
+        body{
+            height: 100vh;
+            background-color: darkolivegreen;
+            font-family: sans-serif;
+        }
+
+        .texto {
+            width: 800px;
+        }
+    </style>
+</head>
 <body>
     <header>
-        <h2>felipe</h2>
-
-
+        <h2>RENATO CARIANI</h2>
+        <nav>
+            <ul>
+                <li>inicio</li>
+                <li>sobre</li>
+                <li>contato</li>
+            </ul>
+        </nav>
     </header>
+
     <div class="container">
-        <div class="exercicios">
-            <h2>operaçoes matematicas</h2>
-            <img src="mg01.png" alt="">
+        <div class="imagem">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0cBbsADYZOHiNmfjUvLF0rlO5xoalWw28fQ&s" alt="">
         </div>
-
-        <div class="exercicios">
-            <h2>medias alunos</h2>
-            <img src="mgo3.png" alt="">
-        </div>
-        <div class="exercicios"></div>
-        <div class="exercicios"></div>
-        <div class="exercicios"></div>
-        <div class="exercicios"></div>
-        <div class="exercicios"></div>
-        <div class="exercicios"></div>
-    </div>
-
+        <div class="texto">
+            <h2>renato cariani</h2>
+            <p>Renato Cariani é um influenciador fitness, empresário e professor de química que começou sua carreira no fisiculturismo, onde alcançou o título de vice-campeão paulista.</p>
+            <div class="icones">
+                <img src="youtube-brands-solid-full.svg" alt="">
+                <img src="twitch-brands-solid-full.svg" alt="">
+                <img src="steam-brands-solid-full.svg" alt="">
+            </div>
+        </div> 
+          <div class="trabalho">
+             <a href="Aula2409.html">aula 24/09/25</a>
+          </div>   
+  </div>
 </body>
-
 </html>

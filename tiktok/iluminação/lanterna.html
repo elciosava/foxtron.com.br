@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #111;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            cursor: default;
+        }
+
+        .lanterna {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lanterna::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(
+                circle 200px at var(--x, 50%) var(--y, 50%),
+                transparent 0%, rgba(0,0,0,1) 100%);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="lanterna">
+        <h1>Codigo em Foco</h1>
+    </div>
+
+    <script>
+        const lanterna = document.querySelector('.lanterna');
+
+        lanterna.addEventListener('mousemove', e=>{
+            const rect = lanterna.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            lanterna.style.setProperty('--x', `${x}px`);
+            lanterna.style.setProperty('--y', `${y}px`);
+        });
+    </script>
+</body>
+</html>

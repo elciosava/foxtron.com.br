@@ -1,16 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joel Alves</title>
+    <title>Document</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        li{
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background: rgb(0, 0, 0);
+            height: 50px;
+            color: azure;
+        }
+        .texto h2{
+            margin-bottom: 10px;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img{
+            width: 50px;
+            height: 50px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
         body {
-            background: #fff;
+            height: 100vh;
+            background-color: rgb(106, 147, 219);
+            font-family: sans-serif;
+        }
+        .texto{
+            width: 500px;
         }
     </style>
 </head>
 <body>
-    <h2>Meus trabalhos</h2>
+    <header>
+        <h2>Joel Alves Jr</h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="imagem">
+            <img src="https://th.bing.com/th/id/R.0dceb675b7c54e0cb4b3a9f88b1ae7e2?rik=hOyAXz3DTMmHdA&riu=http%3a%2f%2fbr.web.img3.acsta.net%2fpictures%2f14%2f01%2f03%2f14%2f06%2f447723.jpg&ehk=LfU2qmoYwZmQFrSerNHtS3b1Sbh9AUtl0U1x8pjOLak%3d&risl=&pid=ImgRaw&r=0
+            " alt="">
+        </div>
+        <div class="texto">
+            <h2>Joel Alves Jr</h2>
+            <p>Você não vai com a minha cara?</p>
+            <div class="icones">
+                <img src="discord-brands-solid-full.svg" alt="">
+                <img src="envelope-solid-full.svg" alt="">
+                <img src="instagram-brands-solid-full.svg" alt="">
+            </div>
+        </div>
+    </div>
 </body>
 </html>

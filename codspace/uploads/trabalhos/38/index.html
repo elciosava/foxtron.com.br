@@ -1,23 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background-color: rgb(86, 92, 94);
+            height: 50px;
+            color: aliceblue;
+        }
+
+            .texto h2{
+                margin-bottom: 10px;
+            }
+
+
+        img {
+            width: 100px;
+            width: 100px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .icones img {
+            width: 40px;
+            height: 40px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        body {
+            height: 100vh;
+            background-color: aliceblue;
+            font-family: sans-serif;
+        }
+        .texto {
+            width: 800px;
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <h2>Erick gabriel</h2>
+        <nav>
+            <ul>
+                <li>inicio</li>
+                <li>sobre</li>
+                <li>contato</li>
+            </ul>
+        </nav>
     </header>
-    <div class="conteiner">
-        <div class="exercicios"></div>
-          <h2> Operações Matematicas</h2>
-          <img src="Captura de tela - 1.png" alt="">
-        <div class="exercicios">
-            <h2>Medias alunos</h2>
-            <img src="Captura de tela - 2.png" alt="">
+    <div class="container">
+
+        <div class="imagem">
+            <img src="yugyug.jpg" alt="">
+        </div>
+        <div class="texto">
+            <h2>Nego trufa</h2>
+            <p>MC Nego Trufa é um dos nomes em ascensão no funk paulista. Com batidas envolventes 
+                e letras que falam de baile, quebrada e vivência, ele vem conquistando espaço nas plataformas e nas pistas</p>
+
+            <div class="icones">
+                <img src="twitch-brands-solid-full.svg" alt="">
+                <img src="discord-brands-solid-full.svg" alt="">
+                <img src="instagram-brands-solid-full.svg" alt="">
+            </div>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2409.html">Aula 24/05/25</a>
         </div>
     </div>
 </body>
+
 </html>

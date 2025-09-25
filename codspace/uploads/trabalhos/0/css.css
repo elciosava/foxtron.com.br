@@ -1,0 +1,22 @@
+.conteiner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(to top, #ffffff, #a0a0a0);
+    background-size: cover;
+    background-position: center;
+
+    width: 100%;
+    max-width: 1200px;
+    min-height: 400px;
+    padding: 40px 20px;
+    margin: 40px auto;
+
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+
+    transition: all 0.3s ease-in-out;
+}

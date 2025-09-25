@@ -1,16 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flavia Suelen</title>
+    <title>Document</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+
+            display: inline-block;
+            margin: 0 20px;
+
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+            background-color: rgb(170, 111, 224);
+            height: 50px;
+            color: rgb(16, 16, 221)
+        }
+
+        .texto h2 {
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img {
+            width: 60px;
+            height: 100px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
         body {
-            background: #fff
+            height: 100vh;
+            background: rgb(192, 34, 145);
+            font-family: sans-serif;
         }
     </style>
 </head>
+
 <body>
-    <h2>Meus trabalhos</h2>
+    <header>
+        <h2>FLAVIA</h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="imagem">
+            <img src="perfil.jpg" alt="">
+        </div>
+        <div class="texto">
+            <h2>Flavia</h2>
+            <p>Torcida Jovem do Santos </p>
+            <div class="icones">
+                <img src="instagram-brands-solid-full.svg" alt="">
+                <img src="whatsapp-brands-solid-full.svg" alt="">
+                <img src="youtube-brands-solid-full.svg" alt="">
+
+            </div>
+        </div>
+    <div class="trabalhos">
+        <a href="aula2409.html">Aula 20/09/25</a>
+    </div>
+    </div>
+
 </body>
+
 </html>

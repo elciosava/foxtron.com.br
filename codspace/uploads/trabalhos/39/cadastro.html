@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 30px;
+            background-color: rgb(110, 109, 109);
+            height: 50px;
+            color: azure;
+      }
+
+    </style>
+</head>
+<body>
+   <header>
+    <h2>Matricula</h2>
+    <nav>
+    <ul>
+    <li>inicio</li>
+    <li>sobre</li>
+    <li>contato</li>
+
+    </h2>
+    </ul>
+    </nav>
+</header>
+ <div class="conteiner">
+     <form action="matricula.php" method="post">
+     
+        <label for="nome">Nome</label>
+        <input type="text" name="nome">
+
+        <label for="sobrenome">sobrenome</label>
+        <input type="text" name="sobrenome">
+
+        <label for="idade">Idade</label>
+        <input type="number" name="idade">
+
+        <label for="escola">Ecola</label>
+        <input type="text" name="escola">
+
+        <label for="cpf">CPF</label>
+        <input type="number" name="CPF">
+
+        <button type="submit">matricule-se</button>
+     </form>    
+    </div>
+   
+</body>
+</html>

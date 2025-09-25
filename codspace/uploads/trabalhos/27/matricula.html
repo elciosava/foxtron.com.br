@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+li{
+    display: inline-block;
+    margin: 0px 10px;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: antiquewhite;
+    height: 50px;
+}
+
+.texto h2{
+    margin-bottom: 15px;
+}
+img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.icones img{
+    width: 40px;
+    height: 40px;
+}
+.container {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+body{
+    height: 100vh;
+    background: rgb(219, 219, 219);
+    font-family: sans-serif;
+}
+    </style>
+</head>
+<body>
+    <div class="conteiner">
+        <form action="formulario.php" method="post">
+            <label for="nome completo">nome completo:</label>
+            <input type="text" name="nome v" id="">
+
+            <label for="periodo">periodo:</label>
+            <input type="text" nome="periodo" id="">
+
+            <label for="turma">turma</label>
+            <input type="turma" name="turma"id=""> 
+
+            <label for="cidade">Cidade:</label>
+            <input type="text"name="cidade"id="">
+
+            
+            <label for="CPF">CPF</label>
+            <input type="text" name="CPF" id="">
+            
+            <button type="submit">enviar</button>
+        </form>
+    </div>
+</body>
+</html>
