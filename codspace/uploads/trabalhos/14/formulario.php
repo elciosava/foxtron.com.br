@@ -1,16 +1,16 @@
 <?php
     $nome = $_POST['nome'];
-    echo $nome . "</br>"
+    echo $nome . "</br>";
 
     $sobrenome = $_POST['sobrenome'];
-    echo $sobrenome . "</br>"
+    echo $sobrenome . "</br>";
 
     $email = $_POST['email'];
-    echo $email . "</br>"
+    echo $email . "</br>";
 
     $cidade = $_POST['cidade'];
-    echo $cidade . "</br>"
+    echo $cidade . "</br>";
 
     $estado = $_POST['estado'];
-    echo $estado . "</br>"
+    echo $estado . "</br>";
 ?>

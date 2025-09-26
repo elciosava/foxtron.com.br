@@ -200,25 +200,39 @@
             text-align: left;
         }
 
-        .form {
-            background: hotpink;
-            width: 500px;
-            padding: 20px;
-            margin-top: 40px;
+        form {
+            width: 600px;
+            margin-top: 50px;
         }
 
-        .form span,
-        input,
+        form input,
         textarea {
             width: 100%;
-            margin: 5px;
             padding: 5px;
-            box-sizing: border-box;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            resize: none;
+        }
+        form label {
+            font-size: 1.1rem;
+        }
+        form button {
+            background: #2a0146;
+            color: #fff;
+            width: 130px;
+            padding: 12px 10px;
+            border-radius: 20px;
+            border: solid 1px #fff;
+            display: flex;
+            align-items: center;
+            background-image: url('img-açai/arrow-right-solid-full.svg');
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: 30px;
+            text-align: left;
         }
 
-        textarea {
-            height: 100px;
-        }
+
     </style>
 </head>
 
@@ -320,17 +334,15 @@
 
     <section id="contato">
         <div class="container">
-            <h2>Entrar em contato</h2>
-            <form action="" method="post">
-                <div class="form">
-                    <span><label for="nome">Nome</label></span>
-                    <input type="text" name="nome" id="">
-                    <span><label for="email">Email</label></span>
-                    <input type="email" name="email" id="">
-                    <span>Mensagem</span>
-                    <textarea name="mensagem" id=""></textarea>
-                    <button type="submit">Enviar</button>
-                </div>
+            <h2>Entre em contato conosco</h2>
+            <form action="enviar.php" method="post">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+                <label for="mensagem">Deixe a sua mensagem</label>
+                <textarea name="mensagem" id="" cols="30" rows="10"></textarea>
+                <button type="submit">ENVIAR</button>
             </form>
         </div>
     </section>
