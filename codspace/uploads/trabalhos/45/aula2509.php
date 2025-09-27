@@ -1,13 +1,3 @@
-<?php
-
-   ini_set("display_errors", 0);
-
- $nome = $_POST["nome"];
- $sobrenome = $_POST["sobrenome"];
- $email = $_POST["email"];
- $cpf = $_POST["cpf"];
-
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,7 +10,7 @@
     
     * {
     margin: 0;
-    padding: 0;
+    padding: 0; 
 
     }
 
@@ -65,15 +55,7 @@
 
 </form>
 <div class="resultado">
-<?php
-
-echo "<div> $nome </div>";
-echo "<div> $sobrenome </div>";
-echo "<div> $email </div>";
-echo "<div> $cpf </div>";
-
-?>
-
+<div>  </div><div>  </div><div>  </div><div>  </div>
 </div>
 
            </div>
