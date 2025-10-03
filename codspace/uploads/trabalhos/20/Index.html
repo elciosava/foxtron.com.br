@@ -1,10 +1,12 @@
 
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
@@ -15,7 +17,7 @@
 
         li {
             display: inline-block;
-            margin: 0px 10px;
+            margin: 0 10px;
         }
 
         header {
@@ -23,9 +25,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 5px 20px;
-            background: rgba(0, 0, 0, 0.973);
+            background: rgb(25, 33, 255);
             height: 50px;
-            color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0)
         }
 
         .texto h2 {
@@ -40,11 +42,12 @@
         }
 
         .icones img {
-            width: 50px;
+            width: 40px;
             height: 40px;
         }
 
         .container {
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -53,58 +56,59 @@
 
         body {
             height: 100vh;
-            background: rgba(147, 243, 243, 0.178);
+            background: gray;
             font-family: sans-serif;
+
         }
 
         .texto {
             width: 800px;
         }
 
-        .trabalhos {
+        .trabalhos{
             width: 120px;
             height: 180px;
             border: solid 1px black;
             margin: 10px;
-            background: rgb(251, 255, 0);
+            background: rgb(147, 145, 224);
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .trabalhos:hover{
+        .trabalhos:hover {
             margin-top: -10px;
             transition: 0.3s ease-in-out;
+
         }
     </style>
+
 </head>
 
 <body>
     <header>
-        <h2>Hugo Alfred</h2>
+        <h2>Henrique Alfred</h2>
         <nav>
             <ul>
-                <li>inicio </li>
-                <li>sobre</li>
-                <li>contato</li>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
             </ul>
         </nav>
     </header>
 
     <div class="container">
         <div class="imagem">
-            <img src="nerd-emoji.jpg" alt="">
+            <img src="3.webp" alt="">
         </div>
         <div class="texto">
-            <h2>Hugo Alfred</h2>
-            <p>Faço curso de progamador de sistemas no sesi senai no periodo da tarde</p>
+            <h2>Henrique Alfred</h2>
+            <p>Sou um aluno aprendendo a progamar na escola Sesi Senai,no curso do Professor Elcio Sava</p>
             <div class="icones">
-                <img src="discord-brands-solid-full.svg" alt="">
-                <img src="steam-brands-solid-full.svg" alt="">
-                <img src="twitch-brands-solid-full.svg" alt="">
+                <img src="facebook-brands-solid-full.svg" alt="">
+                <img src="instagram-brands-solid-full.svg" alt="">
+                <img src="twitter-brands-solid-full.svg" alt="">
             </div>
-
         </div>
-
     </div>
     <div class="container">
         <div class="trabalhos">
@@ -118,9 +122,15 @@
         </div>
         <div class="trabalhos">
             <a href="aula2609_exercicio.php">Aula 26/09/25</a>
-        </div>
+         </div>
+         <div class="trabalhos">
+            <a href="aula2909.php">Aula 29/09/25</a>
+         </div>
+         <div class="trabalhos">
+            <a href="aula3009.php">Aula 30/09/25</a>
+         </div>
     </div>
-
+        
 </body>
 
 </html>
