@@ -1,146 +1,126 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>erick gabriel j.v</title>
+    <title>Document</title>
     <style>
-        * {
+        *{
             margin: 0;
             padding: 0;
-            justify-content: center;
-            align-items: center;
         }
 
+        li{
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background: rgb(0, 0, 0);
+            height: 50px;
+            color: azure;
+        }
+        .texto h2{
+            margin-bottom: 10px;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img{
+            width: 50px;
+            height: 50px;
+        }
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: rgb(126, 128, 128);
         }
-
-        li {
-            display: inline-block;
-            margin: 0 10px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .imagen img {
-            width: 350px;
-            margin-right: 350px;
-            border-radius: 50%;
-            border: 4px solid #fff;
-            justify-content: center;
-            align-items: center;
-
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 5px 5px 5px;
-            background-color: rgba(182, 27, 27, 0.117);
-
-        }
-
-        body {
-            height: 100vh;
-        }
-
-        .icones {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .icones img {
-            width: 50px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .texto h2 {
-
-            color: rgb(68, 68, 68);
-            margin-bottom: 10px;
-
-        }
-
-        .texto {
-            width: 8000;
-        }
-
-        .trabalho {
+        .trabalhos{
             width: 120px;
             height: 180px;
-            border: solid 1px black;
+            border: solid 1px black ;
             margin: 10px;
-            background: rgb(252, 252, 252);
-            align-items: center;
+            background-color: aquamarine;
+            display: flex;
             justify-content: center;
-
+            align-items: center;
         }
 
-        .trabalho:hover {
+        .trabalhos:hover{
             margin-top: -10px;
+            transition: 0.3 ease ease ease-in-out;
         }
-
-
+        body {
+            height: 100vh;
+            background-color: rgb(106, 147, 219);
+            font-family: sans-serif;
+        }
+        .texto{
+            width: 500px;
+        }
     </style>
 </head>
-
 <body>
     <header>
-        <h2>trabalho elcio</h2>
+        <h2>erick gabriel</h2>
         <nav>
             <ul>
+                <li>Inicio</li>
                 <li>Sobre</li>
                 <li>Contato</li>
             </ul>
         </nav>
     </header>
-    <section class="inicio">
-        <div class="capa"></div>
 
-    </section>
-    </header>
     <div class="container">
-        <div class="imagen">
-            <img src="images.jpg" alt="">
+        <div class="imagem">
+            <img src="https://th.bing.com/th/id/R.0dceb675b7c54e0cb4b3a9f88b1ae7e2?rik=hOyAXz3DTMmHdA&riu=http%3a%2f%2fbr.web.img3.acsta.net%2fpictures%2f14%2f01%2f03%2f14%2f06%2f447723.jpg&ehk=LfU2qmoYwZmQFrSerNHtS3b1Sbh9AUtl0U1x8pjOLak%3d&risl=&pid=ImgRaw&r=0
+            " alt="">
         </div>
         <div class="texto">
-            <h2>erick gabriel</h2>
-            <p> vim cobrar o aluguel
-            </p>
+            <h2>Joel Alves Jr</h2>
+            <p>Você não vai com a minha cara?</p>
             <div class="icones">
-                <img src="discord-brands-solid-full.svg" alt="discord">
-                <img src="github-brands-solid-full.svg" alt="github">
-                <img src="linkedin-brands-solid-full.svg" alt="linkedin">
+                <img src="discord-brands-solid-full.svg" alt="">
+                <img src="envelope-solid-full.svg" alt="">
+                <img src="instagram-brands-solid-full.svg" alt="">
             </div>
         </div>
     </div>
-        <div class="container">
-            <div class="trabalho">
-                <a href="aula2409.html">aula2409</a>
-            </div>
-            <div class="trabalho">
-                <a href="aula2509.php">aula 25/09/25</a>
-            </div>
-            <div class="trabalho">
-                <a href="aula2609.php">aula 26/09/25</a>
-            </div>
-            <div class="exercisio">
-                <a href="mercado.php">mercadinho</a>
-            </div>
-            <div class="trabalho">
-                <a href="aula2909.php">aula 29/09/2025  </a>
-            </div>
-            <div class="trabalho">
-                <a href="aula3009.php">aula 39/09/2025 </a>
-            </div>
+    <div class="container">
+    <div class="trabalho">
+        <a href="aula2409.html">aula24/09/25</a>
+    </div>
+    <div class="trabalho">
+        <a href="aula2509.php">aula25/09/25</a>
+    </div>
+    <div class="trabalho">
+        <a href="aula2609.php">aula26/09/25</a>
+    </div>
+    <div class="trabalho">
+        <a href="aula2709.html">aula27/09/25</a>
+    </div>
+    <div class="trabalho">
+        <a href="aula2809.html">aula28/09/25</a>
         </div>
+        <div class="trabalho">
+        <a href="aula0710.php">Aula07/09/25</a>
+        </div>
+        <a href="aula0710.php">Aula08/10/25</a>
+        </div>
+        <div class="trabalho"></div>
+        <a href="aula0910.php">Aula09/10/25</a>
+
+    </div>
 </body>
+</html>

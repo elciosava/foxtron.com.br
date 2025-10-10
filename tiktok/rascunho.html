@@ -1,73 +1,61 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Efeito Lanterna</title>
+  <title>Document</title>
   <style>
     body {
-      margin: 0;
-      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #111;
-      color: white;
-      font-family: Arial, sans-serif;      
-      cursor: default;
+      height: 70vh;
+    }
+    button {
+      --width: 150px;
+      --timing: 2s;
+      border: 0;
+      width: var(--width);
+      padding-block: 1em;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1em;
+      background: rgb(64, 192, 87);
+      transition: all 0.2s;
+      border-radius: 3px;
+      cursor: pointer;
     }
 
-    .lanterna {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+    button:hover {
+      background-image: linear-gradient(to right,
+          rgb(250, 82, 82),
+          rgb(250, 82, 82) 16.65%,
+          rgb(190, 75, 219) 16.65%,
+          rgb(190, 75, 219) 33.3%,
+          rgb(76, 110, 245) 33.3%,
+          rgb(76, 110, 245) 49.95%,
+          rgb(64, 192, 87) 49.95%,
+          rgb(64, 192, 87) 66.6%,
+          rgb(250, 176, 5) 66.6%,
+          rgb(250, 176, 5) 83.25%,
+          rgb(253, 126, 20) 83.25%,
+          rgb(253, 126, 20) 100%,
+          rgb(250, 82, 82) 100%);
+      animation: var(--timing) linear dance6123 infinite;
+      transform: scale(1.1) translateY(-1px);
     }
 
-    .lanterna::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(circle 150px at var(--x, 50%) var(--y, 50%),
-          transparent 0%,
-          rgba(0, 0, 0, 1) 100%);
-      pointer-events: none;
-    }
-
-
-    img {
-      width: 200px;
+    @keyframes dance6123 {
+      to {
+        background-position: var(--width);
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="lanterna">
-    <img src="digital_illustration_of_a_f_0.png" alt="">
-    <h1>Codigo em Foco</h1>
-    <p>Aprenda a programar de maneira divertida!</p>
-    <p>Me siga tambem no YouTube.</p>
-  </div>
-
-  <script>
-    const lanterna = document.querySelector('.lanterna');
-
-    lanterna.addEventListener('mousemove', e => {
-      const rect = lanterna.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      lanterna.style.setProperty('--x', `${x}px`);
-      lanterna.style.setProperty('--y', `${y}px`);
-    });
-  </script>
+  <button>Entrar</button>
 </body>
 
 </html>
