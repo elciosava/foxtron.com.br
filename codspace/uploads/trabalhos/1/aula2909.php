@@ -5,8 +5,6 @@
     $senha = $_GET['senha'];
 
     $nome1 = $_GET['nome1'];
-    $email1 
-    $senha1
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -168,13 +168,18 @@ $foto = ($aluno && $aluno['foto']) ? $aluno['foto'] : '../icone/user.svg';
             ?>
 
             <?php if (file_exists($arquivoAluno)): ?>
+                <div style="text-align:right; margin-bottom:10px;">
+                    <a href="<?= $arquivoAluno ?>" download style="display:inline-block; padding:10px 20px; background:linear-gradient(135deg,#00C9FF,#7A00FF);
+                          color:white; text-decoration:none; border-radius:8px; font-weight:bold;">
+                        ⬇️ Baixar meu trabalho
+                    </a>
+                </div>
+
                 <iframe id="iframePerfil" src="<?= $arquivoAluno ?>" class="perfil"></iframe>
             <?php else: ?>
                 <p id="msgPerfil" style="color:white;">Você ainda não enviou sua página de perfil.</p>
                 <iframe id="iframePerfil" class="perfil" style="display:none;"></iframe>
             <?php endif; ?>
-
-
         </div>
     </section>
 
