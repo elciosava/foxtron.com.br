@@ -5,9 +5,9 @@ $email = $_POST['email'];
 
 
 
-echo $nome; . "</br>"
-echo $sobrenome; . "</br>"
-echo $email;  . "</br>"
-echo $cidade; . "</br>"
-echo $estado; . "</br>"
+echo $nome . "</br>";
+echo $sobrenome . "</br>";
+echo $email  . "</br>";
+echo $cidade . "</br>";
+echo $estado . "</br>";
 ?>
