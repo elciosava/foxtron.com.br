@@ -1,22 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
 
-        li{
+        li {
             display: inline-block;
             margin: 0 10px;
         }
 
-        header{
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -25,51 +25,73 @@
             height: 50px;
             color: azure;
         }
-        .texto h2{
+
+        .texto h2 {
             margin-bottom: 10px;
         }
-        img{
+
+        img {
             width: 200px;
             height: 200px;
             border-radius: 50%;
             margin-right: 15px;
         }
 
-        .icones img{
+        .icones img {
             width: 50px;
             height: 50px;
         }
+
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
-        .trabalhos{
+
+        .organiza {
+            display: grid;
+            grid-template-columns: (8, 1fr);
+        }
+
+        .trabalhos {
             width: 120px;
             height: 180px;
-            border: solid 1px black ;
+            border: solid 1px black;
             margin: 10px;
-            background-color: aquamarine;
+            background-color: rgb(85, 85, 85);
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .trabalhos:hover{
+        .trabalhos:hover {
             margin-top: -10px;
             transition: 0.3 ease ease ease-in-out;
         }
+
         body {
             height: 100vh;
-            background-color: rgb(106, 147, 219);
+            background-color: rgb(93, 94, 95);
             font-family: sans-serif;
         }
-        .texto{
+
+        .texto {
             width: 500px;
+        }
+
+        .trabalho {
+            background: rgb(231, 231, 231);
+            height: 200px;
+            width: 150px;
+        }
+        .organiza {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
         }
     </style>
 </head>
+
 <body>
     <header>
         <h2>erick gabriel</h2>
@@ -88,8 +110,8 @@
             " alt="">
         </div>
         <div class="texto">
-            <h2>Joel Alves Jr</h2>
-            <p>Você não vai com a minha cara?</p>
+            <h2>erick gabriel</h2>
+            <p>atividade do curso de programacao de sistema</p>
             <div class="icones">
                 <img src="discord-brands-solid-full.svg" alt="">
                 <img src="envelope-solid-full.svg" alt="">
@@ -97,30 +119,35 @@
             </div>
         </div>
     </div>
-    <div class="container">
-    <div class="trabalho">
-        <a href="aula2409.html">aula24/09/25</a>
-    </div>
-    <div class="trabalho">
-        <a href="aula2509.php">aula25/09/25</a>
-    </div>
-    <div class="trabalho">
-        <a href="aula2609.php">aula26/09/25</a>
-    </div>
-    <div class="trabalho">
-        <a href="aula2709.html">aula27/09/25</a>
-    </div>
-    <div class="trabalho">
-        <a href="aula2809.html">aula28/09/25</a>
+    <div class="container organiza">
+        <div class="trabalho">
+            <a href="aula2409.html">aula24/09/25</a>
         </div>
         <div class="trabalho">
-        <a href="aula0710.php">Aula07/09/25</a>
+            <a href="aula2509.php">aula25/09/25</a>
         </div>
-        <a href="aula0710.php">Aula08/10/25</a>
+        <div class="trabalho">
+            <a href="aula2609.php">aula26/09/25</a>
         </div>
-        <div class="trabalho"></div>
-        <a href="aula0910.php">Aula09/10/25</a>
-
+        <div class="trabalho">
+            <a href="aula2709.html">aula27/09/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula2809.html">aula28/09/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula0710.php">Aula07/09/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula0710.php">Aula08/10/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula0910.php">Aula09/10/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula1010.php">Aula10/10/25</a>
+        </div>
     </div>
 </body>
+
 </html>

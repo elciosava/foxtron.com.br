@@ -1,4 +1,3 @@
-
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -38,9 +37,13 @@
 
         .container{
             display: flex;
-            justify-content: center;
-            align-items: center;
+           grid-template-columns: repeat(8, 1fr);
             height: 100vh;
+        }
+
+        .organiza {
+            display: grid;
+           grid-template-columns: repeat(8, 1fr);
         }
 
         .icones img{
@@ -92,7 +95,7 @@
             </div>
         </div>       
   </div>
-     <div class="container">
+     <div class="container organiza">
         <div class="trabalho">
             <a href="Aula2409.html">aula 24/09/25</a>
          </div> 
@@ -111,6 +114,10 @@
              <div class="trabalho">
                 <a href="aula0810.php">aula 08/10/25</a>              
              </div>   
+             <div class="trabalho">
+                <a href="aula01010.php">aula 10/10/25</a>              
+             </div>   
+        
         
      </div>
      

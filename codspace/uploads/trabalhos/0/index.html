@@ -14,7 +14,7 @@
         }
 
         .container {
-            display: flex;
+            display: grid;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -88,6 +88,11 @@
         .trabalho:hover {
             margin-top: -10px;
         }
+
+        .organiza{
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+        }
     </style>
 </head>
 
@@ -106,7 +111,7 @@
 
     </section>
     </header>
-    <div class="container">
+    <div class="container ">
         <div class="imagen">
             <img src="images.jpg" alt="">
         </div>
@@ -121,7 +126,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container organiza">
         <div class="trabalho">
             <a href="aula2409.html">aula2409</a>
         </div>
@@ -148,6 +153,9 @@
         </div>
         <div class="trabalho">
             <a href="aula910.php">aula 9/10/2025</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula1010.php">10/10/2025</a>
         </div>
     </div>
 </body>

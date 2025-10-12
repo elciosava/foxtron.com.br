@@ -1,7 +1,4 @@
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,11 +22,15 @@
             * {
                 margin: 0;
                 padding: 0;
+                justify-content: center;
+                align-items: center;
             }
 
             li {
                 display: inline-block;
                 margin: 0 10px;
+                justify-content: center;
+                align-items: center;
             }
 
             header {
@@ -64,7 +65,14 @@
                 justify-content: center;
                 align-items: center;
                 height: 100vh;
+
             }
+            .organiza {
+                display: grid;
+                grid-template-columns: repeat(8, 1fr);
+
+            } 
+             
 
             body {
                 height: 100vh;
@@ -80,6 +88,15 @@
                 width: 120px;
                 height: 180px;
                 border: solid 1px black;
+                margin: 10px;
+                background: blue;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .trabalho:hover{
+                margin-top: 10px;
+                transition: 0.3s ease-in-out;
             }
 
         </style>
@@ -103,7 +120,7 @@
             </div>
             <div class="texto">
                 <h2>Guilherme Staciaki</h2>
-                <p>A vingança nunca é plena, mata a alma e envenena.</p>
+                <p>A vingança nunca é plena, mata a alma e à envenena.</p>
                 <div class="icones">
                     <img src="discord-brands-solid-full.svg" alt="">
                     <img src="instagram-brands-solid-full.svg" alt="">
@@ -131,6 +148,9 @@
             </div>
             <div class="trabalhos">
                 <a href="aula0910.php">Aula 09/10/25</a>
+            </div>
+            <div class="trabalhos">
+                <a href="aula1010.php">Aula 10/10/25</a>
             </div>
         </div>
     </body>

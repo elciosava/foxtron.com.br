@@ -5,26 +5,27 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>WP do Hugo</title>
     <style>
         * {
             margin: 0;
             padding: 0;
         }
-
+            
         li {
             display: inline-block;
             margin: 0 10px;
         }
 
         header {
-            display: flex;
+            display: flex;  
             justify-content: space-between;
             align-items: center;
             padding: 5px 20px;
@@ -51,10 +52,16 @@
 
         .container {
 
-            display: flex;
+            display:grid;
             justify-content: center;
             align-items: center;
             height: 100vh;
+        }
+
+        .organiza {
+
+          display:grid;
+          grid-template-columns: repeat(4 , 1fr);
         }
 
         body {
@@ -99,7 +106,7 @@
         </nav>
     </header>
 
-    <div class="container">
+    <div class="container ">
         <div class="imagem">
             <img src="3.webp" alt="">
         </div>
@@ -113,7 +120,7 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container organiza">
         <div class="trabalhos">
             <a href="aula2409.html">aula 24/09/25</a>
         </div>
@@ -141,6 +148,12 @@
          <div class="trabalhos">
             <a href="aula0910.php">Aula 09/10/25</a>
          </div>
+
+          <div class="trabalhos">
+            <a href="aula1010.php">Aula 10/10/25</a>
+         </div>
+         
+         
     </div>
         
 </body>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -20,6 +19,11 @@
             align-items: center;
             height: 100vh;
             background-color: rgb(47, 98, 194);
+        }
+
+        .organiza {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
         }
 
         li {
@@ -64,14 +68,15 @@
             align-items: center;
         }
 
-       .texto h2 {
+        .texto h2 {
 
             color: rgb(190, 176, 204);
             margin-bottom: 10px;
-            
+
 
         }
-        .texto{
+
+        .texto {
             width: 8000;
         }
     </style>
@@ -92,7 +97,7 @@
 
     </section>
     </header>
-    <div class="container">
+    <div class="container organiza">
         <div class="imagen">
             <img src="imalulu.jpg" alt="">
         </div>
@@ -106,13 +111,22 @@
                 <img src="imalulu.jpg" alt="linkedin">
             </div>
         </div>
-        <div class="trabalhos">
-            <a href="aula2409.html">Aula 24/09/25</a>
-        </div>
+        <section class="trabalhos">
+            <div class="trbalhos">
+                         <div class="trabalhos">
+                <a href="aula2409.html">Aula 24/09/25</a>
+            </div>
 
-        <div class="trabalhos">
-            <a href="aula2509.php">Aula 25/09/25</a>
-    </div>
+            <div class="trabalhos">
+                <a href="aula2509.php">Aula 25/09/25</a>
+            </div>
+
+            <div class="trabalhos">
+                <a href="aula1010.php">Aula 10/10/25</a>
+            </div>   
+            </div>
+
+        </section>
 </body>
 
 </html>

@@ -20,6 +20,10 @@
             height: 100vh;
             background-color: aqua;
         }
+        .organiza{
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+        }
 
         li {
             display: inline-block;
@@ -28,11 +32,11 @@
             align-items: center;
         }
 
-        .imagen img {
+        .imagem img {
             width: 350px;
             margin-right: 350px;
             border-radius: 50%;
-            border: 4px solid #fff;
+            border: 4px solid #ffffff;
             justify-content: center;
             align-items: center;
 
@@ -44,11 +48,14 @@
             align-items: center;
             padding: 5px 5px 5px 5px;
             background-color: rgba(182, 27, 27, 0.117);
+            height: 50px;
 
         }
 
         body {
             height: 100vh;
+            background: rgb(86, 179, 255);
+            font-family: sans-serif;
         }
 
         .icones {
@@ -65,21 +72,21 @@
 
         .texto h2 {
 
-            color: rebeccapurple;
+            color: rgb(7, 11, 238);
             margin-bottom: 10px;
 
         }
 
         .texto {
-            width: 8000;
+            width: 250px;
         }
 
         .trabalho {
             width: 120px;
             height: 180px;
             border: solid 1px black;
-            margin: 10px;
-            background: rgb(238, 205, 144);
+            margin: 50px;
+            background: rgb(86, 179, 255);
             align-items: center;
             justify-content: center;
 
@@ -96,7 +103,7 @@
 
 <body>
     <header>
-        <h2>trabalho elcio</h2>
+        <h2>Trabalho Elcio</h2>
         <nav>
             <ul>
                 <li>Sobre</li>
@@ -110,11 +117,11 @@
     </section>
     </header>
     <div class="container">
-        <div class="imagen">
-            <img src="images.jpg" alt="">
+        <div class="imagem">
+            <img src="imagem.jpeg" alt="">
         </div>
         <div class="texto">
-            <h2>Joel</h2>
+            <h2>Joel Alves Jr</h2>
             <p>Você não vai com a minha cara?
             </p>
             <div class="icones">
@@ -124,7 +131,7 @@
             </div>
         </div>
     </div>
-        <div class="container">
+        <div class="container organiza">
             <div class="trabalho">
                 <a href="aula2409.html">Aula 24/09/25</a>
             </div>
@@ -151,6 +158,9 @@
             </div>
             <div class="trabalho">
                 <a href="aula0910.php">Aula 9/10/25 </a>
+            </div>
+            <div class="trabalho">
+                <a href="aula1010.php">Aula 10/10/25</a>
             </div>
         </div>
 </body> 

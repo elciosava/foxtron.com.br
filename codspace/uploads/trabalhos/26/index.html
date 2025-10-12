@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -44,10 +43,15 @@
         }
 
         .container{
-            display: flex;
+            display: grid;
             justify-content: center;
             align-items: center;
             height: 100vh;
+        }
+
+        .organizar{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
         }
 
         body{
@@ -105,7 +109,7 @@
             <img src="instagram-brands-solid-full.svg" alt="">
         </div>
     </div>
-    <div class="container">
+    <div class="container organizar">
         <div class="trabalhos">
             <a href="aula2409.php">Aula 24/09/25</a>
         </div>
@@ -126,6 +130,9 @@
         </div>
         <div class="trabalhos">
             <a href="aula0910.php">Aula 09/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula1010.php">Aula 10/10/25</a>
         </div>
     </div>
 </body>
