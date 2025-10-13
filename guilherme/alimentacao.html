@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Alimentação - Sistema Ambiental</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+body{background:linear-gradient(to bottom,#d0f0c0,#0b2e19);font-family:'Poppins',sans-serif;margin:0;text-align:center;overflow-x:hidden;min-height:100vh;}
+h1{color:#145214;font-size:3rem;margin:20px 0;text-shadow:0 0 15px #4caf50;}
+.main-text{font-size:1.2rem;max-width:650px;margin:0 auto 30px;}
+.environment-texts{max-width:700px;margin:20px auto;padding:25px;background:rgba(0,0,0,0.35);border-radius:15px;color:#fff;text-align:left;line-height:1.6;text-shadow:0 0 5px #2e7d32;}
+.apple-container{position:fixed;top:0;width:50px;height:100vh;display:flex;flex-direction:column;justify-content:space-around;align-items:center;z-index:999;}
+.apple-container.left{left:0;}
+.apple-container.right{right:0;}
+.apple{font-size:2rem;animation:float 3s ease-in-out infinite alternate;user-select:none;}
+@keyframes float{0%{transform:translateY(0);}100%{transform:translateY(-10px);}}
+.footer-grid{width:100%;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;padding:0;margin:0;}
+.footer-grid a{background:#4caf50;color:#fff;text-decoration:none;width:150px;height:150px;display:flex;flex-direction:column;justify-content:center;align-items:center;border-radius:15px;box-shadow:0 0 10px #2e7d32;transition: transform 0.3s, box-shadow 0.3s;}
+.footer-grid a:hover{transform:scale(1.05);box-shadow:0 0 20px #81c784;}
+.footer-grid span{margin-top:10px;font-weight:bold;font-size:1rem;}
+.chat-container{position:fixed;bottom:20px;right:20px;width:300px;max-height:400px;background:rgba(0,0,0,0.85);border-radius:15px;color:#fff;display:flex;flex-direction:column;overflow:hidden;z-index:1001;transition:height 0.3s ease;}
+.chat-container.minimized{height:40px;}
+.chat-header{background:#4caf50;padding:10px;font-weight:bold;cursor:pointer;text-align:center;}
+.chat-messages{flex:1;padding:10px;overflow-y:auto;font-size:0.9rem;}
+.chat-options{display:flex;flex-wrap:wrap;justify-content:center;padding:5px;}
+.chat-options button{margin:3px;padding:5px 10px;border-radius:8px;border:none;background:#2e7d32;color:#fff;cursor:pointer;transition:0.3s;}
+.chat-options button:hover{background:#4caf50;}
+.questionnaire{max-width:500px;margin:20px auto;background:rgba(0,0,0,0.35);padding:20px;border-radius:15px;color:#fff;text-align:left;}
+.questionnaire input{margin-top:5px;width:90%;padding:6px;border-radius:8px;border:none;}
+.questionnaire button{margin-top:10px;background:#4caf50;color:#fff;border:none;padding:8px 15px;border-radius:10px;cursor:pointer;transition:0.3s;}
+.questionnaire button:hover{background:#2e7d32;}
+ul{padding-left:20px;}
+ul li{margin-bottom:8px;}
+a.voltar{ text-decoration:none; color:#fff; background-color:#4caf50; font-weight:bold; padding:12px 25px; border-radius:50px; border:2px solid #2e7d32; transition: all 0.3s ease; display:inline-block; margin-bottom:20px;}
+</style>
+</head>
+<body>
+
+<h1>🍎 Alimentação</h1>
+<a href="sucesso.php" class="voltar">Voltar</a>
+<p class="main-text">Aprenda como escolher alimentos sustentáveis e promover hábitos saudáveis.</p>
+
+<div class="environment-texts">
+<h2>Alimentos Sustentáveis</h2>
+<ul>
+<li>Prefira frutas, verduras e produtos orgânicos.</li>
+<li>Escolha alimentos locais e sazonais.</li>
+<li>Evite produtos ultraprocessados.</li>
+</ul>
+</div>
+
+<div class="questionnaire">
+<h3>Quiz Alimentação</h3>
+<p>1. Alimentos orgânicos são mais sustentáveis? (sim/não)</p>
+<input type="text" id="q1">
+<p>2. Produtos locais reduzem impacto ambiental? (sim/não)</p>
+<input type="text" id="q2"><br>
+<button onclick="checkQuiz()">Ver Pontuação</button>
+<p id="score"></p>
+</div>
+
+<div class="apple-container left"></div>
+<div class="apple-container right"></div>
+
+<div class="chat-container minimized" id="chatContainer">
+<div class="chat-header" onclick="toggleChat()">Chat Ambiental</div>
+<div class="chat-messages" id="chatMessages"><div>Escolha uma pergunta:</div></div>
+<div class="chat-options">
+<button onclick="askQuestion('Quais alimentos são sustentáveis?')">Quais alimentos são sustentáveis?</button>
+<button onclick="askQuestion('Por que comer orgânicos?')">Por que comer orgânicos?</button>
+<button onclick="askQuestion('Como reduzir desperdício de comida?')">Como reduzir desperdício de comida?</button>
+</div>
+</div>
+
+<div class="footer-grid">
+<a href="natureza.html"><span style="font-size:2.5rem;">🌱</span><span>Natureza</span></a>
+<a href="alimentacao.html"><span style="font-size:2.5rem;">🍎</span><span>Alimentação</span></a>
+<a href="economia.html"><span style="font-size:2.5rem;">💧</span><span>Economia</span></a>
+<a href="plantar-arvores.html"><span style="font-size:2.5rem;">🌳</span><span>Plantar Árvores</span></a>
+</div>
+
+<script>
+function addApple(side){ const apple=document.createElement('div'); apple.classList.add('apple'); apple.textContent='🍎'; if(side==='left') document.querySelector('.apple-container.left').appendChild(apple); else document.querySelector('.apple-container.right').appendChild(apple);}
+for(let i=0;i<12;i++){ addApple('left'); addApple('right'); }
+
+const chatContainer=document.getElementById('chatContainer');
+function toggleChat(){ chatContainer.classList.toggle('minimized'); }
+
+const chatMessages=document.getElementById('chatMessages');
+function askQuestion(q){
+let a='';
+switch(q){
+case 'Quais alimentos são sustentáveis?': a='Prefira locais, sazonais e orgânicos.'; break;
+case 'Por que comer orgânicos?': a='Reduz pesticidas, protege o solo e saúde.'; break;
+case 'Como reduzir desperdício de comida?': a='Planeje compras, guarde corretamente e reaproveite.'; break;
+default: a='Pergunta não reconhecida.';}
+chatMessages.innerHTML=`<div><b>Pergunta:</b> ${q}</div><div><b>Resposta:</b> ${a}</div>`;
+}
+
+function checkQuiz(){
+let score=0;
+if(document.getElementById('q1').value.toLowerCase()=='sim') score+=1;
+if(document.getElementById('q2').value.toLowerCase()=='sim') score+=1;
+document.getElementById('score').textContent='Você marcou: '+score+'/2 pontos';
+}
+</script>
+
+</body>
+</html>
