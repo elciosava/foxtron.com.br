@@ -1,9 +1,5 @@
 <?php
-// Conexão com o banco
-$conn = new mysqli("localhost", "root", "", "meusite_db");
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
-}
+include("conexao.php");
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +22,7 @@ body {
   justify-content: center;
   align-items: center;
   color: #e0f5d0;
-  background-image: url('verde.webp'); /* imagem de fundo */
+  background-image: url('verde.jpg'); /* imagem de fundo */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

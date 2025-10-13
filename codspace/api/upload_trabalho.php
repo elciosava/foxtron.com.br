@@ -24,7 +24,7 @@ if (isset($_FILES["trabalho"]) && $_FILES["trabalho"]["error"] === UPLOAD_ERR_OK
     $extensao = strtolower(pathinfo($nomeArquivo, PATHINFO_EXTENSION));
 
     // Extensões permitidas
-    $extPermitidas = ["html", "css", "js", "png", "jpg", "jpeg", "gif", "svg", "php"];
+    $extPermitidas = ["html", "css", "js", "png", "jpg", "jpeg", "gif", "svg", "php", "sql"];
 
     if (!in_array($extensao, $extPermitidas)) {
         echo "❌ Tipo de arquivo não permitido! Envie apenas HTML, CSS, JS ou imagens.";
