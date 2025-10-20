@@ -113,22 +113,23 @@
                     echo "<div class='cel_cabecalho'>Cidade</div>";
                     echo "<div class='cel_cabecalho'>Estado</div>";
                     echo "</div> ";
-            }
+            
 
             while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
                 echo "<div class='cel_cabecalho'>";
-                    echo "<div class='cel_cabecalho'>($linha['id'])</div>";
-                    echo "<div class='cel_cabecalho'>($linha['tipo'])</div>";
-                    echo "<div class='cel_cabecalho'>($linha['nome'])</div>";
-                    echo "<div class='cel_cabecalho'>($linha['numero'])</div>";
-                    echo "<div class='cel_cabecalho'>($linha['bairro'])</div>";
-                    echo "<div class='cel_cabecalho'>($linha['cidade'])</div>";
-                    echo "<div class='cel_cabecalho'>($linha['estado'])</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['tipo']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['numero']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['bairro']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['cidade']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['estado']}</div>";
                     echo "</div> ";
+            }
+
             }else{
                 echo "<p>não tem registro</p>";
-
-            }
+        }
             ?>
         </div>
     </section>
