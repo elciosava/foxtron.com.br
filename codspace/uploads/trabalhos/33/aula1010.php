@@ -1,120 +1,187 @@
-<?php
-$local = 'localhost';
-$banco = 'isabele';
-$usuario = 'root';
-$senha = '';
 
-$conn = new mysqli($local, $usuario, $senha, $banco);
-if ($conn->connect_error) {
-    die("Erro na conexão: " . $conn->connect_error);
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST['nome'];
-    $tipo = $_POST['tipo'];
-    $numero = $_POST['numero'];
-    $bairro = $_POST['bairro'];
-    $cidade = $_POST['cidade'];
-    $estado = $_POST['estado'];
-
-    $sql = "INSERT INTO endereco (nome, tipo, numero, bairro, cidade, estado)
-            VALUES ('$nome', '$tipo', '$numero', '$bairro', '$cidade', '$estado')";
-
-    
-}   
-?>
-
- 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Endereço</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #fff0f5;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Endereço</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .container {
-            
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(95, 0, 0, 1);
-            background-color: #fff;
-            width: 300px;
-        }
+    body {
+      background-color: #FFB6C1;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-        }
+    .form-container {
+      background-color: #FFC0CB;
+      border-radius: 10px;
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 30px;
+      box-shadow: 4px 5px 30px #00000062;
+    }
 
-        label {
-            margin-top: 10px;
-            font-weight: bold;
-        }
+    h2 {
+      text-align: center;
+      color: #b9818aff;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
 
-        input, select, button {
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
 
-        button {
-            margin-top: 15px;
-            background-color: pink;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #FFC0CB;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: 0.3s ease-out;
+    }
 
-        button:hover {
-            background-color: hotpink;
-            color: white;
-        }
-    </style>
+    input:hover,
+    select:hover {
+      border: 1px solid #00000050;
+      transition: 0.3s ease-in;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff009552;
+      border: 1px solid #7e7e7e2a;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s ease-out;
+      font-weight: 200;
+    }
+
+    button:active {
+      background-color: #b8237aff;
+      transition: 0.3s ease-in;
+    }
+
+    .resultados {
+      width: 100%;
+      max-width: 800px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .cabecalho {
+      display: flex;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .cel_cabecalho {
+      flex: 1;
+      padding: 5px;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <form action="" method="post">
-            <label for="tipo">Tipo</label>
-            <select name="tipo" required>
-                <option value="travessa">Travessa</option>
-                <option value="rua">Rua</option>
-                <option value="beco">Beco</option>
-                <option value="avenida">Avenida</option>
-                <option value="alameda">Alameda</option>
-            </select>
 
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" required>
+  <div class="form-container">
+    <h2>Cadastro de Endereço</h2>
+    <form action="gravar_endereco.php" method="post">
+      <label for="tipo">Tipo</label>
+      <select name="tipo" id="tipo" required>
+        <option value="travessa">Travessa</option>
+        <option value="rua">Rua</option>
+        <option value="avenida">Avenida</option>
+        <option value="beco">Beco</option>
+      </select>
 
-            <label for="numero">Número</label>
-            <input type="number" name="numero" required>
+      <label for="nome">Nome</label>
+      <input type="text" name="nome" id="nome" required>
 
-            <label for="bairro">Bairro</label>
-            <input type="text" name="bairro" required>
+      <label for="numero">Número</label>
+      <input type="number" name="numero" id="numero" required>
 
-            <label for="cidade">Cidade</label>
-            <input type="text" name="cidade" required>
+      <label for="bairro">Bairro</label>
+      <input type="text" name="bairro" id="bairro" required>
 
-            <label for="estado">Estado</label>
-            <select name="estado" required>
-                <option value="PR">PR</option>
-                <option value="SC">SC</option>
-            </select>
+      <label for="cidade">Cidade</label>
+      <select name="cidade" id="cidade" required>
+        <option value="Porto União">Porto União</option>
+        <option value="União da Vitória">União da Vitória</option>
+        <option value="Canoinhas">Canoinhas</option>
+        <option value="Matos Costa">Matos Costa</option>
+      </select>
 
-            <button type="submit">Salvar</button>
-        </form>
-    </div>
+      <label for="estado">Estado</label>
+      <select name="estado" id="estado" required>
+        <option value="SC">SC</option>
+        <option value="PR">PR</option>
+      </select>
+
+      <button type="submit">Salvar</button>
+    </form>
+  </div>
+<section class="resultados">
+        <div class="resultado">
+            <?php 
+            include "conexao.php";
+
+            $sql = "SELECT * FROM endereco";
+            $stmt = $conexao->prepare($sql);
+            $stmt->execute();
+
+            if($stmt->rowCount()>0){
+                echo"<div class='cabecalho'>";
+                echo"<div class='cel_cabecalho'>ID</div>";
+                echo"<div class='cel_cabecalho'>Tipo</div>";
+                echo"<div class='cel_cabecalho'>Nome</div>";
+                echo"<div class='cel_cabecalho'>Numero</div>";
+                echo"<div class='cel_cabecalho'>Bairro</div>";
+                echo"<div class='cel_cabecalho'>Cidade</div>";
+                echo"<div class='cel_cabecalho'>Estado</div>";
+                echo "</div>";
+            
+
+            while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+                  echo"<div class='cabecalho'>";
+                  echo"<div class='cel_cabecalho'>{$linha['id']}</div>";
+                  echo"<div class='cel_cabecalho'>{$linha['tipo']}</div>";
+                  echo"<div class='cel_cabecalho'>{$linha['nome']}</div>";
+                  echo"<div class='cel_cabecalho'>{$linha['numero']}</div>";
+                  echo"<div class='cel_cabecalho'>{$linha['bairro']}</div>";
+                  echo"<div class='cel_cabecalho'>{$linha['cidade']}</div>";
+                  echo"<div class='cel_cabecalho'>{$linha['estado']}</div>";
+                   echo "</div>";
+            
+            }
+        }else{
+                echo"<p>nao tem registro</p>";
+            }
+
+
+            ?>
+            </section>
 </body>
 </html>
-

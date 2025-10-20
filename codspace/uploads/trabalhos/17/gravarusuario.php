@@ -1,37 +1,26 @@
 <?php
-    $local = 'localhost';
-    $banco = 'senai';
-    $usuario = 'root';
-    $senha = '';
+include 'conexao.php';
 
-    try{
-        $conexao = new PDO("mysql:host=$local;dbname=$banco", $usuario, $senha);
-        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM usuarios";
 
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute();
-
-        $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }catch (PDOException $e){
-            echo ("nao deu");
-        }
             if($_SERVER['REQUEST_METHOD'] === "POST"){
                 $nome = $_POST['nome'];
+                $sobrenome = $_POST['sobrenome'];
                 $email = $_POST['email'];
                 $senha = $_POST['senha'];
                 
-                $insert = "INSERT INTO usuarios (`nome`, `email`, `senha`)
-                            VALUES (:nome, :email, :senha)";
+                $insert = "INSERT INTO usuarios (`nome`,`sobrenome`, `email`, `senha`)
+                            VALUES (:nome, :sobrenome, :email, :senha)";
 
                 $stmt = $conexao->prepare($insert);
                 $stmt->bindParam(':nome', $nome);
+                $stmt->bindParam(':sobrenome', $sobrenome);
                 $stmt->bindParam(':email', $email);
                 $stmt->bindParam(':senha', $senha);
                 
             if ( $stmt->execute()){
-                $mensagem = "Usuario cadastrado com sucesso";
-            } {
+               header("Location: cadastrarusuario.php");
+               exit;
+            } else {
                 $mensagem = "Não deu coisa...";
             }
         }

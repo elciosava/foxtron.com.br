@@ -1,16 +1,16 @@
-<link rel="stylesheet" href="estilo2.css">
+<link rel="stylesheet" href="style.css">
+
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$dbname = 'saimon';
+$local = 'localhost';
+$usuario = 'root';
+$senha = '';//s4va6o841A@
+$banco = 'saimon';
 
-$conn = new mysqli($host, $user, $pass, $dbname);
-
-if ($conn->connect_error) {
-    die("conexão falhou: " . $conn->connect_error);
+try{
+    $conexao = new PDO("mysql:host=$local;dbname=$banco",$usuario,$senha);
+    $conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+    
+}catch (PDOException $e){
+    echo"nao deu certo." . $e->getMessage(); 
 }
-    else{
-        echo"conexão on-line";
-    }
 ?>

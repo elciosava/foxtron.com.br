@@ -1,0 +1,26 @@
+<?php
+
+include 'conexao.php';
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $produto = $_POST['produto'];
+     $quantidade = $_POST['quantidade']; 
+      $valor = $_POST['valor'];
+
+      $sql ="INSERT INTO produto (nome, quantidade, valor)
+      VALUES (:produto, :quantidade, :valor)";
+
+      $stmt = $conexao->prepare($sql);
+      $stmt->bindparam(':produto', $produto);
+        $stmt->bindparam(':quantidade', $quantidade);
+      $stmt->bindparam(':valor', $valor);
+
+      if ($stmt->execute()){
+        header("Location:cadastrar_produto.php");
+        exit;
+      }else{
+        echo "nao deu boa";
+      }
+
+      
+}

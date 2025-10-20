@@ -1,10 +1,3 @@
-<php 
-
-
-
-?>
-
-<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -26,6 +19,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
 }
 
@@ -42,11 +36,23 @@ input, select {
     box-sizing: border-box;
 }
 
+.cabecalho {
+    display: flex;
+    padding: 20px;
+}
+
+.cel_cabecalho {
+    width: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
     </style>
 </head>
 <body>
     <section> 
-        <form action="" method="get">
+        <form action="gravar_endereco.php" method="post">
+        <label for="tipo">Tipo</label>
         <select name="tipo" id="">
             <option value="Travessa">Travessa</option>
             <option value="Rua">Rua</option>
@@ -62,10 +68,13 @@ input, select {
             <input type="number" name="numero" id="">
 
             <label for="bairro">Bairro</label>
-            <input type="password" name="senha" id="">
+            <input type="text" name="bairro" id="">
 
             <label for="cidade">Cidade</label>
-            <select name="cidade" id="">
+            <input type="text" name="cidade" id="">
+
+            <label for="estado">Estado</label>
+            <select name="estado" id="">
                 <option value="SC">SC</option>
                 <option value="PR">PR</option>
             </select>
@@ -73,6 +82,11 @@ input, select {
             <button type="submit">Salvar</button>
 
 </form>
+    </section>
+    <section class="resultados">
+        <div class="resultado">
+
+        </div>
     </section>
 </body>
 </html>

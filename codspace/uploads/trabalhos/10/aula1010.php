@@ -7,17 +7,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
     <style>
          .container {
             display: grid;
             grid-template-columns: 1fr 4fr;
             gap: 5px;
          }
-        .coluna {
-            background: rgb(247,147,147);
-            height: calc(100vh - 60px);
-            display: grid;
-        }
+
         .meio {
             display: flex;
             justify-content: center;
@@ -44,12 +41,22 @@
             font-size: 0,7rem;
             box-sizing: border-box;
         }
+        .cabecalho {
+            display: flex;
+            padding: 20px;
+        }
+        .cel_cabecalho {
+            width: auto;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
         
 
     </style>
+    <body>
     <section class="inicio">
         <div class="coluna meio">
-                <form action="" method="post">
+                <form action="gravarendereco.php" method="post">
                     <label for="nome">ID</label>
                     <input type="text" name="nome" id="">
 
@@ -65,8 +72,8 @@
                     <label for="senha">Sigma</label>
                     <input type="password" name="senha" id="">
 
-                    <label for="senha">Numero</label>
-                    <input type="text" name="senha" id="">
+                    <label for="numero">Numero</label>
+                    <input type="text" name="numero" id="">
                     
                     <label for="cidade">Cidade</label>
                     <select name="cidade" id="">
@@ -74,21 +81,55 @@
                         <option value="União da Vitória">União da Vitória</option>
                     </select>
 
-                    <label for="senha">Bairro</label>
-                    <input type="text" name="senha" id="">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" name="bairro" id="">
 
                         
                     </select>
 
-                    <label for="senha">Estado</label>
-                    <input type="text" name="senha" id="">
+                    <label for="estado">Estado</label>
+                    <input type="text" name="estado" id="">
 
                     <button class="submit">Salvar</button>
                 </form>
             </div>
     </section>
-</head>
-<body>
+    <section class="resultados">
+        <div class="resultado">
+            <?php
+            include "conexao.php";
+
+            $sql = "SELECT * FROM endereco";
+            $stmt = $conexao->prepare($sql);
+            $stmt->execute();
+
+            if($stmt->rowCount()>0){
+                echo "<div class='cabecalho'>";
+                echo "<div class='cel_cabecalho'>ID</div>";
+                echo "<div class='cel_cabecalho'>Tipo</div>";
+                echo "<div class='cel_cabecalho'>Nome</div>";
+                echo "<div class='cel_cabecalho'>Numero</div>";
+                echo "<div class='cel_cabecalho'>Bairro</div>";
+                echo "<div class='cel_cabecalho'>Cidade</div>";
+                echo "<div class='cel_cabecalho'>Estado</div>";
+                echo "</div>";
     
+            while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+                echo "<div class='cabecalho'>";
+                echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
+                echo "<div class='cel_cabecalho'>{$linha['tipo']}</div>";
+                echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
+                echo "<div class='cel_cabecalho'>{$linha['numero']}</div>";
+                echo "<div class='cel_cabecalho'>{$linha['bairro']}</div>";
+                echo "<div class='cel_cabecalho'>{$linha['cidade']}</div>";
+                echo "<div class='cel_cabecalho'>{$linha['estado']}</div>";
+                echo "</div>";
+            }
+            }else{
+                echo "não tem registro";
+            }
+            ?>
+        </div>
+    </section>    
 </body>
 </html>

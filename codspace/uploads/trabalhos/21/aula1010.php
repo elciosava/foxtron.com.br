@@ -1,6 +1,4 @@
-<?php
 
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,17 +16,29 @@
             display:flex;
             justify-content:center;
             align-items:center;
+            flex-direction: column;
             height:100vh;
             background:lightblue;
         }
 
+        .cabecalho {
+            display:flex;
+            padding:20px;
+        }
+
+        .cel_cabecalho {
+            width:auto;
+            margin-left: 10px;
+            margin-right:10px;
+        }
+
         section {   
             width:100vh;
-            height:100vh;
+            
                         display:flex;
             justify-content:center;
             align-items:center;
-            height:100vh;
+           
             background:lightblue;
         }
         form {
@@ -56,13 +66,13 @@
 <body>
    
     <section class="usuario">
-    <form action="gravarusuario.php" method="post">
+    <form action="gravar_endereco.php" method="post">
 
         <label for="tipo">Tipo</label>
         <input type="text" name="tipo" id="">
 
-        <label for="prr">Nome</label>
-        <input type="text" name="prr" id="">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" id="">
 
         <label for="numero">Numero</label>
         <input type="number" name="numero" id="">
@@ -80,6 +90,47 @@
 
         
     </form>
+  </section>
+  <section class="resultados">
+    <div class="resultado">
+        <?php
+          include "conexao.php";
+
+          $sql = "SELECT * FROM endereco";
+
+          $stmt = $conexao-> prepare($sql);
+          $stmt->execute();
+
+          if($stmt->rowCount()>0){
+            echo "<div class='cabecalho'>";
+                echo "<div class='cel_cabecalho'>ID</div>";
+                echo "<div class='cel_cabecalho'>Tipo</div>";
+                echo "<div class='cel_cabecalho'>Nome</div>";
+                echo "<div class='cel_cabecalho'>Numero</div>";
+                echo "<div class='cel_cabecalho'>Bairro</div>";  
+                echo "<div class='cel_cabecalho'>cidade</div>";
+                echo "<div class='cel_cabecalho'>Estado</div>";
+            echo "</div>";
+
+          
+
+          while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+             echo "<div class='cabecalho'>";
+                echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
+                echo "<div class='cel_cabecalho'>{$linha['tipo']}</div>";
+                echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
+                echo "<div class='cel_cabecalho'>{$linha['numero']}</div>";
+                echo "<div class='cel_cabecalho'>{$linha['bairro']}</div>";  
+                echo "<div class='cel_cabecalho'>{$linha['cidade']}</div>";
+                echo "<div class='cel_cabecalho'>{$linha['estado']}</div>";
+            echo "</div>";
+          }
+          }else{
+            echo "nao tem registro";
+          }
+          
+        ?>
+    </div>
   </section>
 </body>
 </html>

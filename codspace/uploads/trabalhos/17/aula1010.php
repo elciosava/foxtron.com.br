@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,57 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
-
         }
         body {
-
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            }
-            form {
-                width: 300px;
-            }
-            input, select {
-                width: 100%;
-                padding: 5px;
-                font-size: 0.7rem;
-                box-sizing: border-box;
-            }
-
-
+        }
+        form {
+            width: 300px;
+        }
+        input, select {
+            width: 100%;
+            padding: 5px;
+            font-size: 0.7rem;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
     <section>
         <div class="container">
-            <form action="" method="post">
+            <form action="gravar_endereco.php" method="post">
                 <label for="tipo">Tipo</label>
-                <input type="text" name="tipo" id="">
+                <input type="text" name="tipo" id="tipo">
 
-                <label for="prrrr">Prrrr</label>
-                <input type="text" name="prrrr" id="">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
 
                 <label for="numero">Numero</label>
-                <input type="number" name="numero" id="">
-
+                <input type="number" name="numero" id="numero">
 
                 <label for="bairro">Bairro</label>
-                <input type="text" name="bairro" id="">
+                <input type="text" name="bairro" id="bairro">
 
                 <label for="cidade">Cidade</label>
-                <input type="text" name="cidade" id="">
+                <input type="text" name="cidade" id="cidade">
 
                 <label for="estado">Estado</label>
-                <input type="text" name="estado" id="">
+                <input type="text" name="estado" id="estado">
+
                 <button type="submit">Salvar</button>
             </form>
         </div>
     </section>
-    
+
+    <section class="resultados">
+        <div class="resultado">
+        </div>
+    </section>
 </body>
 </html>

@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -18,6 +14,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height:100vh;
             background: #00fa11;
         }
@@ -32,9 +29,19 @@
             font-size: 0.7rem;
         }
 
+        .cabecalho{
+            display: flex;
+            padding: 20px;
+        }
+
+        .cel_cabecalho{
+            width: auto;
+            margin-left: 10px;
+            margin-right:10px;
+        }
+
         section{
             width: 100vh;
-            height: 100vh;
               display: flex;
                justify-content: center;
                align-items: center;
@@ -43,11 +50,12 @@
     </style>
     <section>
         <div class="coluna meio">
-            <form action="" method="post">
+            <form action="gravar_endereco.php" method="post">
 
                <label for="tipo">Tipo</label>
                <select name="tipo" id="">
                    <option value="Trevo">Trevo</option>
+                   <option value="Travessa">Travessa</option>
                    <option value="Rua">Rua</option>
                    <option value="Beco">Beco</option>
                    <option value="Avenida">Avenida</option>
@@ -67,6 +75,10 @@
                 <select name="cidade" id="">
                     <option value="Porto União">Porto União</option>
                     <option value="União da Vitória">União da Vitória</option>
+                    <option value="São Paulo">São Paulo</option>
+                    <option value="Porto Alegre">Porto Alegre</option>
+                    <option value="Gramado">Gramado</option>
+                    <option value="Erechim">Erechim</option>
                 </select>
 
                 <label for="estado">Estado:</label>
@@ -74,6 +86,8 @@
                     <option value="SC">SC</option>
                     <option value="PR">PR</option>
                     <option value="RJ">RJ</option>
+                    <option value="MT">MT</option>
+                    <option value="AM">AM</option>
                     <option value="RS">RS</option>
                     <option value="SP">SP</option>
                 </select>
@@ -81,6 +95,44 @@
 
                 <button type="submit">Salvar</button>
             </form>
+        </div>
+    </section>
+    <section class="resultados">
+        <div class="resultado">
+            <?php
+              include "conexao.php";
+
+              $sql = "SELECT * FROM endereco";
+              $stmt = $conexao->prepare($sql);
+              $stmt->execute();
+
+              if($stmt->rowCount()>0){
+                echo "<div class='cabecalho'>";
+                    echo "<div class='cel_cabecalho'>ID</div>";
+                    echo "<div class='cel_cabecalho'>Tipo</div>";
+                    echo "<div class='cel_cabecalho'>Nome</div>";
+                    echo "<div class='cel_cabecalho'>Numero</div>";
+                    echo "<div class='cel_cabecalho'>Bairro</div>";
+                    echo "<div class='cel_cabecalho'>Cidade</div>";
+                    echo "<div class='cel_cabecalho'>Estado</div>";
+                echo "</div>";
+              
+
+              while($linha=$stmt->fetch(PDO::FETCH_ASSOC)){
+                echo "<div class='cabecalho'>";
+                    echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['tipo']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['numero']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['bairro']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['cidade']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['estado']}</div>";
+                echo "</div>";
+                }
+              }else{
+                echo "A conexão nao procedeu, a tesoura comeu!!!";
+              }
+            ?>
         </div>
     </section>
 </head>
