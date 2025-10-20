@@ -89,7 +89,7 @@
                     echo "<div class='cel_cabecalho'>ID</div>";
                     echo "<div class='cel_cabecalho'>produto</div>";
                     echo "<div class='cel_cabecalho'>quantidade</div>";
-                    echo "<div class='cel_cabecalho'>valor</div>";-
+                    echo "<div class='cel_cabecalho'>valor</div>";
                 echo "</div>";
    
             while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){

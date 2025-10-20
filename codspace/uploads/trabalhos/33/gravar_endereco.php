@@ -25,8 +25,6 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
         echo "<p style='color:green;'>Deu boa!!</p>";
     }else{
         echo "<p style='color:red;'>Deu ruim!!</p>";
-    }else{
-         echo "<p style='color:orange;'>Preencha todos os campos!!</p>";
     }
 }
 ?>

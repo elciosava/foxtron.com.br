@@ -22,12 +22,9 @@ if ($_SERVER['REQUESTR_METHOD'] === 'POST'){
         $stmt->bindparam(':estado',$estado);
 
         if($stmt->execute()){
-            echo "<p style='color:green;'>deu boa!</p>"
+            echo "<p style='color:green;'>deu boa!</p>";
         }else{
-            echo "<p style='color:red;'>deu ruim</p>"
-        }else{
-            echo "<p style='color:orange;'>preencha todos os campos</p>"
+            echo "<p style='color:red;'>deu ruim</p>";
         }
-
     }
 }
