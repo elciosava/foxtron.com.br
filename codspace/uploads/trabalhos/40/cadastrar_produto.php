@@ -1,4 +1,4 @@
-DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +6,15 @@ DOCTYPE html>
     <link rel="stylesheet" href="estilo2.css">
     <title>Document</title>
     <style>
+         * {
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            width: 350px;
+        }
+
           .cabecalho, .cel_cabecalho{
             display:flex;
             padding: 0 20px;
@@ -13,10 +22,45 @@ DOCTYPE html>
             width: 1000px;
            
         }
+        input, select{
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            padding: 2px;
+
+        }
+
+        .cabecalho {
+            display: flex;
+            justify-content: center;
+             align-items: center;
+
+        }
 
          .cel_cabecalho{
             width: 250px;
+
          }
+
+         .resultado {
+            margin-top: 20px;
+         }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+         }
+
+           body {
+            height: 100vh;
+            background-color: rgb(255, 220, 249);
+            font-family: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           }
        
 
     </style>
@@ -66,7 +110,11 @@ DOCTYPE html>
                   echo"<div class='cel_cabecalho'>{$linha['nome']}</div>";
                   echo"<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                   echo"<div class='cel_cabecalho'>{$linha['valor']}</div>";
-                     echo "<div class='cel_cabecalho'><button>Editar</button><button>Deletar</button></div>";
+                  echo "<form action= 'editar_produto.php' method='get'>
+                  <input type='hidden' name='id' value='{$linha['id']}'>";
+                     echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
+
+                     echo "</form>";
                    echo "</div>";
             
             }

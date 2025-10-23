@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Out-2025 às 22:24
+-- Tempo de geração: 21-Out-2025 às 22:20
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `joel`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(40) DEFAULT NULL,
+  `sobrenome` varchar(40) DEFAULT NULL,
+  `cpf` varchar(15) DEFAULT NULL,
+  `endereco` varchar(60) DEFAULT NULL,
+  `cidade` varchar(50) DEFAULT NULL,
+  `estado` varchar(2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -42,9 +58,9 @@ CREATE TABLE `endereco` (
 --
 
 INSERT INTO `endereco` (`id`, `tipo`, `nome`, `numero`, `bairro`, `cidade`, `estado`) VALUES
-(1, 'Avenida', 'Repolho', '70', 'Juca', 'Porto União', 'SC'),
-(3, 'Rua', 'Batata', '22', 'Paula', 'União da Vitória', 'PR'),
-(7, 'Travessa', 'Tomate', '170', 'Pedro', 'Porto União', 'SC');
+(1, 'Avenida', 'Carmelia Dutra', '70', 'Juca', 'Porto União', 'SC'),
+(3, 'Rua', 'Solano Lopes', '22', 'Paula', 'União da Vitória', 'PR'),
+(7, 'Travessa', 'Matos Costas', '170', 'Pedro', 'Porto União', 'SC');
 
 -- --------------------------------------------------------
 
@@ -72,6 +88,12 @@ INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `valor`) VALUES
 --
 
 --
+-- Índices para tabela `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `endereco`
 --
 ALTER TABLE `endereco`
@@ -86,6 +108,12 @@ ALTER TABLE `produtos`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `endereco`

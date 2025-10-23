@@ -16,7 +16,7 @@
             align-items: center;
             flex-direction: column;
             height:100vh;
-            background: #00fa11;
+            background: linear-gradient(to right, midnightblue,#f06c00);
         }
 
         form{
@@ -46,11 +46,14 @@
               display: flex;
                justify-content: center;
                align-items: center;
-               background: #fff705;
+        }
+
+        .colunameio {
+            color: #02cca4;
         }
     </style>
     <section>
-        <div class="coluna meio">
+        <div class="colunameio">
             <form action="gravar_produto.php" method="post">
 
                <label for="produto">Produto</label>
@@ -71,7 +74,7 @@
             <?php
               include "conexao.php";
 
-              $sql = "SELECT * FROM produtos";
+              $sql = "SELECT * FROM produto";
               $stmt = $conexao->prepare($sql);
               $stmt->execute();
 
@@ -91,7 +94,12 @@
                     echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
-                    echo "<div class='cel_cabecalho'><button>Editar</button><button>Deletar</button></div>";
+
+                    echo "<form action='editar_produto.php' method='get'> <input type='hidden' name='id' value='{$linha['id']}'>";
+
+                    echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
+
+                    echo "</form>";
                 echo "</div>";
                 }
               }else{

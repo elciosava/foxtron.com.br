@@ -1,11 +1,10 @@
 
-
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
@@ -24,18 +23,18 @@
             justify-content: space-between;
             align-items: center;
             padding: 5px 20px;
-            background: rgb(250, 5, 5);
+            background: rgb(241, 43, 36);
             height: 50px;
-            color: rgb(252, 252, 253);
+            color: white;
         }
 
-        .texto h2 {
+        .texto h2{
             margin-bottom: 10px;
         }
 
         img {
-            width: 150px;
-            height: 150px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             margin-right: 15px;
         }
@@ -59,22 +58,27 @@
 
         body {
             height: 100vh;
-            background: rgb(41, 2, 150);
+            background: rgb(76, 146, 238);
             font-family: sans-serif;
+        }
+
+        .texto {
+            width: 800px;
+            text-align: justify;
         }
 
         .trabalhos {
             width: 120px;
             height: 180px;
-            border: solid 1px slateblue;
+            border: solid 1px black;
             margin: 10px;
-            background: rgb(109, 209, 240);
+            background: rgb(238, 205, 144);
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .trabalhos:hover {
+        .trabalhos:hover { 
             margin-top: -10px;
             transition: 0.3s ease-in-out;
         }
@@ -83,36 +87,19 @@
 
 <body>
     <header>
-        <h2>lucas brbs</h2>
+        <h2>Lucas Barbosa</h2>
         <nav>
             <ul>
-                <li>inicio</li>
-                <li>sobre</li>
-                <li>contato</li>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <div class="imagem">
-            <img src="OIP.webp" alt="">
-        </div>
-        <div class="texto">
-            <h2>lucas brbs</h2>
-            <p>Disciplina vence o cansaço</p>
-            <div class="icones">
-                <img src="steam-brands-solid-full (1).svg" alt="">
-                <img src="discord-brands-solid-full.svg" alt="">
-                <img src="instagram-brands-solid-full.svg" alt="">
-                <div>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <div class="container organiza">
         <div class="trabalhos">
-            <a href="aula2409.html">aula 24/09/25</a>
+            <a href="aula2409.html">Aula 24/09/25</a>
         </div>
         <div class="trabalhos">
             <a href="aula2509.php">Aula 25/09/25</a>
@@ -123,7 +110,9 @@
         <div class="trabalhos">
             <a href="aula2609_exercicio.php">Exercicio</a>
         </div>
-
+		<div class="trabalhos">
+            <a href="aula2909.php">Aula 29/09/25</a>
+        </div>
         <div class="trabalhos">
             <a href="aula3009.php">Aula 30/09/25</a>
         </div>
@@ -143,10 +132,17 @@
             <a href="listar_arquivos.php">Listar Arquivos</a>
         </div>
         <div class="trabalhos">
-            <a href="cadastrarusuario.php">Cadastrar Usuario</a>
+            <a href="cadastrar_usuario.php">Cadastrar Usuario</a>
         </div>
-    </div>
-
-
+        <div class="trabalhos">
+            <a href="cadastrar_produto.php">Cadastrar Produto</a>
+        </div>
+        <div class="trabalhos">
+            <a href="pesquisa.php">Pesquisa</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_clientes.php">Cadastrar_cliente</a>
+        </div>
+   </div>
 </body>
 </html>

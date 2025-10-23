@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Out-2025 às 22:22
+-- Tempo de geração: 22-Out-2025 às 22:34
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `elcio`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(40) DEFAULT NULL,
+  `sobrenome` varchar(40) DEFAULT NULL,
+  `cpf` varchar(15) DEFAULT NULL,
+  `endereco` varchar(60) DEFAULT NULL,
+  `cidade` varchar(50) DEFAULT NULL,
+  `estado` varchar(2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -43,7 +59,8 @@ CREATE TABLE `endereco` (
 
 INSERT INTO `endereco` (`id`, `tipo`, `nome`, `numero`, `bairro`, `cidade`, `estado`) VALUES
 (1, 'Travessa', 'Regina Engroff Muller', '123', 'São Pedro', 'Porto União', 'SC'),
-(2, 'Rua', 'sgss', '353', 'gww', 'Porto União', 'SC');
+(2, 'Rua', 'sgss', '353', 'gww', 'Porto União', 'SC'),
+(3, NULL, 'Rua das cove', '55', 'Sao lucas', 'Rolandia', 'RR');
 
 -- --------------------------------------------------------
 
@@ -63,7 +80,12 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `valor`) VALUES
-(1, 'Coca Cola 2Lt', 10, 9);
+(1, 'Gole', 200, 1),
+(2, 'Miojo', 2, 4),
+(3, 'Fanta', 2, 20),
+(4, 'Bolo', 10, 30),
+(5, 'Bola de praia', 1, 200),
+(6, 'Bola de volei', 10, 300);
 
 -- --------------------------------------------------------
 
@@ -82,6 +104,12 @@ CREATE TABLE `usuarios` (
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `endereco`
@@ -106,16 +134,22 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `endereco`
 --
 ALTER TABLE `endereco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

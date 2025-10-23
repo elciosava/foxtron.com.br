@@ -1,8 +1,10 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <style>
          * {
             margin: 0;
@@ -59,14 +61,14 @@
         }
         button:active{
             background-color:#A52A2A;
-            transition:0.3s ease-in;
+            transition:0.5s ease-in;
         }
         .cabecalho{
             display:flex;
-            padding:0 20px;
+            padding:15px;
             border:1px solid black;
             width: 1000px;
-            background:white;
+            background:bisque;
         }
         .cel_cabecalho{
             width:250px;
@@ -104,6 +106,7 @@
 
      </form>
     </div>
+    </div>
     </section>
     <section class="resultados">
         <div class="resultado">
@@ -122,7 +125,7 @@
                 echo"<div class='cel_cabecalho'>Valor</div>";
                 echo"<div class='cel_cabecalho'>Ações</div>";
                 echo "</div>";
-            
+
 
             while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
                   echo"<div class='cabecalho'>";
@@ -130,8 +133,14 @@
                   echo"<div class='cel_cabecalho'>{$linha['nome']}</div>";
                   echo"<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                   echo"<div class='cel_cabecalho'>{$linha['valor']}</div>";
-                  echo"<div class='cel_cabecalho'><button>Editar</button><button>Deletar</button></dv>";
-                   echo "</div>";
+        
+                  echo "<form action='editar_produto.php' method'get'>
+                  <input type='hidden' name='id' value='{$linha['id']}'>";
+
+                  echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
+
+                  echo "</form>";
+                  echo "</div>";
             
             }
         }else{
@@ -140,6 +149,7 @@
 
 
             ?>
+            </div>
             </section>
 </body>
 </html>

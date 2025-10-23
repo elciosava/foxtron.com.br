@@ -1,54 +1,149 @@
+
+<!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-* {
-    margin: 0;
-    padding: 0;
-}
- div {
-    margin: 5;
- }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background: black;
+            height: 50px;
+            color: white;
+        }
+
+        .texto h2{
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .organiza {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+        }
+
+        body {
+            height: 100vh;
+            background: gray;
+            font-family: sans-serif;
+        }
+
+        .texto {
+            width: 800px;
+            text-align: justify;
+        }
+
+        .trabalhos {
+            width: 120px;
+            height: 180px;
+            border: solid 1px black;
+            margin: 10px;
+            background: lightgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .trabalhos:hover { 
+            margin-top: -10px;
+            transition: 0.3s ease-in-out;
+        }
     </style>
-
 </head>
+
 <body>
-    <h1>Anderson</h1>
+    <header>
+        <h2>Anderson Fernandes Hilario</h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
 
-
-    <div class="container">
-
+    <div class="container organiza">
+        <div class="trabalhos">
+            <a href="aula2409.html">Aula 24/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2509.php">Aula 25/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2609.php">Aula 26/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2609_exercicio.php">Exercicio</a>
+        </div>
+		<div class="trabalhos">
+            <a href="aula2909.php">Aula 29/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula3009.php">Aula 30/09/25</a>
+        </div>
         <div class="trabalhos">
             <a href="aula0710.php">Aula 07/10/25</a>
         </div>
-
         <div class="trabalhos">
             <a href="aula0810.php">Aula 08/10/25</a>
         </div>
-
         <div class="trabalhos">
             <a href="aula0910.php">Aula 09/10/25</a>
         </div>
-
-          <div class="trabalhos">
+        <div class="trabalhos">
             <a href="aula1010.php">Aula 10/10/25</a>
         </div>
-
-           <div class="trabalhos">
-            <a href="cadastrar_usuario.php">Cadastrar usuario</a>
-        </div>
-
-    <div class="trabalhos">
+        <div class="trabalhos">
             <a href="listar_arquivos.php">Listar Arquivos</a>
         </div>
-
-    <div class="trabalhos">
-            <a href="cadastrar_produtos.php">Cadastrar produtos</a>
+        <div class="trabalhos">
+            <a href="cadastrar_usuario.php">Cadastrar Usuario</a>
         </div>
-
+        <div class="trabalhos">
+            <a href="cadastrar_produtos.php">Cadastrar Produto</a>
+        </div>
+        <div class="trabalhos">
+            <a href="pesquisa.php">Pesquisa</a>
+        </div>
+          <div class="trabalhos">
+            <a href="cadastrar_cliente.php">Cadastrar Cliente</a>
+        </div>
     </div>
+    
 </body>
 </html>

@@ -117,7 +117,13 @@
                     echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['valor']}</div>"; 
-                    echo "<div class='cel_cabecalho'><button>Editar</button><button>Deletar</button></div>";             
+
+                    echo "<form action='editar_produto.php' method='get'>
+                            <input type='hidden' name='id' value='{$linha['id']}'>";
+                            
+                    echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
+                    
+                    echo "</form>";
                 echo "</div>";
              }
              }else{

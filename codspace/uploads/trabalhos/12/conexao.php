@@ -2,19 +2,13 @@
     $local = 'localhost';
     $banco = 'pedropacheco';
     $usuario = 'root';
-    $senha = ''; // s4va6o841A@
+    $senha = '';
 
-    try {
-    $conexao = new PDO("mysql:host=$local;dbname=$banco",$usuario, $senha);
-    $conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-    }catch 
-        (PDOException $e) {
-            echo "não deu truta" . $e->getMessage();
-
-        }
+    try{
+        $conexao = new PDO("mysql:host=$local;dbname=$banco",$usuario,$senha);
+        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }catch (PDOException $e){
+        echo "Não deu boa!! " . $e->getMessage();
+    }
     
- 
 ?>
-
- 

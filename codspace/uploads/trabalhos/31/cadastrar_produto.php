@@ -42,6 +42,12 @@
              width: 250px;
             
         }
+
+        body{
+            height: 100vh;
+            background: linear-gradient( #09B523, #093AB5);  
+            font-family: sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +74,7 @@
             <?php
             include "conexao.php";
 
-            $sql = "SELECT * FROM produto";
+            $sql = "SELECT * FROM produtos";
             $stmt = $conexao->prepare($sql);
             $stmt->execute();
 
@@ -88,7 +94,12 @@
                      echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                       echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                        echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
-                       echo "<div class='cel_cabecalho'><button>editar</button><button>deletar</button></div>";
+
+                       echo "<form action='editar_produto.php' method='get'>
+                       <input type='hidden' name='id' value='{$linha['id']}'>";
+
+                       echo "<div class='cel_cabecalho'><button type='submit'>editar</button><button>deletar</button></div>";
+                       echo "</form>";
                        echo "</div>";
                      
             }

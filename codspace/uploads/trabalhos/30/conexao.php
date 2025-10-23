@@ -2,15 +2,12 @@
     $local = 'localhost';
     $banco = 'guilherme';
     $usuario = 'root';
-    $senha = '';// s4va6o841A@
+    $senha = '';
 
     try{
-        $conexao = new PDO("mysql:host=$local;dbname=$banco",$usuario, $senha);
-        $conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-
+        $conexao = new PDO("mysql:host=$local;dbname=$banco",$usuario,$senha);
+        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }catch (PDOException $e){
-        echo "nao deu trutal" . $e->getMessage();
+        echo"Nao deu boa!! " .$e->getMessage();
     }
-
 ?>

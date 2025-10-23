@@ -17,7 +17,7 @@
             width: 350px;
         }
         body {
-            background: rgba(191, 0, 255, 1);
+            background: rgba(226, 92, 85, 1);
             font-family: Verdana;
             flex-direction: column;
             height: 100vh;
@@ -56,7 +56,7 @@
     <section class="endereco">
         <div class="container">
             
-        <form action="gravar_produto.php" method="post">
+        <form action="" method="post">
                     
                     <label for="produto">Produto</label>
                     <input type="text" name="produto" id="">
@@ -97,8 +97,12 @@
                         echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                         echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                         echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
-                        echo "<div class='cel_cabecalho'><button>Editar</button><button>deletar</button></div>";
 
+                        echo "<form action='editar_produto.php' method='get'>
+                              <input type='text' name='id' value='{$linha['id']}'>";
+
+                        echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>deletar</button></div>";
+                        echo "</form>";
                     echo "</div>";
                 }
                 }else{

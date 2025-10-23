@@ -11,6 +11,7 @@
     <style>
         body {
             justify-content: center;
+            background:linear-gradient(to right,#e4e7ec,#61377a,#594192);
         }
          .container {
             display: grid;
@@ -67,7 +68,7 @@
     <body>
     <section class="inicio">
         <div class="coluna meio">
-                <form action="gravar_produto.php" method="post">
+                <form action="" method="post">
                     <label for="produto">Produto</label>
                     <input type="text" name="produto" id="">
 
@@ -86,7 +87,7 @@
             <?php
             include 'conexao.php';
 
-            $sql = "SELECT * FROM produtos";
+            $sql = "SELECT * FROM produto";
             $stmt = $conexao->prepare($sql);
             $stmt->execute();
 
@@ -105,7 +106,13 @@
                     echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
+
+                    echo "<form action='editar_produto.php' method='get'>
+                    <input type='hidden' name='id' value='{$linha['id']}'>";
+
                     echo "<div class='cel_cabecalho'><button>Editar</button><button>Deletar</button></div>";
+
+                    echo "</form>";
                 echo "</div>";
             }
             }else{

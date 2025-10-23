@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
@@ -21,13 +23,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 5px 20px;
-            background: lightcoral;
+            background: rgb(112, 112, 112);
             height: 50px;
             color: white;
-
         }
 
-        .texto h2 {
+        .texto h2{
             margin-bottom: 10px;
         }
 
@@ -49,20 +50,21 @@
             align-items: center;
             height: 100vh;
         }
+
         .organiza {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
         }
 
         body {
-
             height: 100vh;
-            background: lightblue;
+            background: lightgray;
             font-family: sans-serif;
         }
 
         .texto {
             width: 800px;
+            text-align: justify;
         }
 
         .trabalhos {
@@ -70,13 +72,13 @@
             height: 180px;
             border: solid 1px black;
             margin: 10px;
-            background: lightgreen;
+            background: rgb(238, 205, 144);
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .trabalhos:hover {
+        .trabalhos:hover { 
             margin-top: -10px;
             transition: 0.3s ease-in-out;
         }
@@ -85,7 +87,7 @@
 
 <body>
     <header>
-        <h2>Giovani Emerson</h2>
+        <h2>Elcio Sava</h2>
         <nav>
             <ul>
                 <li>Inicio</li>
@@ -94,24 +96,8 @@
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <div class="imagem">
-            <img src="Onix.jpg" alt="">
 
-        </div>
-        <div class="texto">
-            <h2>Giovani Emerson</h2>
-            <p>Aluno do Senai do curso de Web Design e Programador de Sistemas</p>
-            <div class="icones">
-                <img src="facebook-brands-solid-full.svg" alt="">
-                <img src="apple-brands-solid-full.svg" alt="">
-                <img src="instagram-brands-solid-full.svg" alt="">
-
-            </div>
-        </div>
-
-    </div>
-    <div class="container">
+    <div class="container organiza">
         <div class="trabalhos">
             <a href="aula2409.html">Aula 24/09/25</a>
         </div>
@@ -124,7 +110,7 @@
         <div class="trabalhos">
             <a href="aula2609_exercicio.php">Exercicio</a>
         </div>
-        <div class="trabalhos">
+		<div class="trabalhos">
             <a href="aula2909.php">Aula 29/09/25</a>
         </div>
         <div class="trabalhos">
@@ -132,6 +118,9 @@
         </div>
         <div class="trabalhos">
             <a href="aula0710.php">Aula 07/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0810.php">Aula 08/10/25</a>
         </div>
         <div class="trabalhos">
             <a href="aula0910.php">Aula 09/10/25</a>
@@ -142,11 +131,20 @@
         <div class="trabalhos">
             <a href="listar_arquivos.php">Listar Arquivos</a>
         </div>
+        <div class="trabalhos">
+            <a href="cadastrar_usuario.php">Cadastrar Usuario</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_produto.php">Cadastrar Produto</a>
+        </div>
          <div class="trabalhos">
-            <a href="cadastrarusuario.php">Cadastrar Usuario</a>
+            <a href="pesquisa.php">Pesquisa</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_cliente.php">Cadastrar Cliente</a>
         </div>
 
     </div>
+    
 </body>
-
 </html>

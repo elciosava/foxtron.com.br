@@ -1,9 +1,11 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
@@ -22,25 +24,25 @@
             justify-content: space-between;
             align-items: center;
             padding: 5px 20px;
-            background: rgb(0, 0, 0);
+            background: rgb(255, 254, 254);
             height: 50px;
-            color: azure;
+            color: rgb(114, 114, 114);
         }
 
-        .texto h2 {
+        .texto h2{
             margin-bottom: 10px;
         }
 
         img {
-            width: 200px;
-            height: 200px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             margin-right: 15px;
         }
 
         .icones img {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
         }
 
         .container {
@@ -52,7 +54,18 @@
 
         .organiza {
             display: grid;
-            grid-template-columns: (8, 1fr);
+            grid-template-columns: repeat(8, 1fr);
+        }
+
+        body {
+            height: 100vh;
+            background: rgb(136, 136, 136);
+            font-family: sans-serif;
+        }
+
+        .texto {
+            width: 800px;
+            text-align: justify;
         }
 
         .trabalhos {
@@ -60,42 +73,22 @@
             height: 180px;
             border: solid 1px black;
             margin: 10px;
-            background-color: rgb(85, 85, 85);
+            background: rgb(255, 255, 255);
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .trabalhos:hover {
+        .trabalhos:hover { 
             margin-top: -10px;
-            transition: 0.3 ease ease ease-in-out;
-        }
-
-        body {
-            height: 100vh;
-            background-color: rgb(93, 94, 95);
-            font-family: sans-serif;
-        }
-
-        .texto {
-            width: 500px;
-        }
-
-        .trabalho {
-            background: rgb(231, 231, 231);
-            height: 200px;
-            width: 150px;
-        }
-        .organiza {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
+            transition: 0.3s ease-in-out;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h2>erick gabriel</h2>
+        <h2>Erick Gabriel</h2>
         <nav>
             <ul>
                 <li>Inicio</li>
@@ -105,52 +98,50 @@
         </nav>
     </header>
 
-    <div class="container">
-        <div class="imagem">
-            <img src="https://th.bing.com/th/id/R.0dceb675b7c54e0cb4b3a9f88b1ae7e2?rik=hOyAXz3DTMmHdA&riu=http%3a%2f%2fbr.web.img3.acsta.net%2fpictures%2f14%2f01%2f03%2f14%2f06%2f447723.jpg&ehk=LfU2qmoYwZmQFrSerNHtS3b1Sbh9AUtl0U1x8pjOLak%3d&risl=&pid=ImgRaw&r=0
-            " alt="">
-        </div>
-        <div class="texto">
-            <h2>erick gabriel</h2>
-            <p>atividade do curso de programacao de sistema</p>
-            <div class="icones">
-                <img src="discord-brands-solid-full.svg" alt="">
-                <img src="envelope-solid-full.svg" alt="">
-                <img src="instagram-brands-solid-full.svg" alt="">
-            </div>
-        </div>
-    </div>
     <div class="container organiza">
-        <div class="trabalho">
-            <a href="aula2409.html">aula24/09/25</a>
+        <div class="trabalhos">
+            <a href="aula2409.html">Aula 24/09/25</a>
         </div>
-        <div class="trabalho">
-            <a href="aula2509.php">aula25/09/25</a>
+        <div class="trabalhos">
+            <a href="aula2509.php">Aula 25/09/25</a>
         </div>
-        <div class="trabalho">
-            <a href="aula2609.php">aula26/09/25</a>
+        <div class="trabalhos">
+            <a href="aula2609.php">Aula 26/09/25</a>
         </div>
-        <div class="trabalho">
-            <a href="aula2709.html">aula27/09/25</a>
+        <div class="trabalhos">
+            <a href="aula2609_exercicio.php">Exercicio</a>
         </div>
-        <div class="trabalho">
-            <a href="aula2809.html">aula28/09/25</a>
+		<div class="trabalhos">
+            <a href="aula2909.php">Aula 29/09/25</a>
         </div>
-        <div class="trabalho">
-            <a href="aula0710.php">Aula07/09/25</a>
+        <div class="trabalhos">
+            <a href="aula3009.php">Aula 30/09/25</a>
         </div>
-        <div class="trabalho">
-            <a href="aula0710.php">Aula08/10/25</a>
+        <div class="trabalhos">
+            <a href="aula0710.php">Aula 07/10/25</a>
         </div>
-        <div class="trabalho">
-            <a href="aula0910.php">Aula09/10/25</a>
+        <div class="trabalhos">
+            <a href="aula0810.php">Aula 08/10/25</a>
         </div>
-        <div class="trabalho">
-            <a href="aula1010.php">Aula10/10/25</a>
+        <div class="trabalhos">
+            <a href="aula0910.php">Aula 09/10/25</a>
         </div>
-        <div class="trabalho">
-            <a href="cadastrar_produto.php">cadastrar produto</a>
+        <div class="trabalhos">
+            <a href="aula1010.php">Aula 10/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="listar_arquivos.php">Listar Arquivos</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_usuario.php">Cadastrar Usuario</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastra_produtos.php">Cadastrar Produto</a>
+        </div>
+        <div class="trabalhos">
+            <a href="pesquisa.php">Pesquisa</a>
+        </div>
     </div>
+    
 </body>
-
 </html>

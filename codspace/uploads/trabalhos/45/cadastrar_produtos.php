@@ -52,7 +52,7 @@ input, select {
 <body>
     <section>
     <div class="container">
-        <form action="gravar_produto.php" method="post">
+        <form action="gravar_produtos.php" method="post">
     <label for="produto">Produto</label>
       <input type="text" name="produto" id="">
 
@@ -92,8 +92,14 @@ include "conexao.php";
         echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
         echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
         echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
-        echo "<div class='cel_cabecalho'>{$linha['valor']}</div>"; 
-        echo "<div class='cel_cabecalho'><button>Editar</button><button>Deletar</button></div>";
+        echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
+
+        echo "<form action='editar_produtos.php' method='get'>
+              <input type='hidden' name='id' value='{$linha['id']}'>";
+
+        echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
+        echo "</form>";
+
     echo "</div>";    
     }
     }else{

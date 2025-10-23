@@ -17,6 +17,7 @@
 
        body {
         justify-content: center;
+        background: linear-gradient(to right, blue , red );
        }
         
          .container {
@@ -83,6 +84,8 @@
 
                    
                     <button class="submit">Salvar</button>
+                    <button type="reset">Excluir</button>
+
                 </form>
             </div>
     </section>
@@ -110,8 +113,15 @@
                     echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
-                    echo "<div class='cel_cabecalho'><button>Editar</button><button>Deletar</button></div>";
+
+                    echo "<form action='editarproduto.php' method='get'>
+                    <input type='hidden' name='id' value='{$linha['id']}'> ";
+
+                    echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
+
+                    echo "</form>";
                 echo "</div>";
+               
             }
             }else{
                 echo "não tem registro";

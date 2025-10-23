@@ -12,4 +12,3 @@ try{
     echo "nao deu truta!" . $e->getmessage();
 }
 ?>
-

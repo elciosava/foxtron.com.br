@@ -25,28 +25,26 @@
             justify-content: space-between;
             align-items: center;
             padding: 5px 20px;
-            background: rgb(121, 205, 233);
+            background: rgb(112, 112, 112);
             height: 50px;
             color: white;
-
         }
 
-        .texto h2 {
+        .texto h2{
             margin-bottom: 10px;
         }
 
         img {
-            width: 130px;
-            height: 130px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             margin-right: 15px;
         }
 
         .icones img {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
         }
-
 
         .container {
             display: flex;
@@ -55,30 +53,34 @@
             height: 100vh;
         }
 
+        .organiza {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+        }
+
         body {
             height: 100vh;
-            background-color: rgb(173, 235, 252);
-            font-family: Verdana;
-           
+            background: lightgray;
+            font-family: sans-serif;
         }
 
         .texto {
             width: 800px;
+            text-align: justify;
         }
 
         .trabalhos {
-            width: 130px;
+            width: 120px;
             height: 180px;
             border: solid 1px black;
             margin: 10px;
-            background: rgb(121, 205, 233);
+            background: rgb(238, 205, 144);
             display: flex;
             justify-content: center;
             align-items: center;
-            ;
         }
 
-        .trabalhos:hover {
+        .trabalhos:hover { 
             margin-top: -10px;
             transition: 0.3s ease-in-out;
         }
@@ -90,29 +92,14 @@
         <h2>Vinicius Braun</h2>
         <nav>
             <ul>
-                <li>Início</li>
+                <li>Inicio</li>
                 <li>Sobre</li>
                 <li>Contato</li>
             </ul>
         </nav>
     </header>
-    <div class="container">
-        <div class="imagem">
-            <img src="what-happened-to-cj-after-the-end-v0-7p08040mtr4d1.webp" alt="">
-        </div>
-        <div class="texto">
-            <h2>Vinicius Braun</h2>
-            <p>Aluno de Programação interessado em criar sites e sistemas modernos com boa performance e usabilidade.
-            </p>
-            <div class="icones">
-                <img src="discord-brands-solid-full.svg" alt="">
-                <img src="instagram-brands-solid-full.svg" alt="">
-                <img src="whatsapp-brands-solid-full.svg" alt="">
-            </div>
-        </div>
 
-    </div>
-    <div class="container">
+    <div class="container organiza">
         <div class="trabalhos">
             <a href="aula2409.html">Aula 24/09/25</a>
         </div>
@@ -123,9 +110,9 @@
             <a href="aula2609.php">Aula 26/09/25</a>
         </div>
         <div class="trabalhos">
-            <a href="aula2609exercicico.php">Exercicio</a>
+            <a href="aula2609_exercicio.php">Exercicio</a>
         </div>
-        <div class="trabalhos">
+		<div class="trabalhos">
             <a href="aula2909.php">Aula 29/09/25</a>
         </div>
         <div class="trabalhos">
@@ -146,7 +133,19 @@
         <div class="trabalhos">
             <a href="listar_arquivos.php">Listar Arquivos</a>
         </div>
+        <div class="trabalhos">
+            <a href="cadastrar_usuario.php">Cadastrar Usuario</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_produto.php">Cadastrar Produto</a>
+        </div>
+        <div class="trabalhos">
+            <a href="pesquisa.php">Pesquisa</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_cliente.php">Cadastrar Cliente</a>
+        </div>
     </div>
+    
 </body>
-
 </html>

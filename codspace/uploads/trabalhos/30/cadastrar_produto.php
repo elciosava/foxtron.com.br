@@ -48,9 +48,6 @@
         .cel_cabecalho{
             width: 250px;
         }
-
-
-       
         
     </style>
 </head>
@@ -58,7 +55,7 @@
     <section class="endereco">
         <div class="container">
             
-        <form action="gravar_produto.php" method="post">
+        <form action="" method="post">
                       
                     <label for="produto">Produto</label>
                     <input type="text" name="produto" id="">                   
@@ -79,7 +76,7 @@
             <?php
                 include "conexao.php";
 
-                $sql = "SELECT * FROM produto";
+                $sql = "SELECT * FROM produtos";
                 $stmt = $conexao->prepare($sql);
                 $stmt->execute();
 
@@ -100,7 +97,12 @@
                     echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
-                    echo "<div class='cel_cabecalho'><button>editar</button><button>deletar</button></div>";
+
+                    echo"<form action='editar_produto.php' method='get'>
+                         <input type='text' name='id' value='{$linha['id']}'>";
+
+                    echo "<div class='cel_cabecalho'><button type='submit'>editar</button><button>deletar</button></div>";
+                    echo"</form>";
                 echo"</div>";
                 }
                 }else{
@@ -111,3 +113,5 @@
     </section>
 </body>
 </html>
+
+

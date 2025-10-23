@@ -1,19 +1,48 @@
 
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renan Antunes</title>
+    <title>Document</title>
     <style>
         * {
             margin: 0;
             padding: 0;
-            justify-content: center;
+        }
+
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
+            padding: 5px 20px;
+            background: rgb(5, 182, 222);
+            height: 50px;
+            color: white;
+        }
+
+        .texto h2{
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img {
+            width: 40px;
+            height: 40px;
         }
 
         .container {
@@ -21,143 +50,101 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: aqua;
         }
 
-        li {
-            display: inline-block;
-            margin: 0 10px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .imagen img {
-            width: 350px;
-            margin-right: 350px;
-            border-radius: 50%;
-            border: 4px solid #fff;
-            justify-content: center;
-            align-items: center;
-
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 5px 5px 5px;
-            background-color: rgba(182, 27, 27, 0.117);
-
+        .organiza {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
         }
 
         body {
             height: 100vh;
-        }
-
-        .icones {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .icones img {
-            width: 50px;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .texto h2 {
-
-            color: rgb(51, 92, 153);
-            margin-bottom: 10px;
-
+            background: rgb(13, 191, 222);
+            font-family: sans-serif;
         }
 
         .texto {
-            width: 8000;
+            width: 800px;
+            text-align: justify;
         }
 
-        .trabalho {
+        .trabalhos {
             width: 120px;
             height: 180px;
             border: solid 1px black;
             margin: 10px;
-            background: rgb(0, 204, 255);
+            background: rgb(255, 255, 255);
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .trabalho:hover {
+        .trabalhos:hover { 
             margin-top: -10px;
-            transition: 0.3s ease ease-in-out;
+            transition: 0.3s ease-in-out;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h2>trabalho Elcio</h2>
+        <h2>Renan</h2>
         <nav>
             <ul>
+                <li>Inicio</li>
                 <li>Sobre</li>
                 <li>Contato</li>
             </ul>
         </nav>
     </header>
-    <section class="inicio">
-        <div class="capa"></div>
 
-    </section>
-    </header>
-    <div class="container">
-        <div class="imagen">
-            <img src="images.jpg" alt="">
+    <div class="container organiza">
+        <div class="trabalhos">
+            <a href="aula2409.html">Aula 24/09/25</a>
         </div>
-        <div class="texto">
-            <h2>Renan Antunes</h2>
-            <p>Foi sem querer querendo
-            </p>
-            <div class="icones">
-                <img src="discord-brands-solid-full.svg" alt="discord">
-                <img src="github-brands-solid-full.svg" alt="github">
-                <img src="linkedin-brands-solid-full.svg" alt="linkedin">
-            </div>
+        <div class="trabalhos">
+            <a href="aula2509.php">Aula 25/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2609.php">Aula 26/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2609_exercicio.php">Exercicio</a>
+        </div>
+		<div class="trabalhos">
+            <a href="aula2909.php">Aula 29/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula3009.php">Aula 30/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0710.php">Aula 07/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0810.php">Aula 08/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0910.php">Aula 09/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula1010.php">Aula 10/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="listar_arquivos.php">Listar Arquivos</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_usuario.php">Cadastrar Usuario</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_produto.php">Cadastrar Produto</a>
+        </div>
+        <div class="trabalhos">
+            <a href="pesquisa.php">Pesquisa</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_cliente.php">Cadastrar Cliente</a>
         </div>
     </div>
-    <div class="container">
-        <div class="trabalho">
-            <a href="aula2409.html">aula2409</a>
-        </div>
-        <div class="trabalho">
-            <a href="aula2509.php">aula 25/09/25</a>
-        </div>
-        <div class="trabalho">
-            <a href="aula2609.php">aula 26/09/25</a>
-        </div>
-        <div class="trabalho">
-            <a href="aula2609_exercicios.php">aula2609_exercicios,</a>
-        </div>
-        <div class="trabalho">
-            <a href="aula0710.php">aula 07/10/25,</a>
-        </div>
-        <div class="trabalho">
-            <a href="aula0810.php">aula 08/10/25,</a>
-        </div>
-        <div class="trabalho">
-            <a href="aula0910.php">aula 0910/25,</a>
-        </div>
-        <div class="trabalho">
-            <a href="aula1010.php">aula 10/10/25,</a> 
-        </div>
-        <div class="trabalho">
-            <a href="listar_arquivos.php">listar Arquivos</a>
-        </div>
-         <div class="trabalho">
-            <a href="cadastrar_produto.php">listar Arquivos</a>
-        </div>
-    </div>
-
+    
 </body>
-
 </html>

@@ -22,17 +22,18 @@
             justify-content: space-between;
             align-items: center;
             padding: 5px 20px;
-            background-color: rgb(102, 15, 15);
+            background: linear-gradient(to right, rgb(74, 74, 138) , rgb(53, 173, 89) );
             height: 50px;
-            color: rgb(143, 140, 135);
+            color: white;
         }
 
-        .texto h2 {
+        .texto h2{
             margin-bottom: 10px;
         }
+
         img {
-            width: 100px;
-            height: 100px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             margin-right: 15px;
         }
@@ -49,15 +50,14 @@
             height: 100vh;
         }
 
-          .organiza {
+        .organiza {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
-
-           }
+        }
 
         body {
             height: 100vh;
-            background-color: rgb(56, 61, 61);
+         background: linear-gradient(to right, blue , red );
             font-family: sans-serif;
         }
 
@@ -66,101 +66,83 @@
             text-align: justify;
         }
 
-         .trabalhos {
-            width: 100px;
+        .trabalhos {
+            width: 120px;
             height: 180px;
             border: solid 1px black;
             margin: 10px;
-            background:rgb(108, 114, 114);
+            background: rgb(238, 205, 144);
             display: flex;
             justify-content: center;
             align-items: center;
-         }
+        }
 
-          .trabalhos:hover {
+        .trabalhos:hover { 
             margin-top: -10px;
-            transition: 1.5 ease-in-out;
-          }
-
-          
+            transition: 0.3s ease-in-out;
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <h2>Pedro Dias</h2>
+        <h2>Pedro Pacheco</h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
         </nav>
-        <ul>
-            <li>Início</li>
-            <li>Sobre</li>
-            <li>Contato</li>
-        </ul>
-        </nav>
-
     </header>
-    <div class="container">
-        <div class="imagem">
-            <img src="oai.jpg" alt="">
 
-
+    <div class="container organiza">
+        <div class="trabalhos">
+            <a href="aula2409.html">Aula 24/09/25</a>
         </div>
-        <div class="texto">
-
-            <h2>Pedro Dias</h2>
-            <p>futebolista brasileiro que atua como meio-campista ou atacante pelo Santos. Revelado pelo próprio Santos
-                em 2009, desde cedo correspondeu às expectativas e conquistou diversos títulos com o clube. Neymar Jr o jogador mais completo da história</p>
-            <div class="icones">
-                <img src="twitch-brands-solid-full.svg" alt="">
-                <img src="instagram-brands-solid-full.svg" alt="">
-                <img src="" alt="">
-            </div>
-
+        <div class="trabalhos">
+            <a href="aula2509.php">Aula 25/09/25</a>
         </div>
-
+        <div class="trabalhos">
+            <a href="aula2609.php">Aula 26/09/25</a>
         </div>
-        <div class="container organiza">
-            <div class="trabalhos">
-                <a href="aula2409.html">Aula 24/09/25</a>
-              </div>
-             <div class="trabalhos">
-                <a href="aula2509.php">Aula25/09/25</a>
-             </div>
-             <div class="trabalhos">
-                <a href="aula2609.php">Aula 26/09/25</a>
-             </div>
-             <div class="trabalhos">
-                <a href="aula2609_exercicio.php">Exercicio 26/09/25</a>
-             </div>
-             <div class="trabalhos">
-                <a href="aula2909">Aula 29/09/25</a>
-             </div>
-             <div class="trabalhos">
-                <a href="aula3009.php">Aula 30/09/25</a>
-            </div>
-
-                <div class="trabalhos">
-                <a href="aula0710.php">Aula 07/10/25</a>
-              </div>
-              <div class="trabalhos">
-                <a href="aula0810.php">Aula 08/10/25</a>
-              </div>
-              <div class="trabalhos">
-                <a href="aula1010.php">Aula 10/10/25</a>
-              </div>
-              <div class="trabalhos">
-            <a href="aula1310.php">Aula 13/10/25</a>
-             </div>
-               <div class="trabalhos">
-            <a href="listar_arquivos.php">Listar arquivos</a>
-          </div>
-
-            <div class="trabalhos">
-            <a href="cadastrarproduto.php">Cadastrar produto</a>
-          </div>
-          <div class="trabalhos">
-            <a href="cadastrarusuario.php">Cadastrar usuario</a>
-          </div>
-       
+        <div class="trabalhos">
+            <a href="aula2609_exercicio.php">Exercicio</a>
+        </div>
+		<div class="trabalhos">
+            <a href="aula2909.php">Aula 29/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula3009.php">Aula 30/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0710.php">Aula 07/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0810.php">Aula 08/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0910.php">Aula 09/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula1010.php">Aula 10/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="listar_arquivos.php">Listar Arquivos</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_usuario.php">Cadastrar Usuario</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrarproduto.php">Cadastrar Produto</a>
+        </div>
+        <div class="trabalhos">
+            <a href="pesquisa.php">Pesquisa</a>
+        </div>
+         <div class="trabalhos">
+            <a href="cadastrar_cliente.php">Cadastrar Cliente</a>
+        </div>
+    </div>
+    
 </body>
-
 </html>

@@ -25,7 +25,7 @@
 <body>
     <section>
         <div class="container">
-            <form action="grava_produto.php" method="POST">
+    
 
             <label for="produto">produto</label>
             <input type="text" name="produto" id="">   
@@ -40,7 +40,7 @@
 
                 <button type="submit">salvar</button>
 
-            </form>
+            
         </div>
         </div>
     </section>
@@ -69,8 +69,16 @@
                     echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
-                    echo "<div class='cel_cabecalho'><buttin>editar</button> <button>excluir</button></div>";
+
+                    echo"<form action='editar_produto.php' method='get'>
+                    <input type='hidden' name='id' value='{$linha['id']}'>";
+                    
+                    echo "<div class='cel_cabecalho'><button>editar</button> <button>excluir</button></div>";
+
+                    echo "</form>";
+                    
                     echo "</div>";
+
                 }
             } else {
                 echo "<p>nao tem registro</p>";

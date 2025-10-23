@@ -7,10 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   
+    
     <style>
         body {
             justify-content: center;
+            background:linear-gradient(to right, #273FF5, #27F584 );
         }
          .container {
             display: grid;
@@ -44,35 +45,38 @@
             font-size: 0,7rem;
             box-sizing: border-box;
         }
-        .cabecalho {
+        .cabecalho, .cel_cabecalho {
             display: flex;
-            padding: 0 20px;
-            margin-left: 20px
+            padding: 0 10px;
         }
         .cel_cabecalho {
-            width: 250px;
+            width: 150px;
+            margin-left: 10px;
+            margin-right: 10px;
             border: 1px solid black;
-            margin-left: 20px
+        }
+        button {
+            margin: 10px;
         }
         section {
-            justify-content: center;
+            justify-items: center;
         }
-       
+        
 
     </style>
+    </head>
     <body>
-
-        <div class="container">
+    <section class="inicio">
+        <div class="coluna meio">
                 <form action="gravar_produto.php" method="post">
                     <label for="produto">Produto</label>
                     <input type="text" name="produto" id="">
 
                     <label for="quantidade">Quantidade</label>
-                    <input type="number" name="quantidade">
+                    <input type="text" name="quantidade">
 
-                    <label for="valor">valor</label>
-                    <input type="number" name="valor">
-
+                    <label for="valor">Valor</label>
+                    <input type="text" name="valor">
 
                     <button class="submit">Salvar</button>
                 </form>
@@ -88,21 +92,27 @@
             $stmt->execute();
 
             if($stmt->rowCount()>0){
-                echo "<div class='cabecalho'>";
+                 echo "<div class='cabecalho'>";
                     echo "<div class='cel_cabecalho'>ID</div>";
-                    echo "<div class='cel_cabecalho'>produto</div>";
-                    echo "<div class='cel_cabecalho'>quantidade</div>";
-                    echo "<div class='cel_cabecalho'>valor</div>";
-                    echo  "<div class='cel_cabecalho'>acoes</div>";
+                    echo "<div class='cel_cabecalho'>Nome</div>";
+                    echo "<div class='cel_cabecalho'>Quantidade</div>";
+                    echo "<div class='cel_cabecalho'>Valor</div>";
+                       echo "<div class='cel_cabecalho'>Açoes</div>";
                 echo "</div>";
-   
+    
             while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
                 echo "<div class='cabecalho'>";
-                    echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
+                   echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
+
+                    echo "<form action='editar_produto.php' method='get'>
+                    <input type='hidden' name='id' value='{$linha['id']}'>";
+
                     echo "<div class='cel_cabecalho'><button>Editar</button><button>Deletar</button></div>";
+
+                    echo "</form>";
                 echo "</div>";
             }
             }else{

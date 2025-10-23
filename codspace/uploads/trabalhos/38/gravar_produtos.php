@@ -3,11 +3,11 @@
 include 'conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $produto = $_POST['produto'];
+    $produto = $_POST['nome'];
     $quantidade = $_POST['quantidade'];
     $valor = $_POST['valor'];
 
-    $sql = "INSERT INTO produtos (produto, quantidade, valor)
+    $sql = "INSERT INTO produtos (nome, quantidade, valor)
              VALUE (:produto, :quantidade, :valor)";
 
              $stmt = $conexao->prepare($sql);
@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
              $stmt->bindParam(':quantidade', $quantidade);
              $stmt->bindParam(':valor', $valor);
 
-             if ($stmt->eercute()){
-                jeader("location:cadastrar_produto.php");
+             if ($stmt->execute()){
+                header("location:cadastra_produtos.php");
                 exit;
              }else{
                 echo "nao deu truta";

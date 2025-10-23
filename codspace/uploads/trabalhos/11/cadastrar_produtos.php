@@ -56,8 +56,8 @@
     <section class="endereco">
         <div class="container">
             
-        <form action="gravar_produto.php" method="
-        ">
+                <form action=" " method="post">
+        
                     <label for="produto">Produto</label>
                     <input type="text" name="produto" id="">
 
@@ -78,7 +78,6 @@
                 include "conexao.php";
                 
                 $sql = "SELECT * FROM produtos";
-
                 $stmt = $conexao->prepare($sql);
                 $stmt->execute();
 
@@ -98,21 +97,16 @@
                      echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                      echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                      echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
-                     echo "<div class='cel_cabecalho'><button>Editar</button><button>Delete</button></div>";
 
+                     echo "<form action='editar_produto.php' method='get'>
+                           <input type='hidden' name='id' value='{$linha['id']}'>";
 
-                echo "</div>";
+                     echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
+
+                     echo "</form>";
+                 echo "</div>";
                 }
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-            else{
+                }else{
                     echo "<p>não tem registro</p>";
                 }
             ?>
