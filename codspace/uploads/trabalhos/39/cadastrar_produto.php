@@ -53,15 +53,21 @@
              height: 100vh; 
         }
 
-        .cabecalho, .cel_cabecalho{
+        .cabecalho{
             display: flex;
-            padding: 0 20px;
-            border: 1px solid black;
+            padding: 5px 15px;
+            border: solid black 1px ;
             width: 1000px;
         }
 
+        .linha {
+            display: flex;
+            border: solid  black 1px;
+            padding: 5px 15px;
+        }
+
         .cel_cabecalho {
-            width: 250px;
+            width: 170px;
         }
 
         
@@ -99,32 +105,36 @@
              $stmt = $conexao->prepare($sql);
              $stmt->execute();
 
-             if($stmt->rowCount()>0){
+             if ($stmt->rowCount()>0){
                 echo "<div class='cabecalho'>";
                     echo "<div class='cel_cabecalho'>id</div>";
                     echo "<div class='cel_cabecalho'>Produto</div>";
                     echo "<div class='cel_cabecalho'>Quantidade</div>";
                     echo "<div class='cel_cabecalho'>Valor</div>";
                     echo "<div class='cel_cabecalho'>Ações</div>";
-                    
+                    echo "</div>";
 
-                echo "</div>";
-            
-
-             while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
-                echo "<div class='cabecalho'>";
+                while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+                echo "<div class='linha'>";
                     echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['valor']}</div>"; 
 
-                    echo "<form action='editar_produto.php' method='get'>
-                            <input type='hidden' name='id' value='{$linha['id']}'>";
-                            
-                    echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
-                    
+                    echo "<div class='cel_cabecalho'>";
+
+                    echo "<form action='editar_produto.php' method='get' style='display:inline;'>";
+                    echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                    echo "<button type='subit'>Editar</button>";
                     echo "</form>";
-                echo "</div>";
+
+                    echo "<form action='deletar_produto.php' method='post' style='display:inline;' onsubmit=\"return confirm('Deseja realmente deletar este produto?');\">";
+                    echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                    echo "<button type='subit'>Deletar</button>";
+                    echo "</form>";
+
+                    echo "</div>";
+                    echo "</div>";  
              }
              }else{
                 echo "<p>nao tem registro</p>";

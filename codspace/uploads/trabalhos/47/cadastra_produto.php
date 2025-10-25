@@ -75,7 +75,7 @@
 
                     echo "<div class='cel_cabecalho'><button type='submit'>Editar</button> <button>excluir</button></div>";
 
-                    echo "</form>"
+                    echo "</form>";
                     echo "</div>";
                 }
             } else {

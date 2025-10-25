@@ -39,46 +39,115 @@ include 'conexao.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
         }
 
         body {
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            height: 100vh;
-        }
-        form {
-            width: 300px;
+            color: rgb(255, 255, 255);
+            background: linear-gradient(135deg, rgb(0, 100, 55), rgb(0, 168, 89));
+            background-size: 400% 400%;
+            animation: fundoPalmeiras 10s ease infinite;
         }
 
-        input, select{
+        @keyframes fundoPalmeiras {
+            0% {
+                background-position: 0% 50%;
+                background: linear-gradient(135deg, rgb(0, 100, 55), rgba(219, 200, 23, 1));
+            }
+            33% {
+                background-position: 100% 50%;
+                background: linear-gradient(135deg, rgb(0, 168, 89), rgba(44, 226, 27, 1));
+            }
+            66% {
+                background-position: 0% 50%;
+                background: linear-gradient(135deg, rgba(221, 207, 17, 1), rgb(0, 100, 55));
+            }
+            100% {
+                background-position: 100% 50%;
+                background: linear-gradient(135deg, rgb(0, 100, 55), rgb(0, 168, 89));
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 30px 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            border: 2px solid rgb(207, 174, 46);
+            transition: 0.3s;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgb(207, 174, 46);
+            text-transform: uppercase;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 600;
+        }
+
+        input {
             width: 100%;
-            padding: 5px;
-            font-size: 0.7rem;
-            box-sizing: border-box;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid rgb(207, 174, 46);
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.85);
+            color: rgb(0, 53, 31);
+            font-size: 1rem;
         }
 
-        .cabecalho {
-            display:flex;
-            padding: 5px 20px;
-            border: 1px solid black;
-            width: 1000px;
-
+        input:focus {
+            border-color: rgb(255, 255, 255);
+            box-shadow: 0 0 8px rgb(207, 174, 46);
         }
 
-        .cel_cabecalho {
-             width: 250px;
-            
+        button {
+            width: 100%;
+            background: rgb(207, 174, 46);
+            color: rgb(0, 53, 31);
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
         }
 
-        body{
-            height: 100vh;
-            background: linear-gradient( #09B523, #093AB5);  
-            font-family: sans-serif;
+        button:hover {
+            background: rgb(255, 255, 255);
+            color: rgb(0, 100, 55);
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .logo img {
+            width: 80px;
+            height: 80px;
         }
     </style>
 </head>

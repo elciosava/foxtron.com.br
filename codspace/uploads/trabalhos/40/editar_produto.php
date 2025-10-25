@@ -72,6 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
          }
 
+    
+
          .resultado {
             margin-top: 20px;
          }
@@ -85,12 +87,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
            body {
             height: 100vh;
-            background-color: rgb(255, 220, 249);
+            background: linear-gradient(to top, rgba(255 228 225), rgba(255 250 205), rgba(240 255 240), rgba(240 255 255), rgba(230 230 250));
             font-family: pink;
             display: flex;
             justify-content: center;
             align-items: center;
            }
+
+             .form-box {
+            background-color: rgba(255, 255, 255, 0.83); 
+            border: 2px solid rgba(255, 255, 255, 1); 
+            border-radius: 10px; 
+            padding: 20px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            margin: 20px;
+        }
+
+    
        
 
     </style>

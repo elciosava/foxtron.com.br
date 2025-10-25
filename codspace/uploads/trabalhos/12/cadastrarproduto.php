@@ -57,15 +57,22 @@
            display: flex;
            padding: 0 20px;
            border: 1px solid black;
-           width: 1000px;
+           width: 1000px;           
+        padding: 5px 10px;
 
         }
 
         .cel_cabecalho {
-         width: 250px;
+         width: 200px;
 
         }
-        
+
+        .linha {
+        display: flex;
+        border: solid 1px black;
+        padding: 5px 10px;
+        width: 1000px;
+        }
 
     </style>
     <body>
@@ -84,7 +91,6 @@
 
                    
                     <button class="submit">Salvar</button>
-                    <button type="reset">Excluir</button>
 
                 </form>
             </div>
@@ -92,40 +98,46 @@
     <section class="resultados">
         <div class="resultado">
             <?php
-            include 'conexao.php';
+include 'conexao.php';
 
-            $sql = "SELECT * FROM produtos";
-            $stmt = $conexao->prepare($sql);
-            $stmt->execute();
+$sql = "SELECT * FROM produtos";
+$stmt = $conexao->prepare($sql);
+$stmt->execute();
 
-            if($stmt->rowCount()>0){
-                echo "<div class='cabecalho'>";
-                    echo "<div class='cel_cabecalho'>ID</div>";
-                    echo "<div class='cel_cabecalho'>Nome</div>";
-                    echo "<div class='cel_cabecalho'>Quantidade</div>";
-                    echo "<div class='cel_cabecalho'>Valor</div>";
-                    echo "<div class='cel_cabecalho'>Ações</div>";
-                echo "</div>";
-    
-            while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
-                echo "<div class='cabecalho'>";
-                    echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
-                    echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
-                    echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
-                    echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
+if ($stmt->rowCount() > 0) {
+    echo "<div class='cabecalho'>";
+    echo "  <div class='cel_cabecalho'>ID</div>";
+    echo "  <div class='cel_cabecalho'>Nome</div>";
+    echo "  <div class='cel_cabecalho'>Quantidade</div>";
+    echo "  <div class='cel_cabecalho'>Valor</div>";
+    echo "  <div class='cel_cabecalho'>Ações</div>";
+    echo "</div>";
 
-                    echo "<form action='editarproduto.php' method='get'>
-                    <input type='hidden' name='id' value='{$linha['id']}'> ";
+    while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo "<div class='linha'>";
+        echo "  <div class='cel_cabecalho'>{$linha['id']}</div>";
+        echo "  <div class='cel_cabecalho'>{$linha['nome']}</div>";
+        echo "  <div class='cel_cabecalho'>{$linha['quantidade']}</div>";
+        echo "  <div class='cel_cabecalho'>{$linha['valor']}</div>";
 
-                    echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
+        echo "  <div class='acoes'>";
+        echo "      <form action='editarproduto.php' method='get' style='display:inline;'>";
+        echo "          <input type='hidden' name='id' value='{$linha['id']}'>";
+        echo "          <button class='submit'>Editar</button>";
+        echo "      </form>";
 
-                    echo "</form>";
-                echo "</div>";
-               
-            }
-            }else{
-                echo "não tem registro";
-            }
+        echo "      <form action='deletarproduto.php' method='post' style='display:inline;' onsubmit=\"return confirm('Deseja realmente deletar este produto?');\">";
+        echo "          <input type='hidden' name='id' value='{$linha['id']}'>";
+        echo "          <button class='submit'>Deletar</button>";
+        echo "      </form>";
+        echo "  </div>"; // fim .acoes
+        echo "</div>"; // fim .linha
+    }
+} else {
+    echo "<p>Não há registros.</p>";
+}
+        
+           
             ?>
         </div>
     </section>    

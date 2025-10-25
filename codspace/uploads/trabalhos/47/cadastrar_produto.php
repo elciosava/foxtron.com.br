@@ -25,6 +25,11 @@
           width: 250px;
             border: 1px solid black;
         }
+        .linha{
+            display: flex;
+            border: solid 1px black;
+            padding: 5px 10px;
+        }
         
     </style>
 </head>
@@ -33,20 +38,19 @@
     <section>
         <div class="container">
            
-            <label for="produto">produto</label>
-            <input type="text" name="produto" id="">   
-            
-            <label for="quantidade">quantidade</label>
-            <input type="number" name="quantidade" id="">
+            <form action="cadastrar_produto.php" method="post">
+                <label for="produto">produto</label>
+                <input type="text" name="produto" id="produto">   
 
+                <label for="quantidade">quantidade</label>
+                <input type="number" name="quantidade" id="quantidade">
 
-            <label for="valor">valor</label>
-            <input type="text" name="valor" id="">
-
+                <label for="valor">valor</label>
+                <input type="text" name="valor" id="valor">
 
                 <button type="submit">salvar</button>
-
             </form>
+
         </div>
         </div>
     </section>
@@ -75,6 +79,22 @@
                     echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
+
+                    //ações (editar + deletar)
+                    echo "<div class='cel_cabecalho'>";
+
+                    //formulario editar
+                    echo "<form action='editar_produto.php' method='get' style='display:inline;'>";
+                    echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                    echo "<button type='submit'>editar</button>";
+                    echo "</form>";
+
+                    //formulario deletar
+                    echo "<form action='deletar_produto.php' method='post' style='display:inline' onsubmit=\"return confirm(deseja realmente deletar este produto?');\">";
+                    echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                    echo "<button type='submit'>deletar</button>";
+
+                    echo "</div>";//fecha celula ações
 
                     echo "<form action='editar_produto.php' method='get'>";
                     "<input type='hidden' name='{$linha['id']}'>";

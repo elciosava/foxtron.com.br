@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Out-2025 às 22:21
+-- Tempo de geração: 23-Out-2025 às 21:54
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -77,9 +77,9 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `valor`) VALUES
-(1, 'Bolo', 6, 12),
-(2, 'pao', 12, 10),
-(3, '', 0, 0);
+(3, '', 0, 0),
+(4, 'Queijo', 10, 50),
+(5, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -151,7 +151,7 @@ ALTER TABLE `endereco`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

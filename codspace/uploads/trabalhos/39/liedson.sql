@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Out-2025 às 22:19
+-- Tempo de geração: 23-Out-2025 às 21:53
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -79,12 +79,11 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `valor`) VALUES
-(1, 'perfume', NULL, NULL),
-(2, 'perfume', NULL, NULL),
-(3, 'perfume', NULL, 5555),
-(4, 'perfume', NULL, 5555),
-(5, 'perfume', NULL, 5555),
-(6, 'perfume', 255, 5555);
+(2, 'uva', 8, 124),
+(3, 'bananão', 2, 50),
+(4, 'celular', 1, 1936),
+(5, 'camiseta', 2, 100),
+(6, 'perfume', 43, 57);
 
 -- --------------------------------------------------------
 

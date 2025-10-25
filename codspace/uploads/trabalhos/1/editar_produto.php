@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     <section>
         <div class="container">
             <form action="" method="post">
-                <input type="text" value="<?php echo $_GET['id'];?>" id="id" name="id">
+                <input type="hidden" value="<?php echo $_GET['id'];?>" id="id" name="id">
 
                 <label for="nome">Produto</label>
                 <input type="text" name="nome" id="nome" required>

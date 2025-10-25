@@ -2,6 +2,7 @@
 include("conexao.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = $_POST['id'] ?? null;
     $nome = $_POST['nome'] ?? null;
     $quantidade = $_POST['quantidade'] ?? null;
     $valor = $_POST['valor'] ?? null;
@@ -51,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <section>
         <div class="container">
             <form action="" method="post">
-                <input type="text" value="<?php echo $_GET['id']; ?>" id="id" name="id">
+                <input type="text" value="<?php echo $_GET['$id']; ?>" id="id" name="id">
 
                 <label for="id">ID do Produto</label>
                 <input type="number" name="id" id="id" required />

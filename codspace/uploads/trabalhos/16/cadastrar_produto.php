@@ -4,54 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-         * {
-            padding:0;
-            margin:0;
-        }
-        form {
-            width: 350px;
-        }
-        body {
-            background: rgba(90, 170, 245, 1);
-            font-family: Verdana;
-            flex-direction: column;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center:
-            
-        }
-        input,select {
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-            padding: 5px;
-            font-size: 0.7rem;
-            
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .cabecalho{
-            display:flex;
-            padding: 0 20px;
-            border: 1px solid black;
-            width: 1000px;
-        }
-        .cel_cabecalho{
-            width: 250px;
-        }
-        .resultado{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 1000px;
-            flex-direction: column;
-        }
-    </style>
+   <style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+    /* Fundo com gradiente suave e cor de apoio */
+    background: linear-gradient(135deg, rgba(90, 170, 245, 1), rgba(40, 120, 220, 1));
+    background-attachment: fixed;
+
+    /* Tipografia */
+    font-family: 'Verdana', sans-serif;
+    color: #222;
+    line-height: 1.5;
+
+    /* Layout centralizado */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Tamanho e espaçamento */
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+
+    /* Suavização */
+    transition: background 0.5s ease;
+}
+
+    form {
+        width: 350px;
+        margin-bottom: 20px;
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    input,
+    select {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        padding: 8px;
+        font-size: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cabecalho {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        border: 1px solid black;
+        width: 1000px;
+        background: #f0f0f0;
+        font-weight: bold;
+    }
+
+    .cel_cabecalho {
+        width: 250px;
+        text-align: center;
+    }
+
+    .linha {
+        display: flex;
+        border: 1px solid black;
+        padding: 5px 20px;
+        width: 1000px;
+        background: white;
+    }
+
+    .linha div {
+        width: 250px;
+        text-align: center;
+    }
+
+    .resultado {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 1000px;
+        flex-direction: column;
+        gap: 5px;
+    }
+</style>
 </head>
 <body>
     <section class="endereco">
@@ -91,26 +138,34 @@
                     echo "<div class='cel_cabecalho'>Ações</div>";
                 echo "</div>";
                  
-                while($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo "<div class='cabecalho'>";
+                while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+                echo "<div class='linha'>";
                      echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
                      echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                      echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                      echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
 
-                     echo "<form action='editar_produto.php' method='get'>
-                           <input type='hidden' name='id' value='{$linha['id']}'>";
+                     echo "<div class='cel_cabecalho'>";
 
-                     echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
-
+                     echo "<form action='editar_produto.php' method='get' style='display:inline;'>";
+                     echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                     echo "<button type='submit'>Editar</button>";
                      echo "</form>";
-                echo "</div>";
+
+                     echo "<form action='deletar_produto.php' method='post' style='display:inline;' onsubmit=\"return confirm('Deseja realmente deletar esse produto?');\">";
+                     echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                     echo "<button type='submit'>Deletar</button>";
+                     echo "</form>";
+
+                    echo "</div>"; 
+
+                    echo "</div>";
                 }
-                }
-                
+            }else {
+                echo "<p>Não há registros.</p>";
+            }
             ?>
         </div>
     </section>
-
 </body>
 </html>

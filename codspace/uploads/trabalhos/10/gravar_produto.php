@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $quantidade = $_POST['quantidade'];
     $valor = $_POST['valor'];
 
-    $sql = "INSERT INTO produto (nome, quantidade, valor)
+    $sql = "INSERT INTO produtos (nome, quantidade, valor)
              VALUES (:produto, :quantidade, :valor)";
 
     $stmt = $conexao->prepare($sql);   

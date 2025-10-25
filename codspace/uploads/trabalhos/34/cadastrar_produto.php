@@ -1,4 +1,12 @@
+<?php
 
+            
+
+        
+    
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -32,12 +40,17 @@
 
         .cabecalho{
             display:flex;
-            padding: 0 20px;
             border: 1px solid black;
             width: 1000px;
+             padding: 5px 10px;ll
         }
         .cel_cabecalho {
-            width: 250px;
+            width: 200px;
+        }
+        .linha {
+            display: flex;
+            border: solid 1px black;
+            padding: 5px 10px;
         }
     </style>
 </head>
@@ -77,22 +90,33 @@
                     echo "</div>";
                         
                 while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
-                    echo "<div class='cabecalho'>";
+                    echo "<div class='linha'>";
                         echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
                         echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
                         echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                         echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
-                        echo "<form action='editar_produto.php' method='get'>
-                             <input type='hidden' name='id' value='{$linha['id']}'>";
 
-                        echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
+                    echo "<div class='cel_cabecalho'>";
 
-                        echo "</form>";
+                    echo "<form action='editar_produto.php' method='get' style='display:inline;'>";
+                    echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                    echo "<button type='submit'>Editar</button>";
+                    echo "</form>";
+
+                    echo "<form action='deletar_produto.php' method='post' style='display:inline; onsubmit=\"return confirm('Deseja realmente deletar este produto?');\">";
+                    echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                    echo "<button type='submit'>Deletar</button>";
+                    echo "</form>";
+
                     echo "</div>";
+                    echo "</div>";
+
+
                 }
-                }else{
-                    echo "<p>nao tem registro</p>";
-                }
+            } else{
+                echo "<p>Não há registro.</p>";
+            }
+                  
             ?>
         </div>
     </section>

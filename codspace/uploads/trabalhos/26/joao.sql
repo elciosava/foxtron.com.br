@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Out-2025 às 22:19
+-- Tempo de geração: 23-Out-2025 às 21:53
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -63,10 +63,10 @@ INSERT INTO `endereco` (`id`, `nome`, `sobrenome`, `bairro`, `cidade`, `estado`,
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtos`
+-- Estrutura da tabela `produto`
 --
 
-CREATE TABLE `produtos` (
+CREATE TABLE `produto` (
   `id` int(11) NOT NULL,
   `nome` varchar(30) DEFAULT NULL,
   `quantidade` int(11) DEFAULT NULL,
@@ -74,13 +74,15 @@ CREATE TABLE `produtos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `produtos`
+-- Extraindo dados da tabela `produto`
 --
 
-INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `valor`) VALUES
-(1, 'Rebinpoca da Parafuseta', 5, 242),
-(2, 'Roda Aro 17', 4, 2410),
-(3, 'Picanha', 1, 100);
+INSERT INTO `produto` (`id`, `nome`, `quantidade`, `valor`) VALUES
+(1, 'Cuba', 1, 15),
+(2, 'Dreher com Coca', 5, 62),
+(3, 'Picanha', 1, 100),
+(4, 'Filé 7', 3, 56),
+(5, 'Carvão 4KG', 1, 15);
 
 -- --------------------------------------------------------
 
@@ -124,9 +126,9 @@ ALTER TABLE `endereco`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `produtos`
+-- Índices para tabela `produto`
 --
-ALTER TABLE `produtos`
+ALTER TABLE `produto`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -152,10 +154,10 @@ ALTER TABLE `endereco`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de tabela `produtos`
+-- AUTO_INCREMENT de tabela `produto`
 --
-ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `produto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

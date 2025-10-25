@@ -1,21 +1,20 @@
 <?php 
     include 'conexao.php';
 
-    if ($_SERVER['REQUEST_MOTHOD'] === 'POST'){
-        $id = $_POST['id'];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $nome = $_POST['nome'];
         $quantidade = $_POST['quantidade'];
         $valor = $_POST['valor'];
         $id = $_GET['id'];
 
-        if(!empty($id &&  !empty($nome) && !empty($quantidade) && !empty($valor))){
+        if(!empty($id) &&  !empty($nome) && !empty($quantidade) && !empty($valor)){
             try{
 
         $sql = "UPDATE produtos SET nome = :nome, quantidade = :quantidade,
         valor = :valor WHERE id = :id";
         $stmt = $conexao->prepare($sql);
         $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':quatidade', $quantidade);
+        $stmt->bindParam(':quantidade', $quantidade);
         $stmt->bindParam(':valor', $valor);
         $stmt->bindParam(':id', $id);
         $stmt->execute();

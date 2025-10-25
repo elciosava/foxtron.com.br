@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 21-Out-2025 às 22:19
+-- Tempo de geração: 23-Out-2025 às 21:59
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -74,13 +74,6 @@ CREATE TABLE `produtos` (
   `quantidade` int(11) DEFAULT NULL,
   `valor` double DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `produtos`
---
-
-INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `valor`) VALUES
-(1, 'aaaaaaaa', 1113, 12313);
 
 -- --------------------------------------------------------
 

@@ -11,7 +11,7 @@
     <style>
         body {
             justify-content: center;
-            background:linear-gradient(to right, #808080,#141414);
+            background:linear-gradient(to right, #3e116bff,#7C5488);
         }
          .container {
             display: grid;
@@ -55,11 +55,18 @@
             margin-right: 10px;
             border: 1px solid black;
         }
+        .linha {
+            display: flex;
+            border: solid 1px bleck;
+            padding: 5px;
+        }
         button {
             margin: 10px;
         }
         section {
-            justify-items: center;
+            justify-content: center;
+            display: flex;
+            margin-top: 20px;
         }
         
 
@@ -70,7 +77,7 @@
         <div class="coluna meio">
                 <form action="gravar_produtos.php" method="post">
                     <label for="produto">Produto</label>
-                    <input type="text" name="produto" id="">
+                    <input type="text" name="nome" id="">
 
                     <label for="quantidade">Quantidade</label>
                     <input type="text" name="quantidade">
@@ -107,17 +114,30 @@
                     echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
                     echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
 
-                    echo "<form action='editar_produtos.php' method='get'>
-                    <input type='hidden' name='id' value='{$linha['id']}'>";
+                echo "<div class='cel_cabecalho'>";
 
-                    echo "<div class='cel_cabecalho'><button>Editar</button><button>Deletar</button></div>";
+                //Formulario Editar
+                echo"<form action='editar_produtos.php' method='get' style='display:inline;'>";
+                echo"<input type='hidden' name='id' value='{$linha['id']}'>";
+                echo"<button type='submit'>Editar</button>";
+                echo"</form>";
 
-                    echo "</form>";
-                echo "</div>";
+                
+                //Formulario Deletar
+                echo"<form action='deletar_produtos.php' method='post'style='display:inline;' onsubmit=\"return confirm('Deseja realmente deletar este produto?');\">";
+
+                echo"<input type='hidden' name='id' value='{$linha['id']}'>";
+                echo"<button type='submit'>Deletar</button>";
+                echo"</form>";
+
+                echo "</div>"; // fecha celula ações
+
+                echo "</div>"; //fecha linha 
+
             }
-            }else{
-                echo "não tem registro";
-            }
+        }else{
+            echo "<p>Não há registro.</p>";
+        }
             ?>
         </div>
     </section>    

@@ -1,43 +1,44 @@
 <?php
-    include 'conexao.php';
+include 'conexao.php';
 
-    if ($_server['REQUEST_METHODE'] === 'POST'){
-        $id = $_POST['id'];
-        $nome = $_POST['nome'];
-        $quantidade = $_POST['quantidade'];
-        $valor = $_POST['valor'];
-        $id = $_GET['id'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
+    $nome = $_POST['produto']; // Corrigido: campo do formulário
+    $quantidade = $_POST['quantidade'];
+    $valor = $_POST['valor'];
 
-        if(!empty($id) && !empty($nome) && !empty($quantidade) && !empty($valor)){
-        try{
-        $sql = "UPDATE produtos SET nome = :nome, quantidade = :quantidade,
-                valor = :valor WHERE id =:id";
-        $stmt = $conexao->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
-        $stmt->bindParam(':quantidade', $quantidade);
-        $stmt->bindParam(':valor', $valor);
-        $stmt->bindParam(':id', $id);
-        $stmt->execute();
+    if (!empty($id) && !empty($nome) && !empty($quantidade) && !empty($valor)) {
+        try {
+            $sql = "UPDATE produtos 
+                    SET nome = :nome, quantidade = :quantidade, valor = :valor 
+                    WHERE id = :id";
+            $stmt = $conexao->prepare($sql);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':quantidade', $quantidade);
+            $stmt->bindParam(':valor', $valor);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
 
-        echo "Deu boa foi atualizado.";
-    }catch (PDOException $erro){
-        echo "num deu coisa. " . $erro->getMessage();
+            echo "✅ Produto atualizado com sucesso!";
+        } catch (PDOException $erro) {
+            echo "❌ Erro ao atualizar: " . $erro->getMessage();
+        }
+    } else {
+        echo "⚠️ Preencha todos os campos.";
     }
 }
-    }
-    
-
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar Produto</title>
     <style>
-         * {
-            padding:0;
-            margin:0;
+        * {
+            padding: 0;
+            margin: 0;
         }
         form {
             width: 350px;
@@ -50,54 +51,39 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            
         }
-        input,select {
+        input, select {
             width: 100%;
             box-sizing: border-box;
-            margin-bottom: 1000;
-            padding: 2px;
-            
+            margin-bottom: 10px;
+            padding: 6px;
         }
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
-            
-        }
-
-        .cabecalho {
-            display:flex;
-            padding: 0 20px;
-            border: 1px solid black;
-            width: 1000px;
-        }
-        
-        .cel_cabecalho {
-            width: 250px;
         }
     </style>
 </head>
 <body>
     <section class="endereco">
         <div class="container">
-            
-        <form action="" method="post">
-            <input type="text" value="<?php echo $_GET['id'];?>" id="id" name="id">
-                    
-                    <label for="produto">Produto</label>
-                    <input type="text" name="produto" id="">
+            <form action="" method="post">
+                <label for="id">ID</label>
+                <input type="text" value="<?php echo htmlspecialchars($_GET['id'] ?? '', ENT_QUOTES); ?>" id="id" name="id" readonly>
 
-                    <label for="quantidade">Quantidade</label>
-                    <input type="number" name="quantidade" id="">          
-                    
-                    <label for="valor">Valor</label>
-                    <input type="number" name="valor" id="">
+                <label for="produto">Produto</label>
+                <input type="text" name="produto" id="produto" required>
 
-                    <button type="submit">Salvar</button>
-                </form>
-                
+                <label for="quantidade">Quantidade</label>
+                <input type="number" name="quantidade" id="quantidade" required>          
+
+                <label for="valor">Valor</label>
+                <input type="number" step="0.01" name="valor" id="valor" required>
+
+                <button type="submit">Salvar</button>
+            </form>
         </div>
     </section>
-    </body>
-    </html>
+</body>
+</html>

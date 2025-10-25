@@ -12,7 +12,7 @@
             box-sizing: border-box;
         }
         body {
-            background: linear-gradient(135deg, #ece2beff, #fda085);				;
+            background: linear-gradient(135deg, #FFA07A, #b83f17ff);				;
             font-family: Arial, sans-serif;
             height: 100vh;
             display: flex;
@@ -21,18 +21,18 @@
             flex-direction:column;
         }
         .form-container {
-            background-color:#DC143C;
+            background-color:#80000000;
             border-radius: 10px;
             padding: 30px;
             width: 100%;
             max-width: 400px;
             margin-bottom:30px;
             max-width: 400px;
-            box-shadow:4px 5px 30px #800000;
+            box-shadow:4px 5px 30px #ffffffff;
         }
         h2 {
             text-align: center;
-            color:#800000;
+            color:bisque;
             margin-bottom: 20px;
             font-size:1.8rem;
         }
@@ -45,7 +45,7 @@
             width: 100%;
             padding: 10px;
             margin: 10px 0;
-            border: 1px solid #020200ff;
+            border: 1px solid #3b2a2aff;
             border-radius: 5px;
             font-size: 14px;
         }
@@ -74,21 +74,30 @@
             width:250px;
 
         }
+        .linha{
+            display:flex;
+            padding:5px 10px;
+            border:1px solid black;   
+        }
+        .resultado{
+            margin-top:40px;
+
+        }
         
         
     
 
-    </style>
+</style>
 </head>
 <body>
-    <section>
+<section>
 
     
       <div class="form-container">
         <h2>Preencha o Formulário</h2>
 
-    <div class="resultados">
-    <div class="resultado">
+     <div class="resultados">
+     <div class="resultado">
      <form action="gravar_produto.php" method="post">
         
      <label for="produto">Produto</label>
@@ -104,52 +113,60 @@
 
          <button type="submit">Salvar</button>
 
-     </form>
-    </div>
-    </div>
-    </section>
-    <section class="resultados">
+</form>
+</div>
+</div>
+</section>
+  <section class="resultados">
         <div class="resultado">
             <?php 
             include "conexao.php";
 
             $sql = "SELECT * FROM produtos";
             $stmt = $conexao->prepare($sql);
-            $stmt->execute();
+            $stmt->execute(); 
 
+              // cabecalho da tabela
             if($stmt->rowCount()>0){
-                echo"<div class='cabecalho'>";
-                echo"<div class='cel_cabecalho'>ID</div>";
-                echo"<div class='cel_cabecalho'>Produto</div>";
-                echo"<div class='cel_cabecalho'>Quantidade</div>";
-                echo"<div class='cel_cabecalho'>Valor</div>";
-                echo"<div class='cel_cabecalho'>Ações</div>";
+                echo "<div class='cabecalho'>";
+                echo "<div class='cel_cabecalho'>ID</div>";
+                echo "<div class='cel_cabecalho'>Produto</div>";
+                echo "<div class='cel_cabecalho'>Quantidade</div>";
+                echo "<div class='cel_cabecalho'>Valor</div>";
+                echo "<div class='cel_cabecalho'>Ações</div>";
                 echo "</div>";
 
-
+               // linhas dos produtos
             while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
-                  echo"<div class='cabecalho'>";
-                  echo"<div class='cel_cabecalho'>{$linha['id']}</div>";
-                  echo"<div class='cel_cabecalho'>{$linha['nome']}</div>";
-                  echo"<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
-                  echo"<div class='cel_cabecalho'>{$linha['valor']}</div>";
+                  echo "<div class='linha'>";
+                  echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
+                  echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
+                  echo "<div class='cel_cabecalho'>{$linha['quantidade']}</div>";
+                  echo "<div class='cel_cabecalho'>{$linha['valor']}</div>";
+
+                  echo"<div class='cel_cabecalho'>";
         
-                  echo "<form action='editar_produto.php' method'get'>
-                  <input type='hidden' name='id' value='{$linha['id']}'>";
-
-                  echo "<div class='cel_cabecalho'><button type='submit'>Editar</button><button>Deletar</button></div>";
-
+                  echo "<form action='editar_produto.php' method'get' style='display;inline;'>";
+                  echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                  echo "<button type='submit'>Editar</button>";
                   echo "</form>";
-                  echo "</div>";
-            
-            }
-        }else{
-                echo"<p>nao tem registro</p>";
-            }
 
+                  echo "<form action='deletar_produto.php' method='post' style='display:inline;' onsubmit=\"return confirm('Deseja realmente deletar este produto?);\">";
+                  echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                  echo "<button type='submit'>Deletar</button>";
+                  echo "</form>";
 
+                  echo"</div>";
+
+                echo"</div>";
+
+              
+            }
+            }else{
+                echo"<p>nao tem registro.</p>";
+            }
             ?>
             </div>
             </section>
-</body>
-</html>
+            </body>
+            </html>

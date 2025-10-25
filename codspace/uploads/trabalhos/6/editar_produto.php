@@ -41,7 +41,7 @@
             width: 350px;
         }
         body {
-            background: rgb(44, 72, 109);
+             background: linear-gradient(to left, rgba(155 205 155), rgba(110 139 61));
             font-family: Verdana;
             flex-direction: column;
             display: flex;
@@ -78,6 +78,30 @@
         .resultado {
             margin-top: 20px;
         }
+        .form-box {
+            background-color: rgba(255, 255, 255, 0.83); 
+            border: 2px solid rgba(11, 88, 41, 1); 
+            border-radius: 10px; 
+            padding: 20px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            margin: 20px;
+        }
+        
+         button {
+            background-color: rgb(105 139 105);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.3s ease;
+            margin-left: 5px;
+        }
+
+        button:hover {
+            background-color: rgba(45, 68, 50, 1);
+}
 
         
        
@@ -88,7 +112,8 @@
     <section>
         <div class="container">
             
-        <form action="" method="post">    
+        <form action="" method="post">
+            <div class="form-box">   
                     <input type="text" value="<?php echo $_GET['id'];?>" id="id" name="id">
 
                     <label for="produto">Produto</label>
@@ -102,7 +127,7 @@
                       
                     <button type="submit">Salvar</button>
                 </form>
-                
+                </div>
         </div>
     </section>
     </body>

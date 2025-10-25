@@ -36,68 +36,101 @@ include 'conexao.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-        }
-         .container {
-            display: grid;
-            grid-template-columns: 1fr 4fr;
-            gap: 5px;
-         }
+   <style>
+    
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    font-family: "Comic Sans MS", "Courier New", sans-serif;
+    background: radial-gradient(circle at center, #ff00ff, #000000);
+    color: #00ff9d;
+    text-shadow: 0 0 5px #00ffff, 0 0 15px #ff00ff;
+    animation: bgShift 10s infinite alternate ease-in-out;
+}
 
-        .meio {
-            display: flex;
-            justify-content: center;
-            padding-top: 20px;
-        }
-        input {
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-            padding: 2px;
-        }
-        select {
-             width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 10px;
-            padding: 2px;
-        }
-        form {
-            width: 300px;
-        }
-        input, select {
-            width: 100%;
-            padding: 5px;
-            font-size: 0,7rem;
-            box-sizing: border-box;
-        }
-        .cabecalho {
-            display: flex;
-            padding: 0 20px;
-            margin-left: 20px
-        }
-        .cel_cabecalho {
-            width: 250px;
-            border: 1px solid black;
-            margin-left: 20px
-        }
-        section {
-            justify-content: center;
-        }
-         body {
+/* 💥 fundo que pulsa e muda de cor */
+@keyframes bgShift {
+    0% { background: linear-gradient(45deg, #ff00ff, #000000); }
+    50% { background: linear-gradient(45deg, #00ffff, #111111); }
+    100% { background: linear-gradient(45deg, #ff0080, #000000); }
+}
 
-            height: 100vh;
-            font-family: sans-serif;
-            background: linear-gradient( #273FF5, #27F584        )
-        }
+.container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #ff00ff;
+    box-shadow: 0 0 25px #ff00ff;
+    padding: 20px;
+    border-radius: 10px;
+}
 
-    </style>
+.meio {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+form {
+    width: 300px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0 15px #00ffff, 0 0 25px #ff00ff inset;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.9rem;
+    border: 2px solid #ff00ff;
+    border-radius: 5px;
+    background: #0a0a0a;
+    color: #00ffff;
+    text-shadow: 0 0 5px #00ffff;
+    margin-bottom: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+input:focus, select:focus {
+    outline: none;
+    background: #1a1a1a;
+    border-color: #00ff9d;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+}
+
+.cabecalho {
+    display: flex;
+    padding: 0 20px;
+    margin-left: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ff00ff;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+.cel_cabecalho {
+    width: 250px;
+    border: 2px dashed #00ffff;
+    margin-left: 20px;
+    background: rgba(255, 0, 255, 0.1);
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    color: #00ff9d;
+    box-shadow: 0 0 15px #00ffff;
+}
+
+section {
+    justify-content: center;
+}
+</style>
     <body>
 
         <div class="container">
