@@ -1,18 +1,147 @@
-<html>
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
 <head>
-<title> inicio </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background: rgb(112, 112, 112);
+            height: 50px;
+            color: white;
+        }
+
+        .texto h2{
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .organiza {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+        }
+
+        body {
+            height: 100vh;
+            background: lightgray;
+            font-family: sans-serif;
+        }
+
+        .texto {
+            width: 800px;
+            text-align: justify;
+        }
+
+        .trabalhos {
+            width: 120px;
+            height: 180px;
+            border: solid 1px black;
+            margin: 10px;
+            background: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .trabalhos:hover { 
+            margin-top: -10px;
+            transition: 0.3s ease-in-out;
+        }
+    </style>
 </head>
-<FRAMESET ROWS="20$,80%" border=2>
-<FRAME SRC="cabecalho.html">
-<frameset cols=235px, 70% border=1>
-<FRAME SRC="menu.html">
-<FRAME SRC="conteudo.html" name="conteudo">
-</frameset>
-<noframes>
+
 <body>
+    <header>
+        <h2> Ana </h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
 
-
+    <div class="container organiza">
+        <div class="trabalhos">
+            <a href="aula2409.html">Aula 24/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2509.php">Aula 25/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2609.php">Aula 26/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2609_exercicio.php">Exercicio</a>
+        </div>
+		<div class="trabalhos">
+            <a href="aula2909.php">Aula 29/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula3009.php">Aula 30/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0710.php">Aula 07/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0810.php">Aula 08/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0910.php">Aula 09/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula1010.php">Aula 10/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="listar_arquivos.php">Listar Arquivos</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_usuario.php">Cadastrar Usuario</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_produto.php">Cadastrar Produto</a>
+        </div>
+        <div class="trabalhos">
+            <a href="pesquisa.php">Pesquisa</a>
+        </div>
+    </div>
+    
 </body>
-</noframes>
-</FRAMESET>
 </html>

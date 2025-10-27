@@ -1,59 +1,117 @@
-
+/* ------------------------------
+   RESET & BASE
+------------------------------ */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
+:root {
+    --primary-color: #007bff;
+    --primary-hover: #0069d9;
+    --success-color: #28a745;
+    --success-hover: #218838;
+    --warning-color: #ffc107;
+    --warning-hover: #e0a800;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --border-color: #ccc;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+    --transition: all 0.2s ease-in-out;
 }
 
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
 
+/* ------------------------------
+   CONTAINER
+------------------------------ */
 .container {
     width: 100%;
     max-width: 600px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 25px;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
 }
 
+/* ------------------------------
+   FORMULÁRIO
+------------------------------ */
 label {
-    font-weight: bold;
+    font-weight: 600;
     display: block;
-    margin: 10px 0 5px;
+    margin-bottom: 6px;
+    color: var(--text-color);
 }
 
 input[type="text"],
 input[type="number"] {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     margin-bottom: 15px;
     font-size: 1rem;
+    transition: var(--transition);
 }
 
+input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* ------------------------------
+   BOTÕES
+------------------------------ */
 button[type="submit"] {
     width: 100%;
-    padding: 10px;
-    background-color: #28a745;
+    padding: 12px;
+    background-color: var(--success-color);
     color: #fff;
     border: none;
     border-radius: 4px;
     font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: var(--transition);
 }
 
 button[type="submit"]:hover {
-    background-color: #218838;
+    background-color: var(--success-hover);
 }
 
+button {
+    padding: 6px 12px;
+    border: none;
+    background-color: var(--warning-color);
+    color: #fff;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+button:hover {
+    background-color: var(--warning-hover);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* ------------------------------
+   RESULTADOS
+------------------------------ */
 .resultados {
     margin-top: 40px;
 }
@@ -61,41 +119,38 @@ button[type="submit"]:hover {
 .cabecalho {
     display: flex;
     justify-content: space-between;
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: #fff;
     font-size: 0.9rem;
     font-weight: bold;
-    padding: 10px;
+    padding: 12px;
     border-radius: 4px;
-}
-
-.cel_cabecalho {
-    width: 20%;
     text-align: center;
 }
 
-.cabecalho div {
-    padding: 10px 0;
+.cel_cabecalho {
+    flex: 1;
 }
 
 .resultado {
     background-color: #fff;
     margin-top: 10px;
-    border-radius: 8px;
+    border-radius: var(--radius);
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
 }
 
 .resultado .cabecalho {
-    background-color: #f1f1f1;
+    background-color: #f8f9fa;
     font-size: 0.85rem;
-    color: #333;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .resultado .cabecalho div {
+    flex: 1;
     text-align: center;
-    padding: 12px;
-    border-bottom: 1px solid #ccc;
+    padding: 10px;
 }
 
 .resultado div {
@@ -109,37 +164,21 @@ button[type="submit"]:hover {
     border-bottom: none;
 }
 
-button {
-    padding: 6px 12px;
-    border: none;
-    background-color: #ffc107;
-    color: #fff;
-    font-size: 0.85rem;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-button:hover {
-    background-color: #e0a800;
-}
-
-button:active {
-    background-color: #c69500;
-}
-
-
+/* ------------------------------
+   RESPONSIVIDADE
+------------------------------ */
 @media (max-width: 768px) {
     .cabecalho {
         flex-direction: column;
-        text-align: center;
+        gap: 8px;
     }
 
     .cel_cabecalho {
         width: 100%;
-        margin-bottom: 10px;
     }
 
     .container {
         width: 90%;
+        padding: 20px;
     }
 }

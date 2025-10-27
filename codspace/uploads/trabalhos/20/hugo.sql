@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 23-Out-2025 às 21:53
+-- Tempo de geração: 27-Out-2025 às 21:11
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -63,6 +63,29 @@ INSERT INTO `endereco` (`id`, `tipo`, `nome`, `numero`, `bairro`, `cidade`, `est
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `materias`
+--
+
+CREATE TABLE `materias` (
+  `id` int(11) NOT NULL,
+  `id_professores` int(11) DEFAULT NULL,
+  `materia` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `materias`
+--
+
+INSERT INTO `materias` (`id`, `id_professores`, `materia`) VALUES
+(1, 1, 'Auxiliar de informatica'),
+(2, 1, 'Progamador de sistemas'),
+(3, 2, 'Mecanica'),
+(4, 3, 'Administração'),
+(7, 3, 'jabuticaba');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `produtos`
 --
 
@@ -79,7 +102,31 @@ CREATE TABLE `produtos` (
 
 INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `valor`) VALUES
 (4, 'pc gamer', 1, 4500),
-(5, 'teclado da Redragon', 1, 249);
+(5, 'teclado da Redragon', 1, 249),
+(6, 'Clube Fortnite', 1, 38),
+(7, NULL, NULL, NULL),
+(8, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `professores`
+--
+
+CREATE TABLE `professores` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `professores`
+--
+
+INSERT INTO `professores` (`id`, `nome`) VALUES
+(1, 'Elcio Sava'),
+(2, 'Gleyson'),
+(3, 'Alayde'),
+(33, 'jabuticaba');
 
 -- --------------------------------------------------------
 
@@ -123,9 +170,22 @@ ALTER TABLE `endereco`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `materias`
+--
+ALTER TABLE `materias`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_professores` (`id_professores`);
+
+--
 -- Índices para tabela `produtos`
 --
 ALTER TABLE `produtos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `professores`
+--
+ALTER TABLE `professores`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -151,16 +211,38 @@ ALTER TABLE `endereco`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de tabela `materias`
+--
+ALTER TABLE `materias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de tabela `professores`
+--
+ALTER TABLE `professores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `materias`
+--
+ALTER TABLE `materias`
+  ADD CONSTRAINT `materias_ibfk_1` FOREIGN KEY (`id_professores`) REFERENCES `professores` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

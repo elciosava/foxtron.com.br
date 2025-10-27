@@ -30,8 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="estilo2.css" />
-    <title>Atualizar Produto</title>
+    <link rel="stylesheet" href="estilo2.css" /> 
+     <title>Atualizar Produto</title>
     <style>
         .cabecalho {
             display: flex;
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <section>
         <div class="container">
             <form action="" method="post">
-                <input type="text" value="<?php echo $_GET['$id']; ?>" id="id" name="id">
+                <input type="text" value="<?php echo $_GET['id']; ?>" id="id" name="id">
 
                 <label for="id">ID do Produto</label>
                 <input type="number" name="id" id="id" required />

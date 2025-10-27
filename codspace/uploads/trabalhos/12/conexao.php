@@ -2,13 +2,25 @@
     $local = 'localhost';
     $banco = 'pedropacheco';
     $usuario = 'root';
-    $senha = '';
+    $senha ='';
 
-    try{
-        $conexao = new PDO("mysql:host=$local;dbname=$banco",$usuario,$senha);
-        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }catch (PDOException $e){
-        echo "Não deu boa!! " . $e->getMessage();
-    }
-    
+
+        try {
+            $conexao = new PDO("mysql:host=$local;dbname=$banco", $usuario, $senha);
+            $conexao->setAtributte(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }catch (PDOException $e){
+            die("deu ruim coisa!!" . $e->getmessage());
+        } 
+
 ?>
+
+
+
+
+
+
+
+SELECT professores.nome, materias.materia
+FROM `professores` AS professores INNER JOIN
+ materias AS materias WHERE professores.id = 
+ materias.id_professores;
