@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Out-2025 às 21:11
+-- Tempo de geração: 28-Out-2025 às 21:08
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -81,7 +81,8 @@ INSERT INTO `materias` (`id`, `id_professores`, `materia`) VALUES
 (2, 1, 'Progamador de sistemas'),
 (3, 2, 'Mecanica'),
 (4, 3, 'Administração'),
-(7, 3, 'jabuticaba');
+(7, 3, 'jabuticaba'),
+(9, 34, 'matematica');
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,7 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 (1, 'Elcio Sava'),
 (2, 'Gleyson'),
 (3, 'Alayde'),
-(33, 'jabuticaba');
+(34, 'Hugo');
 
 -- --------------------------------------------------------
 
@@ -214,7 +215,7 @@ ALTER TABLE `endereco`
 -- AUTO_INCREMENT de tabela `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -226,7 +227,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

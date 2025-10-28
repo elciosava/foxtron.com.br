@@ -35,105 +35,226 @@ $professores = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Cadastrar Professor</title>
     <style>
-    /* Geral */
-    body {
-        font-family: 'Arial', sans-serif;
-        background: #f0f4f8;
-        padding: 40px;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        color: #333;
-    }
+ /* ============================================================
+   🌌 Estilo Galáxia Sofisticado
+============================================================ */
 
-    /* Formulário */
-    form {
-        margin-bottom: 30px;
-        background: #ffffff;
-        padding: 25px 30px;
-        border-radius: 12px;
-        width: 320px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        transition: transform 0.2s ease;
-    }
+/* ---------- Reset Básico ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    form:hover {
-        transform: translateY(-2px);
-    }
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
 
-    /* Inputs */
-    input[type="text"] {
-        width: 100%;
-        padding: 10px 12px;
-        margin-bottom: 12px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 14px;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
+body {
+  font-family: "Inter", "Manrope", "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0d0d2b, #1a1a40, #2b0b3d); /* fundo galáctico */
+  color: #e0e0ff;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 60px 20px;
+  min-height: 100vh;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
 
-    input[type="text"]:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-        outline: none;
-    }
+/* efeito de estrelas sutis */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(white, transparent 2px) repeat;
+  background-size: 50px 50px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
 
-    /* Botão */
-    button {
-        width: 100%;
-        padding: 10px 0;
-        background: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 15px;
-        font-weight: bold;
-        transition: background 0.3s ease, transform 0.2s ease;
-    }
 
-    button:hover {
-        background: #0056b3;
-        transform: translateY(-1px);
-    }
+:root {
+  --primary: #7c3aed;    
+  --primary-hover: #9333ea;
+  --surface: rgba(30, 0, 60, 0.7);
+  --surface-alt: rgba(50, 0, 90, 0.6); 
+  --border: rgba(255, 255, 255, 0.2);
+  --muted: #d0d0ff;
+  --radius: 14px;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --transition: 0.25s ease;
+}
 
-    /* Tabela */
-    table {
-        border-collapse: collapse;
-        width: 60%;
-        background: #ffffff;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
 
-    th, td {
-        border: 1px solid #e0e0e0;
-        padding: 12px 15px;
-        text-align: left;
-        font-size: 14px;
-    }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  color: #e0e0ff;
+}
 
-    th {
-        background: #f7f9fc;
-        font-weight: 600;
-    }
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
 
-    tr:nth-child(even) {
-        background: #f9f9f9;
-    }
 
-    tr:hover {
-        background: #e6f0ff;
-    }
+form {
+  composes: card;
+  width: 380px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-    /* Responsividade */
-    @media (max-width: 768px) {
-        form, table {
-            width: 90%;
-        }
-    }
+form h2 {
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+label {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05); 
+  color: #e0e0ff;
+  transition: var(--transition);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 4px rgba(124, 58, 173, 0.2);
+  outline: none;
+  color: #fff;
+}
+
+
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 16px rgba(124, 58, 173, 0.25);
+}
+
+button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+
+table {
+  width: 90%;
+  max-width: 900px;
+  margin-top: 60px;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  color: #e0e0ff;
+}
+
+thead {
+  background: var(--surface-alt);
+}
+
+th,
+td {
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  font-weight: 600;
+  color: #dcdcff;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+tr:nth-child(even) td {
+  background: rgba(50, 0, 90, 0.5); 
+}
+
+tr:hover td {
+  background: rgba(124, 58, 173, 0.2); 
+  transition: background 0.2s ease;
+}
+
+
+@media (max-width: 768px) {
+  form {
+    width: 100%;
+    padding: 28px 22px;
+  }
+
+  table {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 10px 12px;
+  }
+}
+
+
+::selection {
+  background: var(--primary);
+  color: #fff;
+}
+
+input:disabled,
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
 </style>
 
 </head>

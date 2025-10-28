@@ -1,39 +1,146 @@
-<?php include('conexao.php'); ?>
-<link rel="stylesheet" href="estilo.css">
-
-<div class="container">
-<h2>Cadastrar Matéria</h2>
-<form method="POST">
-    <label>Professor:</label>
-    <select name="id_professores" required>
-        <option value="">Selecione</option>
-        <?php
-        $result = $conn->query("SELECT * FROM professores");
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value='{$row['id']}'>{$row['nome']}</option>";
-        }
-        ?>
-    </select>
-
-    <label>Nome da Matéria:</label>
-    <input type="text" name="materia" required>
-    <input type="submit" name="salvar" value="Cadastrar">
-</form>
-
 <?php
-if (isset($_POST['salvar'])) {
-    $id_professores = $_POST['id_professores'];
-    $materia = $_POST['materia'];
+ include 'conexao.php';
 
-    $sql = "INSERT INTO materia (id_professores, materia) VALUES ('$id_professores', '$materia')";
-    if ($conn->query($sql) === TRUE) {
-        echo "<p>✅ Matéria cadastrada com sucesso!</p>";
-    } else {
-        echo "<p>❌ Erro: " . $conn->error . "</p>";
-    }
+ $sql = "SELECT * FROM `professores`";
+ $stmt = $conexao->prepare($sql);
+ $stmt->execute();
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $materia = $_POST['materia'];
+    $id_professor = $_POST['professor'];
+
+    $sql = "INSERT INTO `materias` (materia, id_professores)
+    VALUES (:materia, :id_professor)";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bindParam(':materia', $materia);
+    $stmt->bindParam(':id_professor', $id_professor);
+    $stmt->execute();
+
+if ($stmt->execute()){
+    header('Location:cadastrar_materia.php');
+    exit();
+}else{
+    echo "Erro ao cadastrar materia.";
 }
+}
+
+
+
+
+
+
+
+
+
+
 ?>
-<div class="voltar">
-  <a href="listar_materias.php" class="botao">Ver Matérias</a>
-</div>
-</div>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+      * {
+            padding:0;
+            margin:0;
+        }
+        form {
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        body {          
+            background: linear-gradient(to top, rgba(255 62 150), rgba(238 201 0));
+            font-family: Verdana;
+            flex-direction: column;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        input,select {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cabecalho  {
+            display: flex;
+            padding: 0 20px;
+            border: 1px solid black;  
+            width: 1000px; 
+        }
+        .cel_cabecalho {
+            width: 180px;
+            margin: 5px; 
+        }
+        .linha {
+            display: flex;
+            border: solid 1px black;
+            padding: 5px 10px;
+        }
+        .resultado {
+            margin-top: 20px;
+        }
+         .form-box {
+            background-color: rgba(255, 255, 255, 0.83); 
+            border: 2px solid rgba(0, 0, 0, 1); 
+            border-radius: 10px; 
+            padding: 20px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            margin: 20px;
+        }
+        button {
+            background-color: rgba(0, 0, 0, 1);
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.3s ease;
+          
+        }
+        button:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+    </style>
+</head>
+<body>
+    <section class="inicio">
+        <div class="container">
+            <div class="form-box">
+                <h2>Materias</h2>
+            <form action="" method="post">
+               <label for="materia">Materias</label>
+               <input type="text" name="materia" id="">
+               <select name="professor" id="">
+                <?php
+                while($professor = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    echo "<option value='{$professor['id']}'>{$professor['nome']}</option>";
+                }
+                ?>
+               </select>
+               <button type="submit">Salvar</button>
+
+            </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

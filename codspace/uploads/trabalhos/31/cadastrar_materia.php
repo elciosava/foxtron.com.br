@@ -8,6 +8,25 @@ $sql = "SELECT * FROM `professores`";
 $stmt = $conexao->prepare($sql);
 $stmt->execute();
 
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $materias = $_POST['materias'];
+    $id_professores = $_POST['id_professores'];
+
+    $sql = "INSERT INTO materias (materias, id_professoeres)
+    VALUES (:materias, :id_professores)";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bindParam(':materias', $materias);
+    $stmt->bindParam(':id_professores', $id_professores);
+
+    if ($stmt->execute()){
+        header("Location:cadastrar_materias.php");
+        exit;
+    }else{
+        echo "nao deu certo!";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>

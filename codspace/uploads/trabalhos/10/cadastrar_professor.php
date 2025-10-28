@@ -2,26 +2,30 @@
 include 'conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $nome = $_POST['nome'];
+    $nome = $_POST['professor'];
 
-    $sql = "INSERT INTO professores (nome)
-             VALUES (:nome)";
-
-    $stmt = $conexao->prepare($sql);   
-    $stmt->bindParam('nome', $nome);
-
+    $sql = "INSERT INTO professores (nome) 
+            VALUES (:nome)";
+    
+    $stmt = $conexao->prepare($sql);  
+    $stmt->bindParam(':nome', $nome); 
+    
     if ($stmt->execute()){
-        header("Location:cadastrar_professor.php");
+        header("Location: cadastrar_professor.php");
         exit;
-    }else{
-        echo "não deu boa!";
+    } else {
+        echo "Erro ao salvar: " . implode(", ", $stmt->errorInfo());
     }
-}
+    }
 
+$sql_professores = "SELECT * FROM `professores`";
+$stmt_professores = $conexao->prepare($sql_professores);
+$stmt_professores->execute();
+$professores = $stmt_professores->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,12 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 </head>
 <body>
     <section>
-        <div class="container">
-            <label for="nome">Professor</label>
-                <input type="text" name="nome" id="nome" required>
-                <button class="submit">Salvar</button>
-            </form>
-        </div>
+        <form action="" method="post">
+            <label for="professor">Professor</label>
+            <input type="text" name="professor" id="professor" required>
+            <button type="submit" class="submit">Salvar</button>
+        </form>
     </section>
     
 </body>

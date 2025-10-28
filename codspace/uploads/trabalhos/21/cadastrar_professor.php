@@ -1,28 +1,6 @@
 <?php
 include 'conexao.php';
-
-// Inserir novo professor
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!empty($_POST['nome'])) {
-        $nome = trim($_POST['nome']);
-
-        $sql = "INSERT INTO professores (nome) VALUES (:nome)";
-        $stmt = $conexao->prepare($sql);
-        $stmt->bindParam(':nome', $nome);
-
-        if ($stmt->execute()) {
-            // Redireciona para limpar o POST e atualizar a lista
-            header("Location: cadastrar_professor.php");
-            exit;
-        } else {
-            echo "<p style='color:red;'>Erro ao cadastrar professor.</p>";
-        }
-    } else {
-        echo "<p style='color:red;'>O campo nome não pode estar vazio.</p>";
-    }
-}
-
-// Buscar todos os professores
+    
 $sql = "SELECT * FROM professores ORDER BY id DESC";
 $stmt = $conexao->prepare($sql);
 $stmt->execute();

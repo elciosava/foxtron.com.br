@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -6,179 +7,195 @@
 <title>Helen Vitoria</title>
 <style>
 * {
-margin: 0;
-padding: 0;
-}
-
-.container {
-display: grid;
-justify-content: center;
-align-items: center;
-height: 100vh;
-background-color: rgb(212, 158, 205);
-}
-
-li {
-display: inline-block;
-margin: 0 10px;
-}
-
-.imagen img {
-width: 380px;
-margin-right: 380px;
-border-radius: 50%;
-border: 10px solid #f7f7f7;
-justify-content: center;
-align-items: center;
-
-}
-
-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 5px 5px 5px 5px;
-background-color: rgb(240, 243, 226);
-
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-height: 100vh;
-background: rgb(240, 243, 226);
-
+    font-family:sans-serif;
+    background-color: rgb(240, 243, 226);
+    min-height: 100vh;
 }
 
-.icones {
-display: flex;
-justify-content: center;
-align-items: center;
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(240, 243, 226);
+    border-bottom: 1px solid #ccc;
 }
 
-.icones img {
-width: 70px;
-justify-content: center;
-align-items: center;
+header h2 {
+    color: rebeccapurple;
 }
-.container{
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
+
+header nav ul {
+    list-style: none;
+    display: flex;
 }
-.organiza{
-display: grid;
-grid-template-columns: repeat(8, 1fr);
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+/* Seção principal */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 50px 20px;
+    background-color: rgb(199, 157, 201);
+}
+
+/* Imagem */
+.imagen img {
+    width: 380px;
+    border-radius: 50%;
+    border: 10px solid #f7f7f7;
+}
+
+/* Texto */
+.texto {
+    max-width: 400px;
 }
 
 .texto h2 {
-
-color: rebeccapurple;
-margin-bottom: 10px;
-
+    color: rebeccapurple;
+    margin-bottom: 10px;
 }
 
-.texto {
-width: 8000;
+.texto p {
+    margin-bottom: 20px;
+}
+
+/* Ícones */
+.icones {
+    display: flex;
+    gap: 15px;
+}
+
+.icones img {
+    width: 70px;
+}
+
+/* Trabalhos */
+.trabalhos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    padding: 20px;
+    background-color: rgb(199, 157, 201);
 }
 
 .trabalho {
-width: 120px;
-height: 180px;
-border: solid 1px black;
-margin: 10px;
-background: rgb(248, 217, 171);
-display:flex;
-align-items: center;
-justify-content: center;
-
+    width: 120px;
+    height: 180px;
+    border: 1px solid rebeccapurple;
+    background: rgb(248, 217, 171);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-align: center;
 }
 
 .trabalho:hover {
-margin-top: -10px;
+    margin-top: -10px;
+    cursor: pointer;
 }
 
-
+.trabalho a {
+    text-decoration: none;
+    color: rgb(50, 7, 63);
+}
 </style>
 </head>
 
 <body>
 <header>
-<h2>Helen Vitoria</h2>
-<nav>
-<ul>
-<li>Inicio</li>
-<li>Sobre</li>
-<li>Contato</li>
-</ul>
-</nav>
+    <h2>Helen Vitoria</h2>
+    <nav>
+        <ul>
+            <li>Inicio</li>
+            <li>Sobre</li>
+            <li>Contato</li>
+        </ul>
+    </nav>
 </header>
+
 <section class="inicio">
-<div class="capa"></div>
-
+    <div class="container">
+        <div class="imagen">
+            <img src="OIP.jpg" alt="Helen Vitoria">
+        </div>
+        <div class="texto">
+            <h2>Helen Vitoria</h2>
+            <p>NÃO SE MISTURE COM ESSA GENTALHA!!😒</p>
+            <div class="icones">
+                <img src="instagram-brands-solid-full.svg" alt="Instagram">
+                <img src="tiktok-brands-solid-full.svg" alt="TikTok">
+                <img src="whatsapp-brands-solid-full.svg" alt="WhatsApp">
+            </div>
+        </div>
+    </div>
 </section>
-</header>
-<div class="container">
-<div class="imagen">
-<img src="OIP.jpg" alt="">
-</div>
-<div class="texto">
-<h2>Helen Vitoria</h2>
-<p>NÃO SE MISTURE COM ESSA GENTALHA!!😒
-</p>
-<div class="icones">
-<img src="instagram-brands-solid-full.svg" alt="instagram">
-<img src="tiktok-brands-solid-full.svg" alt="tiktok">
-<img src="whatsapp-brands-solid-full.svg" alt="whatsapp">
-</div>
-</div>
-</div>
-<div class="container">
-<div class="trabalho">
-<a href="aula2409.html">Aula 24/09/2025</a>
-</div>
-<div class="trabalho">
-<a href="aula2509.php">Aula 25/09/2025</a>
-</div>
-<div class="trabalho">
-<a href="aula2609.php">Aula 26/09/2025</a>
-</div>
-<div class="exercisio">
-<a href="mercado.php"></a>
-</div>
-<div class="trabalho">
-<a href="aula2909.php">Aula 29/09/2025 </a>
-</div>
-<div class="trabalho">
-<a href="aula3009.php">Aula 30/09/2025 </a>
-</div>
-<div class="trabalho">
-<a href="aula710.php">Aula 07/10/2025 </a>
-</div>
-<div class="trabalho">
-<a href="aula0810.php">Aula 08/10/2025 </a>
-</div>
-<div class="trabalho">
-<a href="aula0910.php">Aula 09/10/2025 </a>
-</div>
-<div class="trabalho">
-<a href="aula1010.php">Aula 10/10/2025 </a>
-</div>
-<div class="trabalho">
-<a href="listar_arquivos.php">Listar Arquivos</a>
-</div>
-<div class="trabalho">
-<a href="cadastrarusuario.php">Cadastrar Usuario</a>
-</div>
-<div class="trabalho">
-<a href="cadastrar_produto.php">Cadastrar Produto</a>
-</div>
-<div class="trabalho">
-<a href="pesquisa.php">Pesquisa</a>
-</div>
-<div class="trabalho">
-<a href="cadastrar_cliente.php">Cadastrar Cliente</a>
-</div>
 
+<section class="trabalhos-container">
+    <div class="trabalho">
+        <a href="aula2409.html">Aula 24/09/2025</a></div>
+
+    <div class="trabalho">
+        <a href="aula2509.php">Aula 25/09/2025</a></div>
+
+    <div class="trabalho">
+        <a href="aula2609.php">Aula 26/09/2025</a></div>
+
+    <div class="trabalho">
+        <a href="aula2909.php">Aula 29/09/2025</a></div>
+
+    <div class="trabalho">
+        <a href="aula3009.php">Aula 30/09/2025</a></div>
+
+    <div class="trabalho">
+        <a href="aula710.php">Aula 07/10/2025</a></div>
+
+    <div class="trabalho">
+        <a href="aula0810.php">Aula 08/10/2025</a></div>
+
+    <div class="trabalho">
+        <a href="aula0910.php">Aula 09/10/2025</a></div>
+
+    <div class="trabalho">
+        <a href="aula1010.php">Aula 10/10/2025</a></div>
+
+    <div class="trabalho">
+        <a href="listar_arquivos.php">Listar Arquivos</a></div>
+
+    <div class="trabalho">
+        <a href="cadastrarusuario.php">Cadastrar Usuario</a></div>
+
+    <div class="trabalho">
+        <a href="cadastrar_produto.php">Cadastrar Produto</a></div>
+    
+    <div class="trabalho">
+        <a href="pesquisa.php">Pesquisa</a></div>
+
+    <div class="trabalho">
+        <a href="cadastrar_cliente.php">Cadastrar Cliente</a></div>
+
+    <div class="trabalho">
+        <a href="cadastrar_professor.php">Cadastrar Professor</a></div>
+
+    <div class="trabalho">
+        <a href="cadastrar_materia.php">Cadastrar Matéria</a></div>
+
+    <div class="trabalho">
+        <a href="aulas.php">Aulas</a></div>
+</section>
 
 </body>
-</body>
+</html>

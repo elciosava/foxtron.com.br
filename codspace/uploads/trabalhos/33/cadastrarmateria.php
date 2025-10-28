@@ -19,103 +19,96 @@ $stmt->execute();
     }
 
     body {
-      background-color: #FFB6C1;
-      font-family: Arial, sans-serif;
-      height: 100vh;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      padding: 20px;
     }
 
     .form-container {
-      background-color: #FFC0CB;
-      border-radius: 10px;
-      padding: 30px;
+      background-color: #fdfdfdff;
+      border-radius: 12px;
+      padding: 35px 30px;
       width: 100%;
-      max-width: 400px;
-      margin-bottom: 30px;
-      box-shadow: 4px 5px 30px #00000062;
+      max-width: 420px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
 
     h2 {
       text-align: center;
-      color: #ffffff;
-      margin-bottom: 20px;
-      font-size: 1.8rem;
+      color: #ee9ca7;
+      margin-bottom: 25px;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px #00000040;
     }
 
     label {
       display: block;
-      margin-top: 10px;
-      font-weight: bold;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #333;
     }
 
     input,
     select {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #FFC0CB;
-      border-radius: 5px;
-      font-size: 14px;
-      transition: 0.3s ease-out;
+      padding: 12px;
+      margin-top: 8px;
+      border: 1px solid #ffb6c1;
+      border-radius: 6px;
+      font-size: 15px;
+      background-color: #fff;
+      transition: border-color 0.3s;
     }
 
-    input:hover,
-    select:hover {
-      border: 1px solid #00000050;
-      transition: 0.3s ease-in;
+    input:focus,
+    select:focus {
+      border-color: #ff69b4;
+      outline: none;
     }
 
     button {
       width: 100%;
-      padding: 12px;
-      background-color: #ff69b4;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      padding: 14px;
+      background-color: #ee9ca7;
+      border: none;
+      border-radius: 6px;
       color: white;
       font-size: 16px;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: 0.3s ease-out;
-      font-weight: 600;
-    }
-
-    button:active {
-      background-color: #b8237a;
-      transition: 0.3s ease-in;
-    }
-
-    .resultados {
-      width: 100%;
-      max-width: 800px;
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 20px;
-    }
-
-    .cabecalho {
-      display: flex;
       font-weight: bold;
-      margin-bottom: 10px;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: background-color 0.3s;
     }
 
-    .cel_cabecalho {
-      flex: 1;
-      padding: 5px;
-      border-bottom: 1px solid #ccc;
+    button:hover {
+      background-color: #ce8791ff;
     }
   </style>
 </head>
 <body>
   <div class="form-container">
-    <h2>Cadastro de Matéria</h2>
-    <form action="cadastrarmateria.php" method="POST">
-      <label for="nome_materia">Nome da Matéria</label>
-      <input type="text" name="nome_materia" id="nome_materia">
+    <form action="" method="POST">
+      <h2>Cadastrar Matéria</h2>
 
-      <button type="submit">Cadastrar Matéria</button>
+      <label for="materia">Matéria:</label>
+      <input type="text" name="materia" id="materia" required />
+
+      <label for="professor">Professor:</label>
+      <select name="professor" id="professor" required>
+        <option value="" disabled selected>Selecione um professor</option>
+        <?php
+        while($professor = $stmt->fetch(PDO::FETCH_ASSOC)){
+            echo "<option value='{$professor['id']}'>{$professor['nome']}</option>";
+        }
+        ?>
+      </select>
+
+      <button type="submit">Cadastrar</button>
     </form>
   </div>
 </body>

@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -24,26 +25,28 @@
             justify-content: space-between;
             align-items: center;
             padding: 5px 20px;
-            background: rgb(112, 112, 112);
+            background: rgb(12, 12, 12);
             height: 50px;
-            color: white;
+            color: rgb(255, 255, 255);
+
         }
 
-        .texto h2{
+        .texto h2 {
             margin-bottom: 10px;
         }
 
         img {
-            width: 70px;
-            height: 70px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             margin-right: 15px;
         }
 
         .icones img {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
         }
+
 
         .container {
             display: flex;
@@ -51,44 +54,53 @@
             align-items: center;
             height: 100vh;
         }
-
         .organiza {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
+             display: grid;
+             grid-template-columns: repeat(8, 1fr);
         }
 
         body {
             height: 100vh;
-            background: lightgray;
-            font-family: sans-serif;
+            background-color: rgb(255, 255, 255);
+            font-family: Verdana;
+           
         }
 
         .texto {
             width: 800px;
-            text-align: justify;
         }
 
         .trabalhos {
-            width: 120px;
+            width: 130px;
             height: 180px;
             border: solid 1px black;
             margin: 10px;
-            background: rgb(255, 255, 255);
+            background: rgb(255, 253, 254);
             display: flex;
             justify-content: center;
             align-items: center;
+            
         }
 
-        .trabalhos:hover { 
+        .trabalhos:hover {
             margin-top: -10px;
             transition: 0.3s ease-in-out;
+        }
+
+         .trabalhos a {
+            text-align: center;
+            display: block;
+            width: 100%;
+            color: black;
+            text-decoration: none;
+
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h2> Ana </h2>
+        <h2>Ana</h2>
         <nav>
             <ul>
                 <li>Inicio</li>
@@ -97,7 +109,22 @@
             </ul>
         </nav>
     </header>
+    <div class="container">
+        <div class="imagem">
+            <img src="batman.webp" alt="">
+        </div>
+        <div class="texto">
+            <h2>Ana</h2>
+            <p>Aluno de Programação interessado em criar sites e sistemas modernos com boa performance e usabilidade.
+            </p>
+            <div class="icones">
+                <img src="discord-brands-solid-full.svg" alt="">
+                <img src="instagram-brands-solid-full.svg" alt="">
+                <img src="whatsapp-brands-solid-full.svg" alt="">
+            </div>
+        </div>
 
+    </div>
     <div class="container organiza">
         <div class="trabalhos">
             <a href="aula2409.html">Aula 24/09/25</a>
@@ -109,9 +136,9 @@
             <a href="aula2609.php">Aula 26/09/25</a>
         </div>
         <div class="trabalhos">
-            <a href="aula2609_exercicio.php">Exercicio</a>
+            <a href="aula2609exercicico.php">Exercicio</a>
         </div>
-		<div class="trabalhos">
+        <div class="trabalhos">
             <a href="aula2909.php">Aula 29/09/25</a>
         </div>
         <div class="trabalhos">
@@ -126,22 +153,31 @@
         <div class="trabalhos">
             <a href="aula0910.php">Aula 09/10/25</a>
         </div>
-        <div class="trabalhos">
+         <div class="trabalhos">
             <a href="aula1010.php">Aula 10/10/25</a>
         </div>
-        <div class="trabalhos">
+         <div class="trabalhos">
             <a href="listar_arquivos.php">Listar Arquivos</a>
-        </div>
-        <div class="trabalhos">
-            <a href="cadastrar_usuario.php">Cadastrar Usuario</a>
-        </div>
-        <div class="trabalhos">
+         </div>
+         <div class="trabalhos">
+            <a href="cadastrarusuario.php">Cadastrar Usuario</a>
+         </div>
+         <div class="trabalhos">
             <a href="cadastrar_produto.php">Cadastrar Produto</a>
-        </div>
-        <div class="trabalhos">
-            <a href="pesquisa.php">Pesquisa</a>
+         </div>
+          <div class="trabalhos">
+            <a href="cadastrar_professor.php">Cadastrar Professor</a>
+          </div>
+          <div class="trabalhos">
+            <a href="cadastrar_materia.php">Cadastrar Materia</a>
+         </div>
+          <div class="trabalhos">
+            <a href="cadastrar_aulas.php"> Aulas </a>
+         </div>
+         
+
         </div>
     </div>
-    
 </body>
+
 </html>

@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             VALUES (:nome)";
           
     $stmt = $conexao->prepare($sql);
-    $stmt->bindParam('nome',$nome);
+    $stmt->bindParam(':nome',$nome);
 
     if ($stmt->execute()){
         header("Location:cadastra_professor.php");

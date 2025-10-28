@@ -1,25 +1,20 @@
 <?php
-include 'conexao.php';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $produto = $_POST['produto'];
-    $quantidade = $_POST['quantidade'];
-    $valor = $_POST['valor'];
+    $id_professores = $_POST['id_professores'];
+    $materia = $_POST['materia'];
 
-    $sql = "INSERT INTO professores (nome, quantidade, valor)
-             VALUES (:produto, :quantidade, :valor)";
-
-    $stmt = $conexao->prepare($sql);   
-    $stmt->bindParam('produto', $produto);
-    $stmt->bindParam('quantidade', $quantidade);
-    $stmt->bindParam('valor', $valor);
-
+    $sql = "INSERT INTO materias (materia, id_professores) 
+            VALUES (:materia, :id_professores)";
+    
+    $stmt = $conexao->prepare($sql);  
+    $stmt->bindParam(':materia', $materia); 
+    $stmt->bindParam(':id_professores', $id_professores);
+    
     if ($stmt->execute()){
-        header("Location:cadastrar_produto.php");
+        header("Location: gravar_materia.php");
         exit;
-    }else{
-        echo "não deu boa!";
+    } else {
+        echo "Erro ao salvar: " . implode(", ", $stmt->errorInfo());
     }
 }
-
 ?>

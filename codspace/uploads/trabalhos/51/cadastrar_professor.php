@@ -1,170 +1,114 @@
-<?php
 
+<?php
 include 'conexao.php';
 
-if($_SERVER['REQUEST_METHOD']== 'POST'){
-    $nome = $_POST['nome'];
-    
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = trim($_POST['nome']);
 
-    $sql = "INSERT INTO professores(nome)
-      VALUES (:nome)";
-
-        $stmt = $conexao->prepare($sql);
+    if ($nome != '') {
+        $stmt = $conexao->prepare("INSERT INTO professores (nome) VALUES (:nome)");
         $stmt->bindParam(':nome', $nome);
-        
-    if ($stmt->execute()) {
-    $mensagem = "Professor cadastrado com sucesso!";
-} else {
-    $mensagem = "Erro ao cadastrar o professor.";
-}
+
+        if ($stmt->execute()) {
+            $_SESSION['mensagem'] = "Professor cadastrado com sucesso!";
+        } else {
+            $_SESSION['mensagem'] = "Erro ao cadastrar professor.";
+        }
+    }
+
+    header("Location: cadastrar_professor.php");
+    exit;
 }
 
+$mensagem = '';
+if (!empty($_SESSION['mensagem'])) {
+    $mensagem = $_SESSION['mensagem'];
+    unset($_SESSION['mensagem']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <style>
-     <style>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #9adcf7, #2980b9);
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        body {
-          font-family: 'Segoe UI', Arial, sans-serif;
-          background: linear-gradient(135deg, #9adcf7ff, #2980b9);
-          margin: 0;
-          padding: 0;
-        }
-
-        .container {
-            max-width: 800px;
-            background: blue;
-            margin: 40px auto;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            text-align: center;
-            color: #000000ff;
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            color: #0984e3;
-            border-left: 5px solid #0984e3;
-            padding-left: 10px;
-        }
-
-        form {
-            background: #cfdee7ff;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            border: 1px solid #dfe6e9;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            color: #2d3436;
-            font-weight: bold;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #b2bec3;
-            border-radius: 6px;
-            font-size: 15px;
-            outline: none;
-            transition: 0.2s;
-        }
-
-        input:focus, select:focus {
-            border-color: #2173b1ff;
-            box-shadow: 0 0 5px rgba(9,132,227,0.3);
-        }
-
-        button {
-            margin-top: 15px;
-            background-color: #347decff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background-color: #7fb4e9ff;
-        }
-
-        .mensagem {
-            background: #cdfcffff;
-            color: #18ad57ff;
-            padding: 10px;
-            border-left: 4px solid #0984e3;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-top: 20px;
-        }
-
-        th {
-            background-color: #0984e3;
-            color: white;
-            padding: 10px;
-        }
-
-        td {
-            padding: 10px;
-            border-bottom: 1px solid #dfe6e9;
-        }
-
-        tr:hover {
-            background-color: #f1f2f6;
-        }
-
-        .footer {
-            text-align: center;
-            color: blue;
-            margin-top: 40px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-    </style>
+.container {
+  max-width: 600px;
+  background: #fff;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+h1 {
+  text-align: center;
+  color: #2d3436;
+}
+.mensagem {
+  background: #d4edda;
+  color: #155724;
+  padding: 10px;
+  border-left: 4px solid #28a745;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #b2bec3;
+  border-radius: 6px;
+}
+button {
+  margin-top: 15px;
+  background-color: #0984e3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+button:hover {
+  background-color: #74b9ff;
+}
+</style>
 </head>
 <body>
+<div class="container">
+  <h1>Cadastrar Professor 📚</h1>
 
-<h1>Sistema Escolar📚</h1>
-
-<?php if (!empty($mensagem)): ?>
+  <?php if ($mensagem): ?>
     <div class="mensagem"><?= $mensagem ?></div>
-<?php endif; ?>
+  <?php endif; ?>
 
-
-<h2>Cadastrar Professor</h2>
-<form method="post">
-    <input type="hidden" name="acao" value="cadastrar_professor.php">
-    <label>Nome:</label>
+  <form method="post">
+    <label>Nome do Professor:</label>
     <input type="text" name="nome" required>
+    <button type="submit">Cadastrar</button>
+  </form>
 
-    <button type="submit">Cadastrar Professor</button>
-</form>
+  <p style="text-align:center;margin-top:20px;">
+    <a href="cadastrar_materia.php">Ir para cadastro de matérias</a>
+  </p>
+</div>
 </body>
-    </html>
-
+</html>

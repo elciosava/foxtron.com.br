@@ -2,8 +2,28 @@
     include 'conexao.php';
 
     $sql = "SELECT * FROM `professores`";
+
     $stmt = $conexao->prepare($sql);
     $stmt->execute();
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $materias = $_POST['materia'];
+    $id_professor = $_POST['professor'];
+
+    $sql = "INSERT INTO materias (materia, id_professores)
+            VALUES (:materias, :id_professor)";
+
+    $stmt = $conexao->prepare($sql);
+    $stmt->bindParam(':materias', $materias);
+    $stmt->bindParam(':id_professor', $id_professor);
+
+    if ($stmt->execute()) {
+        header("Location:cadastrar_materia.php");
+        exit;
+    } else {
+        echo "não deu certo!!";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -80,6 +100,7 @@
 
                 <label for="materia">Materias</label>
                 <input type="text" name="materia" id="">
+
                 <select name="professor" id="">
                     <?php
                     while($professor = $stmt->fetch(PDO::FETCH_ASSOC)){

@@ -1,11 +1,30 @@
 <?php
-    include 'conexao.php';
+include 'conexao.php';
 
-    $sql = "SELECT * FROM `professor`";
-    $stmt = $conexao->prepare($sql);
-    $stmt->execute();
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $id_professores = $_POST['id_professores'];
+    $materia = $_POST['materia'];
+
+    $sql = "INSERT INTO materias (materia, id_professores) 
+            VALUES (:materia, :id_professores)";
+    
+    $stmt = $conexao->prepare($sql);  
+    $stmt->bindParam(':materia', $materia); 
+    $stmt->bindParam(':id_professores', $id_professores);
+    
+    if ($stmt->execute()){
+        header("Location: cadastrar_materia.php");
+        exit;
+    } else {
+        echo "Erro ao salvar: " . implode(", ", $stmt->errorInfo());
+    }
+}
+
+$sql_professores = "SELECT * FROM `professores`";
+$stmt_professores = $conexao->prepare($sql_professores);
+$stmt_professores->execute();
+$professores = $stmt_professores->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,20 +34,22 @@
 </head>
 <body>
     <section>
-        <form action="" method="post"></form>
-            <label for="materia">Materia</label>
-                <input type="text" name="professor" id="professor" required>
+        <form action="" method="post">
+            <label for="materia">Matéria</label>
+            <input type="text" name="materia" id="materia" required>
 
-                <select name="professor" id="">
-                    <?php
-                    while($professor = $stmt->fetch(PDO::FETCH_ASSOC)){
-                        echo "<option value='{$professor['id']}'>{$professor['nome']}</option>";
-                    }
-                    ?>
-                </select>
-            </form>
-        </div>
+            <label for="professor">Professor</label>
+            <select name="id_professores" id="professor" required>
+                <option value="">Selecione um professor</option>
+                <?php
+                foreach($professores as $professor){
+                    echo "<option value='{$professor['id']}'>{$professor['nome']}</option>";
+                }
+                ?>
+            </select>
+
+            <button type="submit" class="submit">Salvar</button>
+        </form>
     </section>
-    
 </body>
 </html>

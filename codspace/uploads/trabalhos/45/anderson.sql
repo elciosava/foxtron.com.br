@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Out-2025 às 21:33
+-- Tempo de geração: 28-Out-2025 às 21:07
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -115,7 +115,9 @@ CREATE TABLE `professores` (
 INSERT INTO `professores` (`id`, `nome`) VALUES
 (1, 'Elcio Sava'),
 (2, 'Gleyson'),
-(3, 'Alayde');
+(3, 'Alayde'),
+(15, 'fredie'),
+(16, '');
 
 -- --------------------------------------------------------
 
@@ -213,7 +215,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
