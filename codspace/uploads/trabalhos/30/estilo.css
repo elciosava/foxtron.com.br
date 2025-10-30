@@ -1,81 +1,100 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f1f3f6;
+/* Reset básico */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f3f6;
+  color: #333;
+  line-height: 1.6;
+}
+
 .container {
-  width: 80%;
+  max-width: 960px;
   margin: 40px auto;
-  background: #fff;
+  background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   padding: 30px;
 }
 
 h2 {
   text-align: center;
   color: #333;
+  margin-bottom: 20px;
 }
 
 form {
-  margin: 20px auto;
-  width: 60%;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
-  color: #333;
+  margin-bottom: 6px;
+  font-weight: bold;
 }
 
-input[type="text"], select {
+input[type="text"],
+select {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 12px;
+  margin-bottom: 20px;
   border-radius: 8px;
   border: 1px solid #ccc;
+  font-size: 16px;
 }
 
-input[type="submit"], a.botao {
-  background: #00fffb;
-  color: white;
+input[type="submit"],
+a.botao {
+  background-color: #007bff;
+  color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  display: inline-block;
   margin-right: 10px;
 }
 
-input[type="submit"]:hover, a.botao:hover {
-  background: #00aab3;
+input[type="submit"]:hover,
+a.botao:hover {
+  background-color: #0056b3;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 12px;
   text-align: center;
 }
 
 th {
-  background: #000000;
-  color: rgb(0, 238, 255);
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
 }
 
 tr:nth-child(even) {
-  background: #f2f2f2;
+  background-color: #f9f9f9;
 }
 
 .voltar {
   display: block;
-  margin-top: 20px;
+  margin-top: 30px;
   text-align: center;
+  font-size: 16px;
 }

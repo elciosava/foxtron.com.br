@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Out-2025 às 21:07
+-- Tempo de geração: 29-Out-2025 às 21:01
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -47,6 +47,27 @@ INSERT INTO `endereco` (`id`, `tipo`, `nome`, `numero`, `bairro`, `cidade`, `est
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `entrada`
+--
+
+CREATE TABLE `entrada` (
+  `id` int(11) NOT NULL,
+  `id_pecas` int(11) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `entrada`
+--
+
+INSERT INTO `entrada` (`id`, `id_pecas`, `quantidade`) VALUES
+(3, 1, 10),
+(4, 2, 20),
+(5, 1, 20);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `materias`
 --
 
@@ -66,6 +87,26 @@ INSERT INTO `materias` (`id`, `id_professores`, `materia`) VALUES
 (3, 2, 'Mecânica'),
 (4, 3, 'Administração'),
 (15, 1, 'vish');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `pecas`
+--
+
+CREATE TABLE `pecas` (
+  `id` int(11) NOT NULL,
+  `pecas` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `pecas`
+--
+
+INSERT INTO `pecas` (`id`, `pecas`) VALUES
+(1, 'madeira'),
+(2, 'ferro'),
+(3, 'madeira');
 
 -- --------------------------------------------------------
 
@@ -110,6 +151,26 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `saida`
+--
+
+CREATE TABLE `saida` (
+  `id` int(11) NOT NULL,
+  `id_pecas` int(11) DEFAULT NULL,
+  `quantidade` int(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `saida`
+--
+
+INSERT INTO `saida` (`id`, `id_pecas`, `quantidade`) VALUES
+(4, 1, 5),
+(5, 1, 768);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuarios`
 --
 
@@ -133,11 +194,24 @@ INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`) VALUES
 --
 
 --
+-- Índices para tabela `entrada`
+--
+ALTER TABLE `entrada`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pecas` (`id_pecas`);
+
+--
 -- Índices para tabela `materias`
 --
 ALTER TABLE `materias`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_professores` (`id_professores`);
+
+--
+-- Índices para tabela `pecas`
+--
+ALTER TABLE `pecas`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `produtos`
@@ -152,6 +226,13 @@ ALTER TABLE `professores`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `saida`
+--
+ALTER TABLE `saida`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_pecas` (`id_pecas`);
+
+--
 -- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -162,10 +243,22 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de tabela `entrada`
+--
+ALTER TABLE `entrada`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de tabela `materias`
 --
 ALTER TABLE `materias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT de tabela `pecas`
+--
+ALTER TABLE `pecas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -180,6 +273,12 @@ ALTER TABLE `professores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT de tabela `saida`
+--
+ALTER TABLE `saida`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -190,10 +289,22 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- Limitadores para a tabela `entrada`
+--
+ALTER TABLE `entrada`
+  ADD CONSTRAINT `entrada_ibfk_1` FOREIGN KEY (`id_pecas`) REFERENCES `pecas` (`id`);
+
+--
 -- Limitadores para a tabela `materias`
 --
 ALTER TABLE `materias`
   ADD CONSTRAINT `materias_ibfk_1` FOREIGN KEY (`id_professores`) REFERENCES `professores` (`id`);
+
+--
+-- Limitadores para a tabela `saida`
+--
+ALTER TABLE `saida`
+  ADD CONSTRAINT `saida_ibfk_1` FOREIGN KEY (`id_pecas`) REFERENCES `pecas` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

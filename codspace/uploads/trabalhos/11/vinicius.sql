@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Out-2025 às 21:21
+-- Tempo de geração: 29-Out-2025 às 21:02
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -77,8 +77,7 @@ CREATE TABLE `materia` (
 --
 
 INSERT INTO `materia` (`id`, `id_professores`, `materia`) VALUES
-(1, 1, 'programação'),
-(2, 4, 'ed fisica');
+(4, 11, '6');
 
 -- --------------------------------------------------------
 
@@ -91,16 +90,6 @@ CREATE TABLE `materias` (
   `id_professores` int(11) DEFAULT NULL,
   `materia` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `materias`
---
-
-INSERT INTO `materias` (`id`, `id_professores`, `materia`) VALUES
-(1, 1, 'Auxiliar de informatica'),
-(2, 1, 'Programador de sistemas'),
-(3, 2, 'Mecanica'),
-(4, 3, 'Administraçao');
 
 -- --------------------------------------------------------
 
@@ -140,13 +129,10 @@ CREATE TABLE `professores` (
 --
 
 INSERT INTO `professores` (`id`, `nome`) VALUES
-(1, 'Elcio Sava'),
-(2, 'Gleyson'),
-(3, 'Alayde'),
-(4, 'Elcio Sava'),
-(5, 'Gleyson'),
-(6, 'Alayde'),
-(7, 'vinicius');
+(8, 'bloco do motor'),
+(9, 'comando de valvulas'),
+(10, 'radiador'),
+(11, 'pistao');
 
 --
 -- Índices para tabelas despejadas
@@ -210,7 +196,7 @@ ALTER TABLE `endereco`
 -- AUTO_INCREMENT de tabela `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `materias`
@@ -228,7 +214,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restrições para despejos de tabelas

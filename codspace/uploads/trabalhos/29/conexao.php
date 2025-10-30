@@ -1,15 +1,12 @@
 <?php
-     $local = 'localhost';
-     $banco = 'gabriel';
-     $usuario = 'root';
-     $senha = '';
+$servername = "localhost";
+$username = "root";    
+$password = "";        
+$dbname = "estoque";
 
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-try{
-
-     $conexao = new PDO("mysql:host=$local;dbname=$banco", $usuario, $senha);
-     $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}catch (PDOException $e){
-    die("deu ruim coisa!!" . $e->getMessage());
-     }
-     ?>
+if ($conn->connect_error) {
+  die("Erro na conexão: " . $conn->connect_error);
+}
+?>

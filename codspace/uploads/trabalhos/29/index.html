@@ -1,120 +1,129 @@
-
+<!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Guilherme j.v</title>
     <style>
         * {
             margin: 0;
             padding: 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: aqua;
         }
 
         li {
             display: inline-block;
             margin: 0 10px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .imagen img {
+            width: 350px;
+            margin-right: 350px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            justify-content: center;
+            align-items: center;
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            background: rgb(15, 127, 202);
-            height: 50px;
-            color: rgb(247, 6, 6);
+            padding: 5px 5px 5px 5px;
+            background-color: rgba(182, 27, 27, 0.117);
         }
 
-        .texto h2 {
-            margin-bottom: 10px;
+        body {
+            height: 100vh;
         }
 
-
-        img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            margin-right: 15px;
-        }
-
-        .icones img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .container {
+        .icones {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+        }
+
+        .icones img {
+            width: 50px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .texto h2 {
+            color: rebeccapurple;
+            margin-bottom: 10px;
+        }
+
+        .texto {
+            width: 8000;
+        }
+
+        .trabalho {
+            width: 120px;
+            height: 180px;
+            border: solid 1px black;
+            margin: 10px;
+            background: rgb(238, 205, 144);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trabalho:hover {
+            margin-top: -10px;
         }
 
         .organiza {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
         }
-
-        body {
-
-            height: 100vh;
-            font-family: sans-serif;
-            background-color: blueviolet;
-        }
-
-        .texto {
-            width: 800px;
-        }
-
-        .trabalho {
-            width: 120px;
-            height: 180px;
-            border: solid 1px rgb(24, 20, 20);
-            margin: 10px;
-            background: red;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .trabalho:hover {
-            margin-top: -10px;
-            transition: 0.3s ease-in-out;
-        }
     </style>
 </head>
 
 <body>
     <header>
-        <h2>gabriel</h2>
+        <h2>trabalho elcio</h2>
         <nav>
             <ul>
-                <li>inicio</li>
-                <li>sobre</li>
-                <li>contato</li>
+                <li>Sobre</li>
+                <li>Contato</li>
             </ul>
         </nav>
     </header>
+
+    <section class="inicio">
+        <div class="capa"></div>
+    </section>
+
     <div class="container">
-        <div class="imagem">
-            <img src="https://newr7-r7-prod.web.arc-cdn.net/resizer/v2/5XXUSF77PJDJJCA2F4WEAUUF24.webp?auth=301aade52445d397eb9bd7b95982f152de3ff8285373be96da46441a4d17ee77&width=1200&height=900"
-                alt="">
+        <div class="imagen">
+            <img src="images.jpg" alt="">
         </div>
         <div class="texto">
-            <h2>gabriel</h2>
-            <p>Na minha cabeça, eu sou o melhor. Se não pensarmos assim não temos ambição", "Sem disciplina, o talento
-                não serve pra nada", e "O seu amor me deixa mais forte. O seu ódio me torna indomável". </p>
+            <h2>Guilherme</h2>
+            <p>fofinho, vim cobrar o aluguel</p>
             <div class="icones">
-                <img src="facebook-brands-solid-full.svg" alt="">
-                <img src="instagram-brands-solid-full.svg" alt="">
-                <img src="tiktok-brands-solid-full.svg" alt="">
-
+                <img src="discord-brands-solid-full.svg" alt="discord">
+                <img src="github-brands-solid-full.svg" alt="github">
+                <img src="linkedin-brands-solid-full.svg" alt="linkedin">
             </div>
         </div>
     </div>
+
     <div class="container organiza">
         <div class="trabalho">
-            <a href="aula2409.html">aula 24/09/25</a>
+            <a href="aula2409.html">aula2409</a>
         </div>
         <div class="trabalho">
             <a href="aula2509.php">aula 25/09/25</a>
@@ -123,40 +132,54 @@
             <a href="aula2609.php">aula 26/09/25</a>
         </div>
         <div class="trabalho">
-            <a href="aula2909.php">aula29/09/25</a>
+            <a href="mercado.php">mercadinho</a>
         </div>
         <div class="trabalho">
-            <a href="aula3009.php">aula30/09/25</a>
+            <a href="aula2909.php">aula 29/09/2025</a>
         </div>
         <div class="trabalho">
-            <a href="aula0110.php">aula01/10/25</a>
+            <a href="aula3009.php">aula 39/09/2025</a>
         </div>
         <div class="trabalho">
-            <a href="aula0710.php">aula07/10/25</a>
+            <a href="aula710.php">aula 7/10/2025</a>
         </div>
         <div class="trabalho">
-            <a href="aula0810.php">aula08/10/25</a>
+            <a href="aula810.php">aula 8/10/2025</a>
         </div>
         <div class="trabalho">
-            <a href="aula0910.php">aula09/10/25</a>
+            <a href="aula910.php">aula 9/10/2025</a>
         </div>
         <div class="trabalho">
-            <a href="aula1010.php">aula10/10/25</a>
-        </div>
-         <div class="trabalho">
-            <a href="listar_arquivos.php">listar_arquivos.php</a>
+            <a href="aula1010.php">10/10/2025</a>
         </div>
         <div class="trabalho">
-            <a href="cadastrarusuario.php">cadastrarusuario.php</a>
+            <a href="listar_arquivos.php">lista-arquivos-php</a>
         </div>
         <div class="trabalho">
-            <a href="cadastrar_produto.php">cadastrar produto</a>
-</div>
-<div class="trabalho">
-            <a href="22/10/2025">22/10/2025</a>
-</div>
+            <a href="cadastra_usuario.php">cadastra_usuario.php</a>
+        </div>
+        <div class="trabalho">
+            <a href="cadastra_produto.php">cadastra usuario</a>
+        </div>
+        <div class="trabalho">
+            <a href="pesquisa.php" >pesquisa</a>
+        </div>
+        <div class="trabalho">
+            <a href="cadastra_cliente.php" >cadastra.cliente</a>
+        </div>
+        <div class="trabalho">
+            <a href="cadastra_produto.php">cadastra produto</a>
+        </div>
+              <div class="trabalho">
+            <a href="cadastrar_materia.php">cadastra produto</a>
+        </div>
+    
+      <div class="trabalho">
+            <a href="cadastrar_professor.php">cadastra produto</a>
+        </div>
+   
     </div>
-
+</div>
 </body>
 
 </html>

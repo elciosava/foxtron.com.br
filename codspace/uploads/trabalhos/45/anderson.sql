@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Out-2025 às 21:07
+-- Tempo de geração: 29-Out-2025 às 21:15
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -87,6 +87,25 @@ INSERT INTO `materias` (`id`, `id_professores`, `materia`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `pecas`
+--
+
+CREATE TABLE `pecas` (
+  `id` int(11) NOT NULL,
+  `pecas` varchar(30) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `pecas`
+--
+
+INSERT INTO `pecas` (`id`, `pecas`, `quantidade`) VALUES
+(9, 'parafusos', 50);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `produtos`
 --
 
@@ -117,7 +136,8 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 (2, 'Gleyson'),
 (3, 'Alayde'),
 (15, 'fredie'),
-(16, '');
+(16, ''),
+(17, 'mamao');
 
 -- --------------------------------------------------------
 
@@ -166,6 +186,12 @@ ALTER TABLE `materias`
   ADD KEY `id_professores` (`id_professores`);
 
 --
+-- Índices para tabela `pecas`
+--
+ALTER TABLE `pecas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -206,6 +232,12 @@ ALTER TABLE `materias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de tabela `pecas`
+--
+ALTER TABLE `pecas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -215,7 +247,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

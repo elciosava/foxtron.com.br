@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Out-2025 às 21:16
+-- Tempo de geração: 29-Out-2025 às 21:08
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -90,6 +90,37 @@ INSERT INTO `materias` (`id`, `id_professores`, `materias`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `pecas`
+--
+
+CREATE TABLE `pecas` (
+  `id_pecas` int(11) NOT NULL,
+  `pecas` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `pecas`
+--
+
+INSERT INTO `pecas` (`id_pecas`, `pecas`) VALUES
+(1, ''),
+(2, ''),
+(3, 'pitoco'),
+(4, ''),
+(5, 'parafuso'),
+(6, 'prego'),
+(7, 'prego'),
+(8, ''),
+(9, 'prego'),
+(10, 'chavedefenda'),
+(11, 'ferro'),
+(12, 'martelo'),
+(13, 'martelo'),
+(14, 'chavedefenda');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `produtos`
 --
 
@@ -134,6 +165,18 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 (7, 'Jorginho'),
 (8, 'Jorginho');
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `saida`
+--
+
+CREATE TABLE `saida` (
+  `id` int(11) NOT NULL,
+  `id_pecas` varchar(30) DEFAULT NULL,
+  `quantidade` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Índices para tabelas despejadas
 --
@@ -158,6 +201,12 @@ ALTER TABLE `materias`
   ADD KEY `id_professores` (`id_professores`);
 
 --
+-- Índices para tabela `pecas`
+--
+ALTER TABLE `pecas`
+  ADD PRIMARY KEY (`id_pecas`);
+
+--
 -- Índices para tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -167,6 +216,12 @@ ALTER TABLE `produtos`
 -- Índices para tabela `professores`
 --
 ALTER TABLE `professores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `saida`
+--
+ALTER TABLE `saida`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -192,6 +247,12 @@ ALTER TABLE `materias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT de tabela `pecas`
+--
+ALTER TABLE `pecas`
+  MODIFY `id_pecas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
@@ -202,6 +263,12 @@ ALTER TABLE `produtos`
 --
 ALTER TABLE `professores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de tabela `saida`
+--
+ALTER TABLE `saida`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restrições para despejos de tabelas

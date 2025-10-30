@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Out-2025 às 21:11
+-- Tempo de geração: 29-Out-2025 às 21:02
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -40,6 +40,25 @@ CREATE TABLE `clientes` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `empresa`
+--
+
+CREATE TABLE `empresa` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `empresa`
+--
+
+INSERT INTO `empresa` (`id`, `nome`) VALUES
+(1, 'Madeira'),
+(2, '');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `endereco`
 --
 
@@ -58,6 +77,17 @@ CREATE TABLE `endereco` (
 
 INSERT INTO `endereco` (`id`, `nome`, `numero`, `bairro`, `cidade`, `estado`) VALUES
 (1, 'Rua das cove', 'SS', 'Sao lucas', 'Rolandia', 'PR');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `entrada`
+--
+
+CREATE TABLE `entrada` (
+  `id` int(11) NOT NULL,
+  `peca` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -82,6 +112,17 @@ INSERT INTO `materia` (`id`, `materia`, `id_professores`) VALUES
 (6, 'matematica', 1),
 (7, '', 5),
 (8, '', 26);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `pecas`
+--
+
+CREATE TABLE `pecas` (
+  `id` int(11) NOT NULL,
+  `peca` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -129,6 +170,17 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `saida`
+--
+
+CREATE TABLE `saida` (
+  `id` int(11) NOT NULL,
+  `peca` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuarios`
 --
 
@@ -159,9 +211,21 @@ ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `empresa`
+--
+ALTER TABLE `empresa`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `endereco`
 --
 ALTER TABLE `endereco`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `entrada`
+--
+ALTER TABLE `entrada`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -170,6 +234,12 @@ ALTER TABLE `endereco`
 ALTER TABLE `materia`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_professores` (`id_professores`);
+
+--
+-- Índices para tabela `pecas`
+--
+ALTER TABLE `pecas`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `produtos`
@@ -181,6 +251,12 @@ ALTER TABLE `produtos`
 -- Índices para tabela `professores`
 --
 ALTER TABLE `professores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `saida`
+--
+ALTER TABLE `saida`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -200,16 +276,34 @@ ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `empresa`
+--
+ALTER TABLE `empresa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `endereco`
 --
 ALTER TABLE `endereco`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de tabela `entrada`
+--
+ALTER TABLE `entrada`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `materia`
 --
 ALTER TABLE `materia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de tabela `pecas`
+--
+ALTER TABLE `pecas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -222,6 +316,12 @@ ALTER TABLE `produtos`
 --
 ALTER TABLE `professores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT de tabela `saida`
+--
+ALTER TABLE `saida`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

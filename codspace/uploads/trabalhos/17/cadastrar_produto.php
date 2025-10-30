@@ -49,8 +49,8 @@
 <body>
     <section>
         <div class="container">
-            <form action="gravar_produto.php" method="post">
-                <label for="produto">Produto</label>
+            <form action="gravar_peca.php" method="post">
+                <label for="peca">Produto</label>
                 <input type="text" name="produto" id="">
 
                 <label for="quantidade">Quantidade</label>

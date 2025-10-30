@@ -2,7 +2,7 @@
 $local = 'localhost';
 $banco = 'Helen';
 $usuario = 'root';
-$senha = ''; // s4va6o41a@
+$senha = ''; 
 
 try{
     $conexao=new PDO("mysql:host=$local;dbname=$banco", $usuario, $senha);
