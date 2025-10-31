@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Out-2025 às 21:15
+-- Tempo de geração: 30-Out-2025 às 21:08
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -65,6 +65,25 @@ INSERT INTO `endereco` (`id`, `tipo`, `nome`, `numero`, `bairro`, `cidade`, `est
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `entrada`
+--
+
+CREATE TABLE `entrada` (
+  `id` int(11) NOT NULL,
+  `id_pecas` int(11) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `entrada`
+--
+
+INSERT INTO `entrada` (`id`, `id_pecas`, `quantidade`) VALUES
+(1, 10, 234);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `materias`
 --
 
@@ -101,7 +120,9 @@ CREATE TABLE `pecas` (
 --
 
 INSERT INTO `pecas` (`id`, `pecas`, `quantidade`) VALUES
-(9, 'parafusos', 50);
+(9, 'parafusos', 50),
+(10, 'mamao', -1),
+(12, 'makita', -1);
 
 -- --------------------------------------------------------
 
@@ -138,6 +159,25 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 (15, 'fredie'),
 (16, ''),
 (17, 'mamao');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `saida`
+--
+
+CREATE TABLE `saida` (
+  `id` int(11) NOT NULL,
+  `id_pecas` int(11) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `saida`
+--
+
+INSERT INTO `saida` (`id`, `id_pecas`, `quantidade`) VALUES
+(1, 9, 13);
 
 -- --------------------------------------------------------
 
@@ -179,6 +219,12 @@ ALTER TABLE `endereco`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `entrada`
+--
+ALTER TABLE `entrada`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `materias`
 --
 ALTER TABLE `materias`
@@ -204,6 +250,12 @@ ALTER TABLE `professores`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `saida`
+--
+ALTER TABLE `saida`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -226,6 +278,12 @@ ALTER TABLE `endereco`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de tabela `entrada`
+--
+ALTER TABLE `entrada`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `materias`
 --
 ALTER TABLE `materias`
@@ -235,7 +293,7 @@ ALTER TABLE `materias`
 -- AUTO_INCREMENT de tabela `pecas`
 --
 ALTER TABLE `pecas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -248,6 +306,12 @@ ALTER TABLE `produtos`
 --
 ALTER TABLE `professores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT de tabela `saida`
+--
+ALTER TABLE `saida`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

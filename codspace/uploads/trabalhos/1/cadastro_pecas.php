@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                     echo "</form> ";
 
                     // Formulário Deletar
-                    echo "<form action='saida.php' method='post' style='display:inline;' onsubmit=\"return confirm('Deseja realmente deletar este produto?');\">";
+                    echo "<form action='saida.php' method='get' style='display:inline;'>";
                     echo "<input type='hidden' name='id' value='{$linha['id']}'>";
                     echo "<button type='submit'>Saida</button>";
                     echo "</form>";

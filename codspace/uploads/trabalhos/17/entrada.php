@@ -1,5 +1,25 @@
 <?php
+    include "conexao.php";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $id = $_POST['id'];
+        $quantidade = $_POST['quantidade'];
 
+        $sql = "INSERT INTO entrada (id_pecas, quantidade)
+        VALUES (:id_pecas, :quantidade)";
+
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindParam(':id_pecas', $id);
+        $stmt->bindParam(':quantidade', $quantidade);
+
+        if($stmt->execute()){
+            echo "<p style='color:green;>Deu boa!!</p>";
+        
+
+        }else{
+            echo "<p style='color:red;'>Deu ruim!!</p>";
+
+    }
+    }
 
 ?>
 <!DOCTYPE html>
@@ -20,6 +40,6 @@
             </form> 
         </div> 
     </section>
-    
+
 </body>
 </html>

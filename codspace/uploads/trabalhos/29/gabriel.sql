@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28-Out-2025 às 21:11
+-- Tempo de geração: 30-Out-2025 às 21:08
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -47,6 +47,26 @@ INSERT INTO `endereco` (`id`, `tipo`, `nome`, `numero`, `bairro`, `cidade`, `est
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `entrada`
+--
+
+CREATE TABLE `entrada` (
+  `id` int(11) NOT NULL,
+  `id_pecas` int(30) DEFAULT NULL,
+  `quantidade` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `entrada`
+--
+
+INSERT INTO `entrada` (`id`, `id_pecas`, `quantidade`) VALUES
+(1, NULL, '3'),
+(2, 1, '765');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `materia`
 --
 
@@ -63,6 +83,26 @@ CREATE TABLE `materia` (
 INSERT INTO `materia` (`ìd`, `materia`, `id_professores`) VALUES
 (2, 'ciencias', 1),
 (3, 'matematica', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `peca`
+--
+
+CREATE TABLE `peca` (
+  `id` int(11) NOT NULL,
+  `peca` varchar(30) DEFAULT NULL,
+  `quantidade` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `peca`
+--
+
+INSERT INTO `peca` (`id`, `peca`, `quantidade`) VALUES
+(1, 'parfuso', '3'),
+(2, 'peneu', '3');
 
 -- --------------------------------------------------------
 
@@ -92,6 +132,25 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `saida`
+--
+
+CREATE TABLE `saida` (
+  `id` int(11) NOT NULL,
+  `id_pecas` int(30) DEFAULT NULL,
+  `quantidade` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `saida`
+--
+
+INSERT INTO `saida` (`id`, `id_pecas`, `quantidade`) VALUES
+(1, 2, '765');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuarios`
 --
 
@@ -115,11 +174,23 @@ INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`) VALUES
 --
 
 --
+-- Índices para tabela `entrada`
+--
+ALTER TABLE `entrada`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `materia`
 --
 ALTER TABLE `materia`
   ADD PRIMARY KEY (`ìd`),
   ADD KEY `id_professores` (`id_professores`);
+
+--
+-- Índices para tabela `peca`
+--
+ALTER TABLE `peca`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `professores`
@@ -128,8 +199,20 @@ ALTER TABLE `professores`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `saida`
+--
+ALTER TABLE `saida`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `entrada`
+--
+ALTER TABLE `entrada`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `materia`
@@ -138,10 +221,22 @@ ALTER TABLE `materia`
   MODIFY `ìd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de tabela `peca`
+--
+ALTER TABLE `peca`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de tabela `saida`
+--
+ALTER TABLE `saida`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para despejos de tabelas

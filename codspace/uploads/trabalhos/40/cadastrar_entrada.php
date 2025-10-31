@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     <section class="inicio">
         <div class="container">
             <div class="form-box">
-                <h2>Cadastro de Entradas</h2>
+                <h2>💜Cadastro de Entradas💜</h2>
             <form action="" method="post">
                   <input type="text" value="<?php echo $_GET['id']; ?>" id="id_pecas" name="id_pecas">
               

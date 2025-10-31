@@ -1,5 +1,24 @@
 <?php
+    include 'conexao.php';
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $id = $_POST['id'];
+        $quantidade = $_POST['quantidade'];
+
+        $sql = "INSERT INT entrada (id_pecas, quantidade)
+        VALUES (:id_pecas, :quantidade)";
+
+        $stmt = $conexao->prepare($sql);
+        $stmt->bindParam(':id_pecas', $id);
+        $stmt->bindParam(':quantidade', $quantidade);
+
+        if($stmt->execute()){
+            echo "<p style='color:green;'>Deu boa!!</p>";
+        }else{
+            echo "<p style='color:red;'>Deu ruim!!</p>";
+        }
+
+    }
 
 ?>
 <!DOCTYPE html>
@@ -23,3 +42,8 @@
     </section>
 </body>
 </html>
+SELECT pecas.nome_peca, entrada.quantidade AS
+entrada_quantidade, saida.quantidade AS
+saida_quantidade FROM pecas INNER JOIN
+entrada ON pecas.id = entrada.id_pecas INNER 
+JOIN saida ON pecas.id = saida.id_pecas;

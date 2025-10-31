@@ -1,8 +1,24 @@
 <?php
+include "conexao.php";
 
-    include 'conexao.php';
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $id_pecas = $_POST['id_pecas'];
+    $quantidade = $_POST['quantidade'];
 
-  
+    $sql = "INSERT INTO saida (id_pecas, quantidade)
+            VALUES (:id_pecas,:quantidade)";
+          
+    $stmt = $conexao->prepare($sql);
+    $stmt->bindParam(':id_pecas',$id_pecas );
+    $stmt->bindParam(':quantidade',$quantidade);
+
+    if ($stmt->execute()){
+        header("Location:entrada.php");
+        exit;
+    }else{
+        echo "<p>nao deu certo :C</p>";
+    }
+        }
 ?>
 
 <!DOCTYPE html>
@@ -12,49 +28,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-<style>
+    <style>
 
-* {
-    margin: 0;
-    padding: 0;
+        * {
+            margin: 0;
+            padding: 0;
 
-}
+        }
 
-.formulario {
-    width: 800px;
-  }
+        .formulario {
+            width: 800px;
+        }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-}
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
 
 
 
-form {
-    width: 300px;
-}
+        form {
+            width: 300px;
+        }
 
-input, select {
-    width: 100%;
-    padding: 5px;
-    font-size: 0.7rem;
-    box-sizing: border-box;
-}
+        input, select {
+            width: 100%;
+            padding: 5px;
+            font-size: 0.7rem;
+            box-sizing: border-box;
+        }
 
-.cabecalho {
-    display: flex;
-    padding: 0 20px;
-    border:1px solid black;
-    width: 1000px;
-}
+        .cabecalho {
+            display: flex;
+            padding: 0 20px;
+            border:1px solid black;
+            width: 1000px;
+        }
 
-.cel_cabecalho {
-    width: 250px;
-}
+        .cel_cabecalho {
+            width: 250px;
+        }
 
     </style>
 
@@ -63,7 +79,7 @@ input, select {
     <section>
     <div class="container">
         <form action="" method="post">
-    <input type="text" value="<?php echo $_GET['id'];?>" id="id" name="id">
+    <input type="text" value="<?php echo $_GET['id'];?>" id="id" name="id_pecas">
 
     <label for="quantidade">Quantidade</label>
       <input type="number" name="quantidade" id="">
@@ -72,8 +88,3 @@ input, select {
 
    </form>           
 </div>
-
-
-    </section>
-</body>
-</html>

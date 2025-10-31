@@ -3,13 +3,13 @@
 include 'conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $nome = $_POST['nome'];
+    $nome = $_POST['peca'];
 
-    $sql = "INSERT INTO empresa (nome)
-            VALUES (:nome)";
+    $sql = "INSERT INTO peca (peca)
+            VALUES (:peca)";
 
     $stmt = $conexao->prepare($sql);
-    $stmt->bindParam(':nome', $nome);
+    $stmt->bindParam(':peca', $nome);
 
     if ($stmt->execute()){
         header("Location:cadastrar_peca.php");

@@ -1,0 +1,1 @@
+SELECT empresa.nome, entrada.quantidade AS entrada, saida.quantidade AS saida FROM empresa INNER JOIN entrada ON empresa.id = entrada.id_pecas INNER JOIN saida ON empresa.id = saida.id_pecas;

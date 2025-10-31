@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         html {
             font-family: Segoe UI;
-            background: lightblue;
+           background: linear-gradient(to left, #33e2d9ff, #000000ff);
         }  
 
          form {
@@ -90,6 +90,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         .cel_cabecalho {
             width: 170px;
         }
+        .form-box {
+            
+            background-color: rgba(18, 85, 48, 1);
+            border: 2px solid rgba(0, 0, 0, 1); 
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            margin: 20px;
+        }
+        button {
+            background-color: rgba(139, 199, 149, 1);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.3s ease;
+            margin-top: 4px;
+        }
+
+        button:hover {
+            background-color: rgba(10, 22, 129, 1);
+        }
+
+        h2 {
+            text-align: center;
+            color: black;
+            margin-bottom: 20px;
+            font-size: 1.9rem;
+        }
 
         
     </style>
@@ -97,15 +128,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 <body>
     <section class="inicio">
         <div class="container">
+            <div class="form-box">
             <form action="" method="post">
+                <h2>Cadastro De Peças</h2>
 
-                <label for="pecas">Peças</label>
+                <label for="pecas">Qual o nome da peça</label>
                 <input type="text" name="pecas" id="">
 
               
                 </select>
                 <button class="submit">Salvar</button>
             </form>
+        </div>
         </div>
     </section>
 

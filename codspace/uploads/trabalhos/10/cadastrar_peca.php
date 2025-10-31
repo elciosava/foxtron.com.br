@@ -45,7 +45,7 @@ $pecas = $stmt_pecas->fetchAll(PDO::FETCH_ASSOC);
             <?php
             include 'conexao.php';
 
-            $sql = "SELECT * FROM produtos";
+            $sql = "SELECT * FROM pecas";
             $stmt = $conexao->prepare($sql);
             $stmt->execute();
 
@@ -53,9 +53,6 @@ $pecas = $stmt_pecas->fetchAll(PDO::FETCH_ASSOC);
                 echo "<div class='cabecalho'>";
                 echo "<div class='cel_cabecalho'>ID</div>";
                 echo "<div class='cel_cabecalho'>Nome</div>";
-                echo "<div class='cel_cabecalho'>Quantidade</div>";
-                echo "<div class='cel_cabecalho'>Valor</div>";
-                echo "<div class='cel_cabecalho'>Ações</div>";
                 echo "</div>";
                 
                 while($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -63,20 +60,19 @@ $pecas = $stmt_pecas->fetchAll(PDO::FETCH_ASSOC);
                     echo "<div class='cel_linha'>{$linha['id']}</div>";
                     echo "<div class='cel_linha'>{$linha['nome']}</div>";
                     echo "<div class='cel_linha'>{$linha['quantidade']}</div>";
-                    echo "<div class='cel_linha'>R$ " . number_format($linha['valor'], 2, ',', '.') . "</div>";
                     
                     echo "<div class='cel_linha acoes'>";
                     
-                    // Formulário Editar
-                    echo "<form action='editar_produto.php' method='get'>";
+                    // Formulário de entrada
+                    echo "<form action='entrada.php' method='get'>";
                     echo "<input type='hidden' name='id' value='{$linha['id']}'>";
-                    echo "<button type='submit'>Editar</button>";
+                    echo "<button type='submit'>Entrada</button>";
                     echo "</form>";
                     
-                    // Formulário Deletar - CORREÇÃO: aspas corrigidas
-                    echo "<form action='deletar_produto.php' method='post' onsubmit=\"return confirm('Deseja realmente deletar este produto?');\">";
+                    // Formulário de saida
+                    echo "<form action='saida.php' method='get' >";
                     echo "<input type='hidden' name='id' value='{$linha['id']}'>";
-                    echo "<button type='submit'>Deletar</button>";
+                    echo "<button type='submit'>Saida</button>";
                     echo "</form>";
                     
                     echo "</div>";

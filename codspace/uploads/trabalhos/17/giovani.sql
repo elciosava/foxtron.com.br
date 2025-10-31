@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Out-2025 às 21:18
+-- Tempo de geração: 30-Out-2025 às 21:13
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -57,7 +57,9 @@ INSERT INTO `empresa` (`id`, `nome`) VALUES
 (2, 'maçaneta'),
 (3, 'parafuso'),
 (4, 'Ferro'),
-(5, 'Ferro');
+(5, 'Ferro'),
+(6, 'Borboleta'),
+(7, 'Borboleta');
 
 -- --------------------------------------------------------
 
@@ -91,9 +93,27 @@ INSERT INTO `endereco` (`id`, `tipo`, `nome`, `numero`, `bairro`, `cidade`, `est
 
 CREATE TABLE `entrada` (
   `id` int(11) NOT NULL,
-  `peca` varchar(30) DEFAULT NULL,
+  `id_pecas` int(30) DEFAULT NULL,
   `quantidade` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `entrada`
+--
+
+INSERT INTO `entrada` (`id`, `id_pecas`, `quantidade`) VALUES
+(1, 2, '29'),
+(2, 2, '29'),
+(3, 2, '29'),
+(4, 2, '29'),
+(5, 2, '29'),
+(6, 2, '29'),
+(7, 2, '29'),
+(8, 2, '29'),
+(9, 2, '29'),
+(10, 2, '10'),
+(11, 2, '10'),
+(12, 2, '10');
 
 -- --------------------------------------------------------
 
@@ -106,6 +126,14 @@ CREATE TABLE `peca` (
   `peca` varchar(30) DEFAULT NULL,
   `quantidade` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `peca`
+--
+
+INSERT INTO `peca` (`id`, `peca`, `quantidade`) VALUES
+(1, NULL, NULL),
+(2, 'Alicate', NULL);
 
 -- --------------------------------------------------------
 
@@ -135,9 +163,22 @@ INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `valor`) VALUES
 
 CREATE TABLE `saida` (
   `id` int(11) NOT NULL,
-  `peca` varchar(30) DEFAULT NULL,
+  `id_pecas` varchar(30) DEFAULT NULL,
   `quantidade` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `saida`
+--
+
+INSERT INTO `saida` (`id`, `id_pecas`, `quantidade`) VALUES
+(1, '2', '101'),
+(2, '2', '101'),
+(3, '2', '101'),
+(4, '2', '101'),
+(5, '2', '101'),
+(6, '2', '101'),
+(7, '2', '101');
 
 -- --------------------------------------------------------
 
@@ -232,7 +273,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de tabela `empresa`
 --
 ALTER TABLE `empresa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `endereco`
@@ -244,13 +285,13 @@ ALTER TABLE `endereco`
 -- AUTO_INCREMENT de tabela `entrada`
 --
 ALTER TABLE `entrada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `peca`
 --
 ALTER TABLE `peca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -262,7 +303,7 @@ ALTER TABLE `produtos`
 -- AUTO_INCREMENT de tabela `saida`
 --
 ALTER TABLE `saida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

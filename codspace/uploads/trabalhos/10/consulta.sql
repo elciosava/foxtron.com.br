@@ -1,0 +1,1 @@
+SELECT pecas.nome, entrada.quantidade AS entrada_quantidade, saida.quantidade AS saida_quantidade FROM pecas INNER JOIN entrada ON pecas.id

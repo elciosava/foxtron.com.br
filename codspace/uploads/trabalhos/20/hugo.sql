@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Out-2025 às 21:16
+-- Tempo de geração: 30-Out-2025 às 21:06
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -101,7 +101,8 @@ CREATE TABLE `entrada` (
 --
 
 INSERT INTO `entrada` (`id`, `id_pecas`, `quantidade`) VALUES
-(3, '5', '2');
+(3, '5', '2'),
+(4, '3', '5');
 
 -- --------------------------------------------------------
 
@@ -180,7 +181,7 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 
 CREATE TABLE `saida` (
   `id` int(11) NOT NULL,
-  `id_peca` varchar(30) DEFAULT NULL,
+  `id_pecas` varchar(30) DEFAULT NULL,
   `quantidade` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -294,7 +295,7 @@ ALTER TABLE `endereco`
 -- AUTO_INCREMENT de tabela `entrada`
 --
 ALTER TABLE `entrada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `materias`

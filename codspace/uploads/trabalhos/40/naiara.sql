@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Out-2025 às 21:03
+-- Tempo de geração: 30-Out-2025 às 21:08
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -62,16 +62,8 @@ CREATE TABLE `entrada` (
 
 INSERT INTO `entrada` (`id`, `id_pecas`, `quantidade`) VALUES
 (1, 10, 100),
-(2, 7, 14),
-(3, 7, 12222),
-(4, 5, 69),
-(5, 5, 0),
-(6, 5, 56),
-(7, 9, 8766),
-(8, 7, 789),
 (9, 10, 1233),
-(10, 6, 33333),
-(11, 5, 99);
+(12, 10, 6996);
 
 -- --------------------------------------------------------
 
@@ -117,16 +109,8 @@ CREATE TABLE `pecas` (
 --
 
 INSERT INTO `pecas` (`id`, `pecas`) VALUES
-(1, NULL),
-(2, NULL),
-(3, NULL),
-(4, NULL),
-(5, 'ferro'),
-(6, 'ferro'),
-(7, 'ferro'),
-(8, 'ferro'),
-(9, 'madeira'),
-(10, 'glitter');
+(10, 'glitter'),
+(11, 'coisas fofas');
 
 -- --------------------------------------------------------
 
@@ -189,9 +173,7 @@ CREATE TABLE `saida` (
 --
 
 INSERT INTO `saida` (`id`, `id_pecas`, `quantidade`) VALUES
-(1, 10, 111),
-(3, 9, 14),
-(5, 5, 99);
+(1, 10, 111);
 
 -- --------------------------------------------------------
 
@@ -271,7 +253,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `entrada`
 --
 ALTER TABLE `entrada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `materias`
@@ -283,7 +265,7 @@ ALTER TABLE `materias`
 -- AUTO_INCREMENT de tabela `pecas`
 --
 ALTER TABLE `pecas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -301,7 +283,7 @@ ALTER TABLE `professores`
 -- AUTO_INCREMENT de tabela `saida`
 --
 ALTER TABLE `saida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Out-2025 às 21:01
+-- Tempo de geração: 30-Out-2025 às 21:08
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -63,7 +63,8 @@ CREATE TABLE `entrada` (
 INSERT INTO `entrada` (`id`, `id_pecas`, `quantidade`) VALUES
 (3, 1, 10),
 (4, 2, 20),
-(5, 1, 20);
+(5, 1, 20),
+(6, 1, 700);
 
 -- --------------------------------------------------------
 
@@ -105,8 +106,7 @@ CREATE TABLE `pecas` (
 
 INSERT INTO `pecas` (`id`, `pecas`) VALUES
 (1, 'madeira'),
-(2, 'ferro'),
-(3, 'madeira');
+(2, 'ferro');
 
 -- --------------------------------------------------------
 
@@ -166,7 +166,8 @@ CREATE TABLE `saida` (
 
 INSERT INTO `saida` (`id`, `id_pecas`, `quantidade`) VALUES
 (4, 1, 5),
-(5, 1, 768);
+(5, 1, 768),
+(6, 2, 40);
 
 -- --------------------------------------------------------
 
@@ -246,7 +247,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `entrada`
 --
 ALTER TABLE `entrada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `materias`
@@ -276,7 +277,7 @@ ALTER TABLE `professores`
 -- AUTO_INCREMENT de tabela `saida`
 --
 ALTER TABLE `saida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

@@ -30,45 +30,101 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAIDA</title><style>
         
+             * {
+            margin: 0;
+            padding: 0;
+        } 
+
+         header {
+            height:50px;
+        }
+
         html {
-            background: lightpink;
+            font-family: Segoe UI;
+            background: linear-gradient(to left, #b31212ff, #1b10b6ff);
         }  
-                                    
-        .resultado {
+
+         form {
+            width: 400px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 30px;
+            height: 50px;
+        }
+                                         
+        .container {
             display: flex;
             justify-content: center;
-            align-items: center;
-            width: 350px;
-            padding: 1px 17px
+            align-items: center;           
         }
 
-        .linha {
-            margin-bottom: 25px;
-            border: solid 1px red;
-            width: 350px;
-            
-
+        input, select {
+            width: 100%;
+            padding: 5px;
+            font-size: 0.7rem;
+            box-sizing: border-box;
         }
 
-         body {
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
              height: 100vh; 
         }
+         .form-box {
+            
+            background-color: rgba(206, 16, 10, 1);
+            border: 2px solid rgba(0, 0, 0, 1); 
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            margin: 20px;
+        }
+        button {
+            background-color: rgba(165, 24, 83, 1);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.3s ease;
+            margin-top: 4px;
+        }
+
+        button:hover {
+            background-color: rgba(10, 22, 129, 1);
+        }
+
+        h2 {
+            text-align: center;
+            color: black;
+            margin-bottom: 20px;
+            font-size: 1.9rem;
+        }
+       
 
 </style>
 </head>
 <body>
     <section class="inicio">
         <div class="container">
+            <div class="form-box">
+                <h2>Saida De Peças</h2>
+
+
             <form action="" method="post">
                 <input type="text" value="<?php echo $_GET['id']; ?>" id="id_pecas" name="id_pecas">
                   <label for="quantidade">Quantidade</label>
                 <input type="text" name="quantidade" id="">
                 <button class="submit">Salvar</button>
             </form>
+          </div>
         </div>
     </section>
 </body>
