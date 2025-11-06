@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16/10/2025 às 22:21
+-- Tempo de geração: 04/11/2025 às 21:06
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -24,89 +24,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `endereco`
+-- Estrutura para tabela `cadastro`
 --
 
-CREATE TABLE `endereco` (
+CREATE TABLE `cadastro` (
   `id` int(11) NOT NULL,
-  `tipo` varchar(67) DEFAULT NULL,
-  `nome` varchar(67) DEFAULT NULL,
-  `numero` varchar(67) DEFAULT NULL,
-  `bairro` varchar(67) DEFAULT NULL,
-  `cidade` varchar(67) DEFAULT NULL,
-  `estado` varchar(67) DEFAULT NULL
+  `nome` varchar(150) DEFAULT NULL,
+  `sobrenome` varchar(150) DEFAULT NULL,
+  `data_nascimento` varchar(150) DEFAULT NULL,
+  `telefone` varchar(150) DEFAULT NULL,
+  `email` varchar(150) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `endereco`
+-- Despejando dados para a tabela `cadastro`
 --
 
-INSERT INTO `endereco` (`id`, `tipo`, `nome`, `numero`, `bairro`, `cidade`, `estado`) VALUES
-(1, 'Travessa', '123', 'rua orcar', 'são joao', 'porto uniao', 'SC'),
-(2, 'avenida', 'frsdf', '40', 'dgsg', 'avenida', 'avenida');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `produto`
---
-
-CREATE TABLE `produto` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(30) DEFAULT NULL,
-  `quantidade` int(11) DEFAULT NULL,
-  `valor` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `produto`
---
-
-INSERT INTO `produto` (`id`, `nome`, `quantidade`, `valor`) VALUES
-(1, 'elcio', 6, 1);
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(30) DEFAULT NULL,
-  `sobrenome` varchar(30) DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL,
-  `senha` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Despejando dados para a tabela `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`) VALUES
-(1, 'ertert', 'hjk', 'jaroszguilherme@gmail.com', 'o/o/p'),
-(2, 'frsdf', 'hjkyr', 'jarosz.guilherme@gmail.com', '546');
+INSERT INTO `cadastro` (`id`, `nome`, `sobrenome`, `data_nascimento`, `telefone`, `email`) VALUES
+(4, 'GUILHERME', 'VOZNEI', '2025-11-06', '42988826640', 'jaroszguilherme@gmail.com'),
+(5, 'GUILHERME', 'VOZNEI', '2025-11-06', '42988826640', 'jaroszguilherme@gmail.com'),
+(6, 'GUILHERME', 'VOZNEI', '2025-11-06', '42988826640', 'jaroszguilherme@gmail.com'),
+(7, 'GUILHERME', 'VOZNEI', '2025-11-06', '42988826640', 'jaroszguilherme@gmail.com'),
+(8, 'GUILHERME', 'VOZNEI', '2025-11-04', '42988826640', 'jaroszguilherme@gmail.com'),
+(9, 'GUILHERME', 'VOZNEI', '2025-11-04', '42988826640', 'jaroszguilherme@gmail.com');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `endereco`
+-- Índices de tabela `cadastro`
 --
-ALTER TABLE `endereco`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `produto`
---
-ALTER TABLE `produto`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices de tabela `usuarios`
---
-ALTER TABLE `usuarios`
+ALTER TABLE `cadastro`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -114,22 +63,10 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de tabela `endereco`
+-- AUTO_INCREMENT de tabela `cadastro`
 --
-ALTER TABLE `endereco`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de tabela `produto`
---
-ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de tabela `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `cadastro`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

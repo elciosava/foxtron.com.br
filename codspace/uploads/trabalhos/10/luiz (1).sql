@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Out-2025 às 21:16
+-- Tempo de geração: 03-Nov-2025 às 21:28
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `luiz`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cadastro`
+--
+
+CREATE TABLE `cadastro` (
+  `nome` varchar(30) DEFAULT NULL,
+  `data_nasc` varchar(30) DEFAULT NULL,
+  `telefone` varchar(30) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `cadastro`
+--
+
+INSERT INTO `cadastro` (`nome`, `data_nasc`, `telefone`, `email`) VALUES
+('luiz', NULL, '42998259970', 'luiz983q@gmail.com'),
+('luiz', '2025-11-25', '42998259970', 'luiz983q@gmail.com'),
+('luiz', '2025-11-25', '42998259970', 'luiz983q@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -55,6 +77,15 @@ CREATE TABLE `entrada` (
   `id_pecas` int(11) DEFAULT NULL,
   `quantidade` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `entrada`
+--
+
+INSERT INTO `entrada` (`id`, `id_pecas`, `quantidade`) VALUES
+(1, 21, '666'),
+(2, 21, '999'),
+(3, 1, '2');
 
 -- --------------------------------------------------------
 
@@ -96,7 +127,8 @@ CREATE TABLE `pecas` (
 --
 
 INSERT INTO `pecas` (`id`, `nome`) VALUES
-(1, 'sigma');
+(1, 'sigma'),
+(2, 'f');
 
 -- --------------------------------------------------------
 
@@ -139,6 +171,25 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 (2, 'pitoco sigma'),
 (3, 'grow a garden de la cruz'),
 (25, 'jorge');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `saida`
+--
+
+CREATE TABLE `saida` (
+  `id` int(11) NOT NULL,
+  `id_pecas` int(11) DEFAULT NULL,
+  `quantidade` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `saida`
+--
+
+INSERT INTO `saida` (`id`, `id_pecas`, `quantidade`) VALUES
+(1, 23, '111');
 
 -- --------------------------------------------------------
 
@@ -204,6 +255,12 @@ ALTER TABLE `professores`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `saida`
+--
+ALTER TABLE `saida`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -223,7 +280,7 @@ ALTER TABLE `endereco`
 -- AUTO_INCREMENT de tabela `entrada`
 --
 ALTER TABLE `entrada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `materias`
@@ -235,7 +292,7 @@ ALTER TABLE `materias`
 -- AUTO_INCREMENT de tabela `pecas`
 --
 ALTER TABLE `pecas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
@@ -248,6 +305,12 @@ ALTER TABLE `produtos`
 --
 ALTER TABLE `professores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT de tabela `saida`
+--
+ALTER TABLE `saida`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

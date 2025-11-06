@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Out-2025 às 21:17
+-- Tempo de geração: 05-Nov-2025 às 21:22
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -24,6 +24,46 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `aluguel`
+--
+
+CREATE TABLE `aluguel` (
+  `id` int(11) NOT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
+  `id_carro` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `aluguel`
+--
+
+INSERT INTO `aluguel` (`id`, `id_cliente`, `id_carro`) VALUES
+(1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `carros`
+--
+
+CREATE TABLE `carros` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `marca` varchar(50) DEFAULT NULL,
+  `placa` varchar(50) DEFAULT NULL,
+  `cor` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `carros`
+--
+
+INSERT INTO `carros` (`id`, `nome`, `marca`, `placa`, `cor`) VALUES
+(1, 'baian', 'ferrari', 'elcio33', '#ff0000');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `clientes`
 --
 
@@ -36,6 +76,13 @@ CREATE TABLE `clientes` (
   `cidade` varchar(50) DEFAULT NULL,
   `estado` varchar(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `nome`, `sobrenome`, `cpf`, `endereco`, `cidade`, `estado`) VALUES
+(1, 'pedro', 'raimundo', '271561469832', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -185,6 +232,20 @@ CREATE TABLE `usuarios` (
 --
 
 --
+-- Índices para tabela `aluguel`
+--
+ALTER TABLE `aluguel`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_cliente` (`id_cliente`),
+  ADD KEY `id_carro` (`id_carro`);
+
+--
+-- Índices para tabela `carros`
+--
+ALTER TABLE `carros`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `clientes`
 --
 ALTER TABLE `clientes`
@@ -244,10 +305,22 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de tabela `aluguel`
+--
+ALTER TABLE `aluguel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `carros`
+--
+ALTER TABLE `carros`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `endereco`
@@ -300,6 +373,13 @@ ALTER TABLE `usuarios`
 --
 -- Restrições para despejos de tabelas
 --
+
+--
+-- Limitadores para a tabela `aluguel`
+--
+ALTER TABLE `aluguel`
+  ADD CONSTRAINT `aluguel_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`),
+  ADD CONSTRAINT `aluguel_ibfk_2` FOREIGN KEY (`id_carro`) REFERENCES `carros` (`id`);
 
 --
 -- Limitadores para a tabela `materias`

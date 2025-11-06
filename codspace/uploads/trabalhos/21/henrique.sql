@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Out-2025 às 21:07
+-- Tempo de geração: 03-Nov-2025 às 20:40
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -36,6 +36,32 @@ CREATE TABLE `clientes` (
   `cidade` varchar(50) DEFAULT NULL,
   `estado` varchar(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `dados`
+--
+
+CREATE TABLE `dados` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(30) DEFAULT NULL,
+  `sobrenome` varchar(20) DEFAULT NULL,
+  `data_nasc` date DEFAULT NULL,
+  `telefone` varchar(30) DEFAULT NULL,
+  `email` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `dados`
+--
+
+INSERT INTO `dados` (`id`, `nome`, `sobrenome`, `data_nasc`, `telefone`, `email`) VALUES
+(1, 'henrique', 'caratchuk', NULL, '34124214', 'henrique@henrique'),
+(2, 'henrique', 'caratchuk', NULL, '34124214', 'henrique@henrique'),
+(3, 'henrique', 'caratchuk', NULL, '34124214', 'henrique@henrique'),
+(4, 'henrique', 'caratchuk', NULL, '34124214', 'henrique@henrique'),
+(5, 'henrique', 'caratchuk', '2025-07-01', '34124214', 'henrique@henrique');
 
 -- --------------------------------------------------------
 
@@ -231,6 +257,12 @@ ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `dados`
+--
+ALTER TABLE `dados`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `empresa`
 --
 ALTER TABLE `empresa`
@@ -288,6 +320,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `dados`
+--
+ALTER TABLE `dados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `empresa`

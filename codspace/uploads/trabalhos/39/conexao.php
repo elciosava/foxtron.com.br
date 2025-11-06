@@ -1,14 +1,16 @@
 <?php
+    //declarar 4 variaveis principais
     $local = 'localhost';
     $banco = 'liedson';
     $usuario = 'root';
     $senha = '';
 
-
-    try {
-    $conexao = new PDO("mysql:host=$local;dbname=$banco", $usuario, $senha);
-    $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}catch (PDOException $e){
-    die("deu ruim coisa!!" . $e->getMessage());
-}
+    //tentar uma conexao usando nossas variaveis 
+    try{
+        //criar a variavel de conexao
+        $conexao = new PDO("mysql:host=$local;dbname=$banco", $usuario, $senha);
+        $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }catch (PDOException $e){
+        echo "num deu certo" . $e->getMessage();
+    }
 ?>

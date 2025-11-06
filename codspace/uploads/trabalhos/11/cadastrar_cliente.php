@@ -1,65 +1,16 @@
 <?php
-    include 'conexao.php';
+    $local = 'localhost';
+    $banco = 'vinicius';
+    $usuario = 'root';
+    $senha = '';
 
-    $sql = "SELECT * FROM `endereco`";
-    $stmt = $conexao->prepare($sql);
-    $stmt->execute();
-
+    $nome = $_POST['nome'];
+    $sobrenome = $_POST['sobrenome'];
+    $data_nascen = $_POST['data_nascimento'];
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            display: flex;
-            justify-content : center;
-        }
-        form {
-            width: 350px;
-        }
-        input, select {
-            box-sizing: border-box;
-            width: 100%;
-            margin-bottom: 20px;
-            padding: 5px;
-        }
-        button {
-            background: #120aeaff;
-            width: 100%;
-            height: 40px;
-            border: 0;
-            color: #fff;
-            border-radius: 10px;
-        }
-    </style>    
-</head>
-<body>
-    <section class="inicio">
-        <div class="container">
-            <form action="" method="post">
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="">
 
-                <label for="sobrenome">Sobrenome</label>
-                <input type="text" name="sobrenome" id="">
-
-                <label for="cpf">CPF</label>
-                <input type="text" name="cpf" id="">
-
-                <label for="endereco">Endereco</label>
-                <select name="endereco" id="">
-                    <?php
-                        while($endereco = $stmt->fetch(PDO::FETCH_ASSOC)){
-                            echo "<option value='{$endereco['id']}'>{$endereco['nome']}</option>";
-                        }
-                    ?>
-                </select> 
-                <button type="submit">Salvar</button>   
-            </form> 
-        </div>
-    </section>
-</body>
-</html>
+<form action="" method="post">
+    <input type="text" name="nome" id="">
+    <input type="text" name="sobrenome" id="">
+    <input type="text" name="data_nascimento" id="">
+</form>

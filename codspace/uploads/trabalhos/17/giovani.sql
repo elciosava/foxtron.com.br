@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Out-2025 às 21:13
+-- Tempo de geração: 03-Nov-2025 às 21:26
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -20,6 +20,21 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `giovani`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cadastro_cliente`
+--
+
+CREATE TABLE `cadastro_cliente` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(30) DEFAULT NULL,
+  `sobrenome` varchar(30) DEFAULT NULL,
+  `nascimento` varchar(15) DEFAULT NULL,
+  `telefone` varchar(20) DEFAULT NULL,
+  `email` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -212,6 +227,12 @@ INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`) VALUES
 --
 
 --
+-- Índices para tabela `cadastro_cliente`
+--
+ALTER TABLE `cadastro_cliente`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `clientes`
 --
 ALTER TABLE `clientes`
@@ -262,6 +283,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `cadastro_cliente`
+--
+ALTER TABLE `cadastro_cliente`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`

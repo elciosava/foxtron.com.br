@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Out-2025 às 19:00
+-- Tempo de geração: 29-Out-2025 às 21:20
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -63,6 +63,18 @@ INSERT INTO `endereco` (`id`, `tipo`, `nome`, `numero`, `bairro`, `cidade`, `est
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `entrada`
+--
+
+CREATE TABLE `entrada` (
+  `id` int(11) NOT NULL,
+  `id_pecas` int(11) DEFAULT NULL,
+  `produto` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `materia`
 --
 
@@ -80,6 +92,43 @@ INSERT INTO `materia` (`id`, `id_professores`, `materia`) VALUES
 (1, 1, 'Programador de sistema'),
 (2, 2, 'Administração'),
 (3, 3, 'Mecanica');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `materias`
+--
+
+CREATE TABLE `materias` (
+  `id` int(11) NOT NULL,
+  `id_professores` int(11) DEFAULT NULL,
+  `materia` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `pecas`
+--
+
+CREATE TABLE `pecas` (
+  `id` int(11) NOT NULL,
+  `produto` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `pecas`
+--
+
+INSERT INTO `pecas` (`id`, `produto`) VALUES
+(1, 'Parafuso'),
+(11, 'Parafuso'),
+(12, 'Parafuso'),
+(13, 'Parafuso'),
+(14, 'Parafuso'),
+(15, 'Parafuso'),
+(16, 'Parafuso'),
+(17, 'Parafuso');
 
 -- --------------------------------------------------------
 
@@ -130,10 +179,7 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 (11, 'Elcio Sava'),
 (12, 'Alaide'),
 (13, 'Gleyson'),
-(14, 'Elcio Sava'),
 (15, 'Alaide'),
-(16, 'Gleyson'),
-(17, 'Elcio Sava'),
 (18, 'Alaide'),
 (19, 'Gleyson'),
 (20, 'Elcio Sava'),
@@ -141,7 +187,36 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 (22, 'Gleyson'),
 (23, 'Elcio Sava'),
 (24, 'Alaide'),
-(25, 'Gleyson');
+(25, 'Gleyson'),
+(26, 'parafuso');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `saida`
+--
+
+CREATE TABLE `saida` (
+  `id` int(11) NOT NULL,
+  `produto` varchar(255) NOT NULL,
+  `quantidade` int(11) NOT NULL,
+  `data_saida` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `saida`
+--
+
+INSERT INTO `saida` (`id`, `produto`, `quantidade`, `data_saida`) VALUES
+(1, 'Parafuso', 0, '2025-10-29 20:09:12'),
+(2, 'Parafuso', 15, '2025-10-29 20:13:20'),
+(3, 'Parafuso', 15, '2025-10-29 20:13:38'),
+(4, 'Parafuso', 15, '2025-10-29 20:14:16'),
+(5, 'Parafuso', 15, '2025-10-29 20:14:19'),
+(6, 'Parafuso', 15, '2025-10-29 20:14:30'),
+(7, 'Parafuso', 15, '2025-10-29 20:16:06'),
+(8, 'Parafuso', 15, '2025-10-29 20:17:12'),
+(9, 'Parafuso', 15, '2025-10-29 20:20:10');
 
 -- --------------------------------------------------------
 
@@ -182,11 +257,30 @@ ALTER TABLE `endereco`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `entrada`
+--
+ALTER TABLE `entrada`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `materia`
 --
 ALTER TABLE `materia`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_professores` (`id_professores`);
+
+--
+-- Índices para tabela `materias`
+--
+ALTER TABLE `materias`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_professores` (`id_professores`);
+
+--
+-- Índices para tabela `pecas`
+--
+ALTER TABLE `pecas`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `produto`
@@ -198,6 +292,12 @@ ALTER TABLE `produto`
 -- Índices para tabela `professores`
 --
 ALTER TABLE `professores`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `saida`
+--
+ALTER TABLE `saida`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -223,10 +323,28 @@ ALTER TABLE `endereco`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de tabela `entrada`
+--
+ALTER TABLE `entrada`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `materia`
 --
 ALTER TABLE `materia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `materias`
+--
+ALTER TABLE `materias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `pecas`
+--
+ALTER TABLE `pecas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de tabela `produto`
@@ -238,7 +356,13 @@ ALTER TABLE `produto`
 -- AUTO_INCREMENT de tabela `professores`
 --
 ALTER TABLE `professores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT de tabela `saida`
+--
+ALTER TABLE `saida`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
@@ -255,6 +379,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `materia`
   ADD CONSTRAINT `materia_ibfk_1` FOREIGN KEY (`id_professores`) REFERENCES `professores` (`id`);
+
+--
+-- Limitadores para a tabela `materias`
+--
+ALTER TABLE `materias`
+  ADD CONSTRAINT `materias_ibfk_1` FOREIGN KEY (`id_professores`) REFERENCES `professores` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

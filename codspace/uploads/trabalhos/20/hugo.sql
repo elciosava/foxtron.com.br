@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Out-2025 às 21:06
+-- Tempo de geração: 03-Nov-2025 às 20:53
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -36,6 +36,30 @@ CREATE TABLE `clientes` (
   `cidade` varchar(50) DEFAULT NULL,
   `estado` varchar(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `dados`
+--
+
+CREATE TABLE `dados` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(30) DEFAULT NULL,
+  `sobrenome` varchar(30) DEFAULT NULL,
+  `nacimento` varchar(30) DEFAULT NULL,
+  `telefone` varchar(30) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `dados`
+--
+
+INSERT INTO `dados` (`id`, `nome`, `sobrenome`, `nacimento`, `telefone`, `email`) VALUES
+(1, 'hugo', 'alfred', NULL, '333', 'hugo@hugo'),
+(2, 'hugo', 'alfred', NULL, '33523252', 'hugo@hugo'),
+(3, 'hugo', 'alfred', '2025-11-03', '2522352', 'hugo@hugo');
 
 -- --------------------------------------------------------
 
@@ -221,6 +245,12 @@ ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `dados`
+--
+ALTER TABLE `dados`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `empresa`
 --
 ALTER TABLE `empresa`
@@ -278,6 +308,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `dados`
+--
+ALTER TABLE `dados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `empresa`

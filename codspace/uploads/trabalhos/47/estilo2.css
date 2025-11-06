@@ -112,7 +112,7 @@ form label {
     border-radius: 2px;
 }
 
-input,select{
+input[type=text], [type=number]{
     width: 100%;
     padding: 12px 20px;
     font-size: 1em;

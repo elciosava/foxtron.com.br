@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Out-2025 às 21:02
+-- Tempo de geração: 03-Nov-2025 às 21:25
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `heriberto`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cadastro`
+--
+
+CREATE TABLE `cadastro` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(30) DEFAULT NULL,
+  `sobrenome` varchar(30) DEFAULT NULL,
+  `email` varchar(20) DEFAULT NULL,
+  `nascimento` varchar(15) DEFAULT NULL,
+  `telefone` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `cadastro`
+--
+
+INSERT INTO `cadastro` (`id`, `nome`, `sobrenome`, `email`, `nascimento`, `telefone`) VALUES
+(1, 'Heriberto', 'Wagenfuhr Jr', 'hwjrrw@gmail.com', '2212112', '232135');
 
 -- --------------------------------------------------------
 
@@ -205,6 +227,12 @@ INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`) VALUES
 --
 
 --
+-- Índices para tabela `cadastro`
+--
+ALTER TABLE `cadastro`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `clientes`
 --
 ALTER TABLE `clientes`
@@ -268,6 +296,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `cadastro`
+--
+ALTER TABLE `cadastro`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
