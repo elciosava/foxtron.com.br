@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Nov-2025 às 21:26
+-- Tempo de geração: 06-Nov-2025 às 21:16
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -51,6 +51,29 @@ CREATE TABLE `clientes` (
   `cidade` varchar(50) DEFAULT NULL,
   `estado` varchar(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cores`
+--
+
+CREATE TABLE `cores` (
+  `id` int(11) NOT NULL,
+  `cod_cor` varchar(30) DEFAULT NULL,
+  `nome_cor` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `cores`
+--
+
+INSERT INTO `cores` (`id`, `cod_cor`, `nome_cor`) VALUES
+(1, '#000000', 'preto'),
+(2, '#ba1212', 'vermelho'),
+(3, '#ba1212', 'vermelho'),
+(4, '#ba1212', 'vermelho'),
+(5, '#ba1212', 'vermelho');
 
 -- --------------------------------------------------------
 
@@ -239,6 +262,12 @@ ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `cores`
+--
+ALTER TABLE `cores`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `empresa`
 --
 ALTER TABLE `empresa`
@@ -295,6 +324,12 @@ ALTER TABLE `cadastro_cliente`
 --
 ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `cores`
+--
+ALTER TABLE `cores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `empresa`

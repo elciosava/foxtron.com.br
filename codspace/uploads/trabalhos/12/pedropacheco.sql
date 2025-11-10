@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Nov-2025 às 21:22
+-- Tempo de geração: 06-Nov-2025 às 21:09
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -83,6 +83,26 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`id`, `nome`, `sobrenome`, `cpf`, `endereco`, `cidade`, `estado`) VALUES
 (1, 'pedro', 'raimundo', '271561469832', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cor`
+--
+
+CREATE TABLE `cor` (
+  `id` int(11) NOT NULL,
+  `cor` varchar(50) DEFAULT NULL,
+  `cordecolorir` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `cor`
+--
+
+INSERT INTO `cor` (`id`, `cor`, `cordecolorir`) VALUES
+(1, 'azul escuro', '#1e00b3'),
+(2, 'azul escuro', '#1904b9');
 
 -- --------------------------------------------------------
 
@@ -252,6 +272,12 @@ ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `cor`
+--
+ALTER TABLE `cor`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `endereco`
 --
 ALTER TABLE `endereco`
@@ -321,6 +347,12 @@ ALTER TABLE `carros`
 --
 ALTER TABLE `clientes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `cor`
+--
+ALTER TABLE `cor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `endereco`

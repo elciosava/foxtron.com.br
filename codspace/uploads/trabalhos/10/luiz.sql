@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Out-2025 às 21:11
+-- Tempo de geração: 06-Nov-2025 às 21:31
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -20,6 +20,48 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `luiz`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cadastro`
+--
+
+CREATE TABLE `cadastro` (
+  `nome` varchar(30) DEFAULT NULL,
+  `data_nasc` varchar(30) DEFAULT NULL,
+  `telefone` varchar(30) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `cadastro`
+--
+
+INSERT INTO `cadastro` (`nome`, `data_nasc`, `telefone`, `email`) VALUES
+('luiz', NULL, '42998259970', 'luiz983q@gmail.com'),
+('luiz', '2025-11-25', '42998259970', 'luiz983q@gmail.com'),
+('luiz', '2025-11-25', '42998259970', 'luiz983q@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cores`
+--
+
+CREATE TABLE `cores` (
+  `id` int(11) NOT NULL,
+  `code_cor` varchar(30) DEFAULT NULL,
+  `nome_cor` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `cores`
+--
+
+INSERT INTO `cores` (`id`, `code_cor`, `nome_cor`) VALUES
+(1, '#ff0000', 'vermelho'),
+(2, '#ff0000', 'vermelho');
 
 -- --------------------------------------------------------
 
@@ -196,6 +238,12 @@ INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`) VALUES
 --
 
 --
+-- Índices para tabela `cores`
+--
+ALTER TABLE `cores`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `endereco`
 --
 ALTER TABLE `endereco`
@@ -247,6 +295,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `cores`
+--
+ALTER TABLE `cores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `endereco`

@@ -1,134 +1,54 @@
 <?php
 include 'conexao.php';
+session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $nome = $_POST['nome'] ?? '';
-  $sobrenome = $_POST['sobrenome'] ?? '';
-  $nascimento = $_POST['nascimento'] ?? '';
-  $telefone = $_POST['telefone'] ?? '';
-  $email = $_POST['email'] ?? '';
+$msg = "";
 
-  $sql = "INSERT INTO cadastro (nome, sobrenome, nascimento, telefone, email) 
-          VALUES (:nome, :sobrenome, :nascimento, :telefone, :email)";
-  
-  $stmt = $conexao->prepare($sql);
-  $stmt->bindParam(':nome', $nome);
-  $stmt->bindParam(':sobrenome', $sobrenome);
-  $stmt->bindParam(':nascimento', $nascimento);
-  $stmt->bindParam(':telefone', $telefone);
-  $stmt->bindParam(':email', $email);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = trim($_POST["nome"]);
+    $email = trim($_POST["email"]);
+    $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
 
-  if ($stmt->execute()) {
-    header("Location: cadastro.php");
-    exit;
-  } else {
-    echo "Não foi possível cadastrar o usuário.";
-  }
+    $stmt = $conn->prepare("INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $nome, $email, $senha);
+
+    if ($stmt->execute()) {
+        $_SESSION["usuario_id"] = $conn->insert_id;
+        $_SESSION["usuario_nome"] = $nome;
+        header("Location: malas.php");
+        exit;
+    } else {
+        $msg = "❌ Erro: este e-mail já está cadastrado.";
+    }
 }
 ?>
-
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro de Usuário</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: linear-gradient(135deg, #ffffffff, #80a9dfff);
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    .form-container {
-      background-color: #fff;
-      border-radius: 10px;
-      padding: 30px;
-      width: 100%;
-      max-width: 400px;
-      margin-bottom: 30px;
-      box-shadow: 4px 5px 30px #00000062;
-    }
-
-    h2 {
-      text-align: center;
-      color: #80a9dfff;
-      margin-bottom: 20px;
-      font-size: 1.8rem;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #80a9dfff;
-      border-radius: 5px;
-      font-size: 14px;
-      transition: 0.3s ease-out;
-    }
-
-    input:hover {
-      border: 1px solid #00000050;
-      transition: 0.3s ease-in;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #80a9dfff;
-      border: 1px solid #7e7e7e2a;
-      border-radius: 5px;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: 0.3s ease-out;
-      font-weight: 200;
-    }
-
-    button:active {
-      background-color: #5e7ca3ff;
-      transition: 0.3s ease-in;
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadastrar - Travel</title>
+<style>
+body{font-family:Poppins,sans-serif;background:#f4f4f4;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;}
+form{background:#fff;padding:30px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.1);width:300px;}
+input{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:6px;}
+button{width:100%;padding:10px;background:#ff4f81;color:#fff;border:none;border-radius:6px;cursor:pointer;}
+button:hover{opacity:0.9;}
+a{text-decoration:none;color:#ff4f81;font-weight:600;}
+.msg{text-align:center;color:red;margin-top:10px;}
+</style>
 </head>
 <body>
-  <div class="form-container">
-    <h2>Cadastro de Usuário</h2>
-    <form action="" method="POST">
-      <label for="nome">Nome</label>
-      <input type="text" name="nome" >
 
-      <label for="sobrenome">Sobrenome</label>
-      <input type="text" name="sobrenome" >
+<form method="POST">
+  <h2 style="text-align:center;color:#ff4f81;">Cadastrar</h2>
+  <input type="text" name="nome" placeholder="Nome completo" required>
+  <input type="email" name="email" placeholder="E-mail" required>
+  <input type="password" name="senha" placeholder="Senha" required>
+  <button type="submit">Cadastrar</button>
+  <p style="text-align:center;margin-top:10px;">Já tem conta? <a href="login.php">Entrar</a></p>
+  <p class="msg"><?php echo $msg; ?></p>
+</form>
 
-      <label for="nascimento">Data de Nascimento</label>
-      <input type="date" name="nascimento" >
-
-      <label for="telefone">Telefone</label>
-      <input type="text" name="telefone" >
-
-      <label for="email">Email</label>
-      <input type="email" name="email" >
-
-      <button type="submit">Salvar</button>
-    </form>
-  </div>
 </body>
 </html>
