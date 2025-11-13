@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Nov-2025 às 21:16
+-- Tempo de geração: 13-Nov-2025 às 17:53
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -24,6 +24,44 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `aluguel`
+--
+
+CREATE TABLE `aluguel` (
+  `id` int(11) NOT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
+  `id_carro` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `aluguel`
+--
+
+INSERT INTO `aluguel` (`id`, `id_cliente`, `id_carro`) VALUES
+(1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `aluno`
+--
+
+CREATE TABLE `aluno` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `aluno`
+--
+
+INSERT INTO `aluno` (`id`, `nome`) VALUES
+(1, 'Elcio'),
+(2, 'Gerson');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `cadastro_cliente`
 --
 
@@ -35,6 +73,28 @@ CREATE TABLE `cadastro_cliente` (
   `telefone` varchar(20) DEFAULT NULL,
   `email` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `carros`
+--
+
+CREATE TABLE `carros` (
+  `id` int(11) NOT NULL,
+  `marca` varchar(30) DEFAULT NULL,
+  `placa` varchar(30) DEFAULT NULL,
+  `cor` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `carros`
+--
+
+INSERT INTO `carros` (`id`, `marca`, `placa`, `cor`) VALUES
+(1, 'Ford', 'ABC 0B23', '#ca6868'),
+(2, 'Ford', 'ABC 0B23', '#af0e0e'),
+(3, 'Ford', 'ABC 0B23', '#af0e0e');
 
 -- --------------------------------------------------------
 
@@ -196,6 +256,25 @@ INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `valor`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `reserva`
+--
+
+CREATE TABLE `reserva` (
+  `id` int(11) NOT NULL,
+  `id_aluno` int(11) DEFAULT NULL,
+  `id_computador` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `reserva`
+--
+
+INSERT INTO `reserva` (`id`, `id_aluno`, `id_computador`) VALUES
+(1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `saida`
 --
 
@@ -250,9 +329,29 @@ INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`) VALUES
 --
 
 --
+-- Índices para tabela `aluguel`
+--
+ALTER TABLE `aluguel`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_cliente` (`id_cliente`),
+  ADD KEY `id_carro` (`id_carro`);
+
+--
+-- Índices para tabela `aluno`
+--
+ALTER TABLE `aluno`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `cadastro_cliente`
 --
 ALTER TABLE `cadastro_cliente`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `carros`
+--
+ALTER TABLE `carros`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -298,6 +397,12 @@ ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `reserva`
+--
+ALTER TABLE `reserva`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `saida`
 --
 ALTER TABLE `saida`
@@ -314,10 +419,28 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de tabela `aluguel`
+--
+ALTER TABLE `aluguel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `aluno`
+--
+ALTER TABLE `aluno`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `cadastro_cliente`
 --
 ALTER TABLE `cadastro_cliente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `carros`
+--
+ALTER TABLE `carros`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
@@ -360,6 +483,12 @@ ALTER TABLE `peca`
 --
 ALTER TABLE `produtos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `reserva`
+--
+ALTER TABLE `reserva`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `saida`

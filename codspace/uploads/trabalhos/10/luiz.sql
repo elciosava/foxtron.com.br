@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Nov-2025 às 21:31
+-- Tempo de geração: 13-Nov-2025 às 17:54
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -20,6 +20,36 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `luiz`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `aluguel`
+--
+
+CREATE TABLE `aluguel` (
+  `id` int(11) NOT NULL,
+  `id_cliente` int(11) DEFAULT NULL,
+  `id_carro` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `alunos`
+--
+
+CREATE TABLE `alunos` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `alunos`
+--
+
+INSERT INTO `alunos` (`id`, `nome`) VALUES
+(5, 'Pedro');
 
 -- --------------------------------------------------------
 
@@ -42,6 +72,64 @@ INSERT INTO `cadastro` (`nome`, `data_nasc`, `telefone`, `email`) VALUES
 ('luiz', NULL, '42998259970', 'luiz983q@gmail.com'),
 ('luiz', '2025-11-25', '42998259970', 'luiz983q@gmail.com'),
 ('luiz', '2025-11-25', '42998259970', 'luiz983q@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `carros`
+--
+
+CREATE TABLE `carros` (
+  `id` int(11) NOT NULL,
+  `carro` varchar(30) DEFAULT NULL,
+  `cor` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `carros`
+--
+
+INSERT INTO `carros` (`id`, `carro`, `cor`) VALUES
+(1, NULL, '#ff0000'),
+(3, 'carro', '#000000');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(30) DEFAULT NULL,
+  `cpf` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `nome`, `cpf`) VALUES
+(1, 'luiz', '111111111111'),
+(2, '213', '11111111111');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `computadores`
+--
+
+CREATE TABLE `computadores` (
+  `id` int(11) NOT NULL,
+  `computador` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `computadores`
+--
+
+INSERT INTO `computadores` (`id`, `computador`) VALUES
+(7, 'PC da nasa');
 
 -- --------------------------------------------------------
 
@@ -129,7 +217,8 @@ INSERT INTO `materias` (`id`, `id_professores`, `materia`) VALUES
 (3, 2, 'mecanico de liquidificadores'),
 (4, 3, 'administrador de robux'),
 (5, 1, 'abacate'),
-(6, 1, 'abacate');
+(6, 1, 'abacate'),
+(7, 2, 'luiz');
 
 -- --------------------------------------------------------
 
@@ -195,6 +284,26 @@ INSERT INTO `professores` (`id`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `reserva`
+--
+
+CREATE TABLE `reserva` (
+  `id` int(11) NOT NULL,
+  `id_aluno` int(11) DEFAULT NULL,
+  `id_computador` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `reserva`
+--
+
+INSERT INTO `reserva` (`id`, `id_aluno`, `id_computador`) VALUES
+(1, 5, 7),
+(2, 5, 7);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `saida`
 --
 
@@ -236,6 +345,38 @@ INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`) VALUES
 --
 -- Índices para tabelas despejadas
 --
+
+--
+-- Índices para tabela `aluguel`
+--
+ALTER TABLE `aluguel`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_cliente` (`id_cliente`),
+  ADD KEY `id_carro` (`id_carro`);
+
+--
+-- Índices para tabela `alunos`
+--
+ALTER TABLE `alunos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `carros`
+--
+ALTER TABLE `carros`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `computadores`
+--
+ALTER TABLE `computadores`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Índices para tabela `cores`
@@ -281,6 +422,14 @@ ALTER TABLE `professores`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `reserva`
+--
+ALTER TABLE `reserva`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_aluno` (`id_aluno`),
+  ADD KEY `id_computador` (`id_computador`);
+
+--
 -- Índices para tabela `saida`
 --
 ALTER TABLE `saida`
@@ -295,6 +444,36 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `aluguel`
+--
+ALTER TABLE `aluguel`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `alunos`
+--
+ALTER TABLE `alunos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de tabela `carros`
+--
+ALTER TABLE `carros`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `computadores`
+--
+ALTER TABLE `computadores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `cores`
@@ -318,7 +497,7 @@ ALTER TABLE `entrada`
 -- AUTO_INCREMENT de tabela `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `pecas`
@@ -339,6 +518,12 @@ ALTER TABLE `professores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
+-- AUTO_INCREMENT de tabela `reserva`
+--
+ALTER TABLE `reserva`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `saida`
 --
 ALTER TABLE `saida`
@@ -355,10 +540,24 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- Limitadores para a tabela `aluguel`
+--
+ALTER TABLE `aluguel`
+  ADD CONSTRAINT `aluguel_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`),
+  ADD CONSTRAINT `aluguel_ibfk_2` FOREIGN KEY (`id_carro`) REFERENCES `carros` (`id`);
+
+--
 -- Limitadores para a tabela `materias`
 --
 ALTER TABLE `materias`
   ADD CONSTRAINT `materias_ibfk_1` FOREIGN KEY (`id_professores`) REFERENCES `professores` (`id`);
+
+--
+-- Limitadores para a tabela `reserva`
+--
+ALTER TABLE `reserva`
+  ADD CONSTRAINT `reserva_ibfk_1` FOREIGN KEY (`id_aluno`) REFERENCES `alunos` (`id`),
+  ADD CONSTRAINT `reserva_ibfk_2` FOREIGN KEY (`id_computador`) REFERENCES `computadores` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -81,5 +81,14 @@
       }
     ?>
   </div>
+  <header>
+        <nav>
+            <ul>
+                <li>Aluno</li>
+                <li>Computadores</li>
+                <li>Reservas</li>
+            </ul>
+        </nav>
+    </header>
 </body> 
 </html>

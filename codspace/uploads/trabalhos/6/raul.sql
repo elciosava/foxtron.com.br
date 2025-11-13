@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Out-2025 às 21:08
+-- Tempo de geração: 13-Nov-2025 às 17:54
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.0.25
 
@@ -20,6 +20,110 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `raul`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `agendamento`
+--
+
+CREATE TABLE `agendamento` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `dia` varchar(15) DEFAULT NULL,
+  `horario` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `agendamento`
+--
+
+INSERT INTO `agendamento` (`id`, `nome`, `dia`, `horario`) VALUES
+(3, 'Raul', 'terca', '17:26'),
+(4, 'Gilberto', 'Sexta', '10:30');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `aluguel`
+--
+
+CREATE TABLE `aluguel` (
+  `id` int(11) NOT NULL,
+  `id_clientes` int(11) DEFAULT NULL,
+  `id_carros` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `aluguel`
+--
+
+INSERT INTO `aluguel` (`id`, `id_clientes`, `id_carros`) VALUES
+(1, 1, 1),
+(2, 1, 3),
+(3, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `alunos`
+--
+
+CREATE TABLE `alunos` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `alunos`
+--
+
+INSERT INTO `alunos` (`id`, `nome`) VALUES
+(1, 'Raul'),
+(2, 'Teobaldo');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `carros`
+--
+
+CREATE TABLE `carros` (
+  `id` int(11) NOT NULL,
+  `marca` varchar(30) DEFAULT NULL,
+  `placa` varchar(7) DEFAULT NULL,
+  `cor` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `carros`
+--
+
+INSERT INTO `carros` (`id`, `marca`, `placa`, `cor`) VALUES
+(1, 'fiat', '1324349', 'azul'),
+(2, 'fiat', '1324349', 'azul'),
+(3, 'volksvagen', '9765543', 'vermelho'),
+(4, 'volksvagen', '9765543', '#00fbff');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `cpf` varchar(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `nome`, `cpf`) VALUES
+(1, 'Raul Karvat', '14324243255'),
+(2, 'elcio sava', '41243254635');
 
 -- --------------------------------------------------------
 
@@ -47,70 +151,6 @@ INSERT INTO `endereco` (`id`, `tipo`, `nome`, `numero`, `bairro`, `cidade`, `est
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `entrada`
---
-
-CREATE TABLE `entrada` (
-  `id` int(11) NOT NULL,
-  `id_pecas` int(11) DEFAULT NULL,
-  `quantidade` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `entrada`
---
-
-INSERT INTO `entrada` (`id`, `id_pecas`, `quantidade`) VALUES
-(3, 1, 10),
-(4, 2, 20),
-(5, 1, 20),
-(6, 1, 700);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `materias`
---
-
-CREATE TABLE `materias` (
-  `id` int(11) NOT NULL,
-  `id_professores` int(11) DEFAULT NULL,
-  `materia` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `materias`
---
-
-INSERT INTO `materias` (`id`, `id_professores`, `materia`) VALUES
-(1, 1, 'Auxiliar de Informática'),
-(2, 1, 'Programador de Sistemas'),
-(3, 2, 'Mecânica'),
-(4, 3, 'Administração'),
-(15, 1, 'vish');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `pecas`
---
-
-CREATE TABLE `pecas` (
-  `id` int(11) NOT NULL,
-  `pecas` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `pecas`
---
-
-INSERT INTO `pecas` (`id`, `pecas`) VALUES
-(1, 'madeira'),
-(2, 'ferro');
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `produtos`
 --
 
@@ -126,48 +166,29 @@ CREATE TABLE `produtos` (
 --
 
 INSERT INTO `produtos` (`id`, `nome`, `quantidade`, `valor`) VALUES
-(5, 'farinha', 2, 10);
+(1, 'oloco', 20, 123),
+(2, 'oloco', 20, 200),
+(3, 'lala', 12, 128);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `professores`
+-- Estrutura da tabela `reservas`
 --
 
-CREATE TABLE `professores` (
+CREATE TABLE `reservas` (
   `id` int(11) NOT NULL,
-  `nome` varchar(50) DEFAULT NULL
+  `id_alunos` int(11) DEFAULT NULL,
+  `id_computadores` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `professores`
+-- Extraindo dados da tabela `reservas`
 --
 
-INSERT INTO `professores` (`id`, `nome`) VALUES
-(1, 'Elcio Sava'),
-(2, 'Gleyson'),
-(3, 'Alayde');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `saida`
---
-
-CREATE TABLE `saida` (
-  `id` int(11) NOT NULL,
-  `id_pecas` int(11) DEFAULT NULL,
-  `quantidade` int(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `saida`
---
-
-INSERT INTO `saida` (`id`, `id_pecas`, `quantidade`) VALUES
-(4, 1, 5),
-(5, 1, 768),
-(6, 2, 40);
+INSERT INTO `reservas` (`id`, `id_alunos`, `id_computadores`) VALUES
+(1, 1, 1),
+(2, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -195,23 +216,35 @@ INSERT INTO `usuarios` (`id`, `nome`, `sobrenome`, `email`, `senha`) VALUES
 --
 
 --
--- Índices para tabela `entrada`
+-- Índices para tabela `agendamento`
 --
-ALTER TABLE `entrada`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_pecas` (`id_pecas`);
+ALTER TABLE `agendamento`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `materias`
+-- Índices para tabela `aluguel`
 --
-ALTER TABLE `materias`
+ALTER TABLE `aluguel`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_professores` (`id_professores`);
+  ADD KEY `id_clientes` (`id_clientes`),
+  ADD KEY `id_carros` (`id_carros`);
 
 --
--- Índices para tabela `pecas`
+-- Índices para tabela `alunos`
 --
-ALTER TABLE `pecas`
+ALTER TABLE `alunos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `carros`
+--
+ALTER TABLE `carros`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `clientes`
+--
+ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -221,17 +254,12 @@ ALTER TABLE `produtos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `professores`
+-- Índices para tabela `reservas`
 --
-ALTER TABLE `professores`
-  ADD PRIMARY KEY (`id`);
-
---
--- Índices para tabela `saida`
---
-ALTER TABLE `saida`
+ALTER TABLE `reservas`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_pecas` (`id_pecas`);
+  ADD KEY `id_alunos` (`id_alunos`),
+  ADD KEY `id_computadores` (`id_computadores`);
 
 --
 -- Índices para tabela `usuarios`
@@ -244,40 +272,46 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de tabela `entrada`
+-- AUTO_INCREMENT de tabela `agendamento`
 --
-ALTER TABLE `entrada`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `agendamento`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de tabela `materias`
+-- AUTO_INCREMENT de tabela `aluguel`
 --
-ALTER TABLE `materias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT de tabela `pecas`
---
-ALTER TABLE `pecas`
+ALTER TABLE `aluguel`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `alunos`
+--
+ALTER TABLE `alunos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `carros`
+--
+ALTER TABLE `carros`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de tabela `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de tabela `professores`
+-- AUTO_INCREMENT de tabela `reservas`
 --
-ALTER TABLE `professores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
--- AUTO_INCREMENT de tabela `saida`
---
-ALTER TABLE `saida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `reservas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
@@ -290,22 +324,11 @@ ALTER TABLE `usuarios`
 --
 
 --
--- Limitadores para a tabela `entrada`
+-- Limitadores para a tabela `aluguel`
 --
-ALTER TABLE `entrada`
-  ADD CONSTRAINT `entrada_ibfk_1` FOREIGN KEY (`id_pecas`) REFERENCES `pecas` (`id`);
-
---
--- Limitadores para a tabela `materias`
---
-ALTER TABLE `materias`
-  ADD CONSTRAINT `materias_ibfk_1` FOREIGN KEY (`id_professores`) REFERENCES `professores` (`id`);
-
---
--- Limitadores para a tabela `saida`
---
-ALTER TABLE `saida`
-  ADD CONSTRAINT `saida_ibfk_1` FOREIGN KEY (`id_pecas`) REFERENCES `pecas` (`id`);
+ALTER TABLE `aluguel`
+  ADD CONSTRAINT `aluguel_ibfk_1` FOREIGN KEY (`id_clientes`) REFERENCES `clientes` (`id`),
+  ADD CONSTRAINT `aluguel_ibfk_2` FOREIGN KEY (`id_carros`) REFERENCES `carros` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

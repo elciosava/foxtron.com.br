@@ -1,16 +1,8 @@
-<?php
-    $nome = $_POST['nome'];
-    echo $nome . "</br>";
+<form action="" method="post">
 
-    $sobrenome = $_POST['sobrenome'];
-    echo $sobrenome . "</br>";
+<label for="nome">nome</label>
+<input type="text" name="nome" id="">
 
-    $email = $_POST['email'];
-    echo $email . "</br>";
-
-    $cidade = $_POST['cidade'];
-    echo $cidade . "</br>";
-
-    $estado = $_POST['estado'];
-    echo $estado . "</br>";
-?>
+<label for="email">email</label>
+<input type="email" name="email" id="">
+</form>
