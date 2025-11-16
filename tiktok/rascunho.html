@@ -1,61 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Quiz de HTML e CSS</title>
+  <link rel="stylesheet" href="quiz.css">
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1a2041, #313a7a);
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 70vh;
-    }
-    button {
-      --width: 150px;
-      --timing: 2s;
-      border: 0;
-      width: var(--width);
-      padding-block: 1em;
       color: #fff;
-      font-weight: bold;
-      font-size: 1em;
-      background: rgb(64, 192, 87);
-      transition: all 0.2s;
-      border-radius: 3px;
+    }
+
+    .quiz-container {
+      background-color: rgba(10, 14, 40, 0.95);
+      padding: 20px 25px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .quiz-container h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .pergunta {
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .pergunta h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .opcao {
+      display: block;
+      margin-bottom: 8px;
       cursor: pointer;
     }
 
-    button:hover {
-      background-image: linear-gradient(to right,
-          rgb(250, 82, 82),
-          rgb(250, 82, 82) 16.65%,
-          rgb(190, 75, 219) 16.65%,
-          rgb(190, 75, 219) 33.3%,
-          rgb(76, 110, 245) 33.3%,
-          rgb(76, 110, 245) 49.95%,
-          rgb(64, 192, 87) 49.95%,
-          rgb(64, 192, 87) 66.6%,
-          rgb(250, 176, 5) 66.6%,
-          rgb(250, 176, 5) 83.25%,
-          rgb(253, 126, 20) 83.25%,
-          rgb(253, 126, 20) 100%,
-          rgb(250, 82, 82) 100%);
-      animation: var(--timing) linear dance6123 infinite;
-      transform: scale(1.1) translateY(-1px);
+    .opcao input {
+      display: none;
     }
 
-    @keyframes dance6123 {
-      to {
-        background-position: var(--width);
+    .opcao span {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: 0.2s;
+    }
+
+    /* hover */
+    .opcao:hover span {
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 1px rgba(0, 212, 255, 0.6);
+    }
+
+    /* marcada */
+    .opcao input:checked+span {
+      background-color: rgba(0, 212, 255, 0.08);
+      border-color: #00d4ff;
+    }
+
+    /* correta marcada */
+    .opcao.correta input:checked+span {
+      background-color: rgba(0, 255, 160, 0.15);
+      border-color: #00ff9d;
+      box-shadow: 0 0 10px rgba(0, 255, 160, 0.4);
+    }
+
+    /* errada marcada */
+    .opcao:not(.correta) input:checked+span {
+      background-color: rgba(255, 0, 90, 0.15);
+      border-color: #ff005a;
+    }
+
+    @media (max-width: 480px) {
+      .quiz-container {
+        margin: 10px;
+        padding: 15px;
+      }
+
+      .quiz-container h1 {
+        font-size: 20px;
+      }
+
+      .pergunta h2 {
+        font-size: 16px;
+      }
+
+      .opcao span {
+        font-size: 14px;
       }
     }
   </style>
 </head>
 
 <body>
-  <button>Entrar</button>
+  <div class="quiz-container">
+    <h1>Quiz de HTML & CSS</h1>
+
+    <div class="pergunta">
+      <h2>1. Qual tag usamos para criar um parágrafo em HTML?</h2>
+      <label class="opcao correta">
+        <input type="radio" name="q1">
+        <span>&lt;p&gt;</span>
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q1">
+        <span>&lt;h1&gt;</span>
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q1">
+        <span>&lt;div&gt;</span>
+      </label>
+    </div>
+
+    <div class="pergunta">
+      <h2>2. Qual propriedade CSS altera a cor do texto?</h2>
+      <label class="opcao correta">
+        <input type="radio" name="q2">
+        <span>color</span>
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q2">
+        <span>background-color</span>
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q2">
+        <span>font-size</span>
+      </label>
+    </div>
+
+    <div class="pergunta">
+      <h2>3. Qual opção centraliza um texto?</h2>
+      <label class="opcao correta">
+        <input type="radio" name="q3">
+        <span>text-align: center;</span>
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q3">
+        <span>align-items: center;</span>
+      </label>
+      <label class="opcao">
+        <input type="radio" name="q3">
+        <span>justify-content: center;</span>
+      </label>
+    </div>
+  </div>
 </body>
 
 </html>
