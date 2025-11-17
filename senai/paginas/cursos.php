@@ -184,6 +184,8 @@ $feriados = $stmtF->fetchAll(PDO::FETCH_COLUMN); // array de 'YYYY-MM-DD'
 
     <div class="container">
         <a href="../index.php" class="btn">Voltar para geração de calendário</a>
+        <a href="professores.php" class="btn">Gerenciar professores</a>
+
 
 
         <h2>Novo Curso</h2>
@@ -292,7 +294,7 @@ $feriados = $stmtF->fetchAll(PDO::FETCH_COLUMN); // array de 'YYYY-MM-DD'
                         <a class="mini-link" href="ucs.php?curso_id=<?= $c['id'] ?>">Gerenciar UCs</a>
                     </td>
                     <td>
-                        <a class="mini-link" href="../index.php?curso_id=<?= $c['id'] ?>">Gerar calendário</a><br>
+                        <a class="mini-link" href="../api/gerar_agendamentos.php?curso_id=<?= $c['id'] ?>">Gerar calendário</a><br>
                         <a class="mini-link" href="calendario_curso.php?curso_id=<?= $c['id'] ?>">Ver calendário</a>
                     </td>
                 </tr>
