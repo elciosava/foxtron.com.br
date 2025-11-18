@@ -287,8 +287,7 @@ include '../conexao/conexao.php';
             const thead = document.getElementById("theadDias");
             let thHtml = `
             <th style="width: 140px;">Professor</th>
-            <th>Turno</th>
-        `;
+            <th>Turno</th>`;
 
             diasSemana.forEach((sigla, idx) => {
                 const d = new Date(segunda);
@@ -305,10 +304,11 @@ include '../conexao/conexao.php';
             // Busca professores
             const professores = await fetch("../api/listar_professores.php").then(r => r.json());
 
-            // Eventos manuais
+            // 🔹 Busca eventos manuais (folga, substituição, etc.)
             let eventos = [];
             try {
-                eventos = await fetch("../api/listar_aulas.php?semana_inicio=" + semanaInicio).then(r => r.json());
+                eventos = await fetch("../api/listar_eventos.php?semana_inicio=" + semanaInicio)
+                    .then(r => r.json());
             } catch (e) {
                 console.warn("Não foi possível carregar eventos manuais:", e);
             }
@@ -431,12 +431,15 @@ include '../conexao/conexao.php';
         let profSelecionado = null;
         let turnoSelecionado = null;
         let editandoId = null;
+        let dataSelecionada = null; // 🔹 nova: guarda a data real do evento
 
         async function abrirModal(profId, dia, turno) {
             editandoId = null;
+
             diaSelecionado = dia;
             profSelecionado = profId;
             turnoSelecionado = turno;
+            dataSelecionada = null; // 🔹 novo evento → data será calculada pela semana
 
             document.getElementById("tituloModal").innerText = "Novo evento";
             document.getElementById("modal").style.display = "flex";
@@ -479,10 +482,21 @@ include '../conexao/conexao.php';
         // SALVAR
         // ================================
         document.getElementById("btnSalvar").onclick = async () => {
-            const segunda = getSegunda(dataAtual);
-            const index = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"].indexOf(diaSelecionado);
-            const dataFinal = new Date(segunda);
-            dataFinal.setDate(segunda.getDate() + index);
+            const diasSemana = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"];
+
+            let dataEnvio;
+
+            if (editandoId) {
+                // 🔁 EDITAR → usa data que veio do banco
+                dataEnvio = dataSelecionada; // ex: "2025-11-16"
+            } else {
+                // ➕ NOVO → calcula a data com base na semana atual + diaSelecionado
+                const segunda = getSegunda(dataAtual);
+                const index = diasSemana.indexOf(diaSelecionado);
+                const dataFinal = new Date(segunda);
+                dataFinal.setDate(segunda.getDate() + index);
+                dataEnvio = formatarData(dataFinal); // "yyyy-mm-dd"
+            }
 
             const payload = {
                 id: editandoId,
@@ -492,18 +506,26 @@ include '../conexao/conexao.php';
                 tipo: document.getElementById("tipoEvento").value,
                 substituto_id: null,
                 observacao: document.getElementById("observacao").value,
-                data: formatarData(dataFinal),
-                turno: turnoSelecionado
+                data: dataEnvio,          // 🔹 agora certinho
+                turno: turnoSelecionado   // 🔹 mantém o turno correto
             };
 
-            await fetch("../api/salvar_evento.php", {
+            const res = await fetch("../api/salvar_evento.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(payload),
+                cache: "no-store"
             });
 
-            document.getElementById("modal").style.display = "none";
-            carregarAgenda();
+            const json = await res.json();
+            console.log("Salvar evento:", json);
+
+            if (json.status === "ok") {
+                document.getElementById("modal").style.display = "none";
+                carregarAgenda();   // recarrega e já mostra o resultado atualizado
+            } else {
+                alert("Erro ao salvar: " + json.mensagem);
+            }
         };
 
         // ================================
@@ -515,6 +537,7 @@ include '../conexao/conexao.php';
             editandoId = id;
             diaSelecionado = ev.dia_semana;
             turnoSelecionado = ev.turno;
+            dataSelecionada = ev.data; // 🔹 mantém a data EXATA do evento (yyyy-mm-dd)
 
             document.getElementById("tituloModal").innerText = "Editar evento";
             document.getElementById("modal").style.display = "flex";
@@ -530,9 +553,10 @@ include '../conexao/conexao.php';
                 const ucs = await fetch("../api/listar_uc_por_curso.php?curso_id=" + ev.curso_id).then(r => r.json());
                 document.getElementById("uc").innerHTML =
                     "<option value=''>Selecione</option>" +
-                    ucs.map(u => `<option value="${u.id}" ${u.id == ev.uc_id ? "selected" : ""}>${u.nome}</option>`).join("");
+                    ucs.map(u => `<option value="${u.id}" ${u.id == ev.uc_id ? "selected" : ""}>${u.nome}</option>`);
             }
         }
+
 
         // ================================
         // EXCLUIR

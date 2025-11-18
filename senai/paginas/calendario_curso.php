@@ -381,6 +381,7 @@ while ($cursor <= $fimMes) {
             <a href="../api/gerar_agendamentos.php?curso_id=<?= $curso_id ?>" class="btn">Regerar calendário</a>
             <a href="ver_aulas.php?curso_id=<?= $curso_id ?>" class="btn">Ver aulas em lista</a>
             <a href="javascript:window.print()" class="btn">Imprimir calendário</a>
+            <a href="agenda_professores.php" class="btn">Agenda Professores</a>
         </div>
 
 
