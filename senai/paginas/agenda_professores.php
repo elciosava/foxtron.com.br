@@ -14,6 +14,7 @@ include '../conexao/conexao.php';
             margin: 0;
             padding: 0;
         }
+
         body {
             background: #f3f6fc;
             font-family: 'Segoe UI', sans-serif;
@@ -82,7 +83,8 @@ include '../conexao/conexao.php';
             border: 1px solid #ccc;
             height: 40px;
             text-align: center;
-            padding: 3px;
+            padding: 0;
+            /* 🔹 sem padding pra cor pegar a célula toda */
             font-size: 13px;
             font-weight: bold;
         }
@@ -94,19 +96,40 @@ include '../conexao/conexao.php';
         }
 
         .evento {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
             padding: 4px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-top: 4px;
-            color: white;
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .evento .titulo {
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+
+        .evento .acoes {
+            margin-top: 2px;
+            display: flex;
+            gap: 4px;
         }
 
         .evento .acoes button {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.25);
             border: none;
+            border-radius: 3px;
+            padding: 1px 4px;
+            font-size: 11px;
             cursor: pointer;
-            font-size: 14px;
-            margin-left: 4px;
+            color: #fff;
+        }
+
+        .evento .acoes button:hover {
+            background: rgba(255, 255, 255, 0.4);
         }
 
         /* Modal */
@@ -227,7 +250,6 @@ include '../conexao/conexao.php';
         // ================================
         let dataAtual = new Date();
 
-        // Retorna a segunda-feira
         function getSegunda(d) {
             const data = new Date(d);
             const dia = data.getDay();
@@ -257,18 +279,16 @@ include '../conexao/conexao.php';
             const segunda = getSegunda(dataAtual);
             const semanaInicio = formatarData(segunda);
 
-            // 🔹 Atualiza texto da semana (em cima da tabela)
             atualizarLabelSemana();
 
-            // 🔹 Vetor de dias que vamos usar em tudo
             const diasSemana = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"];
 
-            // 🔹 Monta o cabeçalho: Professor | Turno | Seg 15/09 | Ter 16/09 | ...
+            // Monta cabeçalho com dia + data
             const thead = document.getElementById("theadDias");
             let thHtml = `
-        <th style='width: 140px;'>Professor</th>
-        <th>Turno</th>
-    `;
+            <th style="width: 140px;">Professor</th>
+            <th>Turno</th>
+        `;
 
             diasSemana.forEach((sigla, idx) => {
                 const d = new Date(segunda);
@@ -282,10 +302,10 @@ include '../conexao/conexao.php';
 
             thead.innerHTML = thHtml;
 
-            // 🔹 Busca professores
+            // Busca professores
             const professores = await fetch("../api/listar_professores.php").then(r => r.json());
 
-            // 🔹 Busca eventos manuais (folga, substituição, etc.)
+            // Eventos manuais
             let eventos = [];
             try {
                 eventos = await fetch("../api/listar_aulas.php?semana_inicio=" + semanaInicio).then(r => r.json());
@@ -293,7 +313,7 @@ include '../conexao/conexao.php';
                 console.warn("Não foi possível carregar eventos manuais:", e);
             }
 
-            // 🔹 Busca aulas oficiais do calendário de cursos
+            // Aulas oficiais
             let aulasOficiais = [];
             try {
                 aulasOficiais = await fetch("../api/listar_aulas_oficiais.php?semana_inicio=" + semanaInicio)
@@ -320,7 +340,7 @@ include '../conexao/conexao.php';
                 };
             });
 
-            // 🔹 Preenche primeiro com as AULAS OFICIAIS (do calendário de cursos)
+            // Preenche com aulas oficiais
             aulasOficiais.forEach(a => {
                 if (!mapa[a.professor_id]) return;
 
@@ -337,7 +357,7 @@ include '../conexao/conexao.php';
                 };
             });
 
-            // 🔹 Depois sobrescreve com EVENTOS MANUAIS (folga, substituição, etc.)
+            // Sobrescreve com eventos manuais
             eventos.forEach(ev => {
                 const prof = mapa[ev.professor_id];
                 if (!prof) return;
@@ -356,7 +376,7 @@ include '../conexao/conexao.php';
                 };
             });
 
-            // 🔹 Monta as linhas da tabela
+            // Monta linhas
             let html = "";
 
             Object.keys(mapa).forEach(profId => {
@@ -365,7 +385,6 @@ include '../conexao/conexao.php';
                 ["Manhã", "Tarde", "Noite"].forEach(turno => {
                     html += "<tr>";
 
-                    // Nome do professor com rowspan=3
                     if (turno === "Manhã") {
                         html += `<td rowspan="3">${p.nome}</td>`;
                     }
@@ -376,24 +395,25 @@ include '../conexao/conexao.php';
                         const item = p.turnos[turno][dia];
 
                         if (!item) {
-                            html += `<td class="vazio" onclick="abrirModal(${profId}, '${dia}')">+</td>`;
+                            html += `<td class="vazio" onclick="abrirModal(${profId}, '${dia}', '${turno}')">+</td>`;
                         } else {
+                            const label = item.sigla || item.uc || item.tipo || "";
+
+                            const acoes = item.oficial
+                                ? ""
+                                : `<button type="button" onclick="editar(${item.id})" title="Editar">✏️</button>
+                               <button type="button" onclick="excluir(${item.id})" title="Excluir">🗑️</button>`;
+
                             html += `
-                        <td>
-                            <div class="evento" style="background:${item.cor}">
-                                ${item.sigla ?? item.uc ?? ""}
-                                <div class="acoes">
-                                    ${item.oficial
-                                    ? ""
-                                    : `
-                                                <button onclick="editar(${item.id})">✏️</button>
-                                                <button onclick="excluir(${item.id})">🗑️</button>
-                                              `
-                                }
+                            <td style="background:${item.cor || '#1a2041'}; color:#fff;">
+                                <div class="evento">
+                                    <div class="titulo">${label}</div>
+                                    <div class="acoes">
+                                        ${acoes}
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    `;
+                            </td>
+                        `;
                         }
                     });
 
@@ -404,19 +424,19 @@ include '../conexao/conexao.php';
             document.getElementById("corpoAgenda").innerHTML = html;
         }
 
-
         // ================================
         // MODAL
         // ================================
         let diaSelecionado = null;
         let profSelecionado = null;
+        let turnoSelecionado = null;
         let editandoId = null;
 
-        async function abrirModal(profId, dia) {
+        async function abrirModal(profId, dia, turno) {
             editandoId = null;
-
             diaSelecionado = dia;
             profSelecionado = profId;
+            turnoSelecionado = turno;
 
             document.getElementById("tituloModal").innerText = "Novo evento";
             document.getElementById("modal").style.display = "flex";
@@ -429,18 +449,18 @@ include '../conexao/conexao.php';
         };
 
         async function carregarListas() {
-            // Carregar professores
+            // Professores
             const profs = await fetch("../api/listar_professores.php").then(r => r.json());
             document.getElementById("professor").innerHTML =
                 profs.map(p => `<option value="${p.id}" ${p.id == profSelecionado ? "selected" : ""}>${p.nome}</option>`).join("");
 
-            // Carregar cursos
+            // Cursos
             const cursos = await fetch("../api/listar_cursos.php").then(r => r.json());
             document.getElementById("curso").innerHTML =
                 "<option value=''>Selecione</option>" +
-                cursos.map(c => `<option value="${c.id}">${c.nome}</option>`);
+                cursos.map(c => `<option value="${c.id}">${c.nome}</option>`).join("");
 
-            // Quando mudar curso → carregar UCs
+            // UCs por curso
             document.getElementById("curso").onchange = async () => {
                 const curso = document.getElementById("curso").value;
                 if (!curso) {
@@ -448,14 +468,12 @@ include '../conexao/conexao.php';
                     return;
                 }
 
-                const ucs = await fetch("../api/listar_uc_por_curso.php?curso_id=" + curso)
-                    .then(r => r.json());
+                const ucs = await fetch("../api/listar_uc_por_curso.php?curso_id=" + curso).then(r => r.json());
                 document.getElementById("uc").innerHTML =
                     "<option value=''>Selecione</option>" +
-                    ucs.map(u => `<option value="${u.id}">${u.nome}</option>`);
+                    ucs.map(u => `<option value="${u.id}">${u.nome}</option>`).join("");
             };
         }
-
 
         // ================================
         // SALVAR
@@ -474,7 +492,8 @@ include '../conexao/conexao.php';
                 tipo: document.getElementById("tipoEvento").value,
                 substituto_id: null,
                 observacao: document.getElementById("observacao").value,
-                data: formatarData(dataFinal)
+                data: formatarData(dataFinal),
+                turno: turnoSelecionado
             };
 
             await fetch("../api/salvar_evento.php", {
@@ -487,7 +506,6 @@ include '../conexao/conexao.php';
             carregarAgenda();
         };
 
-
         // ================================
         // EDITAR EVENTO
         // ================================
@@ -496,6 +514,7 @@ include '../conexao/conexao.php';
 
             editandoId = id;
             diaSelecionado = ev.dia_semana;
+            turnoSelecionado = ev.turno;
 
             document.getElementById("tituloModal").innerText = "Editar evento";
             document.getElementById("modal").style.display = "flex";
@@ -507,15 +526,13 @@ include '../conexao/conexao.php';
             document.getElementById("tipoEvento").value = ev.tipo;
             document.getElementById("observacao").value = ev.observacao || "";
 
-            // Carregar UCs e selecionar
             if (ev.curso_id) {
                 const ucs = await fetch("../api/listar_uc_por_curso.php?curso_id=" + ev.curso_id).then(r => r.json());
                 document.getElementById("uc").innerHTML =
                     "<option value=''>Selecione</option>" +
-                    ucs.map(u => `<option value="${u.id}" ${u.id == ev.uc_id ? "selected" : ""}>${u.nome}</option>`);
+                    ucs.map(u => `<option value="${u.id}" ${u.id == ev.uc_id ? "selected" : ""}>${u.nome}</option>`).join("");
             }
         }
-
 
         // ================================
         // EXCLUIR
@@ -532,7 +549,6 @@ include '../conexao/conexao.php';
             carregarAgenda();
         }
 
-
         // ================================
         // INIT
         // ================================
@@ -540,6 +556,7 @@ include '../conexao/conexao.php';
             dataAtual.setDate(dataAtual.getDate() - 7);
             carregarAgenda();
         };
+
         document.getElementById("btnProxima").onclick = () => {
             dataAtual.setDate(dataAtual.getDate() + 7);
             carregarAgenda();
