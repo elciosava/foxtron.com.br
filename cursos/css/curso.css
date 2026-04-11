@@ -1,0 +1,231 @@
+/* Estilos específicos da área de curso */
+.curso-body {
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.header-aluno {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-icon {
+    background-color: #007bff;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.badge-curso {
+    font-size: 0.8rem;
+    background-color: #e3f2fd;
+    color: #007bff;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-logout {
+    color: #dc3545;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid #dc3545;
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Layout Principal */
+.curso-container {
+    display: flex;
+    height: calc(100vh - 72px);
+    overflow: hidden;
+}
+
+/* Sidebar */
+.curso-sidebar {
+    width: 350px;
+    background-color: #fff;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.sidebar-header p {
+    margin: 5px 0 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.lista-aulas {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.aula-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s;
+}
+
+.aula-item:hover {
+    background-color: #f9f9f9;
+}
+
+.aula-item.active {
+    background-color: #e3f2fd;
+    border-left: 4px solid #007bff;
+}
+
+.aula-icon {
+    margin-right: 15px;
+    color: #666;
+}
+
+.aula-item.active .aula-icon {
+    color: #007bff;
+}
+
+.aula-ordem {
+    font-size: 0.75rem;
+    color: #888;
+    display: block;
+}
+
+.aula-titulo {
+    margin: 2px 0 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Área do Vídeo */
+.curso-video-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    background-color: #fafafa;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Aspect Ratio 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background-color: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.aula-detalhes {
+    margin-top: 2rem;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.aula-principal-titulo {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.aula-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.aula-meta i {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+.aula-descricao h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #007bff;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.aula-descricao p {
+    line-height: 1.6;
+    color: #444;
+}
+
+@media (max-width: 992px) {
+    .curso-container {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+    }
+    .curso-sidebar {
+        width: 100%;
+        height: 300px;
+    }
+    .curso-video-area {
+        padding: 1rem;
+    }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            font-family: sans-serif;
+            -webkit-text-stroke: 1px rgb(71, 71, 71);
+        }
+
+        .card {
+            width: 300px;
+            height: 180px;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+
+            background: linear-gradient(270deg,
+                    #ff0080,
+                    #7928ca,
+                    #2afadf,
+                    #31fa2a);
+            background-size: 600% 600%;
+            animation: gradiente 6s ease infinite;
+        }
+
+        @keyframes gradiente {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Card Animado</h2>
+    </div>
+</body>
+</html>

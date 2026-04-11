@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creed</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        header{
+            background: #f6728c;
+            height: 50px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 5px 20px #8801d6;
+        }
+
+        .menu{
+            display: flex;
+        }
+
+        ul{
+            display: flex;
+            margin-left: 20px;
+        }
+
+        li{
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        section{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 20px;
+            height: calc(100vh - 60px);
+            padding: 20px;
+        }
+
+        .coluna{
+            box-shadow: 0 5px 20px #8801d6;
+            border-radius: 10px;
+        }
+        .img{
+            height: 200px;
+            background: linear-gradient(to bottom right, brown, lightgreen);
+            border-radius: 10px 10px 0 0;
+        }
+
+        .texto{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: space-around;
+            height: 100px;
+            padding: 20px;
+        }
+
+        h3, p{
+            padding: 8px 0;
+        }
+
+        .quadrinhos {
+            border-top: solid 1px lightcoral;
+            border-bottom: solid 1px lightcoral;
+            height: 90px;
+            margin: 0 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .h {
+            border-radius: 15px;
+            width: 60px;
+            height: 30px;
+            border: solid 1px lightcoral;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <img src="" alt="">
+            <h3>Jão Melão</h3>
+            <nav>
+                <ul>
+                    <li>Peixinho na Brasa</li>
+                    <li>Kaiser na Mon</li>
+                    <li>Só pra quem pode</li>
+                    <li>Tô co Sombra aí ó !!!</li>
+                </ul>
+            </nav>
+
+        </div>
+        <button>Entrar em Contato</button>
+    </header>
+    <section>
+        <div class="coluna">
+            <div class="img"></div>
+            <div class="texto">
+                <h3>Titulex</h3>
+                <p>Meu nome é flash</p>
+            </div>
+            <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+        </div>
+        <div class="coluna">
+            <div class="img"></div>
+            <div class="texto">
+                <h3>Titulex</h3>
+                <p>Irei ganhar</p>
+            </div>
+            <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+        </div>
+        <div class="coluna">
+            <div class="img"></div>
+            <div class="texto">
+                <h3>Titulex</h3>
+                <p>Mastigador de chicleti</p>
+            </div>
+            <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

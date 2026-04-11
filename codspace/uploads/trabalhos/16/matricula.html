@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        li{
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background: rgb(16, 1, 102);
+            height: 50px;
+            color: azure;
+        }
+        .texto h2{
+            margin-bottom: 10px;
+        }
+        img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img{
+            width: 50px;
+            height: 50px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        body {
+            height: 100vh;
+            background-color: rgb(188, 192, 199);
+            font-family: sans-serif;
+        }
+        .texto{
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Matricula</h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <form action="formulario2.php" method="post">
+            <label for="nome completo">Nome completo:</label>
+            <input type="text" name="nome completo" id="">
+
+            <label for="data de nascimento">Data de nascimento:</label>
+            <input type="text" name="data de nascimento" id="">
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="">
+
+            <label for="numero de telefone">Numero de telefone:</label>
+            <input type="number" name="numero de telefone" id="">
+
+            <label for="cpf do aluno">CPF do aluno:</label>
+            <input type="number" name="cpf do aluno" id="">
+
+            <button type="submit">Enviar</button>
+
+        </form>
+    </div>
+</body>
+</html>

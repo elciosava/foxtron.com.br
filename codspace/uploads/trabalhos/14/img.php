@@ -1,0 +1,1 @@
+<img src="https://fgtas.rs.gov.br/upload/recortes/201610/03153609_33079_GDO.png" alt="">

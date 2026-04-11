@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+
+        .azul, .vermelha, .verde {
+            width: 100px;
+            height: 100px;
+        }
+
+        .azul {
+            background-color: blue;
+            position: absolute;
+            margin-top: 25px;
+            margin-left: 25px;
+            z-index: 10;
+        }
+
+        .vermelha {
+            background-color: red;
+            position: absolute;
+            z-index: 20;
+        }
+
+        .verde {
+            background-color: green;
+            margin-bottom: 25px;
+            margin-right: 25px;
+            z-index: 25;
+        }
+    </style>
+</head>
+<body>
+    <div class="azul">
+
+    </div>
+    <div class="vermelha">
+
+    </div>
+    <div class="verde">
+
+    </div>
+</body>
+</html>

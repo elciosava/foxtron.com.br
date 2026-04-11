@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'PinyonScript';
+            src: url('fonts/PinyonScript-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Raleway;
+        }
+
+        section {
+            height: calc(100vh - 80px);
+            padding-top: 80px;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 20px 0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            color: #242424;
+            z-index: 1;
+        }
+
+
+        li {
+            list-style: none;
+            display: inline-block;
+            padding: 10px 20px;
+            justify-content: flex-end;
+        }
+
+        #inicio {
+            background-image: url('https://www.psicologo.com.br/wp-content/uploads/casamento-feliz-um-guia-para-casamentos-felizes.jpg');
+            background-color: black;
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        #inicio .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+            color: #c4c4c4;
+            text-align: center;
+        }
+
+        #inicio h1 {
+            font-size: 10rem;
+            font-weight: normal;
+            background: linear-gradient(to top, #111, #444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 10px;
+            font-family: 'PinyonScript', cursive;
+
+            text-shadow:
+                0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        #inicio p {
+            letter-spacing: 2px;
+            color: #242424;
+            text-shadow: black;
+            font-size: 3rem;
+        }
+
+        .fundo {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            margin-top: -80px;
+        }
+
+        a {
+            color: #242424;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 1.2rem;
+        }
+
+        button {
+            background-color: #64a19d;
+            color: #e2e2e2;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-top: 45px;
+        }
+
+        #sobre {
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #sobre .container {
+            height: calc(100vh - 80px);
+            width: 1000px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .b {
+            background: #282828;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="">Inicio</a></li>
+                <li><a href="">Locais</a></li>
+                <li><a href="">Programação</a></li>
+                <li><a href="">Onde Ficar</a></li>
+                <li><a href="">Lista de Presentes</a></li>
+                <li><a href="">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="inicio">
+        <div class="fundo">
+
+        </div>
+        <div class="container">
+            <h1>Marlon e Catia</h1>
+            <p>
+                31.10.2026
+            </p>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container">
+            <div class="card a"></div>
+            <div class="card b"></div>
+            <div class="card b"></div>
+            <div class="card a"></div>
+        </div>
+    </section>
+</body>
+
+</html>

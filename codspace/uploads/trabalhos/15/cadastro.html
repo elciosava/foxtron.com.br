@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+
+            display: inline-block;
+            margin: 0 20px;
+
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+            background-color: rgb(31, 28, 30);
+            height: 50px;
+            color: rgb(135, 231, 194)
+        }
+        
+
+        .texto h2 {
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img {
+            width: 60px;
+            height: 100px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        body {
+            height: 100vh;
+            background: rgb(110, 152, 190);
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+        <h2>Matricula Colégio São Cristóvão</h2>
+        <header>
+            <h2>Matricula Colégio São Cristóvão</h2>
+            <nav>
+                <ul>
+                    <li>Inicio</li>
+                    <li>Sobre</li>
+                    <li>Contato</li>
+                </ul>
+            </nav>
+        </header>
+    <div class="container">
+        <form action="formulario.php" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="">
+
+        <label for="idade">idade:</label>
+        <input type="text" name="idade" id="">
+
+        <label for="cpf">Cpf:</label>
+        <input type="text" name="cpf" id="">
+
+        <label for="endereço">Endereço:</label>
+        <input type="text" name="endereço" id="">
+
+        <label for="raça">Raça:</label>
+        <input type="text" name="raça" id="">
+
+        <label for="nascimento">Nascimento:</label>
+        <input type="text" name="nascimento" id="">
+
+        <button type="submit">Enviar</button>
+        </form>
+    </div>
+  
+    
+</body>
+</html>

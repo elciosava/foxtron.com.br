@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            height: 100vh;
+            font-family: 'Trebuchet MS';
+            color: #292929;
+            letter-spacing: 2px;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            height: 60px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        li {
+            list-style: none;
+            display: inline;
+            margin: 5px 10px;
+            padding: 5px;
+            font-size: 1.2rem;
+        }
+
+        section {
+            height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        #inicio {
+            background-image: url('https://www.psicologo.com.br/wp-content/uploads/casamento-feliz-um-guia-para-casamentos-felizes.jpg');
+            background-size: 100%;
+            background-repeat: no-repeat;
+            text-align: center;
+            object-position: center;
+        }
+
+        #inicio h1 {
+            font-size: 7.7rem;
+            font-weight: normal;
+            background: linear-gradient(to top, #616161, #000000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+            letter-spacing: 10px;
+        }
+
+        #inicio p {
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #dfffd6;
+            border-radius: 7px;
+            border: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Locais</li>
+                <li>Programação</li>
+                <li>Onde Ficar</li>
+                <li>Lista de Presentes</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+        <div class="container">
+            <h1>Marlon e Catia</h1>
+            <p>
+                31.10.2026
+            </p>
+        </div>
+    </section>
+</body>
+</html>

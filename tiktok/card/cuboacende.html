@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .scene {
+            width: 150px;
+            height: 150px;
+            perspective: 800px;
+        }
+
+        input {
+            display: none;
+        }
+
+        label {
+            cursor: pointer;
+        }
+
+        .cube {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-30deg) rotateY(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+            border: 1px solid #111;
+            opacity: 0.95;
+            transition: background-color 0.5s ease;
+        }
+
+        .front {
+            transform: translateZ(50px);
+        }
+
+        .back {
+            transform: rotateY(180deg) translateZ(50px);
+        }
+
+        .right {
+            transform: rotateY(90deg) translateZ(50px);
+        }
+
+        .left {
+            transform: rotateY(-90deg) translateZ(50px);
+        }
+
+        .top {
+            transform: rotateY(90deg) translateZ(50px);
+        }
+
+        .botton {
+            transform: rotateY(-90deg) translateZ(50px);
+        }
+        input:checked + label .cube .face{
+            background-color: #f923e4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scene">
+        <input type="checkbox" id="acender">
+        <label for="acender">
+            <div class="cube">
+                <div class="face front"></div>
+                <div class="face back"></div>
+                <div class="face right"></div>
+                <div class="face left"></div>
+                <div class="face top"></div>
+                <div class="face botton"></div>
+            </div>
+        </label>
+    </div>
+</body>
+
+</html>

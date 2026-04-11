@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marlon & Catia</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('imagem.jpeg') center center / cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Overlay elegante */
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0.6));
+        }
+
+        /* Conteúdo */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            animation: fadeIn 2s ease forwards;
+            opacity: 0;
+        }
+
+        .hero-content h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            font-size: 4rem;
+            margin: 0 10px;
+        }
+
+        .date {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            text-decoration: none;
+            color: white;
+            border: 1px solid white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: 0.4s ease;
+            font-weight: 400;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #333;
+        }
+
+        /* Animação */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsivo */
+        @media(max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content h1 span {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+            <h1>Marlon <span>&</span> Catia</h1>
+            <p class="date">15 de Setembro de 2026</p>
+            <a href="#" class="btn">Confirmar Presença</a>
+        </div>
+    </section>
+
+</body>
+
+</html>

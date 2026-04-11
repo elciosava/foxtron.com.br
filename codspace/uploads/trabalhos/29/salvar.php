@@ -1,0 +1,1 @@
+SELECT peca.peca, entrada.quantidade AS entrada_quantidade, saida.quantidade AS saida_quantidade FROM peca INNER JOIN entrada ON peca.id = entrada.id_pecas INNER JOIN saida ON peca.id = saida.id_pecas;

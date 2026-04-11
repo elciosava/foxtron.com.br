@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ReUse - Dê um novo destino</title>
+  <link rel="stylesheet" href="style2411.css" />
+</head>
+<body>
+<header class="navbar">
+  <h1 class="logo">♻️ ReUse</h1>
+  <nav id="menu-nav">
+    <a href="index2411.html" class="active">Início</a>
+    <a href="cadastrar2411.html">Cadastrar</a>
+    <a href="buscar2411.html">Buscar</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h2 id="titulo-dinamico">Dê um novo destino ao que você não usa mais 🌱</h2>
+    <p id="texto-dinamico">Transforme o que seria desperdício em oportunidade. Doe, troque e promova um mundo mais sustentável!</p>
+
+    <div id="botoes-usuario">
+      <a href="cadastro_usuario2411.html" class="btn">Cadastrar Usuário</a>
+      <a href="login2411.html" class="btn secundario">Entrar</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 ReUse - Sustentabilidade e Reutilização</p>
+</footer>
+
+<script src="script2411.js"></script>
+<script>
+  (function () {
+    const logado = localStorage.getItem("logado");
+    const usuario = JSON.parse(localStorage.getItem("usuario"));
+    const nav = document.getElementById("menu-nav");
+    const botoes = document.getElementById("botoes-usuario");
+    const titulo = document.getElementById("titulo-dinamico");
+    const texto = document.getElementById("texto-dinamico");
+
+    if (logado && usuario) {
+      if (botoes) botoes.style.display = "none";
+      if (titulo) titulo.textContent = `Bem-vindo, ${usuario.nome} ${usuario.sobrenome}! 👋`;
+      if (texto) texto.textContent = `Você está conectado como: ${usuario.email}`;
+
+      if (nav && !nav.querySelector(".perfil-link")) {
+        const perfil = document.createElement("a");
+        perfil.href = "perfil2411.html";
+        perfil.className = "perfil-link";
+        perfil.textContent = "Perfil";
+        nav.appendChild(perfil);
+      }
+    }
+  })();
+</script>
+</body>
+</html>

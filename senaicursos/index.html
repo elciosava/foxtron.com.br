@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banners SENAI - Editor Interativo v3</title>
+    <link rel="stylesheet" href="styles-v3.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Painel de Edição -->
+        <aside class="editor-panel">
+            <h1>Editor de Banners</h1>
+            
+            <!-- Seletor de Curso -->
+            <div class="form-group">
+                <label for="course-select">Selecione o Curso:</label>
+                <select id="course-select">
+                    <option value="administracao">Técnico em Administração</option>
+                    <option value="sistemas">Técnico Desenvolvimento de Sistemas</option>
+                    <option value="eletromecanica">Técnico Eletromecânica</option>
+                    <option value="automotiva">Técnico Manutenção Automotiva</option>
+                    <option value="programador">Programador de Sistemas</option>                    
+                    <option value="auxiliarautomotivo">Auxiliar de Serviços Automotivos</option>
+                    <option value="assistenterh">Assistente de Recursos Humanos</option>
+                    <option value="eletricidaderesidencial">Eletricidade Básica Residencial</option>
+                    <option value="assistentequalidade">Assistente de Controle de Qualidade</option>
+                </select>
+            </div>
+
+            <!-- Upload de Foto de Fundo -->
+            <div class="form-group">
+                <label for="background-upload">Foto de Fundo:</label>
+                <input type="file" id="background-upload" accept="image/*">
+                <small>Recomendado: 1240x800px</small>
+            </div>
+
+            <!-- QR Code -->
+            <div class="form-group">
+                <label for="qrcode-link">Link para QR Code:</label>
+                <input type="text" id="qrcode-link" placeholder="https://exemplo.com">
+                <button id="generate-qr">Gerar QR Code</button>
+            </div>
+
+            <!-- Informações Editáveis -->
+            <div class="form-group">
+                <label>Informações (5 campos):</label>
+                <input type="text" id="info-1" placeholder="Informação 1">
+                <input type="text" id="info-2" placeholder="Informação 2">
+                <input type="text" id="info-3" placeholder="Informação 3">
+                <input type="text" id="info-4" placeholder="Informação 4">
+                <input type="text" id="info-5" placeholder="Informação 5">
+            </div>
+
+            <!-- Título Customizável -->
+            <div class="form-group">
+                <label for="title-input">Título (ex: GRATUITO):</label>
+                <input type="text" id="title-input" placeholder="GRATUITO">
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="button-group">
+                <button id="export-btn" class="btn-primary">Exportar como PNG</button>
+                <button id="reset-btn" class="btn-secondary">Resetar</button>
+            </div>
+        </aside>
+
+        <!-- Área de Visualização -->
+        <main class="preview-area">
+            <div id="banner" class="banner a4-format">
+                <!-- Cabeçalho Azul -->
+                <div class="banner-header">
+                    <div class="header-content">
+                        <h1 id="banner-title" class="banner-title">GRATUITO</h1>
+                        <h2 id="course-title" class="course-title">Técnico em Administração</h2>
+                       <!-- <h2 id="course-modalidade">EAD - Semipresencial</h2>-->
+                    </div>
+                </div>
+
+                <!-- Área Central (Imagem + Informações) -->
+                <div class="banner-middle">
+                    <!-- Background Image -->
+                    <div class="banner-background" id="banner-background">
+                        <div class="background-placeholder">Clique no painel para adicionar foto</div>
+                    </div>
+
+                    <!-- Info Box (Esquerda) -->
+                    <div class="info-box">
+                        <div class="info-item" id="info-display-1">
+                            <span class="info-icon">⏰</span>
+                            <span class="info-text">Informação 1</span>
+                        </div>
+                        <div class="info-item" id="info-display-2">
+                            <span class="info-icon">📍</span>
+                            <span class="info-text">Informação 2</span>
+                        </div>
+                        <div class="info-item" id="info-display-3">
+                            <span class="info-icon">👤</span>
+                            <span class="info-text">Informação 3</span>
+                        </div>
+                        <div class="info-item" id="info-display-4">
+                            <span class="info-icon">📊</span>
+                            <span class="info-text">Informação 4</span>
+                        </div>
+                        <div class="info-item" id="info-display-5">
+                            <span class="info-icon">📚</span>
+                            <span class="info-text">Informação 5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rodapé Azul -->
+                <div class="banner-footer">
+                    <div class="footer-left">
+                        <div id="qrcode" class="qrcode-container"></div>
+                    </div>
+                    <div class="footer-center">
+                        <p class="qrcode-text">Se inscreva pelo QR Code</p>
+                        <p class="qrcode-text">ou mais informações 
+                        <p class="qrcode-text">pelo whatsapp</p>    
+                        <p class="qrcode-text" style="font-size: 20px;">42 3521 3910</p>
+                    </div>
+                    <div class="footer-right">
+                        <button class="cta-button">INSCRIÇÕES ABERTAS</button>
+                        <div class="senai-footer">
+                            <p class="footer-text">Sistema Fiep</p>
+                            <p class="footer-logo">SENAI</p>
+                            <p class="footer-location">União da Vitória</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script-v3.js"></script>
+</body>
+</html>

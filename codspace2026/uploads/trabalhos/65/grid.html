@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estresse de um programador</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        header {
+            background-color: #1d94c6;
+            height: 50px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0px 10px 20px #2209c5;
+            
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        ul {
+            display: flex;
+            margin-left: 5px;
+        }
+
+        li {
+            list-style: none;
+            margin-left: 20px;
+        }
+        section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            height: calc(100vh - 60px);
+            padding: 20px;
+        }
+
+        .coluna {
+           box-shadow: 0px 1px 20px #655454;
+            border-radius: 10px;
+        }
+
+        .img {
+            height: 200px;
+            background: linear-gradient(to top, black, green);
+            border-radius: 10px 10px 0px 0px;
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: space-around;
+            height: 120px;
+            padding: 20px;
+        }
+
+        h3, p {
+            padding: 8px 0;
+        }
+
+        .quadrinhos {
+            border-top: 1px solid rgb(209, 209, 209);
+            border-bottom: 1px solid rgb(209, 209, 209);
+            height: 90px;
+            margin: 0 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+
+        .h {
+            border-radius: 15px;
+            width: 60px;
+            height: 30px;
+            border: solid 1px rgb(215, 215, 215);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="menu">
+            <img src="" alt="">
+            <h3>Cainã</h3>
+            <nav>
+                <ul>
+                    <li>Sobre</li>
+                    <li>Abilidade</li>
+                    <li>Projetos</li>
+                    <li>Cursos</li>
+
+                </ul>
+                
+            </nav>
+           
+        </div>
+         <button>Entrarn em contato</button>
+        
+
+    </header>
+    <section>
+        <div class="coluna">
+              <div class="img"></div>
+              <div class="text">
+                <h3>Titulo</h3>
+                <p>louco e sonhador </p>
+              </div>
+              <div class="quadrinhos">
+                 <div class="h"></div>
+                 <div class="h"></div>
+                 <div class="h"></div>
+                 <div class="h"></div>
+              </div>
+        </div>
+        <div class="coluna">
+             <div class="img"></div>
+             <div class="text">
+                <h3>Titulo</h3>
+                <p>prara ser programador </p>
+             </div>
+              <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+              </div>
+        </div>
+        <div class="coluna">
+            <div class="img"></div>
+            <div class="text">
+                <h3>Titulo</h3>
+                <p>de sistemas e ganhar money </p>
+            </div>
+              <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+
+              </div>
+        </div>
+    </section>
+    
+</body>
+</html>

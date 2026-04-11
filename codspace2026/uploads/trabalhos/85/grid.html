@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        header {
+            background: rgb(233, 10, 144);
+            height: 50px;
+            padding: 5px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0px 1px 20px #695c5c;
+        }
+
+        .menu {
+            display: flex;
+
+        }
+
+        ul {
+            display: flex;
+            margin-left: 20px;
+        }
+
+        li {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            height: calc(100vh - 60px);
+            padding: 20px;
+
+        }
+
+        .coluna {
+            box-shadow: 0px 1px 20px #860d45;
+            border-radius: 10px;
+        }
+
+        .img {
+            height: 200px;
+            background: linear-gradient(to top right, rgba(33, 0, 23, 0.454), rgba(226, 19, 161, 0.806));
+            border-radius: 10px 10px 0 0;
+        }
+        .texto {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: space-around;
+            height: 120px;
+            padding: 20px
+        }
+        h3, p {
+            padding: 8px 0;
+
+
+        }
+        .quadrinhos {
+            border-top: 1px solid rgb(88, 2, 54);
+            border-bottom: 1px solid rgb(90, 3, 64);
+            height: 90px;
+            margin: 0 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+        .h {
+            border-radius: 15px;
+            width: 50px;
+            height: 30px;
+            border:  1px solid rgb(215, 173, 206);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+            <img src="" alt="">
+            <h3>Helena</h3>
+            <nav>
+                <ul>
+                    <li>Sobre</li>
+                    <li>Habilidades</li>
+                    <li>Projetos</li>
+                    <li>Cursos</li>
+                </ul>
+            </nav>
+        </div>
+        <button>Entrar em Contato</button>
+    </header>
+    <section>
+        <div class="coluna">
+            <div class="img"></div>
+            <div class="texto">
+                <h3>Titulo</h3>
+                <p>texto dentro do div texto</p>
+            </div>
+            <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+        </div>
+
+        <div class="coluna">
+            <div class="img"></div>
+            <div class="texto">
+                <h3>Titulo</h3>
+                <p>texto dentro do div texto</p>
+            </div>
+            <div class="quadrinhos">
+                  <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+        </div>
+
+        <div class="coluna">
+            <div class="img"></div>
+            <div class="texto">
+                <h3>Titulo</h3>
+                <p>texto dentro do div texto</p>
+            </div>
+            <div class="quadrinhos">
+                  <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

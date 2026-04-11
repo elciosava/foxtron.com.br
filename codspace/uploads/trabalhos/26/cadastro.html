@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            display: inline-block;  
+            margin: 0 10px;
+        }
+
+        header {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           padding: 5px 20px ;
+           background:#1899d5;
+           height: 50px;
+           color: blueviolet;
+        }
+        .texto h2{
+            margin-bottom: 10px;
+
+        }
+
+        img {
+            width: 150px;
+            height: 120px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img{
+            width: 100px;
+            height: 100px;
+        }
+        .container {
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           height: 100vh;
+        }
+
+        body {
+            height: 100vh;
+            background: lightblue;
+            font-family: sans-serif;
+        }
+
+        .texto {
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>School of Drag Race</h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Avaliações</li>
+                <li>Calendário</li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <form action="formulário.php" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" id="">
+
+            <label for="nome">Sobrenome:</label>
+            <input type="text" name="sobrenome" id="">
+
+            <label for="nome">Idade:</label>
+            <input type="text" name="idade" id="">
+
+            <label for="nome">cpf:</label>
+            <input type="text" name="cpf" id="">
+
+            <label for="nome">Sexualidade:</label>
+            <input type="text" name="sexualidade" id="">
+
+            <label for="nome">Nascimento:</label>
+            <input type="text" name="nascimento" id="">
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

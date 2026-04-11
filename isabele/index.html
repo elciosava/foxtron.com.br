@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Site em Construção | Foxtron</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonte Google (opcional) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg1: #050816;
+            --bg2: #151a3b;
+            --accent: #34d8ff;
+            --accent2: #ff5ecd;
+            --text: #f5f7ff;
+            --muted: #9aa0c6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(52,216,255,0.15), transparent 55%),
+                radial-gradient(circle at bottom right, rgba(255,94,205,0.18), transparent 55%),
+                linear-gradient(135deg, var(--bg1), var(--bg2));
+            overflow: hidden;
+        }
+
+        .noise {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.08;
+            background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+            mix-blend-mode: soft-light;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 960px;
+            padding: 24px;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 26px;
+            padding: 32px 26px 26px;
+            background: radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 60%),
+                        rgba(5, 8, 22, 0.82);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.03),
+                0 18px 45px rgba(0,0,0,0.6);
+            backdrop-filter: blur(16px);
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 32px;
+        }
+
+        @media (max-width: 780px) {
+            .card {
+                grid-template-columns: 1fr;
+                padding: 26px 20px 22px;
+            }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 10px 4px 4px;
+            border-radius: 999px;
+            background: rgba(5, 8, 22, 0.9);
+            border: 1px solid rgba(255,255,255,0.08);
+            font-size: 11px;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .badge-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #00ffbd, #0aff9d);
+            box-shadow: 0 0 12px rgba(0,255,189,0.8);
+            animation: pulse 1.4s infinite;
+        }
+
+        @keyframes pulse {
+            0%   { transform: scale(1);   opacity: 1;   }
+            70%  { transform: scale(1.4); opacity: 0.15;}
+            100% { transform: scale(1);   opacity: 1;   }
+        }
+
+        h1 {
+            font-size: clamp(2.1rem, 3.1vw, 2.8rem);
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        h1 span {
+            background-image: linear-gradient(120deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 0.96rem;
+            color: var(--muted);
+            max-width: 520px;
+            margin-bottom: 22px;
+        }
+
+        .countdown {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.09);
+            background: rgba(5, 8, 22, 0.85);
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .pill {
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            background: rgba(52,216,255,0.12);
+            color: var(--accent);
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .btn-primary,
+        .btn-ghost {
+            border-radius: 999px;
+            padding: 10px 18px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-image: linear-gradient(120deg, var(--accent), var(--accent2));
+            color: #050816;
+            font-weight: 600;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+        }
+
+        .btn-ghost {
+            border: 1px solid rgba(255,255,255,0.16);
+            background: rgba(5, 8, 22, 0.95);
+            color: var(--text);
+        }
+
+        .btn-ghost:hover {
+            transform: translateY(-1px);
+            border-color: var(--accent);
+        }
+
+        .hint {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .social {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .social a {
+            font-size: 0.83rem;
+            padding: 6px 10px;
+            border-radius: 999px;
+            text-decoration: none;
+            color: var(--muted);
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(9,12,30,0.9);
+            transition: 0.15s ease;
+        }
+
+        .social a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Lado direito - ilustração */
+        .visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .orb {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 30% 0%, rgba(255,255,255,.22), transparent 60%),
+                conic-gradient(from 220deg,
+                   rgba(52,216,255,0.15),
+                   rgba(255,94,205,0.3),
+                   rgba(52,216,255,0.15)
+                );
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.14),
+                0 30px 80px rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .orb-inner {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 0%, rgba(255,255,255,0.18), transparent 50%),
+                        radial-gradient(circle at bottom, rgba(5, 8, 22, 0.98), #050816 62%);
+            border: 1px solid rgba(255,255,255,0.06);
+            position: relative;
+        }
+
+        /* Faixa "em obras" */
+        .tape {
+            position: absolute;
+            left: -50%;
+            right: -50%;
+            top: 45%;
+            height: 38px;
+            background-image: repeating-linear-gradient(
+                -45deg,
+                #ffcc00 0,
+                #ffcc00 16px,
+                #1b1b1b 16px,
+                #1b1b1b 32px
+            );
+            box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+            transform: rotate(-14deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tape span {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: #1b1b1b;
+            padding: 0 18px;
+            background: rgba(255,204,0,0.92);
+        }
+
+        /* Ícones de construção */
+        .crane {
+            position: absolute;
+            left: 22%;
+            top: 16%;
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(5,8,22,0.88);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .gear {
+            position: absolute;
+            right: 12%;
+            bottom: 12%;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.14);
+            background: radial-gradient(circle, rgba(52,216,255,0.2), rgba(5,8,22,0.95));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spin 8s linear infinite;
+        }
+
+        @keyframes float {
+            0%,100% { transform: translateY(0); }
+            50%     { transform: translateY(-10px); }
+        }
+
+        @keyframes spin {
+            0%   { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+
+        .crane-arm {
+            width: 54px;
+            height: 6px;
+            border-radius: 999px;
+            background-image: linear-gradient(120deg, var(--accent), var(--accent2));
+            position: relative;
+        }
+
+        .crane-hook {
+            position: absolute;
+            left: 46px;
+            top: 6px;
+            width: 2px;
+            height: 18px;
+            background: var(--accent);
+        }
+
+        .crane-hook::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: -4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            border: 2px solid var(--accent);
+        }
+
+        .gear-inner {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.7);
+            box-shadow: 0 0 0 3px rgba(52,216,255,0.35);
+        }
+
+        .gear::before,
+        .gear::after {
+            content: "";
+            position: absolute;
+            inset: 6px;
+            border-radius: 50%;
+            border: dashed 2px rgba(255,255,255,0.2);
+        }
+
+        .dots {
+            position: absolute;
+            inset: -12px;
+            border-radius: 50%;
+            border: 1px dashed rgba(255,255,255,0.16);
+        }
+
+        .dots::before,
+        .dots::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-image: radial-gradient(circle, var(--accent2), var(--accent));
+        }
+
+        .dots::before {
+            top: -4px;
+            left: 30%;
+        }
+        .dots::after {
+            bottom: -4px;
+            right: 18%;
+        }
+
+        .footer {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            text-align: center;
+            color: var(--muted);
+            opacity: 0.9;
+        }
+
+        @media (max-width: 460px) {
+            .orb {
+                width: 220px;
+                height: 220px;
+            }
+            .orb-inner {
+                width: 190px;
+                height: 190px;
+            }
+            .card {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+
+    <div class="wrapper">
+        <div class="card">
+            <!-- LADO ESQUERDO - TEXTO -->
+            <div>
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    <span>Online em breve</span>
+                </div>
+
+                <h1>
+                    Nosso <span>novo site</span> está saindo do forno 🚀
+                </h1>
+
+                <p class="subtitle">
+                    Estamos construindo uma experiência ainda melhor para você.
+                    Em poucos dias este endereço vai receber um site completo,
+                    rápido e com tudo o que você precisa.
+                </p>
+
+                <div class="countdown">
+                    <span class="pill">Em Construção</span>
+                    <span>Previsão de lançamento: <strong>em breve</strong></span>
+                </div>
+
+                <div class="cta-row">
+                    <a href="mailto:contato@seudominio.com.br" class="btn-primary">
+                        Fale conosco
+                        <span>✉️</span>
+                    </a>
+
+                    <a href="https://api.whatsapp.com/send?phone=5500000000000" class="btn-ghost" target="_blank">
+                        Chamar no WhatsApp
+                    </a>
+                </div>
+
+                <p class="hint">
+                    Enquanto isso, acompanhe as novidades nas redes:
+                </p>
+
+                <div class="social">
+                    <a href="#" target="_blank">Instagram</a>
+                    <a href="#" target="_blank">YouTube</a>
+                    <a href="#" target="_blank">TikTok</a>
+                </div>
+            </div>
+
+            <!-- LADO DIREITO - VISUAL -->
+            <div class="visual">
+                <div class="orb">
+                    <div class="orb-inner">
+                        <div class="tape">
+                            <span>SITE EM CONSTRUÇÃO</span>
+                        </div>
+
+                        <div class="crane">
+                            <div class="crane-arm">
+                                <div class="crane-hook"></div>
+                            </div>
+                        </div>
+
+                        <div class="gear">
+                            <div class="gear-inner"></div>
+                            <div class="dots"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="footer">
+            © <span id="year"></span> Seu Domínio — Todos os direitos reservados.
+        </p>
+    </div>
+
+    <script>
+        // Preenche o ano automaticamente
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

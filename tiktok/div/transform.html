@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu Card Flutuante</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            font-family: sans-serif;
+            flex-direction: column;
+        }
+       
+        .rotate {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 1s;
+        }
+
+        .rotate:hover {
+            transform: rotateZ(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="rotate">
+        <p>TEXTO</p>
+    </div>
+</body>
+
+</html>

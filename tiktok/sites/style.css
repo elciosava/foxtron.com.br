@@ -1,0 +1,227 @@
+* {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 20px;
+            height: 60px;
+            position: fixed;
+            width: 100%;
+            color: #fff;
+            background: transparent;
+        }
+
+        header.scrolled {
+            background: #fff;
+            color: black;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header.scrolled a {
+            color: #000;
+        }
+
+        header a {
+            color: #fff;
+            font-size: 1.4rem;
+        }
+
+        ul,
+        li {
+            display: inline-block;
+            list-style: none;
+            padding: 10px;
+        }
+
+        li {
+            width: 70px;
+            margin: 10px;
+        }
+
+        section {
+            padding-top: 80px;
+            height: calc(100vh - 80px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #inicio {
+            background-image: url('img-açai/acai-2709077_1920.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: 1400px;
+            height: calc(100% - 80px);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .apresentacao {
+            font-size: 2.4rem;
+            text-align: left;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            text-shadow: 2px 2px 6px #000000;
+        }
+
+        .apresentacao h2 {
+            text-align: letf;
+            width: 100%;
+            font-weight: bold;
+            text-shadow: 2px 2px 6px #000000;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .sobre {
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .sobre img {
+            width: 80px;
+            padding: 30px;
+        }
+
+        .sobre h2 {
+            padding-bottom: 10px;
+        }
+
+        #contato #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .cards {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .card:nth-child(1) {
+            background-color: lightcoral;
+        }
+
+        .card:nth-child(2) {
+            background-color: lightblue;
+        }
+
+        .card:nth-child(3) {
+            background-color: lightgreen;
+        }
+
+        .card:nth-child(4) {
+            background-color: lightpink;
+        }
+
+
+        .card {
+            height: 380px;
+            width: 240px;
+            background: blueviolet;
+            margin: 10px;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            color: #fff;
+            text-shadow: 0px 2px 6px #000000;
+        }
+
+        .card img {
+            margin-top: -100px;
+        }
+
+        #produtos .container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .card button {
+            background: #2a0146;
+            color: #fff;
+            width: 130px;
+            padding: 12px 10px;
+            border-radius: 20px;
+            border: solid 1px #fff;
+            display: flex;
+            align-items: center;
+            background-image: url('img-açai/arrow-right-solid-full.svg');
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: 30px;
+            text-align: left;
+        }
+
+        form {
+            width: 600px;
+            margin-top: 50px;
+        }
+
+        form input,
+        textarea {
+            width: 100%;
+            padding: 5px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            resize: none;
+        }
+
+        form label {
+            font-size: 1.1rem;
+        }
+
+        form button {
+            background: #2a0146;
+            color: #fff;
+            width: 130px;
+            padding: 12px 10px;
+            border-radius: 20px;
+            border: solid 1px #fff;
+            display: flex;
+            align-items: center;
+            background-image: url('img-açai/arrow-right-solid-full.svg');
+            background-repeat: no-repeat;
+            background-position: right;
+            background-size: 30px;
+            text-align: left;
+        }

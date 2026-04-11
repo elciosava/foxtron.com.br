@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            background: #3e3e3e;
+        }
+
+        .button {
+            height: 50px;
+            width: 150px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .button:hover {
+            box-shadow: .5px .5px 150px #252525;
+        }
+
+        .type1::after {
+            content: "Eh noix";
+            height: 50px;
+            width: 150px;
+            background-color: #008080;
+            color: white;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            transform: translateY(50px);
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .type1::before {
+            content: "Hover";
+            height: 50px;
+            width: 150px;
+            background-color: #fff;
+            color: #008080;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            transform: translateY(0px) scale(1.2);
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .type1:hover::after {
+            transform: translateY(0) scale(1.2);
+        }
+
+        .type1:hover::before {
+            transform: translateY(-50px) scale(0) rotate(120deg);
+        }
+    </style>
+</head>
+<body>
+    <button class="button type1"></button>
+</body>
+</html>

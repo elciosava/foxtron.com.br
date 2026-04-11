@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="load.css">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            background-image: url('senna.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!--AQUI A PARTE DE CARREGAMENTO-->
+    <div id="loading-overlay">
+        <div class="loading">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener("load", () => {
+            const loading = document.getElementById("loading-overlay");
+            setTimeout(() => {
+                loading.style.display = "none";
+            }, 2000); 
+        });
+    </script>
+</body>
+
+</html>

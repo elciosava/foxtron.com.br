@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        html {
+            font-family: sans-serif;
+        }
+
+        .xampp {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 990px;
+            text-align: justify;
+        }
+
+        p {
+            margin: 20px 30px;
+        }
+
+        h2 {
+            margin: 20px 30px;
+        }
+
+        ol {
+            margin: 10px 60px;
+        }
+
+        li{
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="xampp">
+            <div class="p">
+                <h2>XAMPP instalar apache e mysql como serviço windows 10/11</h2>
+
+                <p>Ao utilizar o xampp como ambiente de testes/desenvolvimento em seu windows 10 ou 11 e teve problemas para
+                    instalar o apache e o mysql como serviço ( iniciar automaticamente quando o windows inicia)?</p>
+
+
+                <p>Os comandos foram realizados tendo como base que o windows está instalado na unidade C diretório de
+                    instalação foi o c:\xampp que é o mais comum de ocorrer, caso a sua instalação não esteja com estes
+                    padrões adapte para suas necessidades.</p>
+
+                <p>Siga os passos:</p>
+                <ol>
+                    <li>clique no 'iniciar',</li>
+
+                    <li>digite cmd</li>
+                    <li>clique com o botão direito do mouse </li>
+                    <li>clique em executar como administrador.</li>
+                </ol>
+
+
+
+
+                <p>Após abrir o prompt de comando,
+                <ol>
+                    <li>navegue até o diretório do apache onde o xampp foi instalado: <strong>cd
+                            c:\xampp\apache</strong></li>
+                    <li>instale o httpd.exe que fica dentro do diretorio bin: <strong>bin\httpd.exe -k install</strong>
+                    </li>
+                    <li>inicialize o serviço 'Apache2.4': <strong>net start Apache2.4</strong></p>
+                    </li>
+                </ol>
+
+
+
+
+                <p>Agora vamos executar a instalação do Mysql como serviço (inicializar automaticamente quando o windows
+                    iniciar)</p>
+                <ol>
+                    <li>navegue até o diretorio do mysql onde o xampp foi instalado: <strong>cd c:\xampp\mysql</strong>
+                    </li>
+                    <li>copie o arquivo my.ini do diretório bin para o diretório do windows: <strong>copy
+                            "%cd%\bin\my.ini" %windir%\my.ini</strong></li>
+                    <li>instale o mysqld.exe: <strong>bin\mysqld.exe --install mysql
+                            --defaults-file="%cd%\bin\my.ini"</strong></li>
+                    <li>inicie o serviço do mysql: <strong>net start mysql</strong></li>
+                </ol>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

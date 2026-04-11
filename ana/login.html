@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - ReUse</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <h1>♻️ ReUse</h1>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="cadastrar.html">Cadastrar Item</a>
+    <a href="buscar.html">Buscar</a>
+    <a href="cadastro_usuario.html">Cadastrar Usuário</a>
+    <a href="login.html" class="ativo">Login</a>
+  </nav>
+  <button id="modo-btn">🌙</button>
+</header>
+
+<section class="formulario">
+  <h2>Entrar</h2>
+
+  <form id="form-login">
+    <label>Email</label>
+    <input type="email" id="login-email" required>
+
+    <label>Senha</label>
+    <input type="password" id="login-senha" required>
+
+    <button type="submit" class="btn">Entrar</button>
+  </form>
+
+  <p style="text-align:center; margin-top:15px;">
+    Ainda não tem conta? <a href="cadastro_usuario.html" style="color:var(--accent);">Criar conta</a>
+  </p>
+</section>
+
+<footer>
+  <p>🌍 ReUse — Reduza, Reutilize, Recicle.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        li{
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(to right,#00d6c8,#f06c00);
+            height: 50px;
+            color: #2904cf;
+            gap: 15px;
+        }
+
+        .texto h2{
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .container{
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .organizar{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        body{
+            font-family: sans-serif;
+            background: linear-gradient(to right,#2904cf,#21cca4);
+        }
+        .texto {
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+        }
+
+
+        .trabalhos{
+            width: 120px;
+            height: 180px;
+            border: solid 1px rgb(0, 0, 0);
+            margin: 10px;
+            background: linear-gradient(to right,blueviolet,#f06c00);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .trabalhos:hover {
+           margin-top: -15px;
+           transition: 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>Capivara Bagual</h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="imagem">
+            <img src="Capivara bagual.png" alt="">
+        </div>
+    </div>
+    <div class="texto">
+        <h2>Capivara Bagual</h2>
+        <p>Silêncio Tchê. Capivara Bagual está tomando um mate.</p>
+        <div class="icones">
+            <img src="youtube-brands-solid-full.svg" alt="">
+            <img src="steam-brands-solid-full.svg" alt="">
+            <img src="instagram-brands-solid-full.svg" alt="">
+        </div>
+    </div>
+    <div class="container organizar">
+        <div class="trabalhos">
+            <a href="aula2409.php">Aula 24/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2509.php">Aula 25/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula2609.php">Aula 26/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula3009.php">Aula 30/09/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0710.php">Aula 07/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0810.php">Aula 08/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula0910.php">Aula 09/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula1010.php">Aula 10/10/25</a>
+        </div>
+        <div class="trabalhos">
+            <a href="listar_arquivos.php">Listar Arquivos</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_usuarios.php">Cadastrar Usuarios</a>
+         </div>
+        <div class="trabalhos">
+            <a href="cadastrar_produto.php">Cadastrar Produto</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_clientes.php">Cadastrar Clientes</a>
+        </div>
+        <div class="trabalhos">
+            <a href="cadastrar_professor.php">Cadastrar Professor</a>
+        </div>
+        <div class="trabalhos">
+            <a href="tarefinha_silvio.php">Tarefinha Silvio</a>
+        </div>
+        <div class="trabalhos">
+            <a href="aula101125.php">Consulta Médica</a>
+        </div>
+    </div>
+</body>
+</html>

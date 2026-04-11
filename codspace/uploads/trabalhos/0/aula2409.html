@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <style>
+
+* {
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: aqua;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .imagen img {
+        width: 350px;
+        margin-right: 350px;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 5px 5px 5px;
+        background-color: rgba(182, 27, 27, 0.117);
+
+    }
+
+    body {
+        height: 100vh;
+    }
+
+    .icones {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icones img {
+        width: 50px;
+        justify-content: center;
+        align-items: center;
+    }
+
+   .texto h2 {
+
+        color: rebeccapurple;
+        margin-bottom: 10px;
+
+    }
+    .texto{
+        width: 8000;
+    }
+</style>
+</head>
+
+<body>
+<header>
+    <h2> matricula</h2>
+    <nav>
+        <ul>
+            <li>Sobre</li>
+            <li>Contato</li>
+        </ul>
+    </nav>
+</header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="" content="">
+
+    <title>Bem-vindo</title>
+
+    <link rel="stylesheet" href="css.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h1>dados cadastrais</h1>
+    <div class="conteiner">
+        <form action="formulario.php" method="post">
+            <label for="nome">nome</label>
+            <input type="text" name="nome" id="">
+
+            <label for="sobrenome">sobrenome</label>
+            <input type="text" name="sobrenome" id="">
+
+            <label for="telefone">telefone</label>
+            <input type="text" name="telefone" id="">
+
+            <label for="CRM">CRM</label>
+            <input type="text" name="CRM" id="">
+
+            <label for="pai">pai</label>
+            <input type="text" name="pai" id="">
+
+            <label for="mãe">mãe</label>
+            <input type="text" name="mãe" id="">
+
+            <button type="submit">enviar</button>
+        </form>
+    </div>
+</body>
+
+</html>

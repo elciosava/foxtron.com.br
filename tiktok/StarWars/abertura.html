@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .background::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("https://elitemarketingpro.com/go/wp-content/uploads/2015/12/maxresdefault-1.jpg"),
+                no-repeat;
+            background-size: contain;
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+            overflow: hidden;
+        }
+
+        .background {
+            text-align: center;
+        }
+
+        .star-wars-opening-crawl {
+            font-family: "Libre Franklin", sans-serif;
+            top: 25%;
+            width: 50vw;
+            max-width: 30vw;
+            margin: auto;
+            color: yellow;
+            position: relative;
+            text-align: justify;
+            -webkit-animation-name: sw-transtion;
+            animation-name: sw-transtion;
+            -webkit-animation-duration: 60s;
+            animation-duration: 60s;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-iteration-count: 1;
+            animation-iteration-count: 1;
+            -webkit-animation-direction: normal;
+            animation-direction: normal;
+            -webkit-animation-timing-function: linear;
+            animation-timing-function: linear;
+        }
+
+        @-webkit-keyframes sw-transtion {
+            from {
+                -webkit-transform: perspective(200px) translateY(200px) translateZ(200px) rotateX(45deg) scaleY(0.4);
+                transform: perspective(200px) translateY(200px) translateZ(200px) rotateX(45deg) scaleY(0.4);
+            }
+
+            95% {
+                opacity: 90%;
+            }
+
+            to {
+                -webkit-transform: perspective(200px) translateZ(-250px) rotateX(45deg) scaleY(0.4);
+                transform: perspective(200px) translateZ(-250px) rotateX(45deg) scaleY(0.4);
+                opacity: 0%;
+            }
+        }
+
+        @keyframes sw-transtion {
+            from {
+                -webkit-transform: perspective(200px) translateY(200px) translateZ(200px) rotateX(45deg) scaleY(0.4);
+                transform: perspective(200px) translateY(200px) translateZ(200px) rotateX(45deg) scaleY(0.4);
+            }
+
+            95% {
+                opacity: 90%;
+            }
+
+            to {
+                -webkit-transform: perspective(200px) translateZ(-250px) rotateX(45deg) scaleY(0.4);
+                transform: perspective(200px) translateZ(-250px) rotateX(45deg) scaleY(0.4);
+                opacity: 0%;
+            }
+        }
+
+        .fade-out {
+            position: absolute;
+            left: 50%;
+            -webkit-transform: translate(-50%, 0%);
+            transform: translate(-50%, 0%);
+            width: 100vw;
+            margin: auto;
+            top: 0;
+            background: -webkit-gradient(linear,
+                    left top,
+                    left bottom,
+                    from(rgba(0, 0, 0, 1)),
+                    to(rgba(255, 255, 255, 0))),
+                url("https://elitemarketingpro.com/go/wp-content/uploads/2015/12/maxresdefault-1.jpg");
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 1) 0%,
+                    rgba(255, 255, 255, 0) 100%),
+                url("https://elitemarketingpro.com/go/wp-content/uploads/2015/12/maxresdefault-1.jpg");
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+            background-size: 100vw auto;
+            box-shadow: 0px 27px 37px 0px rgba(0, 0, 0, 1);
+            height: 30vh;
+            z-index: 1;
+        }
+
+        br {
+            display: block;
+            padding: 1000px 0;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="fade-out"></div>
+        <div class="star-wars-opening-crawl">
+            <div class="title">
+                <p>Episode IV</p>
+                <p class="subtitle">A NEW HOPE</p>
+            </div>
+            <p>
+                It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory
+                against
+                the evil Galactic Empire.
+            </p>
+
+            <p> During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the DEATH
+                STAR, an
+                armored space station with enough power to destroy an entire planet.</p>
+            <p> Pursued by the Empire’s sinister agents, Princess Leia races home aboard her starship, custodian of the
+                stolen
+                plans that can save her people and restore freedom to the galaxy... </p>
+        </div>
+    </div>
+</body>
+
+</html>

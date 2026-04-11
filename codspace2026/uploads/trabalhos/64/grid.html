@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        header {
+            background: #9eefff;
+            height: 50px 10px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0px 1px 10px #0042c6;
+        }
+
+        .menu {
+            display: flex;
+        }
+
+        ul {
+            display: flex;
+            margin-left: 20px;
+
+        }
+
+        li {
+            list-style: none;
+            margin-left: 20px;
+        }
+
+        section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            height: calc(100vh - 60px);
+            padding: 20px;
+        }
+
+        .coluna {
+            box-shadow: 0px 1px 20px blue;
+            border-radius: 10px;
+        }
+
+        .img {
+            height: 200px;
+            background: linear-gradient(to right, black, blue);
+            border-radius: 10px 10px 0 0;
+        }
+
+        .texto {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: space-around;
+            height: 120px;
+            padding: 20px;
+        }
+
+        h3, p {
+            padding: 8px 0;
+        }
+
+        .quadrinhos {
+            border-top: 1px solid  rgb(205, 205,205);
+            border-bottom: 1px solid  rgb(205, 205,205);
+            height: 90px;
+            margin: 0 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .h {
+            border-radius: 15px;
+            width: 60px;
+            height: 30px;
+            border: solid 1px rgb(215, 215, 215);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="menu">
+            <img src="" alt="">
+            <h3>Elias</h3>
+            <nav>
+                <ul>
+                    <li>Sobre</li>
+                    <li>Habilidades</li>
+                    <li>Progetos</li>
+                    <li>Cursos</li>
+                </ul>
+            </nav>
+        </div>
+        <button>Entrar em contato</button>
+    </header>
+    <section>
+        <div class="coluna">
+            <diV class="img"></div>
+            <div class="texto">
+                <h3>Titulo</h3>
+                <p>texto dentro do div texto</p>
+            </div>
+            <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+        </div>
+        <div class="coluna">
+            <div class="img"></div>
+            <div class="texto">
+                <h3>Titulo</h3>
+                <p>texto dentro do div texto</p>
+            </div>
+            <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+        </div>
+        <div class="coluna">
+            <div class="img"></div>
+            <div class="texto">
+                <h3>Titulo</h3>
+                <p>texto dentro do div texto</p>
+            </div>
+            <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Botões 3D Deitados</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background: #dcdcdc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60vh;
+      gap: 20px;
+      perspective: 1000px;
+      font-family: Arial, sans-serif;
+    }
+
+    .social-btn {
+      width: 140px;
+      height: 50px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      box-shadow: 0 15px 0 rgba(0, 0, 0, 0.15);
+      transform: rotateX(30deg);
+      transform-origin: bottom;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .social-btn:hover {
+      transform: rotateX(0deg) translateY(-10px);
+      box-shadow: 0 25px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-btn.facebook {
+      color: #3b5998;
+    }
+
+    .social-btn.youtube {
+      color: #db4437;
+    }
+
+    .social-btn.instagram {
+      color: #000;
+    }
+
+    .social-btn i {
+      font-size: 20px;
+    }
+
+    .social-btn span {
+      font-size: 14px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="social-btn facebook">
+    <i class="fab fa-facebook-f"></i>
+    <span>Facebook</span>
+  </div>
+
+  <div class="social-btn youtube">
+    <i class="fa-brands fa-youtube"></i>
+    <span>Youtube</span>
+  </div>
+
+  <div class="social-btn instagram">
+    <i class="fab fa-instagram"></i>
+    <span>Instagram</span>
+  </div>
+
+</body>
+</html>

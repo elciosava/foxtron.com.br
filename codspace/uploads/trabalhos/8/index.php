@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 5px 5px 5px;
+            background: rgb(128, 255, 0);
+            height: 50px;
+            color: white;
+        }
+
+        .texto h2 {
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+
+        }
+
+        body {
+            height: 100px;
+            background: lightblue;
+            font-family: sans-serif;
+        }
+
+        .texto {
+            width: 800px;
+            text-align: justify;
+        }
+
+        .trabalhos {
+            width: 120px;
+            height: 180px;
+            border: solid 1px black;
+            margin: 10px;
+            background: #444355;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .trabalhos:hover {
+            margin-top: -10px;
+            transition: 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2> Luiz Sloboda </h2>
+        <nav>
+            <ul>
+                <li> inicio </li>
+                <li> sobre </li>
+                <li> contato </li>
+            </ul>
+
+        </nav>
+
+    </header>
+    <div class="container">
+        <div class=" imagem ">
+            <img src="icon_fixed_128x128.png" alt="">
+
+        </div>
+
+        <div class="texto">
+            <h2> luiz sloboda</h2>
+            <p> Os Templários foram uma ordem militar cristã fundada no século XII para proteger peregrinos a caminho da
+                Terra Santa.
+                Com disciplina rígida e votos de pobreza, castidade e obediência, tornaram-se uma das forças mais
+                poderosas da Idade Média.
+                Além do papel militar, criaram um sistema financeiro inovador, considerado precursor da banca moderna.
+                Sua influência despertou desconfiança, e no século XIV foram perseguidos e dissolvidos pela Igreja e
+                pela Coroa francesa.
+                Até hoje, sua história inspira mistério, lendas e teorias sobre tesouros e segredos ocultos.</p>
+            <div class="icones">
+                <img src="facebook-brands-solid-full.jpg.svg" alt="">
+                <img src="discord-brands-solid-full (1).svg" alt="">
+                <img src="youtube-brands-solid-full.svg" alt="">
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="container">
+        <div class="trabalhos">
+            <a href="aula2409.html"> aula2409</a>
+        </div>
+        <div class="container">
+            <div class="trabalhos">
+                <a href="aula2509.php"> aula2509</a>
+            </div>
+            <div class="trabalhos">
+                <a href="aula2609.php"> aula2609</a>
+            </div>
+            <div class="trabalhos">
+                <a href="aula2609_exercicio1.php"> aula2609</a>
+            </div>
+            <div class="trabalhos">
+                <a href="aula2909.php"> aula2609</a>
+            </div>
+             <div class="trabalhos">
+                <a href="aula3009.php"> aula2609</a>
+            </div>
+        </div>
+</body>
+
+</html>

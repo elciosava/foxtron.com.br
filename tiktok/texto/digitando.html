@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            --bg: #0b1220;
+            --text: #e6f0ff;
+            --accent: #6ef0c3;
+        }
+
+        html,body{
+            height: 70vh;
+            margin: 0;
+            font-family: 'Courier New', monospace;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: 
+                linear-gradient(135deg, 
+                #07142a 0%,
+                #0b1220 60%);
+            color: var(--text);
+        }
+        .wrap{
+            width: min(880px, 92%);
+            text-align: left;
+            font-size: clamp(20px, 6vw, 48px);
+        }
+        .typing{
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 0.12em solid var(--accent);
+            animation:
+                typing 3s steps(26, end) 1s infinite alternate,
+                blink-caret 0.7s step-end infinite;
+        }
+        @keyframes blink-caret{
+            from, to { border-color: transparent;}
+            50% { border-color: var(--accent);}
+        }
+        @keyframes typing{
+            from { width: 0ch;}
+            to { width: 26ch;}
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="typing">
+            Aprenda um truque de CSS!
+        </div>
+    </div>
+</body>
+</html>

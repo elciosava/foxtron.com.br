@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <div id="loading-overlay">
+        <div class="loading">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <header id="menu">
+        <div class="logo">
+            <h3>LOGO DA LOJA</h3>
+        </div>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="inicio">
+        <div class="container apresentacao">
+            <h2>Apresentação</h2>
+            <p>
+                Bem vindo ao nosso site de venda de açai, fique a vontade para explorar todos
+                os nossos produtos. Aqui voce vai encontar muita variedade e sabores.
+            </p>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container grid">
+            <div class="sobre">
+                <img src="img-açai/landmark-solid-full.svg" alt="" style="width: 80px;">
+                <h2><strong>Nossa hitoria</strong></h2>
+                <span>Mais de 10 anos trazendo sabor e qualidade para nossa comunidade.</span>
+            </div>
+            <div class="sobre">
+                <img src="img-açai/medal-solid-full.svg" alt="" style="width: 80px;">
+                <h2><strong>Qualidade garantida</strong></h2>
+                <span>Usamos apenas ingredientes selecionados para oferecer sempre o melhor.</span>
+            </div>
+            <div class="sobre">
+                <img src="img-açai/bowl-food-solid-full.svg" alt="" style="width: 80px;"
+                <h2><strong>Variedade de sabores</strong></h2>
+                <span>Do tradicional ao premium, temos opções para todos os gostos.</span>
+            </div>
+            <div class="sobre">
+                <img src="img-açai/bell-concierge-solid-full.svg" alt="" style="width: 80px;">
+                <h2><strong>Atendimento especial</strong></h2>
+                <span>Nossa equipe está pronta para receber você com carinho e dedicação.</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="produtos">
+        <div class="container">
+            <h2>Conheça nossos produtos.</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="img-açai/01.png" alt="">
+                    <h2>AÇAÍ</h2>
+                    <p>
+                        Nosso açaí tem o sabor e textura unica, e com opção zero açucar, sem conservantes,
+                        sem gorduras vegetais e sem corantes.
+                    </p>
+                    <button>SAIBA MAIS</button>
+                </div>
+                <div class="card">
+                    <img src="img-açai/03.png" alt="">
+                    <h2>SORVETES</h2>
+                    <p>
+                        Os sorvetes possuiem sabores deliciosos e exclusivos para misturar com diferentes
+                        opções, inclusive sem lactose.
+                    </p>
+                    <button>SAIBA MAIS</button>
+                </div>
+                <div class="card">
+                    <img src="img-açai/02.png" alt="">
+                    <h2>PICOLÉS</h2>
+                    <p>
+                        Todos os picolés são 100% artesanais e feitos com ingredientes naturais em
+                        deliciosas versões.
+                    </p>
+                    <button>SAIBA MAIS</button>
+                </div>
+                <div class="card">
+                    <img src="img-açai/04.png" alt="">
+                    <h2>MILKSHAKES</h2>
+                    <p>
+                        Combinações incriveis que você encontra aqui, o milkshake que você sempre quis
+                        do jeitinho que você sempre sonhou.
+                    </p>
+                    <button>SAIBA MAIS</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <div class="container">
+            <h2>Entre em contato conosco</h2>
+            <form action="enviar.php" method="post">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+                <label for="mensagem">Deixe a sua mensagem</label>
+                <textarea name="mensagem" id="" cols="30" rows="10"></textarea>
+                <button type="submit">ENVIAR</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        const header = document.getElementById("menu");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+
+       // window.addEventListener("load", () => {
+       //     const loading = document.getElementById("loading-overlay");
+       //     loading.style.display = "none";
+       // });
+
+        const MIN_LOADING_TIME = 2000; // 2s (muda aqui)
+        const startTime = Date.now();
+
+        window.addEventListener("load", () => {
+            const elapsed = Date.now() - startTime;
+            const remaining = Math.max(0, MIN_LOADING_TIME - elapsed);
+
+            setTimeout(() => {
+                const loading = document.getElementById("loading-overlay");
+                if (loading) loading.style.display = "none";
+            }, remaining);
+        });
+
+    </script>
+</body>
+
+</html>

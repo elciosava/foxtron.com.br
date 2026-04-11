@@ -1,0 +1,145 @@
+<?php
+    include 'conexao.php';
+     $sqlaluno = "SELECT * FROM aluno";
+     $stmtaluno = $conexao->prepare($sqlaluno);
+     $stmtaluno->execute();
+
+     $sqlcomputador = "SELECT * FROM computador";
+     $stmtcomputador = $conexao->prepare($sqlcomputador);
+     $stmtcomputador->execute();
+
+     
+     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $id_aluno = $_POST['id_aluno'];
+        $id_computador = $_POST['id_computador'];
+        
+
+        $sql = "INSERT INTO reserva (id_aluno, id_computador)
+                VALUES (:id_aluno, :id_computador)";
+                
+                $stmt = $conexao->prepare($sql);
+                $stmt->bindParam(':id_aluno', $id_aluno);
+                $stmt->bindParam(':id_computador',$id_computador);
+            
+            
+
+                if ($stmt->execute()){
+                header("Location:computador.php");
+                exit;
+                }else{
+                echo "não deu boa!";
+
+     }
+
+    }
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cabecalho{
+            display:flex;
+            border: 1px solid black;
+            width: 1000px;
+             padding: 5px 10px;ll
+        }
+        .cel_cabecalho {
+            width: 200px;
+        }
+        .linha {
+            display: flex;
+            border: solid 1px black;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="pagina.html">Pagina 2</a><li> 
+                 <li>Computadores</li>
+                 <li>Reserva</li>
+            <ul>
+        <nav>
+    <header>                     
+    <form action="" method="post">
+        <label for="aluno">Aluno</label>
+        <select name="id_aluno" id="">
+            <?php
+                while($aluno = $stmtaluno->fetch(PDO::FETCH_ASSOC)){
+                    echo "<option value='{$aluno['id']}'>{$aluno['nome']}</option>";
+                }
+                ?>
+            </select>
+
+        <label for="computador">Computador</label>
+        <select name="id_computador" id="">
+            <?php
+                while($computador = $stmtcomputador->fetch(PDO::FETCH_ASSOC)){
+                    echo "<option value='{$computador['id']}'>{$computador['numero']} {$computador['processador']} {$computador['memoria']} {$computador['configuracao']} {$computador['armazenamento']}</option>";
+                }
+                ?>
+            </select>
+            <button type="submit">Enviar</button>
+    </form>
+    <section class="resultados">
+        <div class="resultado">
+            <?php
+                include "conexao.php";
+
+                $consulta = "SELECT r.id, a.nome, c.numero, c.processador, c.memoria FROM reserva AS r
+                INNER JOIN aluno AS a ON r.id_aluno = a.id
+                INNER JOIN computador AS c ON r.id_computador = c.id";
+                
+                $stmtconsulta = $conexao->prepare($consulta);
+                $stmtconsulta->execute();
+
+
+                if($stmtconsulta->rowCount()>0){
+                    echo "<div class='cabecalho'>";
+                        echo "<div class='cel_cabecalho'>ID</div>";
+                        echo "<div class='cel_cabecalho'>Aluno</div>";
+                        echo "<div class='cel_cabecalho'>Numero</div>";
+                        echo "<div class='cel_cabecalho'>Processador</div>";
+                        echo "<div class='cel_cabecalho'>Memoria</div>";
+                    echo "</div>";
+                        
+                while($linha = $stmtconsulta->fetch(PDO::FETCH_ASSOC)){
+                    echo "<div class='linha'>";
+                        echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
+                        echo "<div class='cel_cabecalho'>{$linha['aluno']}</div>";
+                        echo "<div class='cel_cabecalho'>{$linha['numero']}</div>";
+                        echo "<div class='cel_cabecalho'>{$linha['processador']}</div>";
+                        echo "<div class=1cel_cabecalho'>{$linha['memoria']}</div.";
+
+                    echo "<div class='cel_cabecalho'>";
+
+                    echo "<form action='editar_produto.php' method='get' style='display:inline;'>";
+                    echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                    echo "<button type='submit'>Editar</button>";
+                    echo "</form>";
+
+                    echo "<form action='deletar_produto.php' method='post' style='display:inline; onsubmit=\"return confirm('Deseja realmente deletar este produto?');\">";
+                    echo "<input type='hidden' name='id' value='{$linha['id']}'>";
+                    echo "<button type='submit'>Deletar</button>";
+                    echo "</form>";
+
+                    echo "</div>";
+                    echo "</div>";
+
+
+                }
+            } else{
+                echo "<p>Não há registro.</p>";
+            }
+                  
+            ?>
+        </div>
+    </section>
+</body>
+</html>

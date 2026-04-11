@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: rgb(38, 130, 192);
+            height: 50px;
+            color: rgb(247, 6, 6);
+        }
+
+        .texto h2{
+            margin-bottom: 10px;
+        }
+        
+
+        img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        body {
+
+            height: 100vh;
+            font-family: sans-serif;
+            color: rgb(1, 17, 12);
+            background-color: aquamarine;
+        }
+
+        .texto {
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>dados escolares</h2>
+        
+            <ul>
+                <li>inicio</li>
+                <li>sobre</li>
+                <li>contato</li>
+            </ul>
+        
+    </header>
+    <div class="container">
+        <form action="formulario.php" method="post">
+            <label for="nome">nome:</label>
+            <input type="text" name="nome">
+            <label for="nome">sobrenome:</label>
+            <input type="text"name="sobrenome">
+            <label for="nome">idade:</label>
+            <input type="text"name="idade">
+            <label for="nome">cpf:</label>
+            <input type="text"name="cpf">
+            <label for="nome">sexualidade:</label>
+            <input type="text"name="sexualidade"> 
+            <label for="indetidade">indentidade</label>
+            <input type="text"name="indentidade">
+           <button type="submit">enviar</button>
+
+        </form>
+    </div>
+    
+</body>
+</html>

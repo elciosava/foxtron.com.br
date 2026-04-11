@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    :root {
+      --size: 50px;
+      --gap: 5px;
+      --speed: 0.2s;
+      --c1: #000000;
+      --c2: #ffffff;
+      --fundo: #0b0b0b;
+    }
+
+    body {
+      margin: 0;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--fundo);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, var(--size));
+      grid-template-rows: repeat(2, var(--size));
+      gap: var(--gap);
+    }
+
+    .dot {
+      width: var(--size);
+      height: var(--size);
+      border-radius: 0;
+      background: var(--c1);
+      animation: cyrcle calc(4 * var(--speed)) linear infinite;
+    }
+
+    .dot:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .dot:nth-child(2) {
+      animation-delay: var(--speed);
+    }
+    .dot:nth-child(4) {
+      animation-delay: calc(2 * var(--speed));
+    }
+    .dot:nth-child(3) {
+      animation-delay: calc(3 * var(--speed));
+    }
+
+    @keyframes cyrcle {
+      0%, 25% { background: var(--c2);}
+      26%, 100% { background: var(--c1);}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</body>
+
+</html>

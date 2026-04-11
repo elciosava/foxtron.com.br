@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn-luz {
+            position: relative;
+            padding: 15px 40px;
+            font-size: 18px;
+            color: #fff;
+            background: #1a1a2e;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .btn-luz::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(120deg,
+                        transparent,
+                        rgba(255,255,255,0.8),
+                        transparent);
+            transition: 1s;
+        }
+
+        .btn-luz:hover::before {
+            left: 100%;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn-luz">Passe o mouse</button>
+</body>
+</html>

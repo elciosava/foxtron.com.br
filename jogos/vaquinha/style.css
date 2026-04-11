@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('grama.jpeg'); /* Imagem de fundo do pasto */
+    width: 100%;
+}
+
+#game-container {
+    position: relative;
+}
+
+#personagem {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    position: absolute;
+    background-image: url('vaca.png'); /* Imagem da vaca */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 55px;
+    box-shadow: 2px;
+}
+#rastro {
+    position: absolute;
+    pointer-events: none; /* Evita interação do usuário com o canvas de rastro */
+    z-index: -1; /* Coloca o rastro atrás do personagem */
+}

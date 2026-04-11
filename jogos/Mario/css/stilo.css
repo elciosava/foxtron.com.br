@@ -1,0 +1,98 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.game-board{
+    width: 100%;
+    height: 500px;
+    border: 1px solid black;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#87CEEb, #E0F6FF);
+}
+.cano {
+    position: absolute;
+    bottom: 0;
+    width: 90px;
+    animation: cano-animacao 2s infinite linear; 
+}
+.mario{
+    width: 130px;
+    position: absolute;
+    bottom: 0;
+}
+.nuvem{
+    position: absolute;
+    width: 900px;
+    animation: nuvens 10s infinite linear;
+}
+.pular{
+    animation: pular 500ms ease-out;
+}
+
+@keyframes cano-animacao {
+    from{
+        right: -100px;
+    }
+    to{
+        right: 100%;
+    }
+}
+@keyframes pular {
+    0%{
+        bottom: 0;
+    }
+    40%{
+        bottom: 180px;
+    }
+    50%{
+        bottom: 180px;
+    }
+    60%{
+        bottom: 180px;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+@keyframes nuvens {
+    from{
+        right: -1000px;
+    }
+    to{
+        right: 100%;
+    }
+}
+/*resolução para celulares */
+@media only screen and (max-width: 600px) {
+.mobile-controls {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+  }
+  
+  #pular-btn {
+    background-color: #f00;
+    color: #fff;
+    font-size: 24px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #pular-btn:focus {
+    outline: none;
+  }
+  .cano {
+    position: absolute;
+    bottom: 0;
+    width: 90px;
+    animation: cano-animacao 1s infinite linear; 
+}
+}

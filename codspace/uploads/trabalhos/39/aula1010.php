@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+        } 
+
+         header {
+            height:50px;
+        }
+
+        html {
+            font-family: Segoe UI;
+            background: lightblue;
+        }  
+
+         form {
+            width: 400px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 30px;
+            height: 50px;
+        }
+                                         
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;           
+        }
+
+        input, select {
+            width: 100%;
+            padding: 5px;
+            font-size: 0.7rem;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+             height: 100vh; 
+        }
+
+        .cabecalho {
+            display: flex;
+            padding: 20px;
+        }
+
+        .cel_cabecalho {
+            width: auto;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+
+    </header>
+<section class="endereco">
+    <div class="container">
+
+<form action="gravar_endereco.php" method="post">
+
+    <label for="tipo">Tipo</label>
+    <select name="tipo" id="">
+    <option value="Avenida">Avenida</option>
+    <option value="Rua">Rua</option>
+    </select>
+    
+
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" id="">
+
+    <label for="numero">Numero</label>
+    <input type="number" name="numero" id="">
+
+    <label for="bairro">Bairro</label>
+    <input type="text" name="bairro" id="">
+
+    <label for="cidade">Cidade</label>
+    <select name="cidade" id="">
+    <option value="Porto União">Porto União</option>
+    <option value="Porto Vitoria">Porto Vitoria</option>
+    </select>
+
+
+    <label for="estado">Estado</label>
+    <select name="estado" id="">
+    <option value="SC">SC</option>
+    <option value="PR">PR</option>
+    </select>
+    
+
+    <button type="submit">Salvar</button>
+
+</form>
+</div>
+</section>
+<section class="resultados">
+    <div class="resultado">
+        <?php
+             include "conexao.php";
+
+             $sql = "SELECT * FROM endereco";
+             $stmt = $conexao->prepare($sql);
+             $stmt->execute();
+
+             if($stmt->rowCount()>0){
+                echo "<div class='cabecalho'>";
+                    echo "<div class='cel_cabecalho'>id</div>";
+                    echo "<div class='cel_cabecalho'>tipo</div>";
+                    echo "<div class='cel_cabecalho'>nome</div>";
+                    echo "<div class='cel_cabecalho'>numero</div>"; 
+                    echo "<div class='cel_cabecalho'>bairro</div>"; 
+                    echo "<div class='cel_cabecalho'>cidade</div>"; 
+                    echo "<div class='cel_cabecalho'>estado</div>"; 
+                echo "</div>";
+            
+
+             while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+                echo "<div class='cabecalho'>";
+                    echo "<div class='cel_cabecalho'>{$linha['id']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['tipo']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['nome']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['numero']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['bairro']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['cidade']}</div>";
+                    echo "<div class='cel_cabecalho'>{$linha['estado']}</div>";              
+                echo "</div>";
+             }
+             }else{
+                echo "<p>nao tem registro</p>";
+             }
+            
+        ?>
+    </div>
+</section>
+</body>
+</html>

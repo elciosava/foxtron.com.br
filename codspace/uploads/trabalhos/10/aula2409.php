@@ -1,0 +1,74 @@
+<?php
+
+ini_set('display_errors', 0);
+
+
+
+   $nome = $_POST['nome'];
+   $sobrenome = $_POST['sobrenome'];
+   $email = $_POST['email'];
+   $rg = $_POST['rg'];
+   $cpf = $_POST['cpf'];
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background: rgb(247, 147, 147);
+            height: 50px;
+            color: white;
+        }
+        .container {
+            width: 300px;
+        }
+        input {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>EscolaFake</h2>
+    </header>
+    <div class="container">
+        <form action="" method="post">
+            <label for="nome">nome</label>
+            <input type="text" name="nome" id="">
+
+            <label for="sobrenome">sobrenome</label>
+            <input type="text" name="sobrenome" id="">
+
+            <label for="email">email</label>
+            <input type="email" name="email" id="">
+
+            <label for="rg">rg</label>
+            <input type="text" name="rg" id="">
+
+            <label for="cpf">cpf</label>
+            <input type="text" name="cpf" id="">
+
+            <label for="telefone">telefone</label>
+            <input type="text" name="telefone" id="">
+
+            <label for="nacionalidade">nacionalidade</label>
+            <input type="text" name="nacionalidade" id="">
+
+
+
+            <button type="submit">Salvar</button>
+        </form>
+        </div>
+    
+</body>
+</html>

@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 20px;
+            background: rgb(0, 0, 0);
+            height: 50px;
+            color: azure;
+        }
+
+        .texto h2 {
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .icones img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .organiza {
+            display: grid;
+            grid-template-columns: (8, 1fr);
+        }
+
+        .trabalhos {
+            width: 120px;
+            height: 180px;
+            border: solid 1px black;
+            margin: 10px;
+            background-color: rgb(85, 85, 85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .trabalhos:hover {
+            margin-top: -10px;
+            transition: 0.3 ease ease ease-in-out;
+        }
+
+        body {
+            height: 100vh;
+            background-color: rgb(93, 94, 95);
+            font-family: sans-serif;
+        }
+
+        .texto {
+            width: 500px;
+        }
+
+        .trabalho {
+            background: rgb(231, 231, 231);
+            height: 200px;
+            width: 150px;
+        }
+        .organiza {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>erick gabriel</h2>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="imagem">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSASglJ9af-JzQHEmJWLSbu-yfx7Lzty1I9PA&s
+            " alt="">
+        </div>
+        <div class="texto">
+            <h2>erick gabriel</h2>
+            <p>atividade do curso de programacao de sistema</p>
+            <div class="icones">
+                <img src="discord-brands-solid-full.svg" alt="">
+                <img src="envelope-solid-full.svg" alt="">
+                <img src="instagram-brands-solid-full.svg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="container organiza">
+        <div class="trabalho">
+            <a href="aula2409.html">aula24/09/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula2509.php">aula25/09/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula2609.php">aula26/09/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula2709.html">aula27/09/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula2809.html">aula28/09/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula0710.php">Aula07/09/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula0710.php">Aula08/10/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula0910.php">Aula09/10/25</a>
+        </div>
+        <div class="trabalho">
+            <a href="aula1010.php">Aula10/10/25</a>
+        </div>
+    </div>
+</body>
+
+</html>

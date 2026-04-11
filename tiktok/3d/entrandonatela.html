@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1500px;
+            background-color: #6a0dad;
+        }
+
+        img {
+            width: 220px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .texto {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .revela {
+            opacity: 0;
+            transform: scale(2.5);
+            transition: all 0.9s ease-out;
+        }
+
+        .revela.active {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0);
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="grid">
+            <div class="img revela">
+                <img src="tenis/azul.png" alt="">
+            </div>
+            <div class="texto revela">
+                <p>Tênis azul</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const reveals = document.querySelectorAll(".revela");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        }, {threshold: 0.3});
+
+        reveals.forEach(r => observer.observe(r));
+        
+    </script>
+</body>
+</html>

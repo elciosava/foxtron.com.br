@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSBase - SENAI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        header {
+            background: #003366;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .editor-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background: white;
+        }
+
+        #editor,
+        #highlight {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-family: monospace;
+            font-size: 16px;
+            padding: 10px;
+            box-sizing: border-box;
+            white-space: pre-wrap;
+        }
+
+        #editor {
+            background: transparent;
+            color: transparent;
+            caret-color: black;
+            resize: none;
+            z-index: 2;
+        }
+
+        #highlight {
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .reservada {
+            color: #0066ff;
+            font-weight: bold;
+        }
+
+        .variavel {
+            color: #ff6600;
+        }
+
+        .reservada {
+            color: #0066ff;
+            font-weight: bold;
+        }
+
+        .variavel {
+            color: #ff6600;
+        }
+
+        button {
+            background: #0055aa;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #003f7d;
+        }
+
+        #saida {
+            margin-top: 20px;
+            background: white;
+            padding: 15px;
+            min-height: 100px;
+            border: 1px solid #ccc;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>JSBase 1.0 - SENAI</header>
+
+    <div class="container">
+
+        <div class="editor-container">
+            <pre id="highlight"></pre>
+            <textarea id="editor"></textarea>
+        </div>
+
+        <button onclick="executar()">Executar</button>
+
+        <div id="saida"></div>
+
+    </div>
+
+    <script>
+        function executar() {
+            let codigo = document.getElementById("editor").value;
+
+            // Remove inicio e fim
+            codigo = codigo.replace(/inicio/g, "");
+            codigo = codigo.replace(/fim/g, "");
+
+            // ==========================
+            // VARIÁVEIS
+            // numero idade recebe 18
+            // texto nome recebe "João"
+            // ==========================
+            codigo = codigo.replace(/^numero (\w+) recebe (.+)$/gm, "let $1 = $2;");
+            codigo = codigo.replace(/^texto (\w+) recebe (.+)$/gm, "let $1 = $2;");
+            codigo = codigo.replace(/^booleano (\w+) recebe (.+)$/gm, "let $1 = $2;");
+
+            // ==========================
+            // MOSTRAR
+            // ==========================
+            // Mostrar variável (nome + valor)
+            codigo = codigo.replace(/^mostrar (\w+)$/gm, 'console.log("$1", $1);');
+
+            // Mostrar texto direto
+            codigo = codigo.replace(/^mostrar (".+")$/gm, "console.log($1);");
+
+
+            let saida = "";
+            const originalLog = console.log;
+
+            console.log = function (...args) {
+                saida += args.join(" ") + "\n";
+            };
+
+            try {
+                eval(codigo);
+            } catch (erro) {
+                saida = "Erro: " + erro.message;
+            }
+
+            console.log = originalLog;
+
+            document.getElementById("saida").innerText = saida;
+        }
+
+        editor.addEventListener("input", function () {
+
+            let texto = editor.value;
+
+            texto = texto.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+            // 1️⃣ Tipo + variável
+            texto = texto.replace(/\b(numero|texto|booleano)\s+(\w+)/g,
+                '<span class="reservada">$1</span> <span class="variavel">$2</span>'
+            );
+
+            // 2️⃣ mostrar + variável
+            texto = texto.replace(/\b(mostrar)\s+(\w+)/g,
+                '<span class="reservada">$1</span> <span class="variavel">$2</span>'
+            );
+
+            // 3️⃣ outras reservadas
+            texto = texto.replace(/\b(inicio|fim|recebe)\b/g,
+                '<span class="reservada">$1</span>'
+            );
+
+            highlight.innerHTML = texto;
+
+        });
+
+    </script>
+
+</body>
+
+</html>

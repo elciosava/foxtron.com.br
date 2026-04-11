@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pastas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #f2f2f2;
+            margin-bottom: 5px;
+            padding: 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>📁 Explorador de Pastas</h1>
+
+    <input type="file" id="pasta" webkitdirectory multiple>
+
+    <ul id="lista"></ul>
+
+    <script>
+        const input = document.getElementById("pasta");
+        const lista = document.getElementById("lista");
+
+        input.addEventListener("change", () => {
+            lista.innerHTML = "";
+
+            const pastas = new Set();
+
+            for (const arquivo of input.files) {
+                const caminho = arquivo.webkitRelativePath;
+                const pasta = caminho.split("/")[0];
+                pastas.add(pasta);
+            }
+
+            pastas.forEach(pasta => {
+                const li = document.createElement("li");
+                li.textContent = "📁 " + pasta;
+                lista.appendChild(li);
+            });
+        });
+
+    </script>
+</body>
+
+</html>

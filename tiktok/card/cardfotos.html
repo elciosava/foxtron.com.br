@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            background-color: rgb(92, 92, 219);
+        }
+
+        .container{
+            display: flex;
+            gap: 3px;
+        }
+
+        .card{
+            width: 200px;
+            height: 400px;
+            flex: 1;
+            transition: flex 0.4s ease,
+                background-size 0.4s ease,
+                background-position 0.4s ease;
+            cursor: pointer;
+            background-size: 200%;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .card:hover{
+            flex: 2;
+            background-size: 100%;
+            background-position: 40% center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1509275698723-ae804786a334');"></div>
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1496661070559-6bdcd63efac1');"></div>
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1549692520-acc6669e2f0c');"></div>
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1604866830893-c13cafa515d5');"></div>
+        <div class="card" style="background-image: url('https://images.unsplash.com/photo-1754350404803-9e60f86a6dae');"></div>
+    </div>    
+</body>
+</html>

@@ -1,0 +1,145 @@
+/* ====== RESET GERAL ====== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ====== ESTILO DO BODY ====== */
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #f7f9fc, #e3e8ee);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #333;
+}
+
+/* ====== CONTAINER ====== */
+.container {
+  width: 90%;
+  max-width: 800px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ====== TÍTULO ====== */
+h2 {
+  text-align: center;
+  color: #222;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+/* ====== FORMULÁRIO ====== */
+form {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: 600;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: #f71111;
+  box-shadow: 0 0 6px rgba(255, 59, 59, 0.3);
+  outline: none;
+}
+
+/* ====== BOTÕES ====== */
+input[type="submit"],
+a.botao {
+  background: #ff3b3b;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease, transform 0.1s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+input[type="submit"]:hover,
+a.botao:hover {
+  background: #e02121;
+  transform: scale(1.03);
+}
+
+/* ====== TABELA ====== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  font-size: 0.95rem;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 10px;
+  text-align: center;
+}
+
+th {
+  background: #ff3b3b;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+tr:nth-child(even) {
+  background: #fafafa;
+}
+
+tr:hover {
+  background: #ffecec;
+  transition: 0.2s;
+}
+
+/* ====== LINK VOLTAR ====== */
+.voltar {
+  display: block;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.voltar a {
+  color: #ff3b3b;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.voltar a:hover {
+  text-decoration: underline;
+}

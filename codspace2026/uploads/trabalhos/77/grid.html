@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New';
+        }
+        header{
+            background: #0dcdb6;
+            height: 50px;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 17px;         
+            box-shadow: 0px 2px 20px #027c6e;   
+        }
+        section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            height: calc(100vh - 60px);
+            padding: 20px;
+        }
+        .coluna {
+           box-shadow: 0px 1px 20px #027c6e; 
+           border-radius: 10px;
+        }
+
+        .menu{
+            display: flex;
+        }
+        ul{
+            display: flex;
+            margin-left: 10px;
+        }
+        li{
+            list-style: none;
+            margin-left: 20px;
+            
+        }
+
+        .img{
+            height: 200px;
+            background: linear-gradient(to top right, #5ceada, #058e7e);
+            border-radius: 10px 10px 0 0 ; 
+        }
+        .texto{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: space-around;
+            height: 120px;
+            padding: 20px;
+        }
+
+        h3,p {
+            padding: 8px 0;
+        }
+
+        .quadrinhos{
+            border-top: 1px solid #027c6e;
+            border-bottom: 1px solid #027c6e;
+            height: 90px;
+            margin: 0 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .h{
+            border-radius: 15px;
+            width: 60px;
+            height: 30px;
+            border: solid 1px #058e7e;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="menu">
+            <img src="" alt="">
+            <h3>Anna Luiza</h3>
+            <nav>
+                <ul>
+                    <li>Sobre</li>
+                    <li>Habilidades</li>
+                    <li>Projetos</li>
+                    <li>Cursos</li>
+                </ul>
+            </nav>
+        </div>
+        <button>Entrar em contato</button>
+    </header>
+
+    <section>
+       <div class="coluna">
+            <div class="img"></div>
+            <div class="texto">
+                <h3>Titulo</h3>
+                <p>Texto dentro do div texto</p>
+            </div>
+            <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+            
+       </div>
+        
+        <div class="coluna">
+            <div class="img"></div>
+            <div class="texto">
+                <h3>Titulo</h3>
+                <p>Texto dentro do div texto</p>
+            </div>
+            <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+        </div>
+        <div class="coluna">
+            <div class="img"></div>
+            <div class="texto">
+                <h3>Titulo</h3>
+                <p>Texto dentro do div texto</p></div>
+            <div class="quadrinhos">
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+                <div class="h"></div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

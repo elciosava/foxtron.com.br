@@ -1,0 +1,280 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Paleta CodSpace */
+:root {
+    --bg-dark: #0A192F;
+    --blue-cyan: #00C9FF;
+    --purple-neon: #7A00FF;
+    --green-lime: #00FF88;
+    --gray-light: #E0E0E0;
+    --white: #fff;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-dark);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header.hero {
+    padding: 30px 20px;
+    text-align: center;
+    background: #111a2f;
+    border-bottom: 1px solid var(--blue-cyan);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+header img {
+    width: 170px;
+    height: 100%;
+}
+
+header div {
+    text-align: justify;
+}
+
+header.hero h1 {
+    color: var(--blue-cyan);
+    font-size: 1.8rem;
+    margin: 4px 0;
+}
+
+header.hero p {
+    color: var(--gray-light);
+    margin: 0;
+}
+
+/* Rodapé colado no final */
+footer.footer {
+    background: #111a2f;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    /* empurra o rodapé pro fim */
+    color: var(--gray-light);
+}
+
+/* Caixa de login */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.login-box {
+    background: #111a2f;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 201, 255, 0.2);
+    max-width: 420px;
+    width: 100%;
+    height: 355px;
+}
+
+/* Abas */
+.tab-header {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--blue-cyan);
+}
+
+.tab-item {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--gray-light);
+    transition: 0.3s;
+}
+
+.tab-item.active {
+    color: var(--blue-cyan);
+    border-bottom: 3px solid var(--blue-cyan);
+}
+
+/* Conteúdo das abas */
+.form-container {
+    display: none;
+    animation: fade 0.5s;
+}
+
+.form-container.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--gray-light);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: #1a2740;
+    color: var(--white);
+}
+
+input:focus {
+    border: 2px solid var(--blue-cyan);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--blue-cyan), var(--purple-neon));
+    color: var(--white);
+    transition: 0.3s;
+    display: flex;
+}
+
+.sair {
+    width: 100px;
+    padding: 5px 20px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--blue-cyan), var(--purple-neon));
+    color: var(--white);
+    transition: 0.3s;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1rem;
+}
+
+button img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.forgot {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.forgot a {
+    color: var(--green-lime);
+    text-decoration: none;
+}
+
+section {
+    height: calc(100vh - 290px);
+    display: flex;
+    justify-content: center;
+}
+
+#enviar {
+    height: auto;
+    padding-bottom: 40px;
+}
+
+#enviar h3{
+    margin-bottom: 0;
+}
+
+#enviar p{
+    margin-top: 5px;
+}
+
+section .btn_envia {
+    width: 100px;
+    margin-left: 20px;
+}
+
+section .input_envia {
+    width: auto;
+}
+
+section .form_envia {
+    display: flex;
+}
+
+ul,
+li,
+a {
+    list-style: none;
+    text-decoration: none;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.perfil {
+    width: calc(100vw - 10px);
+    height: 100vh;
+    border: none;
+    overflow: auto;
+}
+/* 
+section dos alunos 
+#alunos{
+
+}
+*/
+
+.alunos{
+    width: 1300px;
+    padding: 20px;
+}
+
+.mostra_alunos{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+}
+
+.nome_aluno{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.nome_aluno p{
+    margin: 0;
+}

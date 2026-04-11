@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            background-color: rgb(92, 92, 219);
+        }
+
+        .container{
+            display: flex;
+            gap: 3px;
+        }
+
+        .card{
+            width: 100px;
+            height: 80px;
+            background-color: rgb(191, 191, 191);
+            border-radius: 8px;
+            cursor: pointer;
+            flex: 1;
+            transition: 0.3s all ease;
+        }
+
+        .card:hover{
+            flex: 2;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+        <div class="card"></div>
+    </div>
+</body>
+</html>

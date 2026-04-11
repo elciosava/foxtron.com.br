@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastrar Item - ReUse</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+  <h1>♻️ ReUse</h1>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="cadastrar.html" class="ativo">Cadastrar Item</a>
+    <a href="buscar.html">Buscar Itens</a>
+  </nav>
+  <button id="modo-btn">🌙</button>
+</header>
+
+<section class="formulario">
+  <h2>Cadastre um item para doar ou trocar</h2>
+  <form id="form-cadastro">
+    <label>Nome do Item</label>
+    <input type="text" id="nome-item" placeholder="Ex: Mochila escolar" required>
+
+    <label>Descrição</label>
+    <textarea id="descricao-item" placeholder="Descreva o estado do item..." required></textarea>
+
+    <label>Categoria</label>
+    <select id="categoria-item" required>
+      <option>Roupas</option>
+      <option>Eletrônicos</option>
+      <option>Móveis</option>
+      <option>Livros</option>
+      <option>Outros</option>
+    </select>
+
+    <label>Foto do Item</label>
+    <input type="file" id="foto-item" accept="image/*">
+
+    <button type="submit" class="btn">Enviar</button>
+  </form>
+</section>
+
+<footer>
+  <p>🌍 ReUse — Reduza, Reutilize, Recicle.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

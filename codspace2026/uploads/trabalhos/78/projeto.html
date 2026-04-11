@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            font-size: 1rem;
+            color: black;
+        }
+
+        h1, h2 {
+            font-size: 1.5rem;
+            color: blue;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Projeto de Criar um Forum interativo com opção de criar usuario e postagens</h1>
+
+        <h2>1. Modelagem do banco de dados mysql</h2>
+        <p>opção de criar usuario: armazenar, id, nome, email e senha</p>
+        <p>postagens de topicos: armazenar conteudo que o usuario postou com id, conteudo, data e o id do usuario</p>
+        <p>comentarios de outros usuarios no topicos no caso respostas agradecimentos, duvidas. armazenar id do
+            comentario, data, conteudo no caso o comentario, id do topico e id do usuario.</p>
+
+        <h2>2. o fluxo de edição e exclução</h2>
+        <p>1 - voce cria um formulario que ja vem pre preenchido com os dados atuais do banco de dados e clica em postar
+        </p>
+        <p>2 - caso tenha erros o usuario pode editar o formulario e arrumar</p>
+        <p>3 - o usuario altera o texto e imagens e salva</p>
+        <p>4 - o php executa o update da atualização</p>
+
+        <h2>Opção editar ou excluir conta de usuario</h2>
+        <p>ter um pagina de configuração onde o usuario pode alterar nome de usuario, email, senha lembrando que o id
+            sera fixo nao podendo alterar</p>
+        <p>opçao de exclução da conta onde usuario tera opção de excluir sua conta e o site perguntar se deseja mesmo
+            executar aqui que se confirmar nao tera mais recuperação</p>
+    </div>
+
+</body>
+
+</html>

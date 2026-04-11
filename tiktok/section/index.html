@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html{
+            font-family: sans-serif;
+        }
+
+        li {
+            display: inline-block;
+            padding: 5px;
+            margin: 0px 10px;
+            font-size: 1.2rem;
+        }
+
+        header {
+            background: lightcoral;
+            height: 40px;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        section {
+            height: calc(100vh - 50px);
+        }
+
+        #inicio {            
+            background: lightgreen;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            height: calc(100vh - 50px);
+            gap: 10px;
+        }
+
+        .card {
+            background: lightgoldenrodyellow;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>Inicio</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
+    <section id="inicio">
+        <div id="container">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+        </div>
+    </section>
+</body>
+</html>

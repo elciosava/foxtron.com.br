@@ -1,0 +1,11 @@
+.resultado {
+  display: flex;
+  justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+
+.linha {
+    border: 1px solid black;
+    width: 200px;
+}
