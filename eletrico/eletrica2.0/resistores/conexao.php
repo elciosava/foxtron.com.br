@@ -3,8 +3,7 @@
     $local = 'localhost';
     $banco = 'eletricidade';
     $usuario = 'root';
-    //$senha = 's4va6o841A@';
-    $senha = '';
+    $senha = 's4va6o841A@';
 
     //tentar uma conexao usando nossas variaveis
     try{
