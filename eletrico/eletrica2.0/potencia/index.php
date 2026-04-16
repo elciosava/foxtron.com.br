@@ -267,6 +267,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         .resultados {
             margin-bottom: 50px;
+
+            padding: 10px;
         }
 
         .centralizar {
@@ -351,11 +353,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h3>Seus cálculos:</h3>
         </div>
         <?php
-        $sql = "SELECT * FROM potencia";
-        $stmt = $conexao->prepare($sql);
-        $stmt->execute();
+        $id_usuario = $_SESSION['id'];
 
-        if ($stmt->rowCount() > 0) {
+        $sql_select = "SELECT * FROM potencia WHERE id_usuario = :id_usuario ORDER BY id DESC";
+        $stmt_select = $conexao->prepare($sql_select);
+        $stmt_select->bindParam(':id_usuario', $id_usuario);
+        $stmt_select->execute();
+
+        if ($stmt_select->rowCount() > 0) {
 
             echo "<div class='cabecalho'>";
             echo "<div class='cel_cabecalho'>Questão</div>";
@@ -367,7 +372,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             echo "</div>";
 
-            while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            while ($linha = $stmt_select->fetch(PDO::FETCH_ASSOC)) {
                 echo "<div class='linha'>";
                 echo "<div class='cel_cabecalho'>{$linha['questao']}</div>";
                 echo "<div class='cel_cabecalho'>{$linha['tipo']}</div>";
