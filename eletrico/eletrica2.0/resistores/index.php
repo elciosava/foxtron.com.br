@@ -116,10 +116,10 @@ if (isset($conexao) && $conexao instanceof PDO) {
         }
 
         .user-badge {
-            background-color: rgba(255, 255, 255, 0.2);
             padding: 5px 10px;
             border-radius: 5px;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            color: white;
         }
     </style>
 </head>
@@ -161,7 +161,7 @@ if (isset($conexao) && $conexao instanceof PDO) {
                     <div class="card-header bg-white d-flex justify-content-between align-items-center">
                         <h5 class="mb-0">Componentes do Circuito</h5>
                         <div>
-                            <button class="btn btn-sm btn-outline-primary" onclick="addBlock('serie')">+ Série</button>
+                            <button class="btn btn-sm btn-outline-primary" onclick="addBlock('serie')" style="width: 80.2px;">+ Série</button>
                             <button class="btn btn-sm btn-outline-success" onclick="addBlock('paralelo')">+ Paralelo</button>
                         </div>
                     </div>

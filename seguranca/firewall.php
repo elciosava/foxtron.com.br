@@ -1,4 +1,6 @@
 <?php
+
+ini_set("display_errors", 0);
 $ip = $_SERVER['REMOTE_ADDR'];
 
 $whitelist = ['191.253.31.17', '127.0.0.1', '::1'];

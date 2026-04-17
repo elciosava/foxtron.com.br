@@ -11,6 +11,9 @@
     <title>Elcio Sava | Desenvolvedor Web & Professor | 9 Anos de Experiência</title>
     <meta name="description" content="Portfólio profissional de Elcio Sava. Desenvolvedor web com 9 anos de experiência em PHP, CSS, HTML e JavaScript. Ofereço cursos online de programação.">
     <meta name="keywords" content="desenvolvedor web, PHP, JavaScript, CSS, HTML, cursos de programação, web design">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9790715004022716" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-9790715004022716">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
