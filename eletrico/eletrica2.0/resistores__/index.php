@@ -172,9 +172,9 @@ if (isset($conexao) && $conexao instanceof PDO) {
                         <button class="btn btn-dark w-100 fw-bold" onclick="salvarCalculo()">
                             <i class="bi bi-cloud-upload me-2"></i> SALVAR NO HISTÓRICO
                         </button>
-	                        <button class="btn btn-success w-100 fw-bold mt-2" onclick="exportarPDF()">
-	                            <i class="bi bi-file-image me-2"></i> EXPORTAR PARA IMAGEM (PNG)
-	                        </button>
+                        <button class="btn btn-warning w-100 fw-bold mt-2" onclick="exportarPDF()">
+                            <i class="bi bi-file-pdf me-2"></i> EXPORTAR PARA PDF
+                        </button>
                     </div>
                 </div>
             </div>
@@ -215,13 +215,12 @@ if (isset($conexao) && $conexao instanceof PDO) {
                         <?php else: foreach ($historico as $row):
                             $is_resolvido = (bool)$row['resolvido_resistores'];
                         ?>
-                                <div class="historico-item d-flex justify-content-between align-items-center <?php echo $is_resolvido ? 'opacity-50' : ''; ?>">
-	                                <div style="cursor: pointer;" onclick="window.open('visualizar.php?id=<?php echo $row['id_resistores']; ?>', '_blank')">
-	                                    <span class="badge bg-dark me-2"><?php echo number_format($row['resultado_resistores'], 2); ?> Ω</span>
-	                                    <small class="text-muted">Cálculo #<?php echo $row['id_resistores']; ?></small>
-	                                    <i class="bi bi-box-arrow-up-right ms-2 text-primary small"></i>
-	                                </div>
-	                                <form method="POST" action="atualizar.php">
+                            <div class="historico-item d-flex justify-content-between align-items-center <?php echo $is_resolvido ? 'opacity-50' : ''; ?>">
+                                <div>
+                                    <span class="badge bg-dark me-2"><?php echo number_format($row['resultado_resistores'], 2); ?> Ω</span>
+                                    <small class="text-muted">Cálculo #<?php echo $row['id_resistores']; ?></small>
+                                </div>
+                                <form method="POST" action="atualizar.php">
                                     <input type="hidden" name="id" value="<?php echo $row['id_resistores']; ?>">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" onchange="this.form.submit()" <?php echo $is_resolvido ? 'checked' : ''; ?>>
@@ -236,7 +235,7 @@ if (isset($conexao) && $conexao instanceof PDO) {
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
         let blocks = []; // [{id, tipo, valores}]
 
@@ -376,85 +375,85 @@ if (isset($conexao) && $conexao instanceof PDO) {
          * NOVO: Exportar para PDF com desenho do circuito e cálculos
          */
         function exportarPDF() {
-	            if (blocks.length === 0) {
-	                alert("Adicione componentes antes de exportar!");
-	                return;
-	            }
+            if (blocks.length === 0) {
+                alert("Adicione componentes antes de exportar!");
+                return;
+            }
 
-                // Recalcular para garantir que o canvas esteja atualizado
-                calcular();
-	
-	            // Captura o canvas do circuito
-	            const canvas = document.getElementById('circuito');
-	            const circuitoImagem = canvas.toDataURL('image/png');
-	
-	            // Coleta os dados
-	            const V = parseFloat(document.getElementById('voltagem').value) || 0;
-	            const resTotal = parseFloat(document.getElementById('res-total').innerText);
-	            const I = parseFloat(document.getElementById('corrente-total').innerText);
-	            const dataAtual = new Date().toLocaleString('pt-BR');
-	
-		            // Cria um elemento temporário para renderizar o relatório
-		            const element = document.createElement('div');
-                element.style.fontFamily = 'Arial, sans-serif';
-                element.style.padding = '30px';
-                element.style.width = '800px';
-                element.style.backgroundColor = 'white';
-                element.style.position = 'fixed';
-                element.style.left = '-9999px';
-                document.body.appendChild(element);
-                
-                element.innerHTML = `
-	                    <h2 style="text-align: center; color: #333; margin-bottom: 25px;">Relatório de Circuito de Resistores</h2>
-	                    
-	                    <div style="margin-bottom: 20px; padding: 15px; background-color: #f8f9fa; border-left: 5px solid #0d6efd; border-radius: 4px;">
-	                        <h4 style="margin-top: 0; color: #0d6efd;">Informações do Cálculo</h4>
-	                        <table style="width: 100%; border-collapse: collapse;">
-	                            <tr>
-	                                <td style="padding: 5px; font-weight: bold; width: 150px;">Data/Hora:</td>
-	                                <td style="padding: 5px;">${dataAtual}</td>
-	                            </tr>
-	                            <tr>
-	                                <td style="padding: 5px; font-weight: bold;">Tensão (V):</td>
-	                                <td style="padding: 5px;">${V.toFixed(1)} V</td>
-	                            </tr>
-	                            <tr>
-	                                <td style="padding: 5px; font-weight: bold;">Resistência Total:</td>
-	                                <td style="padding: 5px; font-size: 1.1em;">${resTotal.toFixed(2)} Ω</td>
-	                            </tr>
-	                            <tr>
-	                                <td style="padding: 5px; font-weight: bold;">Corrente Total (I):</td>
-	                                <td style="padding: 5px;">${I.toFixed(3)} A</td>
-	                            </tr>
-	                        </table>
-	                    </div>
-	
-	                    <div style="margin-bottom: 25px;">
-	                        <h4 style="color: #333; border-bottom: 2px solid #eee; padding-bottom: 8px;">Esquemático do Circuito</h4>
-	                        <div style="text-align: center; margin-top: 15px;">
-                                <img src="${circuitoImagem}" style="width: 100%; max-width: 700px; border: 1px solid #eee; border-radius: 5px;">
-                            </div>
-	                    </div>
-	
-	                    <div style="margin-bottom: 20px;">
-	                        <h4 style="color: #333; border-bottom: 2px solid #eee; padding-bottom: 8px;">Detalhes dos Componentes</h4>
-	                        ${gerarTabelaComponentes()}
-	                    </div>
-	
-	                    <div style="margin-top: 30px; text-align: center; color: #999; font-size: 12px; border-top: 1px solid #eee; padding-top: 10px;">
-	                        Gerado pelo Simulador de Circuitos DC
-	                    </div>
-	            `;
-	
-                // Gera a imagem PNG usando html2canvas
-                html2canvas(element, { scale: 2, backgroundColor: "#ffffff" }).then(canvasRes => {
-                    const link = document.createElement('a');
-                    link.download = `relatorio_circuito_${new Date().getTime()}.png`;
-                    link.href = canvasRes.toDataURL("image/png");
-                    link.click();
-                    document.body.removeChild(element);
-                });
-		        }
+            // Captura o canvas do circuito
+            const canvas = document.getElementById('circuito');
+            const circuitoImagem = canvas.toDataURL('image/png');
+
+            // Coleta os dados
+            const V = parseFloat(document.getElementById('voltagem').value) || 0;
+            const resTotal = parseFloat(document.getElementById('res-total').innerText);
+            const I = parseFloat(document.getElementById('corrente-total').innerText);
+            const dataAtual = new Date().toLocaleString('pt-BR');
+
+            // Cria o conteúdo HTML para o PDF
+            const htmlContent = `
+                <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 800px;">
+                    <h1 style="text-align: center; color: #333; margin-bottom: 30px;">Relatório de Circuito de Resistores</h1>
+                    
+                    <div style="margin: 20px 0; padding: 15px; background-color: #f5f5f5; border-left: 4px solid #0d6efd; border-radius: 5px;">
+                        <h3 style="margin-top: 0; color: #0d6efd;">Informações do Cálculo</h3>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr>
+                                <td style="padding: 8px; font-weight: bold;">Data/Hora:</td>
+                                <td style="padding: 8px;">${dataAtual}</td>
+                            </tr>
+                            <tr style="background-color: #fff;">
+                                <td style="padding: 8px; font-weight: bold;">Tensão (V):</td>
+                                <td style="padding: 8px;">${V.toFixed(1)} V</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 8px; font-weight: bold;">Resistência Total:</td>
+                                <td style="padding: 8px;">${resTotal.toFixed(2)} Ω</td>
+                            </tr>
+                            <tr style="background-color: #fff;">
+                                <td style="padding: 8px; font-weight: bold;">Corrente Total (I):</td>
+                                <td style="padding: 8px;">${I.toFixed(3)} A</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="margin: 20px 0;">
+                        <h3 style="color: #333; border-bottom: 2px solid #0d6efd; padding-bottom: 10px;">Esquemático do Circuito</h3>
+                        <img src="${circuitoImagem}" style="width: 100%; max-width: 600px; border: 2px solid #ddd; border-radius: 8px; margin-top: 15px;">
+                    </div>
+
+                    <div style="margin: 20px 0; padding: 15px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 5px;">
+                        <h3 style="margin-top: 0; color: #333;">Detalhes dos Componentes</h3>
+                        ${gerarTabelaComponentes()}
+                    </div>
+
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #ddd; text-align: center; color: #666; font-size: 12px;">
+                        <p>Gerado pelo Simulador de Circuitos DC</p>
+                    </div>
+                </div>
+            `;
+
+            // Configurações do html2pdf
+            const opt = {
+                margin: 10,
+                filename: `circuito_${new Date().getTime()}.pdf`,
+                image: {
+                    type: 'png',
+                    quality: 0.98
+                },
+                html2canvas: {
+                    scale: 2
+                },
+                jsPDF: {
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                }
+            };
+
+            // Gera o PDF
+            html2pdf().set(opt).from(htmlContent).save();
+        }
 
         /**
          * Gera tabela HTML com detalhes dos componentes
