@@ -1,6 +1,7 @@
 <?php
 // ../api/gerar_agendamentos.php
 require '../conexao/conexao.php';
+require '../conexao/utilidades.php';
 
 $curso_id = filter_input(INPUT_GET, 'curso_id', FILTER_VALIDATE_INT);
 if (!$curso_id)
@@ -108,7 +109,7 @@ try {
         SELECT id, sigla, nome, carga_horaria, professor_id, cor
         FROM unidades_curriculares
         WHERE curso_id = :curso_id
-        ORDER BY id
+        ORDER BY ordem, id
     ");
     $stmtUC->execute([':curso_id' => $curso_id]);
     $ucs = $stmtUC->fetchAll(PDO::FETCH_ASSOC);
@@ -133,7 +134,7 @@ try {
                 SELECT sigla, nome, carga_horaria, cor, professor_id
                 FROM unidades_curriculares
                 WHERE curso_id = :tpl
-                ORDER BY id
+                ORDER BY ordem, id
             ");
             $stmtTplUC->execute([':tpl' => $tplId]);
             $tplUCs = $stmtTplUC->fetchAll(PDO::FETCH_ASSOC);
@@ -249,6 +250,13 @@ try {
 
             if (in_array($diaSemana, $diasEscola, true)) {
                 // DIA DE ESCOLA → PRESENCIAL
+                
+                // --- VALIDAÇÃO DE CONFLITO ---
+                $disp = verificarDisponibilidadeProfessor($uc['professor_id'], $dataYmd, $horaInicioStr, $horaFimStr, $conexao);
+                if (!$disp['disponivel']) {
+                    throw new Exception("Conflito detectado na data " . date('d/m/Y', strtotime($dataYmd)) . ": " . $disp['conflito']);
+                }
+                // -----------------------------
 
                 $stmtInsAula->execute([
                     ':curso_id' => $curso_id,
@@ -362,8 +370,13 @@ try {
     header("Location: ../paginas/calendario_curso.php?curso_id=" . $curso_id);
     exit;
 
-} catch (PDOException $e) {
+} catch (Exception $e) {
     if ($conexao->inTransaction())
         $conexao->rollBack();
-    die("Erro ao gerar agendamentos: " . $e->getMessage());
+    
+    // Retornar para a página com erro amigável
+    echo "<!DOCTYPE html><html><head><meta charset='UTF-8'></head><body>";
+    echo "<script>alert('ERRO AO GERAR CALENDÁRIO:\\n\\n" . addslashes($e->getMessage()) . "'); window.history.back();</script>";
+    echo "</body></html>";
+    exit;
 }

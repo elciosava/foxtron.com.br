@@ -130,6 +130,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <title>Módulo de Entrada - Aprendizagem</title>
     <style>
         body {

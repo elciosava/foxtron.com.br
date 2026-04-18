@@ -8,247 +8,133 @@ include '../conexao/conexao.php';
     <meta charset="UTF-8">
     <title>Agenda dos Professores - SENAI</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #f3f6fc; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; }
+        header { background: #1a2041; color: #fff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        header h2 { font-size: 18px; }
+        header a { background: #fff; color: #1a2041; padding: 6px 15px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 13px; }
+        
+        .container { width: 98%; max-width: 1400px; margin: 20px auto; }
+        .semana-controles { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .semana-controles button { background: #1a2041; color: white; padding: 8px 15px; border-radius: 5px; border: none; cursor: pointer; font-weight: 600; }
+        #semanaLabel { font-size: 16px; color: #1a2041; font-weight: 700; min-width: 220px; text-align: center; }
 
-        body {
-            background: #f3f6fc;
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
+        table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+        th { background: #1a2041; color: #fff; padding: 12px 8px; font-size: 13px; border: 1px solid #2d3a6b; }
+        th.hoje { background: #2e7d32; }
 
-        header {
-            background: #1a2041;
-            color: #fff;
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            width: 100%;
-        }
+        td.col-professor { background: #f8f9fd; font-weight: 700; font-size: 13px; color: #1a2041; text-align: center; padding: 10px; border-right: 2px solid #d1d9e6; border-bottom: 1px solid #eee; }
+        td.col-turno { font-size: 11px; font-weight: 600; color: #666; text-align: center; background: #fafafa; border-right: 1px solid #eee; border-bottom: 1px solid #eee; }
+        tr.linha-manha td { border-top: 2px solid #d1d9e6; }
 
-        header a {
-            background: #fff;
-            color: #1a2041;
-            padding: 7px 15px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: bold;
-        }
+        td.dia-cel { border: 1px solid #eee; vertical-align: top; padding: 0; min-width: 140px; height: 70px; position: relative; }
+        td.hoje-col { background: #f0fff0; }
+        
+        .vazio { cursor: pointer; display: flex; align-items: center; justify-content: center; height: 100%; width: 100%; color: #ccc; font-size: 20px; transition: background 0.2s; }
+        .vazio:hover { background: #f0f4ff; color: #1a2041; }
 
-        .semana-controles {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            margin-top: 20px;
-        }
+        /* BADGE ÚNICA POR TURNO */
+        .aula-badge { width: 100%; height: 100%; padding: 6px; display: flex; flex-direction: column; justify-content: space-between; color: #fff; }
+        .badge-top { display: flex; justify-content: space-between; align-items: flex-start; }
+        .badge-sigla { font-size: 12px; font-weight: 800; line-height: 1.2; }
+        .badge-modalidade { font-size: 9px; font-weight: 800; padding: 1px 4px; border-radius: 3px; background: rgba(0,0,0,0.2); }
+        .badge-info { font-size: 10px; margin-top: 2px; opacity: 0.9; }
+        .badge-obs { font-size: 9px; background: rgba(255,255,255,0.15); padding: 2px; border-radius: 2px; margin-top: 3px; }
+        
+        .badge-acoes { display: flex; gap: 4px; margin-top: 4px; justify-content: flex-end; }
+        .badge-acoes button { background: rgba(255,255,255,0.2); border: none; border-radius: 3px; padding: 1px 4px; font-size: 10px; cursor: pointer; color: #fff; }
+        .badge-acoes button:hover { background: rgba(255,255,255,0.4); }
 
-        .semana-controles button {
-            background: #1a2041;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .container {
-            width: 1200px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
-        }
-
-        th {
-            background: #1a2041;
-            color: #fff;
-            padding: 10px;
-        }
-
-        td {
-            border: 1px solid #ccc;
-            height: 40px;
-            text-align: center;
-            padding: 0;
-            /* 🔹 sem padding pra cor pegar a célula toda */
-            font-size: 13px;
-            font-weight: bold;
-        }
-
-        td.vazio {
-            cursor: pointer;
-            background: #f7f7f7;
-            color: #777;
-        }
-
-        .evento {
-            width: 100%;
-            height: 100%;
-            box-sizing: border-box;
-            padding: 4px;
-            border-radius: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .evento .titulo {
-            font-size: 11px;
-            margin-bottom: 2px;
-        }
-
-        .evento .acoes {
-            margin-top: 2px;
-            display: flex;
-            gap: 4px;
-        }
-
-        .evento .acoes button {
-            background: rgba(255, 255, 255, 0.25);
-            border: none;
-            border-radius: 3px;
-            padding: 1px 4px;
-            font-size: 11px;
-            cursor: pointer;
-            color: #fff;
-        }
-
-        .evento .acoes button:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
+        /* Cores */
+        .tipo-FOLGA { background: #607d8b !important; }
+        .tipo-AUSENTE { background: #d32f2f !important; }
+        .tipo-SUBSTITUICAO { background: #f57c00 !important; }
+        .tipo-AVA { background: #455a64 !important; }
 
         /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, .5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 25px;
-            width: 400px;
-            border-radius: 8px;
-        }
-
-        .modal-content h3 {
-            margin-top: 0;
-        }
-
-        .modal-content select,
-        .modal-content input {
-            width: 100%;
-            padding: 8px;
-            margin: 8px 0;
-        }
-
-        .btn {
-            background: #1a2041;
-            color: #fff;
-            padding: 7px 15px;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .cancelar {
-            background: #b30000;
-        }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: white; padding: 25px; width: 400px; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .modal-content h3 { margin-bottom: 15px; color: #1a2041; font-size: 16px; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 12px; font-weight: 700; color: #555; margin-bottom: 4px; }
+        .form-group select, .form-group input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 5px; font-size: 13px; }
+        .modal-acoes { display: flex; gap: 10px; margin-top: 20px; }
+        .btn { flex: 1; padding: 10px; border: none; cursor: pointer; border-radius: 5px; font-weight: 700; font-size: 13px; }
+        .btn-salvar { background: #1a2041; color: #fff; }
+        .btn-cancelar { background: #eee; color: #333; }
     </style>
 </head>
 
 <body>
-
     <header>
         <h2>Agenda dos Professores</h2>
         <a href="../index.php">Voltar</a>
     </header>
 
     <div class="container">
-
         <div class="semana-controles">
-            <button id="btnAnterior">◀ Semana anterior</button>
+            <button id="btnAnterior">◀ Anterior</button>
             <h3 id="semanaLabel">Carregando...</h3>
-            <button id="btnProxima">Semana seguinte ▶</button>
+            <button id="btnProxima">Próxima ▶</button>
         </div>
 
-        <table id="tabelaAgenda">
+        <table>
             <thead>
                 <tr id="theadDias">
-                    <th>Professor</th>
-                    <th>Turno</th>
-                    <th>Seg</th>
-                    <th>Ter</th>
-                    <th>Qua</th>
-                    <th>Qui</th>
-                    <th>Sex</th>
-                    <th>Sab</th>
-                    <th>Dom</th>
+                    <th style="width:160px;">Professor</th>
+                    <th style="width:70px;">Turno</th>
+                    <th>Segunda</th>
+                    <th>Terça</th>
+                    <th>Quarta</th>
+                    <th>Quinta</th>
+                    <th>Sexta</th>
                 </tr>
             </thead>
             <tbody id="corpoAgenda"></tbody>
         </table>
-
     </div>
 
-    <!-- Modal -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <h3 id="tituloModal">Novo evento</h3>
-
-            <label>Professor</label>
-            <select id="professor"></select>
-
-            <label>Curso</label>
-            <select id="curso"></select>
-
-            <label>Unidade Curricular</label>
-            <select id="uc"></select>
-
-            <label>Tipo do Evento</label>
-            <select id="tipoEvento">
-                <option value="AULA">Aula</option>
-                <option value="FOLGA">Folga</option>
-                <option value="AUSENTE">Ausente</option>
-                <option value="SUBSTITUICAO">Substituição</option>
-            </select>
-
-            <label>Observação</label>
-            <input id="observacao" placeholder="Opcional">
-
-            <br><br>
-            <button class="btn" id="btnSalvar">Salvar</button>
-            <button class="btn cancelar" id="btnCancelar">Cancelar</button>
+            <h3 id="tituloModal">Novo Evento</h3>
+            <div class="form-group">
+                <label>Professor</label>
+                <select id="professor" disabled></select>
+            </div>
+            <div class="form-group">
+                <label>Curso</label>
+                <select id="curso"></select>
+            </div>
+            <div class="form-group">
+                <label>Unidade Curricular</label>
+                <select id="uc"></select>
+            </div>
+            <div class="form-group">
+                <label>Tipo</label>
+                <select id="tipoEvento">
+                    <option value="AULA">Aula</option>
+                    <option value="FOLGA">Folga</option>
+                    <option value="AUSENTE">Ausente</option>
+                    <option value="SUBSTITUICAO">Substituição</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Observação</label>
+                <input id="observacao" placeholder="Opcional">
+            </div>
+            <div class="modal-acoes">
+                <button class="btn btn-salvar" id="btnSalvar">Salvar</button>
+                <button class="btn btn-cancelar" id="btnCancelar">Cancelar</button>
+            </div>
         </div>
     </div>
 
-
     <script>
-        // ================================
-        //  CONTROLE DE SEMANAS
-        // ================================
         let dataAtual = new Date();
+        const DIAS_NOMES = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
 
         function getSegunda(d) {
             const data = new Date(d);
@@ -261,352 +147,193 @@ include '../conexao/conexao.php';
             return d.toISOString().split("T")[0];
         }
 
-        function atualizarLabelSemana() {
-            const segunda = getSegunda(dataAtual);
-            const domingo = new Date(segunda);
-            domingo.setDate(segunda.getDate() + 6);
-
-            document.getElementById("semanaLabel").innerText =
-                segunda.toLocaleDateString("pt-BR") +
-                " até " +
-                domingo.toLocaleDateString("pt-BR");
+        function isHoje(d) {
+            const hoje = new Date();
+            return d.toDateString() === hoje.toDateString();
         }
 
-        // ================================
-        //  CARREGAR TABELA (COM 3 TURNOS)
-        // ================================
         async function carregarAgenda() {
             const segunda = getSegunda(dataAtual);
             const semanaInicio = formatarData(segunda);
+            
+            const sexta = new Date(segunda);
+            sexta.setDate(segunda.getDate() + 4);
+            document.getElementById("semanaLabel").innerText = segunda.toLocaleDateString("pt-BR") + " — " + sexta.toLocaleDateString("pt-BR");
 
-            atualizarLabelSemana();
-
-            const diasSemana = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"];
-
-            // Monta cabeçalho com dia + data
+            // Cabeçalho
             const thead = document.getElementById("theadDias");
-            let thHtml = `
-            <th style="width: 140px;">Professor</th>
-            <th>Turno</th>`;
-
-            diasSemana.forEach((sigla, idx) => {
+            let thHtml = `<th>Professor</th><th>Turno</th>`;
+            for(let i=0; i<5; i++) {
                 const d = new Date(segunda);
-                d.setDate(segunda.getDate() + idx);
-
-                const dia = String(d.getDate()).padStart(2, "0");
-                const mes = String(d.getMonth() + 1).padStart(2, "0");
-
-                thHtml += `<th>${sigla} ${dia}/${mes}</th>`;
-            });
-
+                d.setDate(segunda.getDate() + i);
+                const classeHoje = isHoje(d) ? ' class="hoje"' : '';
+                thHtml += `<th${classeHoje}>${DIAS_NOMES[i]}<br><small>${d.getDate()}/${d.getMonth()+1}</small></th>`;
+            }
             thead.innerHTML = thHtml;
 
-            // Busca professores
-            const professores = await fetch("../api/listar_professores.php").then(r => r.json());
+            // Dados
+            const [professores, eventos, aulas] = await Promise.all([
+                fetch("../api/listar_professores.php").then(r => r.json()),
+                fetch("../api/listar_eventos.php?semana_inicio=" + semanaInicio).then(r => r.json()).catch(() => []),
+                fetch("../api/listar_aulas_oficiais.php?semana_inicio=" + semanaInicio).then(r => r.json()).catch(() => [])
+            ]);
 
-            // 🔹 Busca eventos manuais (folga, substituição, etc.)
-            let eventos = [];
-            try {
-                eventos = await fetch("../api/listar_eventos.php?semana_inicio=" + semanaInicio)
-                    .then(r => r.json());
-            } catch (e) {
-                console.warn("Não foi possível carregar eventos manuais:", e);
-            }
-
-            // Aulas oficiais
-            let aulasOficiais = [];
-            try {
-                aulasOficiais = await fetch("../api/listar_aulas_oficiais.php?semana_inicio=" + semanaInicio)
-                    .then(r => r.json());
-            } catch (e) {
-                console.warn("Não foi possível carregar aulas oficiais:", e);
-            }
-
-            console.log("🧑‍🏫 Professores:", professores);
-            console.log("📘 Aulas oficiais:", aulasOficiais);
-            console.log("✏️ Eventos manuais:", eventos);
-
-            // professor → { nome, turnos: { Manhã:{}, Tarde:{}, Noite:{} } }
             const mapa = {};
-
             professores.forEach(p => {
-                mapa[p.id] = {
-                    nome: p.nome,
-                    turnos: {
-                        "Manhã": {},
-                        "Tarde": {},
-                        "Noite": {}
-                    }
-                };
+                mapa[p.id] = { nome: p.nome, turnos: { "Manhã": {}, "Tarde": {}, "Noite": {} } };
             });
 
-            // 🔹 Preenche primeiro com as AULAS OFICIAIS (do calendário de cursos)
-            aulasOficiais.forEach(a => {
-                if (!mapa[a.professor_id]) return;
-
-                if (!mapa[a.professor_id].turnos[a.turno]) {
-                    mapa[a.professor_id].turnos[a.turno] = {};
+            // Aulas Oficiais (Uma por turno)
+            aulas.forEach(a => {
+                if (mapa[a.professor_id]) {
+                    const turno = a.turno || "Manhã";
+                    mapa[a.professor_id].turnos[turno][a.data] = {
+                        tipo: (a.modalidade === 'AVA') ? 'AVA' : 'AULA',
+                        modalidade: a.modalidade,
+                        uc: a.uc_nome, sigla: a.sigla, curso: a.curso_nome,
+                        hora: a.hora_inicio.substring(0,5) + " - " + a.hora_fim.substring(0,5),
+                        cor: a.cor, oficial: true
+                    };
                 }
-
-                const eAVA = (a.modalidade === 'AVA');
-                const cor = eAVA ? '#607d8b' : (a.cor || '#1a2041');
-
-                const chaveData = a.data;  // "2026-02-02" vindo do PHP
-
-                mapa[a.professor_id].turnos[a.turno][chaveData] = {
-                    tipo: eAVA ? 'AVA' : 'AULA',
-                    modalidade: a.modalidade,
-                    uc: a.uc_nome,
-                    sigla: a.sigla,
-                    cor,
-                    oficial: true,
-                    data: chaveData
-                };
             });
 
-
-            // Sobrescreve com eventos manuais
+            // Eventos Manuais (Sobrescrevem)
             eventos.forEach(ev => {
-                const prof = mapa[ev.professor_id];
-                if (!prof) return;
-
-                if (!prof.turnos[ev.turno]) {
-                    prof.turnos[ev.turno] = {};
+                if (mapa[ev.professor_id]) {
+                    mapa[ev.professor_id].turnos[ev.turno][ev.data] = {
+                        tipo: ev.tipo, uc: ev.uc_nome, sigla: ev.sigla, curso: ev.curso_nome,
+                        cor: ev.cor, id: ev.id, oficial: false, obs: ev.observacao
+                    };
                 }
-
-                const chaveData = ev.data;  // certifique-se que listar_eventos.php retorna "data"
-
-                prof.turnos[ev.turno][chaveData] = {
-                    tipo: ev.tipo,
-                    uc: ev.uc_nome,
-                    sigla: ev.sigla,
-                    cor: ev.cor || "#555",
-                    id: ev.id,
-                    oficial: false,
-                    data: chaveData
-                };
             });
 
-            // Monta linhas
             let html = "";
-
             Object.keys(mapa).forEach(profId => {
                 const p = mapa[profId];
-
                 ["Manhã", "Tarde", "Noite"].forEach(turno => {
-                    html += "<tr>";
+                    html += `<tr${turno === "Manhã" ? ' class="linha-manha"' : ''}>`;
+                    if (turno === "Manhã") html += `<td class="col-professor" rowspan="3">${p.nome}</td>`;
+                    html += `<td class="col-turno">${turno}</td>`;
 
-                    if (turno === "Manhã") {
-                        html += `<td rowspan="3">${p.nome}</td>`;
-                    }
-
-                    html += `<td>${turno}</td>`;
-
-                    diasSemana.forEach((sigla, idx) => {
+                    for(let i=0; i<5; i++) {
                         const d = new Date(segunda);
-                        d.setDate(segunda.getDate() + idx);
-                        const dataChave = formatarData(d);   // "2026-01-26", "2026-01-27"...
-
+                        d.setDate(segunda.getDate() + i);
+                        const dataChave = formatarData(d);
                         const item = p.turnos[turno][dataChave];
+                        const tdClass = isHoje(d) ? 'dia-cel hoje-col' : 'dia-cel';
 
                         if (!item) {
-                            html += `<td class="vazio" onclick="abrirModal(${profId}, '${sigla}', '${turno}')">+</td>`;
+                            html += `<td class="${tdClass}"><div class="vazio" onclick="abrirModal(${profId}, ${i}, '${turno}')">+</div></td>`;
                         } else {
-                            let label;
-                            if (item.tipo === 'AVA') {
-                                label = 'AVA ' + (item.sigla || item.uc || '');
-                            } else {
-                                label = item.sigla || item.uc || item.tipo || "";
-                            }
-
-                            const acoes = item.oficial
-                                ? ""
-                                : `<button type="button" onclick="editar(${item.id})" title="Editar">✏️</button>
-                   <button type="button" onclick="excluir(${item.id})" title="Excluir">🗑️</button>`;
-
-                            html += `
-                <td style="background:${item.cor || '#1a2041'}; color:#fff;">
-                    <div class="evento">
-                        <div class="titulo">${label}</div>
-                        <div class="acoes">${acoes}</div>
-                    </div>
-                </td>`;
+                            const cor = item.tipo === 'AULA' ? (item.cor ? (item.cor.startsWith('#') ? item.cor : '#'+item.cor) : '#1a2041') : '';
+                            const classeTipo = ` tipo-${item.tipo}`;
+                            html += `<td class="${tdClass}">
+                                <div class="aula-badge${classeTipo}" style="${cor ? 'background:'+cor : ''}">
+                                    <div class="badge-top">
+                                        <span class="badge-sigla">${item.sigla || item.uc || item.tipo}</span>
+                                        ${item.modalidade && item.modalidade !== 'PRESENCIAL' ? `<span class="badge-modalidade">${item.modalidade}</span>` : ''}
+                                    </div>
+                                    <div class="badge-info">${item.hora || item.curso || ''}</div>
+                                    ${item.obs ? `<div class="badge-obs">${item.obs}</div>` : ''}
+                                    ${!item.oficial ? `<div class="badge-acoes"><button onclick="editar(${item.id})">✏️</button><button onclick="excluir(${item.id})">🗑️</button></div>` : ''}
+                                </div>
+                            </td>`;
                         }
-                    });
-
+                    }
                     html += "</tr>";
                 });
-
             });
-
             document.getElementById("corpoAgenda").innerHTML = html;
         }
 
-        // ================================
-        // MODAL
-        // ================================
-        let diaSelecionado = null;
-        let profSelecionado = null;
-        let turnoSelecionado = null;
-        let editandoId = null;
-        let dataSelecionada = null; // 🔹 nova: guarda a data real do evento
+        let modalData = { profId: null, diaIndex: null, turno: null, editId: null, dataFixa: null };
 
-        async function abrirModal(profId, dia, turno) {
-            editandoId = null;
-
-            diaSelecionado = dia;
-            profSelecionado = profId;
-            turnoSelecionado = turno;
-            dataSelecionada = null; // 🔹 novo evento → data será calculada pela semana
-
-            document.getElementById("tituloModal").innerText = "Novo evento";
+        async function abrirModal(pId, dIdx, turno) {
+            modalData = { profId: pId, diaIndex: dIdx, turno: turno, editId: null, dataFixa: null };
+            document.getElementById("tituloModal").innerText = "Novo Evento - " + turno;
             document.getElementById("modal").style.display = "flex";
-
             await carregarListas();
         }
 
-        document.getElementById("btnCancelar").onclick = () => {
-            document.getElementById("modal").style.display = "none";
-        };
+        document.getElementById("btnCancelar").onclick = () => document.getElementById("modal").style.display = "none";
 
         async function carregarListas() {
-            // Professores
-            const profs = await fetch("../api/listar_professores.php").then(r => r.json());
-            document.getElementById("professor").innerHTML =
-                profs.map(p => `<option value="${p.id}" ${p.id == profSelecionado ? "selected" : ""}>${p.nome}</option>`).join("");
-
-            // Cursos
-            const cursos = await fetch("../api/listar_cursos.php").then(r => r.json());
-            document.getElementById("curso").innerHTML =
-                "<option value=''>Selecione</option>" +
-                cursos.map(c => `<option value="${c.id}">${c.nome}</option>`).join("");
-
-            // UCs por curso
+            const [profs, cursos] = await Promise.all([
+                fetch("../api/listar_professores.php").then(r => r.json()),
+                fetch("../api/listar_cursos.php").then(r => r.json())
+            ]);
+            document.getElementById("professor").innerHTML = profs.map(p => `<option value="${p.id}" ${p.id == modalData.profId ? "selected" : ""}>${p.nome}</option>`).join("");
+            document.getElementById("curso").innerHTML = "<option value=''>Selecione o Curso</option>" + cursos.map(c => `<option value="${c.id}">${c.nome}</option>`).join("");
             document.getElementById("curso").onchange = async () => {
-                const curso = document.getElementById("curso").value;
-                if (!curso) {
-                    document.getElementById("uc").innerHTML = "<option value=''>Selecione o curso</option>";
-                    return;
-                }
-
-                const ucs = await fetch("../api/listar_uc_por_curso.php?curso_id=" + curso).then(r => r.json());
-                document.getElementById("uc").innerHTML =
-                    "<option value=''>Selecione</option>" +
-                    ucs.map(u => `<option value="${u.id}">${u.nome}</option>`).join("");
+                const cId = document.getElementById("curso").value;
+                if (!cId) return document.getElementById("uc").innerHTML = "<option value=''>Selecione o curso</option>";
+                const ucs = await fetch("../api/listar_uc_por_curso.php?curso_id=" + cId).then(r => r.json());
+                document.getElementById("uc").innerHTML = "<option value=''>Selecione a UC</option>" + ucs.map(u => `<option value="${u.id}">${u.nome}</option>`).join("");
             };
         }
 
-        // ================================
-        // SALVAR
-        // ================================
         document.getElementById("btnSalvar").onclick = async () => {
-            const diasSemana = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"];
-
-            let dataEnvio;
-
-            if (editandoId) {
-                // 🔁 EDITAR → usa data que veio do banco
-                dataEnvio = dataSelecionada; // ex: "2025-11-16"
+            let dataEnv;
+            if (modalData.editId) {
+                dataEnv = modalData.dataFixa;
             } else {
-                // ➕ NOVO → calcula a data com base na semana atual + diaSelecionado
-                const segunda = getSegunda(dataAtual);
-                const index = diasSemana.indexOf(diaSelecionado);
-                const dataFinal = new Date(segunda);
-                dataFinal.setDate(segunda.getDate() + index);
-                dataEnvio = formatarData(dataFinal); // "yyyy-mm-dd"
+                const seg = getSegunda(dataAtual);
+                const dFinal = new Date(seg);
+                dFinal.setDate(seg.getDate() + modalData.diaIndex);
+                dataEnv = formatarData(dFinal);
             }
 
             const payload = {
-                id: editandoId,
+                id: modalData.editId,
                 professor_id: document.getElementById("professor").value,
                 curso_id: document.getElementById("curso").value || null,
                 uc_id: document.getElementById("uc").value || null,
                 tipo: document.getElementById("tipoEvento").value,
-                substituto_id: null,
                 observacao: document.getElementById("observacao").value,
-                data: dataEnvio,          // 🔹 agora certinho
-                turno: turnoSelecionado   // 🔹 mantém o turno correto
+                data: dataEnv,
+                turno: modalData.turno
             };
 
             const res = await fetch("../api/salvar_evento.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
-                cache: "no-store"
+                body: JSON.stringify(payload)
             });
 
-            const json = await res.json();
-            console.log("Salvar evento:", json);
-
-            if (json.status === "ok") {
+            if ((await res.json()).status === "ok") {
                 document.getElementById("modal").style.display = "none";
-                carregarAgenda();   // recarrega e já mostra o resultado atualizado
+                carregarAgenda();
             } else {
-                alert("Erro ao salvar: " + json.mensagem);
+                alert("Erro ao salvar.");
             }
         };
 
-        // ================================
-        // EDITAR EVENTO
-        // ================================
         async function editar(id) {
             const ev = await fetch("../api/obter_evento.php?id=" + id).then(r => r.json());
-
-            editandoId = id;
-            diaSelecionado = ev.dia_semana;
-            turnoSelecionado = ev.turno;
-            dataSelecionada = ev.data; // 🔹 mantém a data EXATA do evento (yyyy-mm-dd)
-
-            document.getElementById("tituloModal").innerText = "Editar evento";
+            modalData = { profId: ev.professor_id, diaIndex: null, turno: ev.turno, editId: id, dataFixa: ev.data };
+            document.getElementById("tituloModal").innerText = "Editar Evento";
             document.getElementById("modal").style.display = "flex";
-
-            profSelecionado = ev.professor_id;
             await carregarListas();
-
             document.getElementById("curso").value = ev.curso_id;
             document.getElementById("tipoEvento").value = ev.tipo;
             document.getElementById("observacao").value = ev.observacao || "";
-
             if (ev.curso_id) {
                 const ucs = await fetch("../api/listar_uc_por_curso.php?curso_id=" + ev.curso_id).then(r => r.json());
-                document.getElementById("uc").innerHTML =
-                    "<option value=''>Selecione</option>" +
-                    ucs.map(u => `<option value="${u.id}" ${u.id == ev.uc_id ? "selected" : ""}>${u.nome}</option>`);
+                document.getElementById("uc").innerHTML = "<option value=''>Selecione</option>" + ucs.map(u => `<option value="${u.id}" ${u.id == ev.uc_id ? "selected" : ""}>${u.nome}</option>`);
             }
         }
 
-
-        // ================================
-        // EXCLUIR
-        // ================================
         async function excluir(id) {
-            if (!confirm("Deseja excluir este evento?")) return;
-
-            await fetch("../api/excluir_evento.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ id })
-            });
-
-            carregarAgenda();
+            if (confirm("Excluir este evento?")) {
+                await fetch("../api/excluir_evento.php", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id }) });
+                carregarAgenda();
+            }
         }
 
-        // ================================
-        // INIT
-        // ================================
-        document.getElementById("btnAnterior").onclick = () => {
-            dataAtual.setDate(dataAtual.getDate() - 7);
-            carregarAgenda();
-        };
-
-        document.getElementById("btnProxima").onclick = () => {
-            dataAtual.setDate(dataAtual.getDate() + 7);
-            carregarAgenda();
-        };
+        document.getElementById("btnAnterior").onclick = () => { dataAtual.setDate(dataAtual.getDate() - 7); carregarAgenda(); };
+        document.getElementById("btnProxima").onclick = () => { dataAtual.setDate(dataAtual.getDate() + 7); carregarAgenda(); };
 
         carregarAgenda();
     </script>
-
 </body>
-
 </html>

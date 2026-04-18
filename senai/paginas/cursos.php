@@ -71,6 +71,8 @@ $feriados = $stmtF->fetchAll(PDO::FETCH_COLUMN); // array de 'YYYY-MM-DD'
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Cursos</title>
+    
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <style>
         body {
             font-family: Arial, sans-serif;

@@ -7,24 +7,15 @@ require '../conexao/conexao.php';
 $semana_inicio = $_GET['semana_inicio'] ?? null;
 
 if (!$semana_inicio) {
-    echo json_encode([
-        'erro' => 'semana_inicio não informada'
-    ]);
+    echo json_encode(['erro' => 'semana_inicio não informada']);
     exit;
 }
 
-// 2) Calcula o fim da semana (6 dias depois)
+// 2) Calcula o fim da semana (6 dias depois para cobrir até domingo, embora a agenda mostre até sexta)
 $semana_fim = date('Y-m-d', strtotime($semana_inicio . ' +6 days'));
 
-// (opcional) debug em arquivo para conferir se está vindo certo
-file_put_contents(
-    __DIR__ . '/debug_semana.txt',
-    "inicio={$semana_inicio} fim={$semana_fim}\n",
-    FILE_APPEND
-);
-
-// 3) Busca as AULAS oficiais (tabela aulas) nessa semana
-//    Já traz: professor, UC, cor, curso e converte dia_semana e turno
+// 3) Busca as aulas oficiais
+//    Inclui: professor, UC (sigla, nome, cor), curso (nome, turno)
 $sql = "
     SELECT
         a.id,
@@ -35,16 +26,6 @@ $sql = "
         a.hora_inicio,
         a.hora_fim,
         a.modalidade,
-
-        CASE 
-            WHEN DAYOFWEEK(a.data) = 2 THEN 'Seg'
-            WHEN DAYOFWEEK(a.data) = 3 THEN 'Ter'
-            WHEN DAYOFWEEK(a.data) = 4 THEN 'Qua'
-            WHEN DAYOFWEEK(a.data) = 5 THEN 'Qui'
-            WHEN DAYOFWEEK(a.data) = 6 THEN 'Sex'
-            WHEN DAYOFWEEK(a.data) = 7 THEN 'Sab'
-            WHEN DAYOFWEEK(a.data) = 1 THEN 'Dom'
-        END AS dia_semana,
 
         u.nome  AS uc_nome,
         u.sigla AS sigla,
@@ -62,18 +43,18 @@ $sql = "
     JOIN unidades_curriculares u ON a.uc_id   = u.id
     JOIN cursos               c ON a.curso_id = c.id
     WHERE 
-    a.data BETWEEN :ini AND :fim
-    -- remove tudo que for AVA ou IND (qualquer combinação de maiúsc/minúsc e espaços)
-    AND TRIM(UPPER(COALESCE(a.modalidade, ''))) NOT IN ('AVA','IND')
+        a.data BETWEEN :ini AND :fim
+        -- Remove apenas IND (atividades independentes sem professor presencial)
+        AND TRIM(UPPER(COALESCE(a.modalidade, ''))) NOT IN ('IND')
     ORDER BY a.data, a.hora_inicio";
 
-
-$stmt = $conexao->prepare($sql);
-$stmt->bindValue(':ini', $semana_inicio);
-$stmt->bindValue(':fim', $semana_fim);
-$stmt->execute();
-
-$dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// 4) Retorna em JSON
-echo json_encode($dados);
+try {
+    $stmt = $conexao->prepare($sql);
+    $stmt->bindValue(':ini', $semana_inicio);
+    $stmt->bindValue(':fim', $semana_fim);
+    $stmt->execute();
+    $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($dados);
+} catch (PDOException $e) {
+    echo json_encode(['erro' => $e->getMessage()]);
+}

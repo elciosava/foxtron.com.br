@@ -52,6 +52,8 @@ $feriados = $conexao->query($sqlLista)->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Feriados / Férias - SENAI Agenda</title>
+    
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <style>
         body {
             font-family: Arial, sans-serif;

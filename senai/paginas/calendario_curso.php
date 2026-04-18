@@ -161,6 +161,8 @@ while ($cursor <= $fimMes) {
     <meta charset="UTF-8">
     <title>Calendário do curso - <?= htmlspecialchars($curso['nome']) ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <style>
         body {
             font-family: Arial, sans-serif;
