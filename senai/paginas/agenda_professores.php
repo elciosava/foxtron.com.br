@@ -6,22 +6,23 @@ include '../conexao/conexao.php';
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda dos Professores - SENAI</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: #f3f6fc; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; }
-        header { background: #1a2041; color: #fff; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        header h2 { font-size: 18px; }
+        header { background: #1a2041; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 10px; }
+        header h2 { font-size: 18px; flex: 1; min-width: 200px; }
         header a { background: #fff; color: #1a2041; padding: 6px 15px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 13px; }
         
-        .container { width: 98%; max-width: 1400px; margin: 20px auto; }
-        .semana-controles { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
-        .semana-controles button { background: #1a2041; color: white; padding: 8px 15px; border-radius: 5px; border: none; cursor: pointer; font-weight: 600; }
-        #semanaLabel { font-size: 16px; color: #1a2041; font-weight: 700; min-width: 220px; text-align: center; }
+        .container { width: 98%; max-width: 1400px; margin: 20px auto; padding: 0 10px; }
+        .semana-controles { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+        .semana-controles button { background: #1a2041; color: white; padding: 8px 15px; border-radius: 5px; border: none; cursor: pointer; font-weight: 600; font-size: 13px; }
+        #semanaLabel { font-size: 16px; color: #1a2041; font-weight: 700; min-width: 200px; text-align: center; }
 
+        /* ===== DESKTOP (>= 1024px) ===== */
         table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
         th { background: #1a2041; color: #fff; padding: 12px 8px; font-size: 13px; border: 1px solid #2d3a6b; }
         th.hoje { background: #2e7d32; }
@@ -55,8 +56,8 @@ include '../conexao/conexao.php';
         .tipo-AVA { background: #455a64 !important; }
 
         /* Modal */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background: white; padding: 25px; width: 400px; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 1000; padding: 20px; overflow-y: auto; }
+        .modal-content { background: white; padding: 25px; width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
         .modal-content h3 { margin-bottom: 15px; color: #1a2041; font-size: 16px; }
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-size: 12px; font-weight: 700; color: #555; margin-bottom: 4px; }
@@ -65,6 +66,98 @@ include '../conexao/conexao.php';
         .btn { flex: 1; padding: 10px; border: none; cursor: pointer; border-radius: 5px; font-weight: 700; font-size: 13px; }
         .btn-salvar { background: #1a2041; color: #fff; }
         .btn-cancelar { background: #eee; color: #333; }
+
+        /* ===== TABLET (768px - 1023px) ===== */
+        @media (max-width: 1023px) {
+            header h2 { font-size: 16px; }
+            header a { padding: 5px 12px; font-size: 12px; }
+            
+            #semanaLabel { font-size: 14px; min-width: 180px; }
+            .semana-controles button { padding: 6px 12px; font-size: 12px; }
+            
+            table { font-size: 12px; }
+            th { padding: 8px 4px; font-size: 11px; }
+            
+            td.col-professor { font-size: 12px; padding: 8px; }
+            td.col-turno { font-size: 10px; }
+            td.dia-cel { min-width: 100px; height: 60px; }
+            
+            .badge-sigla { font-size: 11px; }
+            .badge-modalidade { font-size: 8px; padding: 0px 3px; }
+            .badge-info { font-size: 9px; }
+            .badge-obs { font-size: 8px; }
+            .badge-acoes button { padding: 0px 3px; font-size: 9px; }
+        }
+
+        /* ===== MOBILE (<= 767px) ===== */
+        @media (max-width: 767px) {
+            body { padding: 0; }
+            header { padding: 12px 15px; flex-direction: column; text-align: center; }
+            header h2 { font-size: 16px; margin-bottom: 8px; width: 100%; }
+            header a { padding: 5px 12px; font-size: 12px; }
+            
+            .container { width: 100%; margin: 15px auto; padding: 0 10px; }
+            
+            #semanaLabel { font-size: 13px; min-width: 100%; margin-bottom: 10px; }
+            .semana-controles { gap: 10px; margin-bottom: 15px; }
+            .semana-controles button { padding: 6px 12px; font-size: 12px; flex: 1; max-width: 100px; }
+            
+            /* OCULTAR TABELA NO MOBILE */
+            table { display: none; }
+            
+            /* EXIBIR CARTÕES NO MOBILE */
+            .mobile-cards { display: block; }
+            
+            .card-professor { background: white; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden; }
+            .card-professor-header { background: #1a2041; color: white; padding: 12px 15px; font-weight: 700; font-size: 14px; }
+            
+            .card-turno { border-bottom: 1px solid #eee; padding: 0; }
+            .card-turno:last-child { border-bottom: none; }
+            
+            .turno-label { background: #f5f5f5; padding: 8px 15px; font-weight: 600; font-size: 12px; color: #666; display: flex; justify-content: space-between; align-items: center; }
+            .turno-dias { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 15px; }
+            
+            .dia-card { flex: 0 1 calc(50% - 4px); background: #f9f9f9; border: 1px solid #eee; border-radius: 6px; padding: 8px; min-height: 80px; position: relative; }
+            .dia-card.hoje { background: #f0fff0; border-color: #2e7d32; }
+            
+            .dia-nome { font-size: 11px; font-weight: 700; color: #1a2041; margin-bottom: 4px; }
+            .dia-data { font-size: 10px; color: #999; margin-bottom: 6px; }
+            
+            .aula-badge-mobile { width: 100%; padding: 6px; border-radius: 4px; color: white; display: flex; flex-direction: column; justify-content: space-between; min-height: 50px; }
+            .badge-sigla-mobile { font-size: 11px; font-weight: 800; line-height: 1.2; }
+            .badge-info-mobile { font-size: 9px; margin-top: 2px; opacity: 0.9; }
+            .badge-modalidade-mobile { font-size: 8px; font-weight: 800; padding: 1px 3px; border-radius: 2px; background: rgba(0,0,0,0.2); display: inline-block; margin-top: 2px; }
+            .badge-acoes-mobile { display: flex; gap: 3px; margin-top: 4px; }
+            .badge-acoes-mobile button { background: rgba(255,255,255,0.2); border: none; border-radius: 2px; padding: 2px 4px; font-size: 9px; cursor: pointer; color: white; }
+            .badge-acoes-mobile button:hover { background: rgba(255,255,255,0.4); }
+            
+            .dia-vazio { display: flex; align-items: center; justify-content: center; height: 50px; color: #ccc; font-size: 24px; cursor: pointer; transition: background 0.2s; }
+            .dia-vazio:active { background: #f0f4ff; color: #1a2041; }
+            
+            .modal-content { width: 95%; max-width: 100%; }
+            .modal-content h3 { font-size: 15px; }
+            .form-group select, .form-group input { font-size: 14px; }
+            .btn { padding: 12px; font-size: 14px; }
+        }
+
+        /* ===== EXTRA SMALL (<= 480px) ===== */
+        @media (max-width: 480px) {
+            header h2 { font-size: 14px; }
+            header a { padding: 4px 10px; font-size: 11px; }
+            
+            #semanaLabel { font-size: 12px; }
+            .semana-controles button { padding: 5px 10px; font-size: 11px; }
+            
+            .card-professor-header { font-size: 13px; padding: 10px 12px; }
+            .turno-label { font-size: 11px; padding: 6px 12px; }
+            .turno-dias { gap: 6px; padding: 8px 12px; }
+            
+            .dia-card { flex: 0 1 100%; }
+            .dia-nome { font-size: 10px; }
+            .dia-data { font-size: 9px; }
+            .badge-sigla-mobile { font-size: 10px; }
+            .badge-info-mobile { font-size: 8px; }
+        }
     </style>
 </head>
 
@@ -81,7 +174,8 @@ include '../conexao/conexao.php';
             <button id="btnProxima">Próxima ▶</button>
         </div>
 
-        <table>
+        <!-- TABELA DESKTOP -->
+        <table id="tabelaDesktop">
             <thead>
                 <tr id="theadDias">
                     <th style="width:160px;">Professor</th>
@@ -95,6 +189,9 @@ include '../conexao/conexao.php';
             </thead>
             <tbody id="corpoAgenda"></tbody>
         </table>
+
+        <!-- CARTÕES MOBILE -->
+        <div id="cartoesMobile" class="mobile-cards" style="display: none;"></div>
     </div>
 
     <div id="modal" class="modal">
@@ -135,6 +232,7 @@ include '../conexao/conexao.php';
     <script>
         let dataAtual = new Date();
         const DIAS_NOMES = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"];
+        let isMobile = window.innerWidth <= 767;
 
         function getSegunda(d) {
             const data = new Date(d);
@@ -152,6 +250,14 @@ include '../conexao/conexao.php';
             return d.toDateString() === hoje.toDateString();
         }
 
+        window.addEventListener('resize', () => {
+            const novoIsMobile = window.innerWidth <= 767;
+            if (novoIsMobile !== isMobile) {
+                isMobile = novoIsMobile;
+                carregarAgenda();
+            }
+        });
+
         async function carregarAgenda() {
             const segunda = getSegunda(dataAtual);
             const semanaInicio = formatarData(segunda);
@@ -159,17 +265,6 @@ include '../conexao/conexao.php';
             const sexta = new Date(segunda);
             sexta.setDate(segunda.getDate() + 4);
             document.getElementById("semanaLabel").innerText = segunda.toLocaleDateString("pt-BR") + " — " + sexta.toLocaleDateString("pt-BR");
-
-            // Cabeçalho
-            const thead = document.getElementById("theadDias");
-            let thHtml = `<th>Professor</th><th>Turno</th>`;
-            for(let i=0; i<5; i++) {
-                const d = new Date(segunda);
-                d.setDate(segunda.getDate() + i);
-                const classeHoje = isHoje(d) ? ' class="hoje"' : '';
-                thHtml += `<th${classeHoje}>${DIAS_NOMES[i]}<br><small>${d.getDate()}/${d.getMonth()+1}</small></th>`;
-            }
-            thead.innerHTML = thHtml;
 
             // Dados
             const [professores, eventos, aulas] = await Promise.all([
@@ -183,7 +278,7 @@ include '../conexao/conexao.php';
                 mapa[p.id] = { nome: p.nome, turnos: { "Manhã": {}, "Tarde": {}, "Noite": {} } };
             });
 
-            // Aulas Oficiais (Uma por turno)
+            // Aulas Oficiais
             aulas.forEach(a => {
                 if (mapa[a.professor_id]) {
                     const turno = a.turno || "Manhã";
@@ -197,7 +292,7 @@ include '../conexao/conexao.php';
                 }
             });
 
-            // Eventos Manuais (Sobrescrevem)
+            // Eventos Manuais
             eventos.forEach(ev => {
                 if (mapa[ev.professor_id]) {
                     mapa[ev.professor_id].turnos[ev.turno][ev.data] = {
@@ -206,6 +301,27 @@ include '../conexao/conexao.php';
                     };
                 }
             });
+
+            if (isMobile) {
+                renderizarMobile(mapa, segunda);
+            } else {
+                renderizarDesktop(mapa, segunda);
+            }
+        }
+
+        function renderizarDesktop(mapa, segunda) {
+            document.getElementById("tabelaDesktop").style.display = "table";
+            document.getElementById("cartoesMobile").style.display = "none";
+
+            const thead = document.getElementById("theadDias");
+            let thHtml = `<th>Professor</th><th>Turno</th>`;
+            for(let i=0; i<5; i++) {
+                const d = new Date(segunda);
+                d.setDate(segunda.getDate() + i);
+                const classeHoje = isHoje(d) ? ' class="hoje"' : '';
+                thHtml += `<th${classeHoje}>${DIAS_NOMES[i]}<br><small>${d.getDate()}/${d.getMonth()+1}</small></th>`;
+            }
+            thead.innerHTML = thHtml;
 
             let html = "";
             Object.keys(mapa).forEach(profId => {
@@ -244,6 +360,56 @@ include '../conexao/conexao.php';
                 });
             });
             document.getElementById("corpoAgenda").innerHTML = html;
+        }
+
+        function renderizarMobile(mapa, segunda) {
+            document.getElementById("tabelaDesktop").style.display = "none";
+            document.getElementById("cartoesMobile").style.display = "block";
+
+            let html = "";
+            Object.keys(mapa).forEach(profId => {
+                const p = mapa[profId];
+                html += `<div class="card-professor">
+                    <div class="card-professor-header">${p.nome}</div>`;
+
+                ["Manhã", "Tarde", "Noite"].forEach(turno => {
+                    html += `<div class="card-turno">
+                        <div class="turno-label">${turno}</div>
+                        <div class="turno-dias">`;
+
+                    for(let i=0; i<5; i++) {
+                        const d = new Date(segunda);
+                        d.setDate(segunda.getDate() + i);
+                        const dataChave = formatarData(d);
+                        const item = p.turnos[turno][dataChave];
+                        const classeHoje = isHoje(d) ? ' hoje' : '';
+
+                        html += `<div class="dia-card${classeHoje}">
+                            <div class="dia-nome">${DIAS_NOMES[i]}</div>
+                            <div class="dia-data">${d.getDate()}/${d.getMonth()+1}</div>`;
+
+                        if (!item) {
+                            html += `<div class="dia-vazio" onclick="abrirModal(${profId}, ${i}, '${turno}')">+</div>`;
+                        } else {
+                            const cor = item.tipo === 'AULA' ? (item.cor ? (item.cor.startsWith('#') ? item.cor : '#'+item.cor) : '#1a2041') : '';
+                            const classeTipo = ` tipo-${item.tipo}`;
+                            html += `<div class="aula-badge-mobile${classeTipo}" style="${cor ? 'background:'+cor : ''}">
+                                <span class="badge-sigla-mobile">${item.sigla || item.uc || item.tipo}</span>
+                                ${item.modalidade && item.modalidade !== 'PRESENCIAL' ? `<span class="badge-modalidade-mobile">${item.modalidade}</span>` : ''}
+                                <div class="badge-info-mobile">${item.hora || ''}</div>
+                                ${!item.oficial ? `<div class="badge-acoes-mobile"><button onclick="editar(${item.id})">✏️</button><button onclick="excluir(${item.id})">🗑️</button></div>` : ''}
+                            </div>`;
+                        }
+
+                        html += `</div>`;
+                    }
+
+                    html += `</div></div>`;
+                });
+
+                html += `</div>`;
+            });
+            document.getElementById("cartoesMobile").innerHTML = html;
         }
 
         let modalData = { profId: null, diaIndex: null, turno: null, editId: null, dataFixa: null };

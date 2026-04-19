@@ -32,7 +32,6 @@ $aulas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
     <title>Aulas Geradas</title>
     <style>
         body { font-family: Arial, sans-serif; background:#f3f6fc; margin:0; }
