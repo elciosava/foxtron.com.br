@@ -106,7 +106,7 @@ try {
         <h1>Calendário de Cursos</h1>
         <div>
             <a href="paginas/agenda_professores.php" class="btn">Agenda Professores</a>
-            <a href="SENAI_Agenda_Apresentacao.pdf" target="_blank" rel="noopener noreferrer" class="btn">Apresentação</a>
+            <a href="Documentação_de_Apresentação_Sistema_SENAI_-_Gestão_de_Calendário_e_Agenda_de_Professores.pdf" target="_blank" rel="noopener noreferrer" class="btn">Apresentação</a>
             <a href="paginas/feriados.php" class="btn">Feriados</a>
             <a href="paginas/cursos.php" class="btn">+ Novo curso</a>
         </div>
