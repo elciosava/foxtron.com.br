@@ -38,17 +38,13 @@
 
     <!-- Cena AR -->
     <!-- Usando detectionMode: mono_and_matrix para suportar Barcodes (0, 1, 2, 3) -->
-    <a-scene embedded arjs="sourceType: webcam; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
         
-        <!-- Marcadores Barcode (Não precisam de arquivos .patt) -->
-        <!-- ID 0 = Hidrogênio (H) -->
-        <a-marker type="barcode" value="0" id="marker-H" class="quim-marker" data-element="H"></a-marker>
-        <!-- ID 1 = Oxigênio (O) -->
-        <a-marker type="barcode" value="1" id="marker-O" class="quim-marker" data-element="O"></a-marker>
-        <!-- ID 2 = Carbono (C) -->
-        <a-marker type="barcode" value="2" id="marker-C" class="quim-marker" data-element="C"></a-marker>
-        <!-- ID 3 = Nitrogênio (N) -->
-        <a-marker type="barcode" value="3" id="marker-N" class="quim-marker" data-element="N"></a-marker>
+        <!-- Marcadores de Padrão (.patt) -->
+        <a-marker type="pattern" url="assets/H.patt" id="marker-H" class="quim-marker" data-element="H"></a-marker>
+        <a-marker type="pattern" url="assets/O.patt" id="marker-O" class="quim-marker" data-element="O"></a-marker>
+        <a-marker type="pattern" url="assets/C.patt" id="marker-C" class="quim-marker" data-element="C"></a-marker>
+        <a-marker type="pattern" url="assets/N.patt" id="marker-N" class="quim-marker" data-element="N"></a-marker>
 
         <!-- Entidade onde a molécula será montada -->
         <!-- Dica: Colocamos a molécula no marcador de Carbono ou Nitrogênio (centrais) se presentes -->
@@ -68,8 +64,9 @@
             const el = marker.getAttribute('data-element');
             
             marker.addEventListener('markerFound', () => {
+                console.log("Marcador detectado:", el);
                 elementosAtivos[el]++;
-                atualizarCena(marker); // Passa o marcador atual como âncora
+                atualizarCena(marker);
             });
 
             marker.addEventListener('markerLost', () => {
@@ -103,6 +100,7 @@
             if (ancora) {
                 ancora.appendChild(container);
                 container.setAttribute("position", "0 0.5 0");
+                container.setAttribute("scale", "2 2 2"); // Aumenta o tamanho para facilitar a visualização
             }
 
             // Lógica de Combinação
