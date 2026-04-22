@@ -3,8 +3,8 @@
 $host = 'localhost';
 $dbname = 'portfolio';
 $username = 'root';
-$password = ''; // No sandbox do Manus, geralmente o MySQL está sem senha por padrão
-//$password = 's4va6o841A@';
+//$password = ''; // No sandbox do Manus, geralmente o MySQL está sem senha por padrão
+$password = 's4va6o841A@';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
