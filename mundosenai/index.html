@@ -12,14 +12,15 @@
     <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: true;">
 
         <!-- HIDROGÊNIO -->
-        <a-nft id="markerH" type="nft" url="mundosenai/markers/h">
-            <!-- Aumentei o raio para 50 e a posição Z para ele flutuar sobre a imagem -->
-            <a-sphere id="atomH" color="white" radius="50" position="100 0 -150"></a-sphere>
+        <a-nft id="markerH" type="nft" url="mundosenai/markers/hidrogenio" smooth="true" smoothCount="10" smoothTolerance=".01"
+            smoothThreshold="5">
+
+            <a-sphere id="atomH" color="white" radius="50" position="100 -90 -180"></a-sphere>
         </a-nft>
 
         <!-- OXIGÊNIO -->
-        <a-nft id="markerO" type="nft" url="mundosenai/markers/o">
-            <a-sphere id="atomO" color="red" radius="60" position="100 0 -150"></a-sphere>
+        <a-nft id="markerO" type="nft" url="mundosenai/markers/oxigenio">
+            <a-sphere id="atomO" color="red" radius="60" position="100 -90 -180"></a-sphere>
         </a-nft>
 
         <!-- MOLÉCULA H2O -->
