@@ -1,23 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="utf-8">
+    <title>AR Química - Fusão por Proximidade</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: sans-serif; }
+        #ui {
+            position: fixed; top: 10px; left: 10px; z-index: 10;
+            background: rgba(0,0,0,0.8); color: white; padding: 15px;
+            border-radius: 8px; pointer-events: none; border: 1px solid #444;
+        }
+        #status { font-weight: bold; color: #00ff00; font-size: 18px; }
+        .instrucao { font-size: 12px; color: #ccc; margin-top: 5px; }
+    </style>
 </head>
-<body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: true;">
+
+<body>
+    <div id="ui">
+        <div id="status">Aproxime os marcadores...</div>
+        <div class="instrucao">Junte H (Hiro) e O (Kanji) para formar Água!</div>
+    </div>
+
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
         
-        <!-- Teste 1: Marcador Hiro (Padrão Universal ) -->
-        <a-marker preset="hiro">
-            <a-box position="0 0.5 0" material="color: red;" animation="property: rotation; to: 0 360 0; loop: true; dur: 3000"></a-box>
+        <!-- Marcador Hidrogênio (H) -->
+        <a-marker preset="hiro" id="marker-H">
+            <!-- Átomo individual que some na fusão -->
+            <a-sphere id="atom-H" position="0 0.5 0" radius="0.3" color="white" shadow></a-sphere>
         </a-marker>
 
-        <!-- Teste 2: Marcador Kanji (Padrão Universal) -->
-        <a-marker preset="kanji">
-            <a-box position="0 0.5 0" material="color: blue;"></a-box>
+        <!-- Marcador Oxigênio (O) -->
+        <a-marker preset="kanji" id="marker-O">
+            <!-- Átomo individual que some na fusão -->
+            <a-sphere id="atom-O" position="0 0.5 0" radius="0.4" color="red" shadow></a-sphere>
         </a-marker>
+
+        <!-- Entidade para a Molécula Fundida (H2O) -->
+        <!-- Ela não fica presa a um marcador fixo, vamos posicioná-la via JS -->
+        <a-entity id="molecula-h2o" visible="false">
+            <a-sphere position="0 0.5 0" radius="0.4" color="red"></a-sphere> <!-- O -->
+            <a-sphere position="0.4 0.8 0" radius="0.2" color="white"></a-sphere> <!-- H -->
+            <a-sphere position="-0.4 0.8 0" radius="0.2" color="white"></a-sphere> <!-- H -->
+            <a-text value="H2O" align="center" position="0 1.2 0" scale="0.5 0.5 0.5"></a-text>
+        </a-entity>
 
         <a-entity camera></a-entity>
     </a-scene>
+
+    <script>
+        const markerH = document.querySelector("#marker-H");
+        const markerO = document.querySelector("#marker-O");
+        const atomH = document.querySelector("#atom-H");
+        const atomO = document.querySelector("#atom-O");
+        const h2o = document.querySelector("#molecula-h2o");
+        const statusTxt = document.querySelector("#status");
+
+        // Distância de ativação (em unidades do A-Frame)
+        const DISTANCIA_FUSAO = 1.5; 
+
+        function loop() {
+            // Verifica se ambos os marcadores estão visíveis
+            if (markerH.object3D.visible && markerO.object3D.visible) {
+                
+                // Pega a posição dos marcadores no mundo 3D
+                const posH = new THREE.Vector3();
+                markerH.object3D.getWorldPosition(posH);
+                
+                const posO = new THREE.Vector3();
+                markerO.object3D.getWorldPosition(posO);
+
+                // Calcula a distância entre eles
+                const distancia = posH.distanceTo(posO);
+
+                if (distancia < DISTANCIA_FUSAO) {
+                    // FUSÃO!
+                    atomH.setAttribute("visible", false);
+                    atomO.setAttribute("visible", false);
+                    h2o.setAttribute("visible", true);
+                    
+                    // Posiciona a molécula no meio do caminho entre os dois marcadores
+                    const posMeio = posH.clone().lerp(posO, 0.5);
+                    h2o.object3D.position.copy(posMeio);
+                    
+                    statusTxt.innerText = "FUSÃO: Água (H2O)!";
+                    statusTxt.style.color = "#00ff00";
+                } else {
+                    // Perto, mas não o suficiente
+                    resetar();
+                    statusTxt.innerText = "Aproxime mais...";
+                    statusTxt.style.color = "yellow";
+                }
+            } else {
+                resetar();
+                statusTxt.innerText = "Aguardando marcadores...";
+                statusTxt.style.color = "white";
+            }
+            
+            requestAnimationFrame(loop);
+        }
+
+        function resetar() {
+            atomH.setAttribute("visible", true);
+            atomO.setAttribute("visible", true);
+            h2o.setAttribute("visible", false);
+        }
+
+        // Inicia o loop de verificação
+        loop();
+    </script>
 </body>
 </html>
