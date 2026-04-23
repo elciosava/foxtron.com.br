@@ -12,14 +12,17 @@
     <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: true;">
 
         <!-- HIDROGÊNIO -->
-        <a-nft id="markerH" type="nft" url="markers/h">
+        <a-nft id="markerH" type="nft" url="foxtron.com.br/mundosenai/markers/h" smooth="true" smoothCount="10"
+            smoothTolerance=".01" smoothThreshold="5">
             <a-sphere id="atomH" color="white" radius="0.3"></a-sphere>
         </a-nft>
 
         <!-- OXIGÊNIO -->
-        <a-nft id="markerO" type="nft" url="markers/o">
+        <a-nft id="markerO" type="nft" url="foxtron.com.br/mundosenai/markers/o" smooth="true" smoothCount="10"
+            smoothTolerance=".01" smoothThreshold="5">
             <a-sphere id="atomO" color="red" radius="0.4"></a-sphere>
         </a-nft>
+
 
         <!-- MOLÉCULA H2O -->
         <a-entity id="h2o" visible="false">
