@@ -1,114 +1,110 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
+
 <head>
     <meta charset="utf-8">
-    <title>AR Química - Fusão por Proximidade</title>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <style>
-        body { margin: 0; overflow: hidden; font-family: sans-serif; }
-        #ui {
-            position: fixed; top: 10px; left: 10px; z-index: 10;
-            background: rgba(0,0,0,0.8); color: white; padding: 15px;
-            border-radius: 8px; pointer-events: none; border: 1px solid #444;
-        }
-        #status { font-weight: bold; color: #00ff00; font-size: 18px; }
-        .instrucao { font-size: 12px; color: #ccc; margin-top: 5px; }
-    </style>
-</head>
 
-<body>
-    <div id="ui">
-        <div id="status">Aproxime os marcadores...</div>
-        <div class="instrucao">Junte H (Hiro) e O (Kanji) para formar Água!</div>
-    </div>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
 
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-        
-        <!-- Marcador Hidrogênio (H) -->
-        <a-marker preset="hiro" id="marker-H">
-            <!-- Átomo individual que some na fusão -->
-            <a-sphere id="atom-H" position="0 0.5 0" radius="0.3" color="white" shadow></a-sphere>
-        </a-marker>
+<body style="margin:0; overflow:hidden;">
 
-        <!-- Marcador Oxigênio (O) -->
-        <a-marker preset="kanji" id="marker-O">
-            <!-- Átomo individual que some na fusão -->
-            <a-sphere id="atom-O" position="0 0.5 0" radius="0.4" color="red" shadow></a-sphere>
-        </a-marker>
+    <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: true;">
 
-        <!-- Entidade para a Molécula Fundida (H2O) -->
-        <!-- Ela não fica presa a um marcador fixo, vamos posicioná-la via JS -->
-        <a-entity id="molecula-h2o" visible="false">
-            <a-sphere position="0 0.5 0" radius="0.4" color="red"></a-sphere> <!-- O -->
-            <a-sphere position="0.4 0.8 0" radius="0.2" color="white"></a-sphere> <!-- H -->
-            <a-sphere position="-0.4 0.8 0" radius="0.2" color="white"></a-sphere> <!-- H -->
-            <a-text value="H2O" align="center" position="0 1.2 0" scale="0.5 0.5 0.5"></a-text>
+        <!-- HIDROGÊNIO -->
+        <a-nft type="nft" url="https://foxtron.com.br/mundosenai/markers/h">
+            <a-sphere id="atomH" color="white" radius="0.3"></a-sphere>
+            <a-box color="blue" position="0 0 -3"></a-box>
+        </a-nft>
+
+        <!-- OXIGÊNIO -->
+        <a-nft type="nft" url="https://foxtron.com.br/mundosenai/markers/o">
+            <a-sphere id="atomO" color="red" radius="0.4"></a-sphere>
+        </a-nft>
+
+        <!-- MOLÉCULA H2O -->
+        <a-entity id="h2o" visible="false">
+            <!-- Oxigênio -->
+            <a-sphere color="red" radius="0.4" position="0 0 0"></a-sphere>
+
+            <!-- Hidrogênios -->
+            <a-sphere color="white" radius="0.2" position="-0.6 0 0"></a-sphere>
+            <a-sphere color="white" radius="0.2" position="0.6 0 0"></a-sphere>
         </a-entity>
 
-        <a-entity camera></a-entity>
+        <a-entity camera look-controls></a-entity>
+
     </a-scene>
 
     <script>
-        const markerH = document.querySelector("#marker-H");
-        const markerO = document.querySelector("#marker-O");
-        const atomH = document.querySelector("#atom-H");
-        const atomO = document.querySelector("#atom-O");
-        const h2o = document.querySelector("#molecula-h2o");
-        const statusTxt = document.querySelector("#status");
+        window.addEventListener("load", () => {
 
-        // Distância de ativação (em unidades do A-Frame)
-        const DISTANCIA_FUSAO = 1.5; 
+            const scene = document.querySelector("a-scene");
 
-        function loop() {
-            // Verifica se ambos os marcadores estão visíveis
-            if (markerH.object3D.visible && markerO.object3D.visible) {
-                
-                // Pega a posição dos marcadores no mundo 3D
-                const posH = new THREE.Vector3();
-                markerH.object3D.getWorldPosition(posH);
-                
-                const posO = new THREE.Vector3();
-                markerO.object3D.getWorldPosition(posO);
+            scene.addEventListener("loaded", () => {
 
-                // Calcula a distância entre eles
-                const distancia = posH.distanceTo(posO);
+                let hVisible = false;
+                let oVisible = false;
 
-                if (distancia < DISTANCIA_FUSAO) {
-                    // FUSÃO!
-                    atomH.setAttribute("visible", false);
-                    atomO.setAttribute("visible", false);
-                    h2o.setAttribute("visible", true);
-                    
-                    // Posiciona a molécula no meio do caminho entre os dois marcadores
-                    const posMeio = posH.clone().lerp(posO, 0.5);
-                    h2o.object3D.position.copy(posMeio);
-                    
-                    statusTxt.innerText = "FUSÃO: Água (H2O)!";
-                    statusTxt.style.color = "#00ff00";
-                } else {
-                    // Perto, mas não o suficiente
-                    resetar();
-                    statusTxt.innerText = "Aproxime mais...";
-                    statusTxt.style.color = "yellow";
+                const markerH = document.querySelector("#markerH");
+                const markerO = document.querySelector("#markerO");
+                const h2o = document.querySelector("#h2o");
+                const atomH = document.querySelector("#atomH");
+                const atomO = document.querySelector("#atomO");
+
+                // Segurança
+                if (!markerH || !markerO) {
+                    console.error("Markers não encontrados!");
+                    return;
                 }
-            } else {
-                resetar();
-                statusTxt.innerText = "Aguardando marcadores...";
-                statusTxt.style.color = "white";
-            }
-            
-            requestAnimationFrame(loop);
-        }
 
-        function resetar() {
-            atomH.setAttribute("visible", true);
-            atomO.setAttribute("visible", true);
-            h2o.setAttribute("visible", false);
-        }
+                // Eventos H
+                markerH.addEventListener("markerFound", () => hVisible = true);
+                markerH.addEventListener("markerLost", () => hVisible = false);
 
-        // Inicia o loop de verificação
-        loop();
+                // Eventos O
+                markerO.addEventListener("markerFound", () => oVisible = true);
+                markerO.addEventListener("markerLost", () => oVisible = false);
+
+                // Loop principal
+                setInterval(() => {
+
+                    if (hVisible && oVisible) {
+
+                        // mostra molécula
+                        h2o.setAttribute("visible", true);
+
+                        // esconde átomos individuais
+                        atomH.setAttribute("visible", false);
+                        atomO.setAttribute("visible", false);
+
+                        // posição média
+                        const posH = markerH.object3D.position;
+                        const posO = markerO.object3D.position;
+
+                        h2o.object3D.position.set(
+                            (posH.x + posO.x) / 2,
+                            (posH.y + posO.y) / 2,
+                            (posH.z + posO.z) / 2
+                        );
+
+                    } else {
+
+                        // mostra átomos individuais
+                        atomH.setAttribute("visible", hVisible);
+                        atomO.setAttribute("visible", oVisible);
+
+                        // esconde molécula
+                        h2o.setAttribute("visible", false);
+                    }
+
+                }, 100);
+
+            });
+
+        });
     </script>
+
 </body>
+
 </html>
