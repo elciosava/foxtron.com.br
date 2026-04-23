@@ -1,0 +1,3 @@
+AddType application/octet-stream .fset
+AddType application/octet-stream .fset3
+AddType application/octet-stream .iset
