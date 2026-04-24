@@ -13,8 +13,9 @@
     <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false;">
 
         <!-- HIDROGÊNIO -->
-        <a-nft type="nft" url="mundosenai/markers/hidrogenio">
-            <a-box color="blue" position="0 0 0"></a-box>
+        <a-nft id="markerH" type="nft" url="mundosenai/markers/hidrogenio">
+            <a-plane src="img/hidrogenio.png" width="3" height="3" rotation="-90 0 0" look-at="[camera]">
+            </a-plane>
         </a-nft>
 
         <!-- OXIGÊNIO -->
