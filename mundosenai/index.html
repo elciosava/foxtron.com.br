@@ -10,7 +10,13 @@
 
 <body style="margin:0; overflow:hidden;">
 
-    <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false;">
+    <a-scene embedded renderer="antialias: true; alpha: true" vr-mode-ui="enabled: false" arjs="sourceType: webcam;
+          trackingMethod: best;
+          sourceWidth:1280;
+          sourceHeight:720;
+          displayWidth:1280;
+          displayHeight:720;
+          facingMode: environment;">
 
         <!-- HIDROGÊNIO -->
         <a-nft id="markerH" type="nft" url="mundosenai/markers/hidrogenio">
