@@ -1,111 +1,17 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-
-<body style="margin:0; overflow:hidden;">
-
-    <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: true;">
-
-        <!-- HIDROGÊNIO -->
-        <a-nft id="markerH" type="nft" url="mundosenai/markers/hidrogenio" smooth="true" smoothCount="10" smoothTolerance=".01"
-            smoothThreshold="5">
-
-            <a-sphere id="atomH" color="white" radius="50" position="100 -90 -180"></a-sphere>
-        </a-nft>
-
-        <!-- OXIGÊNIO -->
-        <a-nft id="markerO" type="nft" url="mundosenai/markers/oxigenio">
-            <a-sphere id="atomO" color="red" radius="60" position="100 -90 -180"></a-sphere>
-        </a-nft>
-
-        <!-- MOLÉCULA H2O -->
-        <a-entity id="h2o" visible="false">
-            <!-- Oxigênio -->
-            <a-sphere color="red" radius="0.4" position="0 0 0"></a-sphere>
-
-            <!-- Hidrogênios -->
-            <a-sphere color="white" radius="0.2" position="-0.6 0 0"></a-sphere>
-            <a-sphere color="white" radius="0.2" position="0.6 0 0"></a-sphere>
-        </a-entity>
-
-        <a-entity camera look-controls></a-entity>
-
-    </a-scene>
-
-    <script>
-        window.addEventListener("load", () => {
-
-            const scene = document.querySelector("a-scene");
-
-            scene.addEventListener("loaded", () => {
-
-                let hVisible = false;
-                let oVisible = false;
-
-                const markerH = document.querySelector("#markerH");
-                const markerO = document.querySelector("#markerO");
-                const h2o = document.querySelector("#h2o");
-                const atomH = document.querySelector("#atomH");
-                const atomO = document.querySelector("#atomO");
-
-                // Segurança
-                if (!markerH || !markerO) {
-                    console.error("Markers não encontrados!");
-                    return;
-                }
-
-                // Eventos H
-                markerH.addEventListener("markerFound", () => hVisible = true);
-                markerH.addEventListener("markerLost", () => hVisible = false);
-
-                // Eventos O
-                markerO.addEventListener("markerFound", () => oVisible = true);
-                markerO.addEventListener("markerLost", () => oVisible = false);
-
-                // Loop principal
-                setInterval(() => {
-
-                    if (hVisible && oVisible) {
-
-                        // mostra molécula
-                        h2o.setAttribute("visible", true);
-
-                        // esconde átomos individuais
-                        atomH.setAttribute("visible", false);
-                        atomO.setAttribute("visible", false);
-
-                        // posição média
-                        const posH = markerH.object3D.position;
-                        const posO = markerO.object3D.position;
-
-                        h2o.object3D.position.set(
-                            (posH.x + posO.x) / 2,
-                            (posH.y + posO.y) / 2,
-                            (posH.z + posO.z) / 2
-                        );
-
-                    } else {
-
-                        // mostra átomos individuais
-                        atomH.setAttribute("visible", hVisible);
-                        atomO.setAttribute("visible", oVisible);
-
-                        // esconde molécula
-                        h2o.setAttribute("visible", false);
-                    }
-
-                }, 100);
-
-            });
-
-        });
-    </script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="basico.html">basico</a></li>
+            <li><a href="quimica.html">quimica</a></li>
+            <li><a href="barcode.html">barcode</a></li>
+        </ul>
+    </nav>
 </body>
-
 </html>
