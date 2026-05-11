@@ -2,7 +2,7 @@
 // Configurações do banco de dados
 $host = "localhost";
 $user = "root";
-$pass = "";
+$pass = "s4va6o841A@";
 $dbname = "escola_db";
 
 // Conexão
