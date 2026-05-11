@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício de PCP e Administração</title>
+    <link rel="stylesheet" href="style.css">
+    <!--nao ta indo-->
+</head>
+<body>
+    <div class="container">
+        <h1>Exercício de Fixação: PCP e Administração</h1>
+        <form id="exercicioForm" action="salvar.php" method="POST">
+            
+            <section class="identificacao">
+                <label for="nome_aluno">Nome do Aluno:</label>
+                <input type="text" id="nome_aluno" name="nome_aluno" required>
+            </section>
+
+            <hr>
+
+            <h2>PARTE 1 — FIXAÇÃO TEÓRICA</h2>
+            <div class="questao">
+                <p>1) Complete as frases:</p>
+                <label>a) Planejar significa:</label>
+                <input type="text" name="q1a">
+                <label>b) Organizar consiste em:</label>
+                <input type="text" name="q1b">
+                <label>c) Liderar é:</label>
+                <input type="text" name="q1c">
+                <label>d) Controlar significa:</label>
+                <input type="text" name="q1d">
+            </div>
+
+            <div class="questao">
+                <p>2) Relacione as colunas (Coloque o número correspondente):</p>
+                <div class="colunas">
+                    <div class="coluna-a">
+                        (1) Planejamento<br>
+                        (2) Organização<br>
+                        (3) Liderança<br>
+                        (4) Controle
+                    </div>
+                    <div class="coluna-b">
+                        <input type="number" name="q2_1" min="1" max="4"> acompanhar resultados<br>
+                        <input type="number" name="q2_2" min="1" max="4"> motivar pessoas<br>
+                        <input type="number" name="q2_3" min="1" max="4"> definir objetivos<br>
+                        <input type="number" name="q2_4" min="1" max="4"> distribuir recursos
+                    </div>
+                </div>
+            </div>
+
+            <div class="questao">
+                <p>3) Verdadeiro ou Falso:</p>
+                <label><input type="checkbox" name="q3_1" value="V"> Eficiência é utilizar corretamente os recursos.</label><br>
+                <label><input type="checkbox" name="q3_2" value="V"> Eficácia significa alcançar os objetivos.</label><br>
+                <label><input type="checkbox" name="q3_3" value="V"> O PCP não precisa das informações do setor de vendas.</label><br>
+                <label><input type="checkbox" name="q3_4" value="V"> O controle serve para comparar o planejado com o realizado.</label><br>
+                <label><input type="checkbox" name="q3_5" value="V"> O planejamento define metas e objetivos.</label>
+            </div>
+
+            <h2>PARTE 2 — INTERPRETAÇÃO</h2>
+            <div class="questao">
+                <p>4) Situação-problema: Fábrica vendeu 500 cadeiras, produziu 300 por falta de matéria-prima.</p>
+                <label>a) Qual área falhou?</label>
+                <input type="text" name="q4a">
+                <label>b) Houve problema no planejamento?</label>
+                <textarea name="q4b"></textarea>
+                <label>c) O PCP poderia evitar isso? Como?</label>
+                <textarea name="q4c"></textarea>
+            </div>
+
+            <div class="questao">
+                <p>5) Análise de empresa: Máquinas modernas, sem treinamento, produção piorou.</p>
+                <label>a) Qual erro ocorreu?</label><br>
+                <input type="radio" name="q5a" value="perdas"> perdas<br>
+                <input type="radio" name="q5a" value="inconsistencias"> inconsistências<br>
+                <input type="radio" name="q5a" value="complicacoes"> complicações<br>
+                <input type="radio" name="q5a" value="vaivem"> vaivém<br>
+                <label>b) O que deveria ter sido feito?</label>
+                <textarea name="q5b"></textarea>
+            </div>
+
+            <div class="questao">
+                <p>6) Eficiência e eficácia (Classifique):</p>
+                <label>Situação 1: Atingiu meta com poucos recursos.</label>
+                <input type="text" name="q6_1">
+                <label>Situação 2: Produziu certo, mas não era o que o cliente queria.</label>
+                <input type="text" name="q6_2">
+                <label>Situação 3: Gastou muito e atrasou.</label>
+                <input type="text" name="q6_3">
+            </div>
+
+            <h2>PARTE 3 — PCP</h2>
+            <div class="questao">
+                <p>7) Cite 5 informações importantes para o PCP:</p>
+                1. <input type="text" name="q7_1"><br>
+                2. <input type="text" name="q7_2"><br>
+                3. <input type="text" name="q7_3"><br>
+                4. <input type="text" name="q7_4"><br>
+                5. <input type="text" name="q7_5">
+            </div>
+
+            <div class="questao">
+                <p>8) Associe:</p>
+                (1) Lista de materiais | (2) Folha de operações | (3) Tempos padrões | (4) Manutenção<br>
+                <input type="number" name="q8_1" min="1" max="4"> passo a passo da fabricação<br>
+                <input type="number" name="q8_2" min="1" max="4"> materiais necessários<br>
+                <input type="number" name="q8_3" min="1" max="4"> tempo das operações<br>
+                <input type="number" name="q8_4" min="1" max="4"> evitar paradas
+            </div>
+
+            <div class="questao">
+                <p>9) Explique com suas palavras:</p>
+                <label>a) O que é PCP?</label>
+                <textarea name="q9a"></textarea>
+                <label>b) Qual a importância do PCP para uma indústria?</label>
+                <textarea name="q9b"></textarea>
+            </div>
+
+            <h2>PARTE 4 — ESTUDO DE CASO</h2>
+            <div class="questao">
+                <p>10) Mini estudo de caso (Fábrica de camisetas):</p>
+                <label>a) Quais problemas você identificou?</label>
+                <textarea name="q10a"></textarea>
+                <label>b) Qual setor poderia ajudar a resolver?</label>
+                <input type="text" name="q10b">
+                <label>c) O que deveria ser melhorado?</label>
+                <textarea name="q10c"></textarea>
+            </div>
+
+            <h2>PARTE 5</h2>
+            <div class="questao">
+                <p>11) Identifique o tipo de problema:</p>
+                <label>a) Funcionários caminham muito:</label>
+                <input type="text" name="q11a">
+                <label>b) Vendas promete prazo impossível:</label>
+                <input type="text" name="q11b">
+                <label>c) Muito desperdício de matéria-prima:</label>
+                <input type="text" name="q11c">
+                <label>d) Tudo é urgente na empresa:</label>
+                <input type="text" name="q11d">
+            </div>
+
+            <h2>PARTE 6 — PERGUNTA ABERTA</h2>
+            <div class="questao">
+                <p>12) Responda:</p>
+                <label>Qual etapa do processo administrativo é mais importante?</label>
+                <input type="text" name="q12a">
+                <label>Por quê?</label>
+                <textarea name="q12b"></textarea>
+            </div>
+
+            <button type="submit">Enviar Respostas</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
