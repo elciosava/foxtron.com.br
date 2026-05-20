@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
-$dbname = "senai";
+$dbname = "codspace";
 $user = "root";
 $pass = "s4va6o841A@";
 
