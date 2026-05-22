@@ -91,179 +91,163 @@ $taxa_ocupacao = $total_salas_ativas > 0 ? round(($salas_ocupadas / $total_salas
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - SENAI Agenda</title>
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fc;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+        header {
+            background: #1a2041;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 13px;
+            opacity: 0.8;
         }
 
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            color: #333;
-            margin-bottom: 5px;
-            font-size: 2em;
-        }
-
-        header p {
-            color: #666;
-            font-size: 1.1em;
+            margin: 20px auto;
+            padding: 0 20px;
         }
 
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
         }
 
         .card-title {
             color: #666;
-            font-size: 0.9em;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
         .card-value {
-            font-size: 2.5em;
+            font-size: 24px;
             font-weight: bold;
-            color: #667eea;
+            color: #1a2041;
         }
 
         .card-subtitle {
             color: #999;
-            font-size: 0.9em;
-            margin-top: 10px;
+            font-size: 11px;
+            margin-top: 5px;
         }
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
         }
 
         .panel {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
         }
 
         .panel-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            font-size: 1.2em;
+            background: #f0f0ff;
+            padding: 12px 15px;
+            font-size: 14px;
             font-weight: bold;
+            color: #1a2041;
+            border-bottom: 1px solid #e0e0e0;
+            border-radius: 8px 8px 0 0;
         }
 
         .panel-body {
-            padding: 20px;
+            padding: 15px;
             max-height: 400px;
             overflow-y: auto;
         }
 
         .event-item {
-            padding: 15px;
-            border-left: 4px solid #667eea;
-            margin-bottom: 15px;
-            background: #f8f9fa;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .event-item:hover {
-            background: #f0f1ff;
-            transform: translateX(5px);
+            padding: 10px;
+            border-left: 3px solid #1a2041;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+            border-radius: 0 4px 4px 0;
         }
 
         .event-time {
             font-weight: bold;
-            color: #667eea;
-            font-size: 0.95em;
+            color: #1a2041;
+            font-size: 12px;
         }
 
         .event-title {
             font-weight: bold;
             color: #333;
-            margin-top: 5px;
+            margin-top: 3px;
+            font-size: 13px;
         }
 
         .event-details {
             color: #666;
-            font-size: 0.9em;
-            margin-top: 5px;
+            font-size: 11px;
+            margin-top: 3px;
         }
 
         .alert-item {
-            padding: 15px;
-            border-left: 4px solid #ff6b6b;
-            margin-bottom: 15px;
-            background: #ffe0e0;
-            border-radius: 4px;
+            padding: 10px;
+            border-left: 3px solid #c62828;
+            margin-bottom: 10px;
+            background: #fff5f5;
+            border-radius: 0 4px 4px 0;
         }
 
         .alert-label {
-            color: #ff6b6b;
+            color: #c62828;
             font-weight: bold;
-            font-size: 0.85em;
+            font-size: 11px;
             text-transform: uppercase;
         }
 
         .alert-message {
             color: #333;
-            margin-top: 5px;
+            margin-top: 3px;
+            font-size: 12px;
         }
 
         .empty-state {
             text-align: center;
-            padding: 40px 20px;
+            padding: 20px;
             color: #999;
-        }
-
-        .empty-state-icon {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-size: 13px;
         }
 
         .ocupacao-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #eee;
+            font-size: 12px;
         }
 
         .ocupacao-item:last-child {
@@ -271,16 +255,16 @@ $taxa_ocupacao = $total_salas_ativas > 0 ? round(($salas_ocupadas / $total_salas
         }
 
         .ocupacao-nome {
-            font-weight: 500;
+            font-weight: bold;
             color: #333;
         }
 
         .ocupacao-badge {
             background: #e8f5e9;
             color: #2e7d32;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 10px;
             font-weight: bold;
         }
 
@@ -289,28 +273,48 @@ $taxa_ocupacao = $total_salas_ativas > 0 ? round(($salas_ocupadas / $total_salas
             color: #1565c0;
         }
 
+        .nav-links {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #1a2041;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
         @media (max-width: 768px) {
             .grid-3 {
                 grid-template-columns: 1fr;
-            }
-
-            header h1 {
-                font-size: 1.5em;
-            }
-
-            .card-value {
-                font-size: 2em;
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>📅 Dashboard de Agenda</h1>
+        <p><?php echo ucfirst($dia_semana); ?> - <?php echo $data_formatada; ?></p>
+    </header>
+
     <div class="container">
-        <!-- Header -->
-        <header>
-            <h1>📅 Dashboard</h1>
-            <p><?php echo ucfirst($dia_semana); ?> - <?php echo $data_formatada; ?></p>
-        </header>
+        <div class="nav-links">
+            <a href="../index.php" class="btn">Início</a>
+            <a href="cursos.php" class="btn">Cursos</a>
+            <a href="professores.php" class="btn">Professores</a>
+            <a href="reservas.php" class="btn">Reservas</a>
+            <a href="painel_coordenador.php" class="btn">Coordenador</a>
+            <a href="painel_tv.php" class="btn" target="_blank">Painel TV</a>
+        </div>
 
         <!-- Métricas -->
         <div class="grid-2">
@@ -361,7 +365,6 @@ $taxa_ocupacao = $total_salas_ativas > 0 ? round(($salas_ocupadas / $total_salas
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="empty-state">
-                            <div class="empty-state-icon">📭</div>
                             <p>Nenhuma aula agendada para hoje</p>
                         </div>
                     <?php endif; ?>
@@ -387,7 +390,6 @@ $taxa_ocupacao = $total_salas_ativas > 0 ? round(($salas_ocupadas / $total_salas
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="empty-state">
-                            <div class="empty-state-icon">✅</div>
                             <p>Nenhuma aula nos próximos 7 dias</p>
                         </div>
                     <?php endif; ?>
@@ -413,7 +415,6 @@ $taxa_ocupacao = $total_salas_ativas > 0 ? round(($salas_ocupadas / $total_salas
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="empty-state">
-                            <div class="empty-state-icon">✅</div>
                             <p>Nenhum conflito detectado</p>
                         </div>
                     <?php endif; ?>
@@ -429,57 +430,15 @@ $taxa_ocupacao = $total_salas_ativas > 0 ? round(($salas_ocupadas / $total_salas
                         <div class="ocupacao-item">
                             <div class="ocupacao-nome"><?php echo htmlspecialchars($sala['nome']); ?></div>
                             <div class="ocupacao-badge <?php echo $sala['aulas_hoje'] == 0 ? 'livre' : ''; ?>">
-                                <?php echo $sala['aulas_hoje']; ?> aula<?php echo $sala['aulas_hoje'] != 1 ? 's' : ''; ?>
+                                <?php echo $sala['aulas_hoje'] > 0 ? $sala['aulas_hoje'] . ' aulas' : 'Livre'; ?>
                             </div>
                         </div>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="empty-state">
-                            <div class="empty-state-icon">📭</div>
-                            <p>Nenhuma sala disponível</p>
+                            <p>Nenhuma sala cadastrada</p>
                         </div>
                     <?php endif; ?>
-                </div>
-            </div>
-
-            <!-- Atalhos Rápidos -->
-            <div class="panel">
-                <div class="panel-header">⚡ Atalhos Rápidos</div>
-                <div class="panel-body">
-                    <div style="display: grid; gap: 10px;">
-                        <a href="calendario_curso.php" style="display: block; padding: 15px; background: #667eea; color: white; text-decoration: none; border-radius: 5px; text-align: center; font-weight: bold; transition: all 0.3s;">
-                            📅 Ver Calendário
-                        </a>
-                        <a href="agenda_professores.php" style="display: block; padding: 15px; background: #764ba2; color: white; text-decoration: none; border-radius: 5px; text-align: center; font-weight: bold; transition: all 0.3s;">
-                            👨‍🏫 Agenda Professores
-                        </a>
-                        <a href="reservas.php" style="display: block; padding: 15px; background: #f59e0b; color: white; text-decoration: none; border-radius: 5px; text-align: center; font-weight: bold; transition: all 0.3s;">
-                            🔖 Reservar Sala
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Estatísticas -->
-            <div class="panel">
-                <div class="panel-header">📊 Estatísticas</div>
-                <div class="panel-body">
-                    <div class="ocupacao-item">
-                        <span>Total de Salas</span>
-                        <strong><?php echo $total_salas_ativas; ?></strong>
-                    </div>
-                    <div class="ocupacao-item">
-                        <span>Salas Ocupadas</span>
-                        <strong><?php echo $salas_ocupadas; ?></strong>
-                    </div>
-                    <div class="ocupacao-item">
-                        <span>Taxa de Ocupação</span>
-                        <strong><?php echo $taxa_ocupacao; ?>%</strong>
-                    </div>
-                    <div class="ocupacao-item">
-                        <span>Aulas Hoje</span>
-                        <strong><?php echo $total_aulas_hoje; ?></strong>
-                    </div>
                 </div>
             </div>
         </div>

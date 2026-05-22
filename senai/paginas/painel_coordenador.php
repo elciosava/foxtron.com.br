@@ -125,102 +125,114 @@ if ($_POST['acao'] ?? null === 'processar_substituicao') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel do Coordenador - SENAI Agenda</title>
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fc;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
+        header {
+            background: #1a2041;
+            color: #fff;
+            padding: 15px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 13px;
+            opacity: 0.8;
         }
 
         .container {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 20px auto;
+            padding: 0 20px;
         }
 
-        header {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .nav-links {
+            margin-bottom: 20px;
         }
 
-        header h1 {
-            color: #333;
-            margin-bottom: 5px;
-            font-size: 2em;
-        }
-
-        header p {
-            color: #666;
-            font-size: 1.1em;
+        .btn-nav {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #1a2041;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-right: 5px;
         }
 
         .grid-4 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
             text-align: center;
         }
 
         .card-title {
             color: #666;
-            font-size: 0.9em;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
         .card-value {
-            font-size: 2.5em;
+            font-size: 24px;
             font-weight: bold;
-            color: #667eea;
+            color: #1a2041;
         }
 
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 20px;
-            margin-bottom: 30px;
         }
 
         .panel {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
         }
 
         .panel-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            font-size: 1.2em;
+            background: #f0f0ff;
+            padding: 12px 15px;
+            font-size: 14px;
             font-weight: bold;
+            color: #1a2041;
+            border-bottom: 1px solid #e0e0e0;
+            border-radius: 8px 8px 0 0;
         }
 
         .panel-body {
-            padding: 20px;
+            padding: 15px;
             max-height: 500px;
             overflow-y: auto;
         }
 
         .item {
-            padding: 15px;
+            padding: 10px 0;
             border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
@@ -238,105 +250,86 @@ if ($_POST['acao'] ?? null === 'processar_substituicao') {
         .item-name {
             font-weight: bold;
             color: #333;
+            font-size: 13px;
         }
 
         .item-details {
             color: #666;
-            font-size: 0.9em;
-            margin-top: 5px;
+            font-size: 11px;
+            margin-top: 2px;
         }
 
         .item-badge {
-            background: #667eea;
+            background: #1a2041;
             color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 10px;
             font-weight: bold;
         }
 
-        .item-badge.warning {
-            background: #f59e0b;
-        }
-
-        .item-badge.danger {
-            background: #ef4444;
-        }
-
-        .item-badge.success {
-            background: #10b981;
-        }
+        .item-badge.warning { background: #f59e0b; }
+        .item-badge.danger { background: #ef4444; }
+        .item-badge.success { background: #10b981; }
 
         .btn-group {
             display: flex;
             gap: 5px;
         }
 
-        .btn {
-            padding: 6px 12px;
+        .btn-action {
+            padding: 4px 8px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.85em;
+            font-size: 11px;
             font-weight: bold;
-            transition: all 0.3s;
+            transition: opacity 0.2s;
         }
 
-        .btn-approve {
-            background: #10b981;
-            color: white;
-        }
-
-        .btn-approve:hover {
-            background: #059669;
-        }
-
-        .btn-reject {
-            background: #ef4444;
-            color: white;
-        }
-
-        .btn-reject:hover {
-            background: #dc2626;
-        }
+        .btn-approve { background: #10b981; color: white; }
+        .btn-reject { background: #ef4444; color: white; }
+        .btn-action:hover { opacity: 0.8; }
 
         .empty-state {
             text-align: center;
-            padding: 40px 20px;
+            padding: 20px;
             color: #999;
+            font-size: 13px;
         }
 
-        .empty-state-icon {
-            font-size: 3em;
-            margin-bottom: 10px;
+        .msg {
+            padding: 10px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 13px;
         }
 
         @media (max-width: 768px) {
-            .grid-4 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             .grid-3 {
                 grid-template-columns: 1fr;
-            }
-
-            header h1 {
-                font-size: 1.5em;
-            }
-
-            .card-value {
-                font-size: 2em;
             }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>👔 Painel do Coordenador</h1>
+        <p>Gerenciamento completo de agenda, salas e professores</p>
+    </header>
+
     <div class="container">
-        <!-- Header -->
-        <header>
-            <h1>👔 Painel do Coordenador</h1>
-            <p>Gerenciamento completo de agenda, salas e professores</p>
-        </header>
+        <div class="nav-links">
+            <a href="dashboard.php" class="btn-nav">Dashboard</a>
+            <a href="cursos.php" class="btn-nav">Cursos</a>
+            <a href="professores.php" class="btn-nav">Professores</a>
+        </div>
+
+        <?php if (isset($mensagem)): ?>
+            <div class="msg"><?php echo $mensagem; ?></div>
+        <?php endif; ?>
 
         <!-- Métricas -->
         <div class="grid-4">
@@ -386,7 +379,6 @@ if ($_POST['acao'] ?? null === 'processar_substituicao') {
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="empty-state">
-                            <div class="empty-state-icon">📭</div>
                             <p>Nenhuma sala com aulas hoje</p>
                         </div>
                     <?php endif; ?>
@@ -413,7 +405,6 @@ if ($_POST['acao'] ?? null === 'processar_substituicao') {
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="empty-state">
-                            <div class="empty-state-icon">✅</div>
                             <p>Todas as salas bem utilizadas</p>
                         </div>
                     <?php endif; ?>
@@ -444,54 +435,7 @@ if ($_POST['acao'] ?? null === 'processar_substituicao') {
                         <?php endforeach; ?>
                     <?php else: ?>
                         <div class="empty-state">
-                            <div class="empty-state-icon">📭</div>
-                            <p>Nenhum professor com aulas</p>
-                        </div>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-
-        <!-- Substituições Pendentes -->
-        <div style="margin-top: 30px;">
-            <div class="panel">
-                <div class="panel-header">⚡ Substituições Pendentes de Aprovação</div>
-                <div class="panel-body">
-                    <?php if (count($substituicoes_pendentes) > 0): ?>
-                        <?php foreach ($substituicoes_pendentes as $subst): ?>
-                        <div class="item">
-                            <div class="item-info">
-                                <div class="item-name">
-                                    <?php echo htmlspecialchars($subst['professor_original']); ?> 
-                                    → 
-                                    <?php echo htmlspecialchars($subst['professor_substituto']); ?>
-                                </div>
-                                <div class="item-details">
-                                    Curso: <?php echo htmlspecialchars($subst['curso_nome'] ?? 'N/A'); ?><br>
-                                    Data: <?php echo date('d/m/Y', strtotime($subst['data_substituicao'])); ?><br>
-                                    Motivo: <?php echo htmlspecialchars($subst['motivo'] ?? 'Não especificado'); ?>
-                                </div>
-                            </div>
-                            <div class="btn-group">
-                                <form method="POST" style="display: inline;">
-                                    <input type="hidden" name="acao" value="processar_substituicao">
-                                    <input type="hidden" name="substituicao_id" value="<?php echo $subst['id']; ?>">
-                                    <input type="hidden" name="status" value="APROVADA">
-                                    <button type="submit" class="btn btn-approve">Aprovar</button>
-                                </form>
-                                <form method="POST" style="display: inline;">
-                                    <input type="hidden" name="acao" value="processar_substituicao">
-                                    <input type="hidden" name="substituicao_id" value="<?php echo $subst['id']; ?>">
-                                    <input type="hidden" name="status" value="REJEITADA">
-                                    <button type="submit" class="btn btn-reject">Rejeitar</button>
-                                </form>
-                            </div>
-                        </div>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <div class="empty-state">
-                            <div class="empty-state-icon">✅</div>
-                            <p>Nenhuma substituição pendente</p>
+                            <p>Sem dados de carga horária</p>
                         </div>
                     <?php endif; ?>
                 </div>

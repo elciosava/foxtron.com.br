@@ -15,6 +15,20 @@ $sqlCurso = "SELECT id, nome, cod_curso, cod_turma, cod_matriz,
                     tipo
              FROM cursos 
              WHERE id = :id";
+
+
+// Buscar exceções específicas deste curso
+$excecoesPorData = [];
+try {
+    $sqlExc = "SELECT data, tipo, descricao FROM excecoes_calendario WHERE curso_id = :curso_id";
+    $stmtExc = $conexao->prepare($sqlExc);
+    $stmtExc->execute([':curso_id' => $curso_id]);
+    foreach ($stmtExc->fetchAll(PDO::FETCH_ASSOC) as $exc) {
+        $excecoesPorData[$exc['data']] = $exc;
+    }
+} catch (Exception $e) {
+    // Tabela pode não existir ainda se o usuário não rodou o SQL
+}
 $stmtCurso = $conexao->prepare($sqlCurso);
 $stmtCurso->execute([':id' => $curso_id]);
 $curso = $stmtCurso->fetch(PDO::FETCH_ASSOC);
@@ -273,7 +287,52 @@ while ($cursor <= $fimMes) {
         table.mes-tabela td {
             height: 52px;
             cursor: pointer;
+            position: relative;
         }
+
+        /* Estilo para o dia de recesso manual */
+        td.dia-recesso-manual {
+            background: #fff3cd !important; /* Amarelo claro */
+        }
+
+        .recesso-badge {
+            background: #856404;
+            color: #fff;
+            font-size: 8px;
+            padding: 2px 4px;
+            border-radius: 3px;
+            margin-top: 2px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        /* Modal simples para escolher o tipo de dia */
+        #modalExcecao {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .modal-content h3 { margin-top: 0; font-size: 16px; }
+        .modal-content select, .modal-content input { width: 100%; padding: 8px; margin: 10px 0; box-sizing: border-box; }
+        .modal-buttons { display: flex; gap: 10px; justify-content: flex-end; }
+        .modal-buttons button { padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-salvar { background: #1a2041; color: #fff; }
+        .btn-cancelar { background: #ccc; }
 
         .dia-numero {
             font-size: 10px;
@@ -525,14 +584,20 @@ while ($cursor <= $fimMes) {
                                         $dataYmd = sprintf('%04d-%02d-%02d', $ano, $mes, $diaAtual);
                                         $temAula = isset($aulasPorData[$dataYmd]);
                                         $temFeri = isset($feriadosPorData[$dataYmd]);
+                                        $excecao = $excecoesPorData[$dataYmd] ?? null;
 
                                         // se tem feriado/férias e não tem aula → pinta fundo diferente
-                                        $classeTd = '';
+                                        $classes = [];
                                         if ($temFeri && !$temAula) {
-                                            $classeTd = ' class="dia-sem-aula"';
+                                            $classes[] = 'dia-sem-aula';
+                                        }
+                                        if ($excecao && $excecao['tipo'] === 'RECESSO') {
+                                            $classes[] = 'dia-recesso-manual';
                                         }
 
-                                        echo '<td' . $classeTd . '>';
+                                        $classeTd = !empty($classes) ? ' class="' . implode(' ', $classes) . '"' : '';
+
+                                        echo '<td' . $classeTd . ' onclick="abrirModalExcecao(\'' . $dataYmd . '\', \'' . ($excecao ? $excecao['tipo'] : 'NORMAL') . '\', \'' . ($excecao ? addslashes($excecao['descricao']) : '') . '\')">';
                                         echo '<div class="dia-numero">' . $diaAtual . '</div>';
 
                                         // AULAS
@@ -618,6 +683,13 @@ while ($cursor <= $fimMes) {
                                             }
                                         }
 
+                                        // EXCEÇÕES MANUAIS
+                                        if ($excecao) {
+                                            echo '<div class="recesso-badge">'
+                                                . htmlspecialchars($excecao['tipo'] . ($excecao['descricao'] ? ': ' . $excecao['descricao'] : ''))
+                                                . '</div>';
+                                        }
+
                                         echo '</td>';
 
                                         $diaAtual++;
@@ -689,9 +761,83 @@ while ($cursor <= $fimMes) {
 
     </div>
 
+    <!-- Modal de Exceção -->
+    <div id="modalExcecao">
+        <div class="modal-content">
+            <h3 id="modalTitulo">Ajustar Dia</h3>
+            <input type="hidden" id="excData">
+            <label>Tipo de dia:</label>
+            <select id="excTipo">
+                <option value="NORMAL">Dia Normal (Aula)</option>
+                <option value="RECESSO">Recesso</option>
+                <option value="OUTRO">Outro</option>
+            </select>
+            <label>Descrição (opcional):</label>
+            <input type="text" id="excDescricao" placeholder="Ex: Feriado Municipal">
+            <div class="modal-buttons">
+                <button class="btn-cancelar" onclick="fecharModalExcecao()">Cancelar</button>
+                <button class="btn-salvar" onclick="salvarExcecao()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // tipo do curso vindo do PHP (Tecnico / Aprendizagem / etc.)
         const tipoCurso = "<?= addslashes($curso['tipo'] ?? '') ?>";
+        const cursoId = "<?= (int)$curso['id'] ?>";
+
+        function abrirModalExcecao(data, tipo, desc) {
+            // Só permite se não for aprendizagem (conforme solicitado)
+            if (tipoCurso === 'Aprendizagem') return;
+
+            // Se clicou numa badge de aula, o evento vai propagar. 
+            // Vamos evitar abrir o modal se o clique foi na badge.
+            if (event.target.closest('.uc-badge')) return;
+
+            const dataFormatada = data.split('-').reverse().join('/');
+            document.getElementById('modalTitulo').innerText = 'Ajustar Dia: ' + dataFormatada;
+            document.getElementById('excData').value = data;
+            document.getElementById('excTipo').value = tipo || 'NORMAL';
+            document.getElementById('excDescricao').value = desc || '';
+            document.getElementById('modalExcecao').style.display = 'block';
+        }
+
+        function fecharModalExcecao() {
+            document.getElementById('modalExcecao').style.display = 'none';
+        }
+
+        async function salvarExcecao() {
+            const data = document.getElementById('excData').value;
+            const tipo = document.getElementById('excTipo').value;
+            const descricao = document.getElementById('excDescricao').value;
+
+            try {
+                const res = await fetch('../api/salvar_excecao.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        curso_id: cursoId, 
+                        data: data, 
+                        tipo: tipo, 
+                        descricao: descricao 
+                    })
+                });
+
+                const json = await res.json();
+                if (json.status === 'ok') {
+                    // Após salvar a exceção, precisamos regerar o calendário para que as aulas sejam empurradas
+                    if (confirm('Deseja regerar o calendário agora para aplicar as mudanças?')) {
+                        window.location.href = '../api/gerar_agendamentos.php?curso_id=' + cursoId;
+                    } else {
+                        location.reload();
+                    }
+                } else {
+                    alert('Erro: ' + json.mensagem);
+                }
+            } catch (e) {
+                alert('Erro na comunicação com o servidor.');
+            }
+        }
 
         // alterna AVA/IND ↔ PRESENCIAL para uma aula específica (badge clicada)
         async function toggleModalidadeAula(el) {

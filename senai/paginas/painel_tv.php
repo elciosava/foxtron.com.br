@@ -55,38 +55,35 @@ foreach ($aulas_hoje as $aula) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel TV - SENAI Agenda</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
+            font-family: Arial, sans-serif;
+            background: #1a2041;
+            color: #fff;
+            margin: 0;
             overflow: hidden;
             height: 100vh;
         }
 
         header {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 30px;
+            background: #ffd900;
+            color: #1a2041;
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 4px solid #fff;
         }
 
         .header-left h1 {
-            font-size: 2.5em;
-            margin-bottom: 5px;
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
         }
 
         .header-left p {
-            color: #bbb;
-            font-size: 1.2em;
+            margin: 5px 0 0 0;
+            font-size: 18px;
+            font-weight: bold;
         }
 
         .header-right {
@@ -94,245 +91,160 @@ foreach ($aulas_hoje as $aula) {
         }
 
         #tv-clock {
-            font-size: 4em;
+            font-size: 48px;
             font-weight: bold;
-            font-family: 'Courier New', monospace;
-            margin-bottom: 5px;
-        }
-
-        .refresh-info {
-            color: #888;
-            font-size: 0.9em;
+            font-family: monospace;
         }
 
         main {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 30px;
-            padding: 30px;
-            height: calc(100vh - 180px);
-            overflow: hidden;
+            gap: 20px;
+            padding: 20px;
+            height: calc(100vh - 140px);
         }
 
         .panel {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
         .panel-header {
-            font-size: 1.8em;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            font-size: 20px;
             font-weight: bold;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .panel-content {
             flex: 1;
             overflow-y: auto;
-            padding-right: 15px;
-        }
-
-        .panel-content::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .panel-content::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-        }
-
-        .panel-content::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-        }
-
-        .panel-content::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.3);
+            padding: 15px;
         }
 
         .event-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 5px solid #667eea;
-            padding: 20px;
+            background: #fff;
+            color: #1a2041;
+            padding: 15px;
             margin-bottom: 15px;
             border-radius: 8px;
-            transition: all 0.3s ease;
+            border-left: 8px solid #ffd900;
         }
 
         .event-item.current {
-            background: rgba(102, 126, 234, 0.2);
-            border-left-color: #667eea;
+            background: #ffd900;
+            border-left-color: #fff;
             animation: pulse 2s infinite;
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
         }
 
         @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
-            }
-        }
-
-        .event-item.current::before {
-            content: '🟢 AO VIVO';
-            display: block;
-            color: #667eea;
-            font-size: 1em;
-            font-weight: bold;
-            margin-bottom: 10px;
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
         }
 
         .event-time {
             font-weight: bold;
-            font-size: 1.3em;
-            color: #667eea;
-            margin-bottom: 8px;
+            font-size: 20px;
+            margin-bottom: 5px;
         }
 
         .event-title {
-            font-size: 1.5em;
+            font-size: 22px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .event-details {
-            font-size: 1.1em;
-            color: #ccc;
-            line-height: 1.6;
-        }
-
-        .event-details p {
-            margin: 5px 0;
+            font-size: 18px;
+            opacity: 0.9;
         }
 
         .alert-item {
-            background: rgba(239, 68, 68, 0.2);
-            border: 2px solid rgba(239, 68, 68, 0.5);
-            padding: 20px;
+            background: #c62828;
+            color: #fff;
+            padding: 15px;
             margin-bottom: 15px;
             border-radius: 8px;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% {
-                border-color: rgba(239, 68, 68, 0.5);
-            }
-            50% {
-                border-color: rgba(239, 68, 68, 0.8);
-            }
+            border: 2px solid #fff;
         }
 
         .alert-label {
-            color: #ff6b6b;
-            font-size: 1em;
             font-weight: bold;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            font-size: 14px;
+            margin-bottom: 5px;
         }
 
         .alert-title {
-            font-size: 1.2em;
+            font-size: 18px;
             font-weight: bold;
-            color: #fca5a5;
         }
 
         .empty-state {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #666;
-        }
-
-        .empty-state-icon {
-            font-size: 4em;
-            margin-bottom: 15px;
-        }
-
-        .empty-state-text {
-            font-size: 1.3em;
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.3);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 15px 30px;
             text-align: center;
-            color: #888;
-            font-size: 0.95em;
+            padding: 40px 20px;
+            opacity: 0.5;
+            font-size: 18px;
         }
 
         .current-class-highlight {
-            background: rgba(102, 126, 234, 0.3);
-            border: 2px solid #667eea;
-            padding: 30px;
-            border-radius: 15px;
+            background: #ffd900;
+            color: #1a2041;
+            padding: 20px;
+            border-radius: 12px;
             text-align: center;
             margin-bottom: 20px;
+            border: 4px solid #fff;
         }
 
         .current-class-highlight h2 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            color: #667eea;
+            margin: 0 0 10px 0;
+            font-size: 24px;
         }
 
         .current-class-highlight p {
-            font-size: 1.3em;
-            color: #ccc;
-            margin: 8px 0;
+            font-size: 20px;
+            margin: 5px 0;
+            font-weight: bold;
         }
 
-        @media (max-width: 1400px) {
-            main {
-                grid-template-columns: 1fr;
-            }
-
-            header {
-                padding: 20px;
-            }
-
-            #tv-clock {
-                font-size: 3em;
-            }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #ffd900;
+            color: #1a2041;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-left">
-            <h1>📺 Painel de Agenda em Tempo Real</h1>
+            <h1>SISTEMA DE AGENDA SENAI</h1>
             <p id="tv-date"></p>
         </div>
         <div class="header-right">
             <div id="tv-clock">00:00:00</div>
-            <div class="refresh-info">Atualizado há <span id="refresh-count">0</span>s</div>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Aula Atual em Destaque + Agenda -->
         <div>
             <?php if ($aula_atual): ?>
             <div class="current-class-highlight">
                 <h2>🟢 AULA EM ANDAMENTO</h2>
-                <p><strong><?php echo htmlspecialchars($aula_atual['curso_nome']); ?></strong></p>
-                <p>👨‍🏫 <?php echo htmlspecialchars($aula_atual['professor_nome']); ?></p>
-                <p>🏢 <?php echo htmlspecialchars($aula_atual['sala_nome']); ?></p>
+                <p><?php echo htmlspecialchars($aula_atual['curso_nome']); ?></p>
+                <p>👨‍🏫 <?php echo htmlspecialchars($aula_atual['professor_nome']); ?> | 🏢 <?php echo htmlspecialchars($aula_atual['sala_nome']); ?></p>
                 <p>🕐 <?php echo date('H:i', strtotime($aula_atual['hora_inicio'])); ?> - <?php echo date('H:i', strtotime($aula_atual['hora_fim'])); ?></p>
             </div>
             <?php endif; ?>
@@ -353,22 +265,17 @@ foreach ($aulas_hoje as $aula) {
                             </div>
                             <div class="event-title"><?php echo htmlspecialchars($aula['curso_nome']); ?></div>
                             <div class="event-details">
-                                <p>👨‍🏫 <?php echo htmlspecialchars($aula['professor_nome']); ?></p>
-                                <p>🏢 <?php echo htmlspecialchars($aula['sala_nome']); ?></p>
+                                👨‍🏫 <?php echo htmlspecialchars($aula['professor_nome']); ?> | 🏢 <?php echo htmlspecialchars($aula['sala_nome']); ?>
                             </div>
                         </div>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <div class="empty-state">
-                            <div class="empty-state-icon">📭</div>
-                            <div class="empty-state-text">Nenhuma aula agendada para hoje</div>
-                        </div>
+                        <div class="empty-state">Nenhuma aula agendada para hoje</div>
                     <?php endif; ?>
                 </div>
             </div>
         </div>
 
-        <!-- Alertas e Conflitos -->
         <div class="panel">
             <div class="panel-header">⚠️ Alertas</div>
             <div class="panel-content">
@@ -377,24 +284,20 @@ foreach ($aulas_hoje as $aula) {
                     <div class="alert-item">
                         <div class="alert-label">🚨 CONFLITO</div>
                         <div class="alert-title"><?php echo htmlspecialchars($conflito['tipo_conflito']); ?></div>
-                        <p style="color: #ccc; margin-top: 8px;">
+                        <p style="margin-top: 8px; font-size: 16px;">
                             <?php echo htmlspecialchars($conflito['professor_nome']); ?><br>
                             <?php echo htmlspecialchars($conflito['descricao']); ?>
                         </p>
                     </div>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <div class="empty-state">
-                        <div class="empty-state-icon">✅</div>
-                        <div class="empty-state-text">Nenhum conflito detectado</div>
-                    </div>
+                    <div class="empty-state">Nenhum conflito detectado</div>
                 <?php endif; ?>
             </div>
         </div>
 
-        <!-- Próximas Aulas -->
         <div class="panel">
-            <div class="panel-header">⏭️ Próximas</div>
+            <div class="panel-header">⏭️ Próximas Aulas</div>
             <div class="panel-content">
                 <?php
                 $proximas = array_filter($aulas_hoje, function($a) {
@@ -405,65 +308,44 @@ foreach ($aulas_hoje as $aula) {
                     foreach (array_slice($proximas, 0, 5) as $aula):
                 ?>
                 <div class="event-item">
-                    <div class="event-time">
-                        <?php echo date('H:i', strtotime($aula['hora_inicio'])); ?>
-                    </div>
+                    <div class="event-time"><?php echo date('H:i', strtotime($aula['hora_inicio'])); ?></div>
                     <div class="event-title"><?php echo htmlspecialchars($aula['curso_nome']); ?></div>
                     <div class="event-details">
-                        <p>👨‍🏫 <?php echo htmlspecialchars($aula['professor_nome']); ?></p>
-                        <p>🏢 <?php echo htmlspecialchars($aula['sala_nome']); ?></p>
+                        👨‍🏫 <?php echo htmlspecialchars($aula['professor_nome']); ?><br>
+                        🏢 <?php echo htmlspecialchars($aula['sala_nome']); ?>
                     </div>
                 </div>
                 <?php endforeach; else: ?>
-                    <div class="empty-state">
-                        <div class="empty-state-icon">✅</div>
-                        <div class="empty-state-text">Sem aulas próximas</div>
-                    </div>
+                    <div class="empty-state">Sem aulas próximas</div>
                 <?php endif; ?>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <p>Sistema de Gestão de Agenda - Atualização automática a cada 30 segundos</p>
+        Sistema de Gestão de Agenda SENAI - Atualização automática
     </footer>
 
     <script>
-        // Atualizar hora
         function updateClock() {
             const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('tv-clock').textContent = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('tv-clock').textContent = now.toLocaleTimeString('pt-BR');
         }
 
-        // Atualizar data
         function updateDate() {
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('tv-date').textContent = now.toLocaleDateString('pt-BR', options);
+            document.getElementById('tv-date').textContent = now.toLocaleDateString('pt-BR', options).toUpperCase();
         }
 
-        // Atualizar contador de refresh
-        let refreshCount = 0;
-        function updateRefreshCount() {
-            refreshCount++;
-            if (refreshCount >= 30) {
-                refreshCount = 0;
-                location.reload();
-            }
-            document.getElementById('refresh-count').textContent = refreshCount;
-        }
+        setInterval(updateClock, 1000);
+        updateClock();
+        updateDate();
 
-        // Inicializar
-        document.addEventListener('DOMContentLoaded', function() {
-            updateClock();
-            updateDate();
-            setInterval(updateClock, 1000);
-            setInterval(updateRefreshCount, 1000);
-        });
+        // Recarregar a página a cada 30 segundos
+        setTimeout(() => {
+            window.location.reload();
+        }, 30000);
     </script>
 </body>
 </html>

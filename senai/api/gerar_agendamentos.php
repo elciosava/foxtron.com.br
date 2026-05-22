@@ -18,10 +18,23 @@ try {
         die("Curso não encontrado.");
 
     // ==============================
-    // 1. FERIADOS / FÉRIAS
+    // 1. FERIADOS / FÉRIAS / EXCEÇÕES
     // ==============================
     $feriados = $conexao->query("SELECT data FROM feriados")
         ->fetchAll(PDO::FETCH_COLUMN); // ['YYYY-MM-DD', ...]
+
+    // Buscar exceções específicas deste curso
+    $excecoes = [];
+    try {
+        $stmtExc = $conexao->prepare("SELECT data FROM excecoes_calendario WHERE curso_id = :curso_id AND tipo = 'RECESSO'");
+        $stmtExc->execute([':curso_id' => $curso_id]);
+        $excecoes = $stmtExc->fetchAll(PDO::FETCH_COLUMN);
+    } catch (Exception $e) {
+        // Tabela pode não existir
+    }
+
+    // Combinar feriados globais com exceções do curso
+    $datasBloqueadas = array_unique(array_merge($feriados, $excecoes));
 
     // ==============================
     // 2. PARAMETROS DO CURSO
@@ -234,7 +247,7 @@ try {
 
             $diaSemana = $mapaDiaSemana[(int) $dataCursor->format('w')];
             $dataYmd = $dataCursor->format('Y-m-d');
-            $ehFeriado = in_array($dataYmd, $feriados, true);
+            $ehBloqueado = in_array($dataYmd, $datasBloqueadas, true);
 
             // ✅ pula sábado/domingo SEM registrar nada
             if ($tipoCurso === 'Aprendizagem' && ehFimDeSemana($dataCursor)) {
@@ -242,8 +255,8 @@ try {
                 continue;
             }
 
-            if ($ehFeriado) {
-                // feriado não vira aula e nem IND
+            if ($ehBloqueado) {
+                // feriado ou recesso não vira aula e nem IND
                 $dataCursor->modify('+1 day');
                 continue;
             }
@@ -307,9 +320,9 @@ try {
                 }
 
                 $dataYmd = $dataCursor->format('Y-m-d');
-                $ehFeriado = in_array($dataYmd, $feriados, true);
+                $ehBloqueado = in_array($dataYmd, $datasBloqueadas, true);
 
-                if (!$ehFeriado) {
+                if (!$ehBloqueado) {
                     $stmtInsAula->execute([
                         ':curso_id' => $curso_id,
                         ':data' => $dataYmd,
@@ -337,9 +350,9 @@ try {
                 }
 
                 $dataYmd = $dataCursor->format('Y-m-d');
-                $ehFeriado = in_array($dataYmd, $feriados, true);
+                $ehBloqueado = in_array($dataYmd, $datasBloqueadas, true);
 
-                if (!$ehFeriado) {
+                if (!$ehBloqueado) {
                     $stmtInsAula->execute([
                         ':curso_id' => $curso_id,
                         ':data' => $dataYmd,
