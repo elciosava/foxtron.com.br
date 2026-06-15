@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+
+       
+        
+        .container{
+            display: grid;
+            grid-template-columns: 1fr 2fr 2fr;
+            gap: 10px;
+            grid-template-rows:calc(100vh - 70px) ;
+
+        }
+
+        .coluna{
+            background: rgb(236, 138, 154);
+        }
+        form{
+            background: rgb(236, 138, 154);
+            width: 300px;
+            padding: 15px;
+
+        }
+        input{
+            width: 100%;
+        }
+        ul{
+            display: flex;
+
+        }
+
+li{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 10px;
+}
+ header{
+        height: 70px;
+ }
+    </style>
+    
+</head>
+<body>
+    <header>
+        
+    </header> 
+    
+    <div class="container">
+        <div class="coluna">
+            <nav>
+        <ul>
+            <li>home</li>
+            <li>sobre</li>
+            <li>imagens</li>
+            <li>onde estamos</li>
+        </ul>
+    </nav>
+        </div>
+        <div class="coluna">
+            <form action="" method="get">
+            <label for="nome">nome</label>
+            <input type="text" name="nome" id="">
+
+            <label for="email">email</label>
+            <input type="text" name="email" id="">
+
+            <label for="telefone">telefone</label>
+            <input type="text" name="telefone" id="">
+
+            <button type="submit">enviar</button>
+        </div>
+        <div class="coluna"></div>
+        </form>
+
+
+
+        </div>
+    </div>
+        
+    
+</body>
+</html>

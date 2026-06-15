@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+        
+
+        }
+        li{
+           
+            margin-left: 20px;
+        }
+         .container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: gray;
+            grid-template-areas: 
+            "linha1 linha2"
+            "linha1 linha3";
+            height: calc(100vh - 60px);
+            padding: 20px;
+           
+        }
+
+        .linha1{
+            background: rgb(0, 0, 0);
+            grid-area: linha1;
+            background-image: url(samuel-quek-e-te5FtiBS0-unsplash.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            
+        }
+        .linha2{
+            background: rgb(0, 0, 0);
+            grid-area: linha2;
+            background-image: url(robert-hill-ElKTuQkET1k-unsplash.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .linha3{
+            background: rgb(0, 0, 0);
+            grid-area: linha3;
+            background-image: url(saleh-iSklyBkLBLg-unsplash.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .linha3 img{
+            height: 800px;
+            width: 920px;
+        }
+
+
+        header{
+            display: flex;
+            height: 60px;
+            padding: 20px;
+            justify-content: space-between;
+            align-items: center;
+            background: gray;
+        }
+        p{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        header img{
+            height: 40px;
+        }
+    </style>
+ </head>
+<body>
+ <header>
+    <img src="star-and-crescent-solid-full.svg" alt="logo">
+  <nav>
+    <ul>
+        <li>inicio</li>
+        <li>sobre</li>
+        <li>servicos</li>
+        <li>contato</li>
+    </ul>
+  </nav>
+    </header>
+
+
+    <div class="container">
+       <div class="linha1">
+       <p>div.1</p> 
+       </div>
+       <div class="linha2">
+       <p>div.2</p> 
+       </div>
+       <div class="linha3">
+       <p>div.3</p>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            grid-template-areas: 
+            "linha1 linha2"
+            "linha1 linha3";
+            height: calc(100vh - 90px);
+            background: #00af00;
+        }
+        .linha1{
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("https://media.istockphoto.com/id/1324337232/pt/foto/two-howling-wolves.webp?a=1&b=1&s=612x612&w=0&k=20&c=eYum9ps8vkfayf86NbSYCC6ce865YQo4vWL9PL7jc7E=");
+            grid-area: linha1;
+        }
+        .linha2{
+            grid-area: linha2;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("https://media.istockphoto.com/id/1305022981/pt/foto/large-grey-wolf-looking-after-rivals-and-danger-in-the-forest.webp?a=1&b=1&s=612x612&w=0&k=20&c=4RXo0fQQ7PI3BaLkx0AkS0kee2vH0OB-lhl9EMDQJFU=");
+            background-position-y: -100px;
+        }
+        .linha3{
+
+            grid-area: linha3;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("https://media.istockphoto.com/id/2212127298/pt/foto/curious-gray-wolf-on-the-prowl-in-the-forest.webp?a=1&b=1&s=612x612&w=0&k=20&c=St2rIHPzzq_qRt7OVUEnxOlcmD7ayG13GML9TzVCOng=");
+            background-position-y: -55px;
+        }
+        ul{
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            align-items: center;
+        }
+        li{
+           margin-left: 20px;
+        }
+        header{
+            display: flex;
+            height: 100px;
+            padding: 20px;
+            justify-content: space-between;
+            align-items: center;
+            background: #00af00;
+        }
+        p{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header img{
+            height: 80px;
+        }
+        p{
+            font-family:ARIAL b;
+            color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <img src="wolf-pack-battalion-brands-solid-full.svg" alt="logo" >
+        <nav>
+            <ul>
+                <li>Início</li>
+                <li>Sobre</li>
+                <li>Serviços</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
+    <div id="container">
+        <div class="linha1">
+            <p>DIV1</p>
+            <p>primeira linha</p>
+        </div>
+        <div class="linha2">
+           <p>DIV2</p>
+            <p>segunda linha</p>
+        </div>
+        <div class="linha3">
+            <p>DIV3</p>
+            <p>terceira linha</p>
+        </div>
+    </div>
+</body>
+</html>

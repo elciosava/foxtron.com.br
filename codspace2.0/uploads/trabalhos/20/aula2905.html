@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            height: 40px;
+            background-color: rgb(146, 255, 164);
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+        }
+
+        li {
+            margin: 20px;
+        }
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px ;
+            height: calc(100vh - 130px);
+            padding: 20px;
+
+        }
+
+        .div1 {
+            grid-row: span 2;
+            background-image: url(oles-borys-b2qZyawxamw-unsplash.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        } 
+
+        .div2 {
+            background-image: url(serge-kutuzov-1K9-TbJWs2U-unsplash.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-y: -100px;
+        }
+        .div3 {
+            background-image: url(vitali-adutskevich-8Ex-7bj5TPA-unsplash\ \(1\).jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-y: -100px;
+        }
+
+        .linha, {
+            background-color: rgb(200, 255, 198);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="" alt="logo">
+        <nav>
+            <ul>
+                 <li>inicio</li>
+                 <li>sobre</li>
+                 <li>servicos</li>
+                 <li>cotato</li>
+            </ul>
+        </nav>
+    </header>
+    <div id="container">
+        <div class="div1">
+            <p>div 1</p>
+            <p>ocupa duas linhas</p>
+        </div>
+        <div class="div2">
+            <p>div 2</p>
+            <p>primeira linha</p>
+        </div>
+        <div class="div3">
+            <p>div 3</p>
+            <p>segunda linha</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        header {
+            display: flex;
+            height: 60px;
+            padding: 10px;
+            justify-content: space-around;
+            align-items: center;
+            background: lightblue;
+        }
+        header img {
+          width: 50px;
+        }
+        
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 10px;
+            height: calc(100vh - 80px);
+            grid-template-areas: 
+            "menu banner"
+            "menu albuns"
+            "player player";
+            grid-template-rows: 280px 1fr 80px;
+            margin-top: 10px;
+        }
+        .menu {
+            grid-area: menu;
+            background-color: lightcoral;
+            padding: 20px;
+        }
+        .banner {
+      grid-area: banner;
+      background: lightseagreen;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: bold;
+        }
+        .banner img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        .albuns {
+            grid-area: albuns;
+            background-color:lightslategray;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+        .player {
+            grid-area: player;
+            background: rgb(124, 130, 124);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .album {
+            background: lightgrey;
+            border-radius: 5px;
+            height: 150px;
+            transition: 0.3s;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <img src="reddit-brands-solid-full.svg" alt="logo_do Site">
+        <input type="search" name="buscar" id="">
+        <span> Rosane Oliveira</span>
+    </header>
+    <div id="container">
+        <div class="menu"> 
+            Menu
+        </div>
+        <div class="banner">
+            <img src="logan-voss-FTqVvTvXN7E-unsplash.jpg" alt="">
+        </div>
+        
+        <div class="albuns">
+            <div class="album"></div>
+            <div class="album"></div>
+            <div class="album"></div>
+            <div class="album"></div>
+            <div class="album"></div>
+            <div class="album"></div>
+        </div>
+        <div class="player"> 
+            <audio src="05. Quao Grande é  o meu Deus .mp3" controls></audio>
+        </div>
+    </div>
+    
+</body>
+</html>

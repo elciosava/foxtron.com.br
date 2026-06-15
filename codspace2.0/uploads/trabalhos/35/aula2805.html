@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        header {
+            display: flex;
+            min-height: 60px;
+            padding: 10px;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+        header img {
+            width: 50px;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 10px;
+            height: calc(100vh - 80px);
+            grid-template-areas:
+                 "menu banner"
+                 "menu albuns"
+                 "player player";
+            grid-template-rows: 280px 1fr 80px;
+            margin-top: 10px;
+
+        }
+
+        .menu {
+            grid-area: menu;
+            background: rgb(48, 209, 129);
+            padding: 20px;
+
+        }
+
+        .banner {
+            grid-area: banner;
+            background: rgb(52, 218, 218);
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        .banner img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .albuns {
+            grid-area: albuns;
+            background: rgb(179, 179, 28);
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+
+        .player {
+            grid-area: player;
+            background: rgb(197, 193, 204);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        .album {
+            background: #0dd8c7;
+            border-radius: 5px;
+            height: 200px;
+            transition: 0.3s;
+        }
+    </style>    
+</head>
+<body>
+    <header>
+        <img src="face-smile-solid-full.svg" alt="Logo_do _site">
+        <input type="search" name="buscar" id="">
+        <span>Joani Teodoro</span> 
+    </header>
+    <div id="container">
+        <div class="menu">
+            menu
+        </div>
+        <div class="banner">
+            <img src="360_F_598586396_6F2dsv7UIyAurHxciExc2rFa95I4I7mo.jpg" alt="">
+
+        </div>
+        <div class="albuns">
+            <div class="album"></div>
+            <div class="album"></div>
+            <div class="album"></div>
+            <div class="album"></div>
+            <div class="album"></div>
+            <div class="album"></div>
+            
+        </div>
+        <div class="player">
+            <audio src="JUÇATUBA.mp3">control</audio>
+        </div>
+    </div>
+    
+</body>
+</html>

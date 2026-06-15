@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            height: 40px;
+            background: coral;
+
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+
+        }
+
+        li {
+            margin-left: 20px;
+            padding: 20px;
+
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            height: calc(100vh - 130px);
+            padding: 20px;
+
+        }
+
+        .div1 {
+            grid-row: span 2;
+            background-image: url("https://images.unsplash.com/photo-1776455129240-a9ac916c0c7d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-size: cover;            
+            background-repeat: no-repeat;
+
+        }
+           .div2 {
+            background-image: url("https://png.pngtree.com/png-clipart/20230502/ourmid/pngtree-fullbody-goldfinch-bird-isolated-white-background-png-image_7079023.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+
+           }
+           .div3{
+             background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url("https://media.istockphoto.com/id/183412466/pt/foto/eastern-bluebirds-machos-e-f%C3%AAmeas.jpg?s=612x612&w=0&k=20&c=iGbQbxO0wbDVZHt442RXPwGKlBNUM_1PdfBiq9tFkMU=");
+
+
+           }
+         
+           
+        
+
+    </style>
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+    <div id="container">
+        <div class="div1">
+            div 1
+        </div>
+        <div class="div2">
+            div 2
+        </div>
+        <div class="div3">
+            div 3
+        </div>
+    </div>
+</body>
+
+</html>

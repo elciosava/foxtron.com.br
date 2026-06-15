@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            background: black;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            height: 40px;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+        }
+
+        li {
+            margin-left: 20px;
+
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: calc(100vh - 130px);
+            background: black;
+            padding: 20px;
+        }
+
+        .div1 {
+            grid-row: span 2;
+            background-image: url("https://images.unsplash.com/photo-1616455164974-dd1c84624216?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .div2 {
+            background-image: url("https://images.unsplash.com/photo-1607500422359-a8831901753b?q=80&w=1534&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-y: -100px;
+        }
+
+        .div3 {
+            background-image: url("https://images.unsplash.com/photo-1639418943732-d201ec1203ff?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-position-y: -300px;
+
+        }
+
+        .linha {
+            background: white;
+          
+        }
+        header img {
+            height: 80px;
+            
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        
+        <img src="bone-solid-full.svg" alt="logo ">
+        
+
+        <nav>
+            <ul>
+                <li>INICIO</li>
+                <li>SOBRE</li>
+                <li>SERVIÇOS</li>
+                <li>CONTATO</li>
+            </ul>
+        </nav>
+    </header>
+    <div id="container">
+        <div class="div1">
+            <p>Div 1 </p>
+            <p>Ocupa duas linhas</p>
+        </div>
+        <div class="div2">
+            <p>Div 2 </p>
+            <p>Primeira linha</p>
+        </div>
+        <div class="div3">
+            <p>Div 3 </p>
+            <p>Segunda linha</p>
+        </div>
+    </div>
+
+    
+</body>
+
+</html>

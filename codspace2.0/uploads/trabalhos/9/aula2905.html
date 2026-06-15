@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+        }
+        header {
+            display: flex;
+            height: 60px;
+            padding: 10px;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgb(134, 185, 243);
+            border-bottom-left-radius: 10PX;
+            border-bottom-right-radius: 10PX;
+            margin-left: 10PX;
+            margin-right: 10PX;
+            
+            
+            
+
+        }
+        #container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            height: calc(100vh - 90px);    
+            margin-top: 10px;
+            margin: 10PX;
+          
+        }
+
+        .div1 {
+            grid-row: span 2;
+            border-radius: 10px;
+            background-image:url("https://images.unsplash.com/photo-1605590427165-3884d6aa6731?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        body {
+            background-color: rgb(0, 0, 0);
+        }
+        ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        li {
+            margin-left: 20px;
+        }
+        .linha {
+          
+          border-radius: 10px;
+            background-image:url("https://images.unsplash.com/photo-1488085061387-422e29b40080?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzV8fGF2aSVDMyVBM298ZW58MHx8MHx8fDA%3D");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+        header img {
+            width: 50px;
+        }
+        .linha1 {
+            border-radius: 10px;
+            background-image:url("https://images.unsplash.com/photo-1778303814569-3cb046f8c7c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDM2fEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+       
+
+        
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="avianex-brands-solid-full.svg" alt="logo">
+        <nav>
+            <ul>
+                <li>
+                    <a href="INICIO">INIÇIO</a>
+                </li>
+                <li>
+                    <a href="SOBRE">SOBRE</a>
+                </li>
+                <li>
+                    <a href="SERVIÇO">SERVIÇO</a>
+                </li>
+                <li>
+                    <a href="CONTATO">CONTATO</a>
+                </li>
+            </ul>
+        </nav>
+
+
+    </header>
+    <div id="container">
+      <div class="div1"></div>
+      <div class="linha"></div>
+      <div class="linha1"></div>
+    </div>
+</body>
+</html>

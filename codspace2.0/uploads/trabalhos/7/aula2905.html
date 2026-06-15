@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tz lindao</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header img {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            height: 40px;
+
+        }
+
+        ul {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+
+        }
+
+        li {
+
+            margin-left: 20px;
+
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: calc(100vh - 90px);
+            padding: 110px;
+            gap: 30px;
+        }
+
+        .div1 {
+            background-color: brown;
+            grid-row: span 2;
+            background-image: url("https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-size: cover;
+            background-repeat: no-repeat;
+
+        }
+
+        .linha {
+            background-color: brown;
+
+        }
+
+        .div2 {
+            background-image: url("https://plus.unsplash.com/premium_photo-1677545182425-4fb12bdb9faf?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-y: -100px;
+        }
+.div3 {
+        background-image: url("https://images.unsplash.com/photo-1494256997604-768d1f608cac?q=80&w=1529&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: -100px
+
+
+}
+
+;
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="wifi-solid-full.svg" alt="LOGO">
+        <Nav>
+            <ul>
+                <ul>INICIO</ul>
+                <ul>SOBRE</ul>
+                <ul>SERVIÇOS</ul>
+                <ul>CONTATO</ul>
+
+            </ul>
+        </Nav>
+    </header>
+
+    <div id="container">
+        <div class="div1">
+            <p>div1</p>
+            <p> ocupa duas linhas</p>
+        </div>
+        <div class="div2">
+            <p>div2</p>
+            <p>primeira linha</p>
+        </div>
+        <div class="div3">
+            <p>div3</p>
+            <p>segunda linha</p>
+        </div>
+    </div>
+</body>
+
+</html>

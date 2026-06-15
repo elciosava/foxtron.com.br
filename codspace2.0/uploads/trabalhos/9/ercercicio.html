@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 3fr;
+            gap: 15px;
+            grid-template-rows: calc(100vh - 70px);
+        }
+        .coluna {
+            background: rgb(243, 245, 130);
+        }
+       
+        li {
+            list-style: none;
+            padding: 5px;
+        }
+        header {
+            height: 70px;
+        }
+        input{
+            width: 100%;
+        }
+         
+    </style>
+</head>
+<body>
+    <header>
+        <h2>ruan</h2>
+    </header>
+    <div class="container">
+        <div class="coluna">
+            <nav>
+                <ul>
+                    <li>home</li>
+                    <li>sobre</li>
+                    <li>imagem</li>
+                    <li>onde estamos</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="coluna">
+            <label for="nome">nome</label>
+                <input type="text" neme="nome" id="">
+
+                <label for="nome">email</label>
+                <input type="text" neme="email" id="">
+
+                <label for="nome">cpf</label>
+                <input type="text" neme="cpf" id="">
+
+                <button type="submit">Enviar</button>
+        </div>
+        <div class="coluna"></div>
+    </div>
+</body>
+</html>

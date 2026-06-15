@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+        }
+        li{
+            margin-left: 20px;
+        }
+        .container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: rgb(37, 37, 37);
+            grid-template-areas: 
+            "linha1 linha2 "
+            "linha1 linha3";
+            height: calc(100vh - 60px);
+            padding: 20px;
+            border: solid black 1px;
+        }
+        p{
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+
+        header{
+            display: flex;
+            height: 60px;
+            padding: 20px;
+            justify-content: space-between;
+            align-items: center;
+            background: gray;
+
+        }
+
+        .linha1{
+
+            justify-content: center;
+            align-items: center;
+            grid-area: linha1;
+            background-image: url("https://images.unsplash.com/photo-1613921568536-555645be4032?q=80&w=1122&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-repeat: no-repeat;
+            width: 100%;
+        }
+        .linha2{
+            background: rgb(87, 86, 86);
+            grid-area: linha2;
+            background-image: url("https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-y: -155px;
+            
+        }
+        .linha3{
+            background: rgb(105, 105, 105);
+            grid-area: linha3;
+            background-image: url("https://images.unsplash.com/photo-1634673970798-a15ae56f6c65?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        header img{
+            height: 40px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <img src="car-solid-full.svg" alt="logo">
+        <nav>
+            <ul>
+                <li>inicio</li>
+                <li>sobre</li>
+                <li>serviços</li>
+                <li>contato</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+      <div class="linha1">
+        <p>div1</p>
+      </div>
+      <div class="linha2">
+        <p>div2</p>
+      </div>
+      <div class="linha3">
+        <p>div3</p>
+      </div>
+    </div>
+</body>
+</html>

@@ -116,6 +116,7 @@ $foto = ($aluno && $aluno['foto']) ? $aluno['foto'] : '../icone/user.svg';
             <form action="../api/logout.php" method="POST">
                 <button class="logout sair"><img src="../icone/exit.svg">Sair</button>
             </form>
+            <a href="../../codspace2.0/index.php">Experimentar a versão 2.0</a>
         </div>
     </header>
 

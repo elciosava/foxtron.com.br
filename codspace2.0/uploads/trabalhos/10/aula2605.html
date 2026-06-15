@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .card{
+            background: rgb(0, 11, 158);
+        }
+
+        #container{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            grid-template-rows: calc(100vh - 70px);
+        }
+        li{
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+            list-style: none;
+        }
+
+        ul{
+            display: flex; 
+        }
+
+        header{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 50px;
+            padding: 10px;
+        }
+
+        form{
+            width:  300px;
+            padding: 15px;
+            background: blue;
+
+        }
+        input{
+            width: 100%;   
+        }
+
+        .posicao{
+            display: flex;
+            justify-content: center;
+           
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Display Grid</h2>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>Sobre</li>
+                <li>Contato</li>
+            </ul>
+        </nav>
+    </header>
+    <div id="container">
+      
+        <div class="card posicao">
+        <form action="" method="get">
+           <label for="nome">Nome:</label>
+            <input type="text" name="name" id="nome">
+
+           <label for="email">Email:</label>
+           <input type="text" name="email" id="email">
+
+           <label for="cpf">CPF:</label>
+           <input type="text" name="cpf" id="CPF">
+
+          <button type="submit">Enviar</button>
+        </form>
+       </div>
+    </div>
+
+</body>
+</html>

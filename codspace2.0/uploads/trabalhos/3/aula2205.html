@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Style>
+        * {
+            margin: 5;
+            padding: 1;
+            box-sizing: border-box;
+            
+        }         
+        body {
+            background: rgb(223, 223, 173);
+
+        }
+        form {
+            background: rgb(226, 226, 233);
+            width: 250px;
+            padding: 20px;
+        }
+
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+        }    
+         
+         .formulario {
+            display: flex;
+            justify-content: center;
+         }
+    </Style>
+</head>
+<body>
+<header>
+    <h2>Formulario de Cadastro</h2>
+</header>
+
+
+<div class="formulario">
+    <form action="" method="get">
+        <label for="nome" >Nome:</label>
+        <input type="text" name="nome" id="">
+
+        <label for="email:"> Email:</label>
+        <input type="email"  name="email" id="">
+
+        <label for="nascimento"> Data de Nascimento</label>
+        <input type="date" name="Nascimento" id="">
+
+        <label for="CPF"> Documento de Identificação </label>
+        <input type= "number" name="CPF" id="">
+
+        <button type="submit">Enviar</button>
+
+    </form>
+</div>    
+</body>
+</html>

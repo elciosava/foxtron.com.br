@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="Pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: brown;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            height: 40px;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+        }
+
+        li {
+            margin-left: 20px;
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            height: calc(100vh - 80px);
+            margin-top: 10px;
+        }
+
+         .linha {
+            background-color: blueviolet;
+            border-radius: 10px;
+        }
+
+        .div1 {
+            grid-row: span 2;
+            background-image: url("antonin-fontaine-YiRaXIR5Etk-unsplash.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            object-fit: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+
+        .div2 {
+            background-image: url("samuel-quek-yLWZyc-7iZQ-unsplash.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 0px;
+        }
+
+        .div3 {
+            background-image: url("petra-reid-Hc2A7fn8_7g-unsplash.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position-y: -100px;
+        }
+
+        header img {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="biohazard-solid-full.svg" alt="logo">
+        <nav>
+            <ul>
+                <li>INICIO</li>
+                <li>SOBRE</li>
+                <li>SERVIÇOS</li>
+                <li>CONTATO</li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="container">
+        <div class="div1"></div>
+        <div class="div2"></div>
+        <div class="div3"></div>
+    </div>
+</body>
+</html>

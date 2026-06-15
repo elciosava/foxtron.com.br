@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+        }
+        body{
+            background: lightgoldenrodyellow;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+            padding: 10px;
+            background: rgb(252, 187, 46);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+        }
+
+        li{
+            margin: 20px;
+        }
+
+        #container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            height: calc(100vh - 80px);
+            margin-top: 10px;
+            margin: 10px;
+        }
+
+        .linha{
+            background-image: url("https://images.unsplash.com/photo-1778705055353-36a6d65bd86b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw1OXx8fGVufDB8fHx8fA%3D%3D");
+            background-repeat: no-repeat;
+            background-size: 100%;
+            border-radius: 10px;
+        }
+
+        .div1{
+            grid-row: span 2;
+            background-image: url("https://images.unsplash.com/photo-1777971023282-b3feed66e591?");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 10px;
+        }
+
+        header img{
+            width: 50px;
+        }
+
+        .linha1{
+            background-image: url("https://images.unsplash.com/photo-1779485070200-a33a369afe5a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2MHx8fGVufDB8fHx8fA%3D%3D");
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="cart-flatbed-suitcase-solid-full.svg" alt="logo_do_site">
+         <nav>
+            <ul>
+                <li>
+                    <a href="INICÍO">INICÍO</a>
+                </li>
+                <li>
+                    <a href="SOBRE">SOBRE</a>
+                </li>
+                <li>
+                    <a href="SERVIÇOS">SERVIÇOS</a>
+                </li>
+                <li>
+                    <a href="CONTATOS">CONTATOS</a>
+                </li>
+            </ul>
+         </nav>
+    </header>
+
+    <div id="container">
+        <div class="div1"></div>
+        <div class="linha1"></div>
+        <div class="linha"></div>
+    </div>
+</body>
+</html>

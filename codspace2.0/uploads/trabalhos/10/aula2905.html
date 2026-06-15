@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            list-style: none;
+        }
+
+        li{
+            margin-left: 20px;
+        }
+
+        .container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            background: rgb(92, 92, 92);
+            grid-template-areas: 
+            "linha1 linha2"
+            "linha1 linha3";
+            height: calc(100vh - 40px);
+            border: solid black 3px;
+            padding: 20px;
+        }
+        
+        header{
+            display: flex;
+            height:  40px;
+            padding: 20px;
+            justify-content: space-between;
+            align-items: center;
+            background: rgb(75, 75, 75);
+        }
+
+        .linha1{
+            background: rgb(129, 129, 129);
+            grid-area: linha1;
+        }
+
+        .linha2{
+            background: rgb(129, 129, 129);
+            grid-area: linha2;
+        }
+
+        .linha3{
+            background: rgb(129, 129, 129);
+            grid-area: linha3;
+        }
+
+        .linha1 {
+            background-image: url("https://images.unsplash.com/photo-1514316454349-750a7fd3da3a");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        header img{
+            height: 30px;
+            background-size: cover;
+        }
+
+        .linha2 {
+            background-image: url("https://images.unsplash.com/photo-1532268116505-8c59cc37d2e6");
+            background-size: cover;
+        }
+
+         .linha3 {
+            background-image: url("https://images.unsplash.com/photo-1541443724873-8ba49db7a737");
+            background-size: cover;
+         }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="car-burst-solid-full.svg" alt="logo">
+       <nav>
+        <ul>
+            <li>Inicio</li>
+            <li>Sobre</li>
+            <li>Serviços</li>
+            <li>Contato</li>
+        </ul>
+       </nav>
+    </header>
+    <div class="container">
+        <div class="linha1">
+           
+        </div>
+        <div class="linha2">
+            
+        </div>
+        <div class="linha3">
+            
+        </div>
+    </div>
+</body>
+</html>

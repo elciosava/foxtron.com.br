@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 2fr;
+            gap: 10px;
+            grid-template-rows: calc(100vh - 70px);
+        }
+
+        .coluna {
+            background: blue;
+        }
+
+        form {
+            background: blueviolet;
+            width: 300px;
+            padding: 15px;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        ul {
+            display: flex;
+        }
+
+        li {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+
+
+    <div class="container">
+        <div class="coluna">
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>Sobre</li>
+                    <li>Imagens</li>
+                    <li>Onde estamos</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="coluna">
+            <form action="" method="get">
+                <label for="">nome</label>
+                <input type="text" name="" id="">
+
+                <label for="">email</label>
+                <input type="text" name="" id="">
+
+                <label for="">telefone</label>
+                <input type="text" name="" id="">
+
+                <button>Enviar</button>
+            </form>
+        </div>
+        <div class="coluna"></div>
+
+</body>
+
+</html>

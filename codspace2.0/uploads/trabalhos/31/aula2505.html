@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            padding-top: 50px;
+            background: cyan;
+        }
+
+        header{
+            display: flex;
+            height: 50px;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            background: lightseagreen;
+            top: 0;
+        }
+
+        nav{
+            display: flex;
+        }
+
+        ul{
+            display: flex;
+        }
+
+        li{
+            list-style: none;
+            margin: 5px;
+        }
+
+        section{
+            height: 100vh;
+            scroll-margin-top: 50px;
+            padding: 10px;
+        }
+
+        #Artigo{
+            display: flex;
+        }
+
+        #Artigo img {
+            width: 700px;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        p{
+            margin-top: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+       <nav>
+        <ul>
+            <li><a href="#Home">Home</a></li>
+            <li><a href="#Artigo">Artigo</a></li>
+            <li><a href="#Contato">Contato</a></li>
+        </ul>
+       </nav>
+    </header>
+
+    <section id="Home">
+        <h3>Home</h3>
+    </section>
+
+    <section id="Artigo">
+        <div class="Artigo">
+            <h3>Artigo</h3>
+
+            <p>
+            A Tag Section no HTML é usada para fazer a divisão entre sessões de um site, assim como usamos uma div para dividir e separar objetos e elementos dentro de um elemento pai podemos usar a section como elemento pai de outros objetos.
+            </p>
+        </div>
+        
+
+        <img src="LJKVQ.jpg" alt="">
+
+    </section>
+
+    <section id="Contato">
+        <h3>Contato</h3>
+    </section>
+
+</body>
+</html>

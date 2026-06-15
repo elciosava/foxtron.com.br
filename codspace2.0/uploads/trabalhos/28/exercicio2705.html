@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+         margin: 0;
+         padding: 0;
+        }
+        form{
+            padding: 15px;
+            width: 300px;
+
+        }
+        input{
+            width: 100%;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr 2fr;
+            gap: 10px;
+            grid-template-rows: calc(100vh - 70px);
+        }
+        .coluna {
+            background: lightcoral;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        header{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            padding: 10px;
+
+        }
+        li{
+            margin: 5px;
+            list-style: none;
+        }
+        .posicao{
+            padding: 10px;
+
+        }
+        .menu{
+            background: rgb(142, 64, 78);
+        }
+        header{
+            height: 70px;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h2>Cabeçario</h2>
+        
+    </header>
+    <div class="container">
+        <div class="menu posicao">
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>Sobre</li>
+                    <li>Imagens</li>
+                    <li>Onde estamos</li>
+                </ul>
+            </nav>
+        </div>
+            <div class="coluna">
+                <form action="" method="'get">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="">
+            <label for="email">Email</label>
+            <input type="email" name="emsil" id="">
+            <label for="nascimento">Data de nascimento</label>
+            <input type="date" name="nascimento" id="">
+            <label for="cpf">Cpf</label>
+            <input type="number" name="cpf" id="">
+            <button type="submit">Enviar</button>
+        </form>
+
+            </div>
+            <div class="coluna"></div>
+        
+
+        
+    </div>
+    
+    
+</body>
+</html>
