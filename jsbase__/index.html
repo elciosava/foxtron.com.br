@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="jsbase_logo_v2_refinado_1.png">
+    <link rel="stylesheet" href="jsbase.css">
+    <title>JSBase 4.0 - Ambiente de Programação em Português</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <img src="jsbase_logo_v2_refinado_1.png" alt="Logo JSBase">
+            <div class="header-title">
+                <h1>JSBase 4.0</h1>
+                <p>Aprenda JavaScript em Português</p>
+            </div>
+            <a href="DOCUMENTACAO.md" target="_blank" class="doc-link">📖 Documentação</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Editor e Código Transpilado -->
+            <div class="editor-section">
+                <div class="section-header">
+                    <h2>Código JSBase</h2>
+                    <span class="info-badge">Digite seu código aqui</span>
+                </div>
+                <div class="editor-container">
+                    <div id="highlight"></div>
+                    <textarea id="editor" spellcheck="false" placeholder="Digite seu código JSBase aqui...">// Exemplo: Olá Mundo
+mostrar "Olá, Mundo!"
+mostrar "Bem-vindo ao JSBase 4.0"</textarea>
+                </div>
+
+                <div class="transpilado-section">
+                    <div class="section-header">
+                        <h2>JavaScript Transpilado</h2>
+                        <span class="info-badge">Visualize o código gerado</span>
+                    </div>
+                    <pre id="codigo-transpilado" class="codigo-transpilado">// O código JavaScript será exibido aqui</pre>
+                </div>
+            </div>
+
+            <!-- Saída e Controles -->
+            <div class="output-section">
+                <div class="section-header">
+                    <h2>Saída do Programa</h2>
+                    <button onclick="executar()" class="btn-executar">▶ Executar</button>
+                </div>
+                <div id="saida" class="saida">
+                    <span class="info-msg">Clique em "Executar" para rodar seu código JSBase</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel de Referência Rápida -->
+        <aside class="sidebar">
+            <div class="reference-panel">
+                <h3>📚 Referência Rápida</h3>
+                
+                <div class="reference-group">
+                    <h4>Variáveis</h4>
+                    <code>numero x recebe 10</code>
+                    <code>texto nome recebe "João"</code>
+                    <code>booleano ativo recebe verdadeiro</code>
+                </div>
+
+                <div class="reference-group">
+                    <h4>Entrada e Saída</h4>
+                    <code>mostrar "Olá"</code>
+                    <code>ler("Seu nome?")</code>
+                </div>
+
+                <div class="reference-group">
+                    <h4>Funções</h4>
+                    <code>funcao saudacao()</code>
+                    <code>retornar valor</code>
+                    <code>fimfuncao</code>
+                </div>
+
+                <div class="reference-group">
+                    <h4>Biblioteca Padrão</h4>
+                    <code>tamanho(texto)</code>
+                    <code>maiusculo(texto)</code>
+                    <code>minusculo(texto)</code>
+                    <code>aleatorio(1, 100)</code>
+                    <code>esperar(1000)</code>
+                    <code>hoje()</code>
+                    <code>hora()</code>
+                </div>
+
+                <div class="reference-group">
+                    <h4>Estruturas de Controle</h4>
+                    <code>se condicao</code>
+                    <code>senao</code>
+                    <code>fimse</code>
+                    <code>enquanto condicao</code>
+                    <code>para (init; cond; incr)</code>
+                </div>
+
+                <div class="reference-group">
+                    <h4>Operadores</h4>
+                    <code>maior que, menor que</code>
+                    <code>igual, diferente</code>
+                    <code>e, ou</code>
+                    <code>verdadeiro, falso</code>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>JSBase 4.0 - Uma linguagem de programação em português para iniciantes | Clique em "Executar" para ver o resultado</p>
+    </footer>
+
+    <script src="motor.js"></script>
+</body>
+
+</html>

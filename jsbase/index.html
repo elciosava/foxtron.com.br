@@ -1,119 +1,688 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="jsbase_logo_v2_refinado_1.png">
-    <link rel="stylesheet" href="jsbase.css">
-    <title>JSBase 4.0 - Ambiente de Programação em Português</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentação - JSBase</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .docs-container {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 0;
+      min-height: calc(100vh - 60px);
+    }
+
+    .docs-sidebar {
+      background-color: #121212;
+      border-right: 1px solid #3E3E42;
+      padding: 1.5rem;
+      max-height: calc(100vh - 60px);
+      overflow-y: auto;
+      position: sticky;
+      top: 60px;
+    }
+
+    .docs-sidebar h3 {
+      font-size: 0.875rem;
+      color: #858585;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .docs-sidebar h3:first-child {
+      margin-top: 0;
+    }
+
+    .docs-sidebar a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 0.25rem;
+      border-radius: 4px;
+      transition: all 200ms ease-out;
+      font-size: 0.875rem;
+    }
+
+    .docs-sidebar a:hover,
+    .docs-sidebar a.active {
+      background-color: rgba(79, 193, 255, 0.1);
+      color: #4FC1FF;
+    }
+
+    .docs-content {
+      padding: 2rem;
+      overflow-y: auto;
+      max-height: calc(100vh - 60px);
+    }
+
+    .docs-content h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .docs-content h2:first-child {
+      margin-top: 0;
+    }
+
+    .docs-content h3 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .docs-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      border: 1px solid #3E3E42;
+    }
+
+    .docs-content table th,
+    .docs-content table td {
+      padding: 0.75rem;
+      text-align: left;
+      border: 1px solid #3E3E42;
+    }
+
+    .docs-content table th {
+      background-color: #1a1a1a;
+      color: #4FC1FF;
+      font-weight: 600;
+    }
+
+    .docs-content ul,
+    .docs-content ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .docs-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .docs-container {
+        grid-template-columns: 1fr;
+      }
+
+      .docs-sidebar {
+        position: fixed;
+        left: -250px;
+        top: 60px;
+        width: 250px;
+        height: calc(100vh - 60px);
+        z-index: 99;
+        border-right: 1px solid #3E3E42;
+        transition: left 200ms ease-out;
+      }
+
+      .docs-sidebar.open {
+        left: 0;
+      }
+
+      .docs-content {
+        max-height: 100%;
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 100;
+      background-color: #4FC1FF;
+      color: #1E1E1E;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.25rem;
+    }
+
+    .logo img {
+      width: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <div class="header-content">
-            <img src="jsbase_logo_v2_refinado_1.png" alt="Logo JSBase">
-            <div class="header-title">
-                <h1>JSBase 4.0</h1>
-                <p>Aprenda JavaScript em Português</p>
-            </div>
-            <a href="documentacao_jsbase_v4.0_completa.pdf" target="_blank" class="doc-link">📖 Documentação</a>
-        </div>
-    </header>
-
-    <div class="container">
-        <div class="main-content">
-            <!-- Editor e Código Transpilado -->
-            <div class="editor-section">
-                <div class="section-header">
-                    <h2>Código JSBase</h2>
-                    <span class="info-badge">Digite seu código aqui</span>
-                </div>
-                <div class="editor-container">
-                    <div id="highlight"></div>
-                    <textarea id="editor" spellcheck="false" placeholder="Digite seu código JSBase aqui..."></textarea>
-                </div>
-
-                <div class="transpilado-section">
-                    <div class="section-header">
-                        <h2>JavaScript Transpilado</h2>
-                        <span class="info-badge">Visualize o código gerado</span>
-                    </div>
-                    <pre id="codigo-transpilado" class="codigo-transpilado">// O código JavaScript será exibido aqui</pre>
-                </div>
-            </div>
-
-            <!-- Saída e Controles -->
-            <div class="output-section">
-                <div class="section-header">
-                    <h2>Saída do Programa</h2>
-                    <button onclick="executar()" class="btn-executar">▶ Executar</button>
-                </div>
-                <div id="saida" class="saida"></div>
-            </div>
-        </div>
-
-        <!-- Painel de Referência Rápida -->
-        <aside class="sidebar">
-            <div class="reference-panel">
-                <h3>📚 Referência Rápida</h3>
-                
-                <div class="reference-group">
-                    <h4>Variáveis</h4>
-                    <code>numero x recebe 10</code>
-                    <code>texto nome recebe "João"</code>
-                    <code>booleano ativo recebe verdadeiro</code>
-                </div>
-
-                <div class="reference-group">
-                    <h4>Entrada e Saída</h4>
-                    <code>mostrar "Olá"</code>
-                    <code>ler("Seu nome?")</code>
-                </div>
-
-                <div class="reference-group">
-                    <h4>Funções</h4>
-                    <code>funcao saudacao()</code>
-                    <code>retornar valor</code>
-                    <code>fimfuncao</code>
-                </div>
-
-                <div class="reference-group">
-                    <h4>Biblioteca Padrão</h4>
-                    <code>tamanho(texto)</code>
-                    <code>maiusculo(texto)</code>
-                    <code>minusculo(texto)</code>
-                    <code>aleatorio(1, 100)</code>
-                    <code>esperar(1000)</code>
-                    <code>hoje()</code>
-                    <code>hora()</code>
-                </div>
-
-                <div class="reference-group">
-                    <h4>Estruturas de Controle</h4>
-                    <code>se condicao</code>
-                    <code>senao</code>
-                    <code>fimse</code>
-                    <code>enquanto condicao</code>
-                    <code>para (init; cond; incr)</code>
-                </div>
-
-                <div class="reference-group">
-                    <h4>Operadores</h4>
-                    <code>maior que, menor que</code>
-                    <code>igual, diferente</code>
-                    <code>e, ou</code>
-                    <code>verdadeiro, falso</code>
-                </div>
-            </div>
-        </aside>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <img src="jsbase_logo_v2_refinado_1.png" alt="JSBase Logo">
+        <span>JSBase</span>
+      </div>
+      <nav>
+        <a href="../index.html">Início</a>
+        <a href="../playground.html">Playground</a>
+        <a href="index.html">Documentação</a>
+      </nav>
     </div>
+  </header>
 
-    <footer>
-        <p>JSBase 4.0 - Uma linguagem de programação em português para iniciantes</p>
-    </footer>
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-    <script src="motor.js"></script>
+  <div class="docs-container">
+    <!-- Sidebar -->
+    <aside class="docs-sidebar">
+      <h3>Primeiros Passos</h3>
+      <a href="#introducao" class="nav-link active">Introdução</a>
+      <a href="#instalacao" class="nav-link">Instalação</a>
+      <a href="#primeiro-programa" class="nav-link">Primeiro Programa</a>
+
+      <h3>Conceitos Básicos</h3>
+      <a href="#tipos-dados" class="nav-link">Tipos de Dados</a>
+      <a href="#variaveis" class="nav-link">Variáveis</a>
+      <a href="#operadores" class="nav-link">Operadores</a>
+
+      <h3>Entrada e Saída</h3>
+      <a href="#mostrar" class="nav-link">Mostrar</a>
+      <a href="#ler" class="nav-link">Ler</a>
+
+      <h3>Controle de Fluxo</h3>
+      <a href="#condicoes" class="nav-link">Condições (Se/Senão)</a>
+      <a href="#enquanto" class="nav-link">Enquanto</a>
+      <a href="#para" class="nav-link">Para</a>
+
+      <h3>Funções</h3>
+      <a href="#funcoes" class="nav-link">Definição de Funções</a>
+      <a href="#parametros" class="nav-link">Parâmetros e Retorno</a>
+
+      <h3>Biblioteca Padrão</h3>
+      <a href="#biblioteca" class="nav-link">Funções Pré-implementadas</a>
+
+      <h3>Referência</h3>
+      <a href="#palavras-chave" class="nav-link">Palavras-Chave Reservadas</a>
+      <a href="#exemplos" class="nav-link">Exemplos Completos</a>
+      <a href="#erros" class="nav-link">Tratamento de Erros</a>
+    </aside>
+
+    <!-- Content -->
+    <main class="docs-content">
+      <h1>Documentação JSBase</h1>
+
+      <section id="introducao">
+        <h2>Introdução</h2>
+        <p><strong>JSBase</strong> é uma linguagem de programação em português projetada para ensinar os conceitos fundamentais de programação, atuando como uma camada de abstração sobre JavaScript.</p>
+        <p>O objetivo é permitir que iniciantes aprendam lógica de programação sem a complexidade da sintaxe em inglês do JavaScript.</p>
+
+        <h3>Características Principais</h3>
+        <ul>
+          <li>✅ Sintaxe em Português</li>
+          <li>✅ Transpilação em Tempo Real</li>
+          <li>✅ Visualização do Código Gerado</li>
+          <li>✅ Biblioteca Padrão Completa</li>
+          <li>✅ Suporte a Funções</li>
+          <li>✅ Destaque de Sintaxe</li>
+        </ul>
+      </section>
+
+      <section id="instalacao">
+        <h2>Instalação</h2>
+        <p>JSBase é uma linguagem web-first. Para usar:</p>
+        <ol>
+          <li>Acesse o <a href="../playground.html">Playground</a></li>
+          <li>Comece a digitar seu código</li>
+          <li>Clique em "Executar" para ver os resultados</li>
+        </ol>
+      </section>
+
+      <section id="primeiro-programa">
+        <h2>Primeiro Programa</h2>
+        <p>Vamos criar nosso primeiro programa em JSBase:</p>
+        <pre><code>mostrar "Olá Mundo!"</code></pre>
+        <p>Resultado:</p>
+        <pre><code>Olá Mundo!</code></pre>
+      </section>
+
+      <section id="tipos-dados">
+        <h2>Tipos de Dados</h2>
+        <p>JSBase suporta três tipos de dados básicos:</p>
+
+        <h3>Número</h3>
+        <p>Representa valores numéricos inteiros ou decimais.</p>
+        <pre><code>numero idade recebe 25
+numero altura recebe 1.75</code></pre>
+
+        <h3>Texto</h3>
+        <p>Representa sequências de caracteres. Deve estar entre aspas duplas.</p>
+        <pre><code>texto nome recebe "João Silva"
+texto mensagem recebe "Olá, Mundo!"</code></pre>
+
+        <h3>Booleano</h3>
+        <p>Representa valores verdadeiro ou falso.</p>
+        <pre><code>booleano ativo recebe verdadeiro
+booleano inativo recebe falso</code></pre>
+      </section>
+
+      <section id="variaveis">
+        <h2>Variáveis</h2>
+        <p>A declaração de variáveis segue o padrão:</p>
+        <pre><code>&lt;tipo&gt; &lt;nome&gt; recebe &lt;valor&gt;</code></pre>
+
+        <h3>Exemplos</h3>
+        <pre><code>numero x recebe 10
+texto nome recebe "Maria"
+booleano aprovado recebe verdadeiro</code></pre>
+
+        <h3>Atribuição de Valores</h3>
+        <p>Você pode atribuir novos valores a variáveis já declaradas:</p>
+        <pre><code>numero contador recebe 0
+contador recebe contador + 1</code></pre>
+      </section>
+
+      <section id="operadores">
+        <h2>Operadores</h2>
+
+        <h3>Operadores Aritméticos</h3>
+        <table>
+          <tr>
+            <th>Operador</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+          </tr>
+          <tr>
+            <td>+</td>
+            <td>Adição</td>
+            <td>a + b</td>
+          </tr>
+          <tr>
+            <td>-</td>
+            <td>Subtração</td>
+            <td>a - b</td>
+          </tr>
+          <tr>
+            <td>*</td>
+            <td>Multiplicação</td>
+            <td>a * b</td>
+          </tr>
+          <tr>
+            <td>/</td>
+            <td>Divisão</td>
+            <td>a / b</td>
+          </tr>
+          <tr>
+            <td>%</td>
+            <td>Módulo (resto)</td>
+            <td>a % b</td>
+          </tr>
+        </table>
+
+        <h3>Operadores de Comparação</h3>
+        <table>
+          <tr>
+            <th>Operador</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+          </tr>
+          <tr>
+            <td>maior que</td>
+            <td>Maior que</td>
+            <td>a maior que b</td>
+          </tr>
+          <tr>
+            <td>menor que</td>
+            <td>Menor que</td>
+            <td>a menor que b</td>
+          </tr>
+          <tr>
+            <td>maior ou igual</td>
+            <td>Maior ou igual</td>
+            <td>a maior ou igual b</td>
+          </tr>
+          <tr>
+            <td>menor ou igual</td>
+            <td>Menor ou igual</td>
+            <td>a menor ou igual b</td>
+          </tr>
+          <tr>
+            <td>igual</td>
+            <td>Igualdade</td>
+            <td>a igual b</td>
+          </tr>
+          <tr>
+            <td>diferente</td>
+            <td>Diferença</td>
+            <td>a diferente b</td>
+          </tr>
+        </table>
+
+        <h3>Operadores Lógicos</h3>
+        <table>
+          <tr>
+            <th>Operador</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+          </tr>
+          <tr>
+            <td>e</td>
+            <td>E lógico (AND)</td>
+            <td>condicao1 e condicao2</td>
+          </tr>
+          <tr>
+            <td>ou</td>
+            <td>OU lógico (OR)</td>
+            <td>condicao1 ou condicao2</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="mostrar">
+        <h2>Mostrar (Saída)</h2>
+        <p>A função <code>mostrar</code> exibe valores no console de saída.</p>
+        <pre><code>mostrar "Olá, Mundo!"
+mostrar "O resultado é:", 42
+mostrar "Múltiplos valores:", 1, 2, 3</code></pre>
+      </section>
+
+      <section id="ler">
+        <h2>Ler (Entrada)</h2>
+        <p>A função <code>ler</code> solicita entrada do usuário através de um prompt.</p>
+        <pre><code>texto nome recebe ler("Qual é o seu nome?")
+mostrar "Bem-vindo,", nome</code></pre>
+      </section>
+
+      <section id="condicoes">
+        <h2>Condições: Se/Senão</h2>
+        <p>Executa um bloco de código se uma condição for verdadeira.</p>
+        <pre><code>se condicao
+    // código executado se verdadeiro
+senao
+    // código executado se falso
+fimse</code></pre>
+
+        <h3>Exemplo</h3>
+        <pre><code>numero nota recebe 8
+
+se nota maior ou igual 7
+    mostrar "Aprovado!"
+senao
+    mostrar "Reprovado!"
+fimse</code></pre>
+      </section>
+
+      <section id="enquanto">
+        <h2>Laço: Enquanto</h2>
+        <p>Repete um bloco de código enquanto uma condição for verdadeira.</p>
+        <pre><code>enquanto condicao
+    // código repetido
+fimenquanto</code></pre>
+
+        <h3>Exemplo</h3>
+        <pre><code>numero i recebe 1
+
+enquanto i menor ou igual 5
+    mostrar "Número:", i
+    i recebe i + 1
+fimenquanto</code></pre>
+      </section>
+
+      <section id="para">
+        <h2>Laço: Para</h2>
+        <p>Repete um bloco de código um número específico de vezes.</p>
+        <pre><code>para (inicializacao; condicao; incremento)
+    // código repetido
+fimpara</code></pre>
+
+        <h3>Exemplo</h3>
+        <pre><code>para (numero i recebe 1; i menor ou igual 10; i recebe i + 1)
+    mostrar "Iteração:", i
+fimpara</code></pre>
+      </section>
+
+      <section id="funcoes">
+        <h2>Funções</h2>
+
+        <h3>Definição de Função</h3>
+        <pre><code>funcao nomeDaFuncao()
+    // corpo da função
+fimfuncao</code></pre>
+
+        <h3>Função com Parâmetros</h3>
+        <pre><code>funcao soma(numero a, numero b)
+    retornar a + b
+fimfuncao</code></pre>
+
+        <h3>Chamada de Função</h3>
+        <pre><code>numero resultado recebe soma(10, 20)
+mostrar resultado</code></pre>
+      </section>
+
+      <section id="parametros">
+        <h2>Parâmetros e Retorno</h2>
+
+        <h3>Retorno de Valores</h3>
+        <p>Use <code>retornar</code> ou <code>devolver</code> para retornar um valor da função.</p>
+        <pre><code>funcao quadrado(numero x)
+    retornar x * x
+fimfuncao
+
+numero resultado recebe quadrado(5)
+mostrar "5² =", resultado</code></pre>
+
+        <h3>Função sem Retorno</h3>
+        <pre><code>funcao saudacao()
+    mostrar "Bem-vindo ao JSBase!"
+fimfuncao
+
+saudacao()</code></pre>
+      </section>
+
+      <section id="biblioteca">
+        <h2>Biblioteca Padrão</h2>
+        <p>JSBase fornece uma biblioteca de funções úteis pré-implementadas:</p>
+
+        <h3>Manipulação de Texto</h3>
+        <ul>
+          <li><code>tamanho(texto)</code> - Retorna o número de caracteres</li>
+          <li><code>maiusculo(texto)</code> - Converte para maiúsculas</li>
+          <li><code>minusculo(texto)</code> - Converte para minúsculas</li>
+        </ul>
+
+        <h3>Números Aleatórios</h3>
+        <ul>
+          <li><code>aleatorio(min, max)</code> - Gera número aleatório entre min e max</li>
+        </ul>
+
+        <h3>Data e Hora</h3>
+        <ul>
+          <li><code>hoje()</code> - Retorna a data atual (DD/MM/YYYY)</li>
+          <li><code>hora()</code> - Retorna a hora atual (HH:MM:SS)</li>
+        </ul>
+
+        <h3>Conversão de Tipos</h3>
+        <ul>
+          <li><code>inteiro(valor)</code> - Converte para inteiro</li>
+          <li><code>decimal(valor)</code> - Converte para decimal</li>
+          <li><code>texto(valor)</code> - Converte para texto</li>
+          <li><code>booleano(valor)</code> - Converte para booleano</li>
+        </ul>
+      </section>
+
+      <section id="palavras-chave">
+        <h2>Palavras-Chave Reservadas</h2>
+        <table>
+          <tr>
+            <th>Palavra-Chave</th>
+            <th>Uso</th>
+          </tr>
+          <tr>
+            <td>numero</td>
+            <td>Declarar variável numérica</td>
+          </tr>
+          <tr>
+            <td>texto</td>
+            <td>Declarar variável de texto</td>
+          </tr>
+          <tr>
+            <td>booleano</td>
+            <td>Declarar variável booleana</td>
+          </tr>
+          <tr>
+            <td>recebe</td>
+            <td>Atribuir valor</td>
+          </tr>
+          <tr>
+            <td>mostrar</td>
+            <td>Exibir saída</td>
+          </tr>
+          <tr>
+            <td>ler</td>
+            <td>Solicitar entrada</td>
+          </tr>
+          <tr>
+            <td>se</td>
+            <td>Condicional</td>
+          </tr>
+          <tr>
+            <td>senao</td>
+            <td>Else</td>
+          </tr>
+          <tr>
+            <td>fimse</td>
+            <td>Fim do if</td>
+          </tr>
+          <tr>
+            <td>enquanto</td>
+            <td>Loop while</td>
+          </tr>
+          <tr>
+            <td>fimenquanto</td>
+            <td>Fim do while</td>
+          </tr>
+          <tr>
+            <td>para</td>
+            <td>Loop for</td>
+          </tr>
+          <tr>
+            <td>fimpara</td>
+            <td>Fim do for</td>
+          </tr>
+          <tr>
+            <td>funcao</td>
+            <td>Definir função</td>
+          </tr>
+          <tr>
+            <td>fimfuncao</td>
+            <td>Fim da função</td>
+          </tr>
+          <tr>
+            <td>retornar</td>
+            <td>Retornar valor</td>
+          </tr>
+          <tr>
+            <td>verdadeiro</td>
+            <td>Valor booleano true</td>
+          </tr>
+          <tr>
+            <td>falso</td>
+            <td>Valor booleano false</td>
+          </tr>
+        </table>
+      </section>
+
+      <section id="exemplos">
+        <h2>Exemplos Completos</h2>
+
+        <h3>Calculadora Simples</h3>
+        <pre><code>funcao calcular(numero a, numero b, texto op)
+    se op igual "+"
+        retornar a + b
+    senao
+        se op igual "-"
+            retornar a - b
+        senao
+            se op igual "*"
+                retornar a * b
+            senao
+                retornar 0
+            fimse
+        fimse
+    fimse
+fimfuncao
+
+mostrar "10 + 5 =", calcular(10, 5, "+")
+mostrar "10 - 5 =", calcular(10, 5, "-")
+mostrar "10 * 5 =", calcular(10, 5, "*")</code></pre>
+
+        <h3>Tabuada</h3>
+        <pre><code>funcao tabuada(numero n)
+    para (numero i recebe 1; i menor ou igual 10; i recebe i + 1)
+        mostrar n, "x", i, "=", n * i
+    fimpara
+fimfuncao
+
+tabuada(7)</code></pre>
+
+        <h3>Verificar Número Par/Ímpar</h3>
+        <pre><code>funcao ehPar(numero n)
+    se n % 2 igual 0
+        retornar verdadeiro
+    senao
+        retornar falso
+    fimse
+fimfuncao
+
+numero num recebe 42
+
+se ehPar(num)
+    mostrar num, "é par"
+senao
+    mostrar num, "é ímpar"
+fimse</code></pre>
+      </section>
+
+      <section id="erros">
+        <h2>Tratamento de Erros</h2>
+        <p>JSBase fornece mensagens de erro úteis quando algo dá errado:</p>
+        <ul>
+          <li><strong>Erro de Lógica</strong>: Blocos não fechados corretamente (fimse, fimenquanto, fimpara)</li>
+          <li><strong>Erro de Execução</strong>: Problemas durante a execução do código JavaScript transpilado</li>
+        </ul>
+        <p>Se um erro ocorrer, a mensagem será exibida em vermelho na saída do playground.</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const sidebar = document.querySelector('.docs-sidebar');
+      sidebar.classList.toggle('open');
+    }
+
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        document.querySelector('.docs-sidebar').classList.remove('open');
+        
+        // Marcar como ativo
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      });
+    });
+
+    // Marcar link ativo baseado na URL
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash;
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === hash) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
-
 </html>
