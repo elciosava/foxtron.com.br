@@ -1,6 +1,5 @@
 <?php
 include 'visitas.php'; //comentario para testar commit 
-require __DIR__ . '/seguranca/firewall.php';
 ?>
 
 <!DOCTYPE html>
