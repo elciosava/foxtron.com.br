@@ -1,0 +1,24 @@
+# Fotos enviadas pelos eventos
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Logs do OCR
+backend/logs/*.log
+
+# Configurações locais / segredos
+.env
+backend/config/local.php
+
+# Sistema / editor
+Thumbs.db
+Desktop.ini
+.vscode/
+
+# Originais protegidos e previews gerados
+backend/storage/originals/*
+!backend/storage/originals/.gitkeep
+backend/previews/*
+!backend/previews/.gitkeep
+
+# Credenciais Mercado Pago locais
+backend/config/mercadopago.local.php

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Drone Fotos — Administração</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav"><a class="brand" href="../"><span
+          class="brand-mark">✦</span><span><b>DRONE</b><small>FOTOS</small></span></a>
+      <div class="nav-actions"><a class="back" href="../">← Voltar ao arquivo</a><button class="outline-btn"
+          id="adminLogout">Sair</button></div>
+    </div>
+  </header>
+  <main class="container admin">
+    <p class="eyebrow">Administração · Eventos e fotos</p>
+    <h1>Organize a corrida <em>e publique.</em></h1>
+    <p class="lead">Cadastre o evento, envie as fotos e o OCR tentará identificar automaticamente os números de peito.
+      Revise antes de publicar.</p>
+
+
+    <section class="admin-stats" aria-label="Resumo do sistema">
+      <article><span>Eventos</span><strong id="statEvents">0</strong></article>
+      <article><span>Fotos</span><strong id="statPhotos">0</strong></article>
+      <article><span>Para revisar</span><strong id="statReview">0</strong></article>
+      <article><span>Confirmadas</span><strong id="statConfirmed">0</strong></article>
+      <article><span>Erros OCR</span><strong id="statErrors">0</strong></article>
+    </section>
+
+    <section class="admin-layout">
+      <div class="admin-side">
+        <div class="panel">
+          <p class="eyebrow">01 · Evento</p>
+          <h2>Cadastrar evento</h2>
+          <form id="eventForm" class="event-form">
+            <label>Nome do evento<input id="eventName" maxlength="180" required
+                placeholder="Ex.: Corrida Noturna 2026"></label>
+            <label>Data<input id="eventDate" type="date" required></label>
+            <label>Local<input id="eventLocation" maxlength="180" placeholder="Ex.: Curitiba - PR"></label>
+            <button class="primary full" type="submit" id="saveEvent">＋ Cadastrar evento</button>
+          </form>
+          <p id="eventMessage" class="form-message"></p>
+        </div>
+
+        <div class="panel">
+          <p class="eyebrow">02 · Contexto</p>
+          <h2>Evento do upload</h2>
+          <select id="ocrEvent">
+            <option value="">Carregando eventos...</option>
+          </select>
+          <div id="eventList" class="event-list"></div>
+        </div>
+
+        <label class="upload"><span>↑</span><b>Adicionar fotos do evento</b><small>JPG, PNG ou WEBP · até 25 MB cada ·
+            múltiplos arquivos</small><input id="ocrFiles" type="file" accept="image/jpeg,image/png,image/webp"
+            multiple></label>
+        <div class="contract"><b>OCR automático</b>
+          <p>Depois do upload, OpenCV + Tesseract procuram números na imagem. Clique nos candidatos para aceitar ou
+            digite/corrija manualmente.</p>
+        </div>
+      </div>
+
+      <div class="panel queue">
+        <div class="queue-head">
+          <div>
+            <p class="eyebrow">03 · Revisão</p>
+            <h2>Fila de fotos</h2>
+          </div>
+          <div><span id="queueCount">00 imagens</span><button class="primary" id="runOcr">↑ Enviar fotos</button></div>
+        </div>
+        <div class="progress"><i id="progressBar"></i></div>
+        <div id="uploadMessage" class="form-message"></div>
+        <div id="ocrList" class="ocr-list">
+          <div class="empty"><b>A fila está vazia.</b><span>Adicione imagens para começar.</span></div>
+        </div>
+        <div class="queue-foot"><span>Aceite os números sugeridos pelo OCR ou corrija-os antes de indexar.</span>
+          <div><button class="outline-btn" id="clearOcr">Limpar</button><button class="primary" id="indexOcr">✓ Indexar
+              revisados</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel admin-library">
+      <div class="library-head">
+        <div>
+          <p class="eyebrow">04 · Biblioteca</p>
+          <h2>Fotos já enviadas</h2>
+          <p>Revise, corrija, reprocese ou exclua fotos sem depender da fila atual.</p>
+        </div>
+        <strong id="adminPhotoTotal">0 foto(s)</strong>
+      </div>
+      <div class="library-filters">
+        <select id="libraryEvent">
+          <option value="">Todos os eventos</option>
+        </select>
+        <select id="libraryStatus">
+          <option value="">Todos os status</option>
+          <option value="review">Para revisar</option>
+          <option value="confirmed">Confirmadas</option>
+          <option value="none">Sem número</option>
+          <option value="error">Erro OCR</option>
+          <option value="pending">Pendentes</option>
+        </select>
+        <input id="libraryBib" inputmode="numeric" placeholder="Número do corredor">
+        <select id="libraryColor">
+          <option value="">Todas as cores</option>
+          <option value="preto">Preto</option>
+          <option value="branco">Branco</option>
+          <option value="cinza">Cinza</option>
+          <option value="vermelho">Vermelho</option>
+          <option value="azul">Azul</option>
+          <option value="verde">Verde</option>
+          <option value="amarelo">Amarelo</option>
+          <option value="laranja">Laranja</option>
+          <option value="roxo">Roxo</option>
+          <option value="rosa">Rosa</option>
+          <option value="marrom">Marrom</option>
+          <option value="multicolor">Multicolor</option>
+          <option value="outro">Outro</option>
+        </select>
+        <button class="primary" id="libraryFilter" type="button">Filtrar</button>
+        <button class="outline-btn" id="libraryClear" type="button">Limpar</button>
+      </div>
+      <div id="adminPhotoGrid" class="admin-photo-grid"></div>
+      <div class="library-pagination"><button class="outline-btn" id="libraryPrev">← Anterior</button><span
+          id="libraryPageInfo">Página 1 de 1</span><button class="outline-btn" id="libraryNext">Próxima →</button></div>
+    </section>
+
+
+    <section class="panel admin-orders-panel">
+      <div class="library-head">
+        <div>
+          <p class="eyebrow">05 · PEDIDOS</p>
+          <h2>Pedidos e liberação</h2>
+          <p>Marque como pago para gerar links protegidos dos originais.</p>
+        </div><button class="outline-btn" type="button" onclick="loadOrders()">Atualizar</button>
+      </div>
+      <div id="adminOrders" class="admin-orders"></div>
+    </section>
+
+    <section class="panel admin-users-panel">
+      <div class="library-head">
+        <div>
+          <p class="eyebrow">06 · USUÁRIOS</p>
+          <h2>Clientes e fotógrafos</h2>
+          <p>Aprove fotógrafos e defina a porcentagem de comissão.</p>
+        </div>
+        <button class="outline-btn" id="refreshUsers" type="button">Atualizar</button>
+      </div>
+      <div id="adminUsers" class="admin-users"></div>
+    </section>
+
+    <section class="panel admin-finance-panel">
+      <div class="library-head">
+        <div>
+          <p class="eyebrow">07 · REPASSES</p>
+          <h2>Financeiro dos fotógrafos</h2>
+          <p>Veja vendas, comissão gerada, valores já pagos e saldo pendente de cada fotógrafo.</p>
+        </div>
+
+        <button class="outline-btn" id="refreshFinance" type="button">
+          Atualizar
+        </button>
+      </div>
+
+      <div class="finance-summary-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Total vendido</th>
+              <th>Comissões geradas</th>
+              <th>Já repassado</th>
+              <th>A pagar</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td id="financeGrossTotal">R$ 0,00</td>
+              <td id="financeEarnedTotal">R$ 0,00</td>
+              <td id="financePaidTotal">R$ 0,00</td>
+              <td id="financeDueTotal">R$ 0,00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="photographerFinance" class="photographer-finance"></div>
+    </section>
+
+    <div class="modal hidden" id="financeDetailModal">
+      <div class="modal-card finance-modal-card">
+        <button class="close" type="button" id="closeFinanceModal">×</button>
+        <p class="eyebrow">Detalhamento</p>
+        <h2 id="financeDetailTitle">Fotógrafo</h2>
+        <div id="financeDetailBody"></div>
+      </div>
+    </div>
+
+  </main>
+  <script src="../js/admin-auth.js?v=20260814-1"></script>
+  <script src="../js/ocr.js?v=20260813-2"></script>
+  <script src="../js/admin-library.js?v=20260814-15"></script>
+  <script src="../js/admin-orders.js?v=20260813-3"></script>
+  <script src="../js/admin-users.js?v=20260814-1"></script>
+  <script src="../js/admin-finance.js?v=20260814-1"></script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Drone Fotos — Arquivo aéreo de corridas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=666">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="#top"><img src="images/logo.png" alt="" style="width: 110px;"></a>
+            <nav>
+                <a href="#arquivo">Arquivo</a>
+                <a href="#como-funciona">Como funciona</a>
+                <a href="#contato">Fale com a gente</a>
+            </nav>
+            <div class="nav-actions"><a class="account-link" id="accountLink" href="entrar.html">Entrar</a>
+                <button class="icon-btn" id="focusSearch" aria-label="Buscar">⌕</button>
+                <button class="cart-btn" id="cartBtn">Sacola <i id="cartCount">0</i></button>
+                <button class="menu-btn" id="menuBtn">☰</button>
+            </div>
+        </div>
+    </header>
+    <main id="top">
+        <section class="hero container">
+            <div class="hero-copy">
+                <p class="eyebrow">● Arquivo aéreo de corridas</p>
+                <h1>Encontre seu <em>quilômetro.</em></h1>
+                <p class="lead">Fotografias aéreas para guardar o instante em que você, sua equipe e a cidade se
+                    encontraram.</p><a class="text-link" href="#arquivo">Explorar o arquivo <span>→</span></a>
+            </div>
+            <div class="hero-image"><img src="images/drone-race-hero.jpg" alt="Corredores em uma corrida">
+                <div class="shade"></div><span class="coords">23°32' S · 46°38' W</span>
+                <div class="hero-caption">
+                    <div><small>DESTAQUE DO MÊS</small><strong>A curva que muda tudo</strong></div><span>01 / 06</span>
+                </div>
+            </div>
+        </section>
+        <section id="arquivo" class="archive">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">01 — Seleção por percurso</p>
+                        <h2>O arquivo <em>mais recente</em></h2>
+                    </div>
+                    <p>Cada imagem é capturada, tratada e entregue em alta resolução.</p>
+                </div>
+                <div class="search-modes">
+                    <button class="search-mode active" id="modeBib" type="button">🏁 Número do peito</button>
+                    <button class="search-mode" id="modeFree" type="button">🏃 Treino livre</button>
+                </div>
+                <div class="filters">
+                    <div class="search-wrap"><span>⌕</span><input id="search" placeholder="Filtrar resultados"></div>
+                    <select id="eventFilter">
+                        <option value="">Carregando eventos...</option>
+                    </select>
+                    <label class="bib" id="bibSearchBox">BUSCA POR PEITO <input id="bib" inputmode="numeric"
+                            maxlength="6" placeholder="1048"></label>
+                    <div class="free-search hidden" id="freeSearchBox">
+                        <label>HORÁRIO APROXIMADO<input id="freeTime" type="time"></label>
+                        <label>JANELA<select id="freeWindow">
+                                <option value="5">± 5 min</option>
+                                <option value="10" selected>± 10 min</option>
+                                <option value="15">± 15 min</option>
+                                <option value="30">± 30 min</option>
+                            </select></label>
+                        <label>COR DA CAMISETA<select id="shirtColor">
+                                <option value="">Qualquer cor</option>
+                                <option value="preto">⚫ Preto</option>
+                                <option value="branco">⚪ Branco</option>
+                                <option value="cinza">Cinza</option>
+                                <option value="vermelho">🔴 Vermelho</option>
+                                <option value="azul">🔵 Azul</option>
+                                <option value="verde">🟢 Verde</option>
+                                <option value="amarelo">🟡 Amarelo</option>
+                                <option value="laranja">🟠 Laranja</option>
+                                <option value="roxo">🟣 Roxo</option>
+                                <option value="rosa">Rosa</option>
+                                <option value="marrom">🟤 Marrom</option>
+                                <option value="multicolor">🌈 Multicolor</option>
+                                <option value="outro">Outra</option>
+                            </select></label>
+                        <button class="primary free-find" id="freeSearchBtn" type="button">Encontrar minhas
+                            fotos</button>
+                    </div>
+                </div>
+                <div id="grid" class="photo-grid"></div>
+                <div id="empty" class="empty hidden"><b>Nenhuma imagem encontrada.</b><span>Tente outro evento, número,
+                        horário ou cor de camiseta.</span></div>
+                <div class="archive-foot"><span id="resultCount">00 registros</span><a href="#arquivo">Ver todos os
+                        eventos →</a></div>
+            </div>
+        </section>
+        <section id="como-funciona" class="how container">
+            <div>
+                <p class="eyebrow">02 — Do ar para a sua parede</p>
+                <h2>Seu momento, <em>bem enquadrado.</em></h2>
+            </div>
+            <div class="steps">
+                <article><span>01</span>
+                    <h3>Encontre</h3>
+                    <p>Busque pelo seu nome, número ou pelo evento que você correu.</p>
+                </article>
+                <article><span>02</span>
+                    <h3>Escolha</h3>
+                    <p>Veja os detalhes do percurso e selecione seus registros favoritos.</p>
+                </article>
+                <article><span>03</span>
+                    <h3>Receba</h3>
+                    <p>Compre em alta resolução e receba o arquivo pronto para guardar.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer id="contato">
+        <div class="container footer">
+            <div class="brand">
+                <img src="images/logo_escuro_.png" alt="" style="width: 110px;">
+            </div>
+            <p>O arquivo aéreo para quem corre, participa e quer lembrar.</p><small>© 2026 Corre Foto · Feito para a
+                linha de chegada</small>
+            <div class="socials">
+                <a href="https://www.instagram.com/corre_foto/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="display: flex; align-items: center; gap: 8px;"><img src="images/instagram-brands-solid-full.svg" alt="Instagram" style="width: 35px;"> <span>Instagram</span></a>
+            </div>
+        </div>
+    </footer>
+    <div class="drawer hidden" id="cartDrawer">
+        <div class="drawer-head">
+            <h2>Sua sacola</h2><button class="close" data-close-cart>×</button>
+        </div>
+        <div id="cartItems"></div>
+        <div class="drawer-foot"><strong>Total <span id="cartTotal">R$ 0,00</span></strong><button class="primary full"
+                id="checkout">Finalizar compra</button></div>
+    </div>
+
+    <div class="modal hidden" id="checkoutModal">
+        <div class="modal-card checkout-card"><button class="close" data-close-checkout>×</button>
+            <p class="eyebrow">Finalizar pedido</p>
+            <h2>Seus dados.</h2>
+            <div id="checkoutSummary" class="checkout-summary"></div>
+            <form id="checkoutForm" class="checkout-form"><label>Nome<input id="checkoutName" required
+                        autocomplete="name" placeholder="Seu nome"></label><label>E-mail<input id="checkoutEmail"
+                        required type="email" autocomplete="email" placeholder="voce@email.com"></label>
+                <p id="checkoutMessage" class="form-message"></p><button class="primary full" id="createOrder"
+                    type="submit">Criar pedido</button>
+            </form>
+        </div>
+    </div>
+    <script src="js/app.js?v=20260814-15"></script>
+    <script src="js/backend-api.js"></script>
+<script src="js/site-auth.js?v=20260814-1"></script>
+</body>
+
+</html>
