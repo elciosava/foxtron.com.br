@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__.'/../config/bootstrap.php';
+require_once __DIR__.'/../config/settings.php';
 
 function public_user(array $u): array {
     return [
@@ -63,10 +64,11 @@ if ($action === 'register') {
         $id=(int)$pdo->lastInsertId();
 
         if ($role==='photographer') {
+            $defaultCommission=app_default_photographer_commission($pdo);
             $p=$pdo->prepare("INSERT INTO photographer_profiles(
                 user_id,phone,commission_percent,terms_version,terms_accepted_at
-            ) VALUES(?,?,60.00,?,NOW())");
-            $p->execute([$id,$phone?:null,'2026-08-14-v1']);
+            ) VALUES(?,?,?,?,NOW())");
+            $p->execute([$id,$phone?:null,$defaultCommission,'2026-08-14-v1']);
         }
         $pdo->commit();
     } catch (PDOException $e) {

@@ -3,6 +3,7 @@ require_once __DIR__.'/../config/bootstrap.php';
 require_once __DIR__.'/../config/media.php';
 require_once __DIR__.'/../config/photo_metadata.php';
 require_once __DIR__.'/../config/shirt_color.php';
+require_once __DIR__.'/../config/settings.php';
 
 if($_SERVER['REQUEST_METHOD']==='GET'){
     $event=(int)($_GET['event_id']??0);
@@ -105,7 +106,8 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     $photographerId=($actor['role']==='photographer')?(int)$actor['id']:null;
     $s=$pdo->prepare("INSERT INTO photos(event_id,photographer_id,filename,public_path,bib_number,price,ocr_status,captured_at,shirt_color)
                      VALUES(?,?,?,?,?,?,'pending',?,?)");
-    try{$s->execute([$event,$photographerId,$name,$public,null,19.90,$capturedAt,$shirtColor]);}
+    $globalPhotoPrice=app_photo_price($pdo);
+    try{$s->execute([$event,$photographerId,$name,$public,null,$globalPhotoPrice,$capturedAt,$shirtColor]);}
     catch(Throwable $e){@unlink($dest);@unlink($preview);json_error('Não foi possível registrar a foto no banco.',500);}
 
     json_ok([

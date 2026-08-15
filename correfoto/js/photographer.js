@@ -15,6 +15,15 @@ async function auth(){
   $('#photographerContent').classList.remove('hidden');return d.user;
 }
 
+async function loadPlatformSalesSettings(){
+  try{
+    const r=await fetch('../backend/api/public_sales_settings.php',{cache:'no-store'}),d=await r.json();
+    if(!r.ok||!d.ok)return;
+    $('#pPlatformPrice').textContent=money(d.settings.photo_price);
+    $('#pPlatformCommission').textContent=`${Number(d.settings.default_photographer_commission)}%`;
+  }catch(e){}
+}
+
 async function loadEvents(){
   const r=await fetch('../backend/api/events.php',{cache:'no-store'}),d=await r.json();
   $('#pEvent').innerHTML='<option value="">Selecione um evento</option>'+(d.events||[]).filter(e=>e.status==='active').map(e=>`<option value="${e.id}">${esc(e.name)}</option>`).join('');
@@ -102,4 +111,4 @@ $('#pSaveProfile').onclick=async()=>{
 $('#pRefresh').onclick=loadDashboard;
 $('#logout').onclick=async()=>{await fetch('../backend/api/auth.php',{method:'DELETE'});location.href='../'};
 
-(async()=>{const u=await auth();if(u){await loadEvents();await loadDashboard()}})();
+(async()=>{const u=await auth();if(u){await loadPlatformSalesSettings();await loadEvents();await loadDashboard()}})();

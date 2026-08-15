@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__.'/../config/bootstrap.php';
+require_once __DIR__.'/../config/settings.php';
 require_admin();
 
 if ($_SERVER['REQUEST_METHOD']==='GET') {
@@ -37,11 +38,7 @@ if ($_SERVER['REQUEST_METHOD']==='PATCH') {
     if($id===current_user_id() && ($status!=='active'||$role!=='admin')){
         json_error('Você não pode remover seu próprio acesso de administrador por esta tela.',422);
     }
-
-    $commission=null;
-    if(array_key_exists('commission_percent',$d)){
-        $commission=max(0,min(100,(float)$d['commission_percent']));
-    }
+    $commission=app_default_photographer_commission($pdo);
 
     $pdo->beginTransaction();
     try{
@@ -49,9 +46,7 @@ if ($_SERVER['REQUEST_METHOD']==='PATCH') {
 
         if($role==='photographer'){
             $pdo->prepare("INSERT IGNORE INTO photographer_profiles(user_id,commission_percent) VALUES(?,60.00)")->execute([$id]);
-            if($commission!==null){
-                $pdo->prepare("UPDATE photographer_profiles SET commission_percent=? WHERE user_id=?")->execute([$commission,$id]);
-            }
+            $pdo->prepare("UPDATE photographer_profiles SET commission_percent=? WHERE user_id=?")->execute([$commission,$id]);
             if($status==='active'){
                 $pdo->prepare("UPDATE photographer_profiles SET approved_at=COALESCE(approved_at,NOW()) WHERE user_id=?")->execute([$id]);
             }

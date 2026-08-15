@@ -119,6 +119,43 @@
   </div>
 </div>
 
+
+<section class="panel admin-sales-settings">
+  <div class="library-head">
+    <div>
+      <p class="eyebrow">08 · CONFIGURAÇÕES DE VENDA</p>
+      <h2>Preço e comissão da plataforma</h2>
+      <p>Esses valores passam a valer para novas vendas. Pedidos já criados preservam o preço e a comissão originais.</p>
+    </div>
+  </div>
+
+  <form id="salesSettingsForm" class="sales-settings-form">
+    <label>Preço padrão da foto
+      <div class="money-input"><span>R$</span><input id="settingPhotoPrice" type="number" min="1" step="0.01" value="14.90" required></div>
+      <small>O cliente sempre recebe o original em alta resolução.</small>
+    </label>
+
+    <label>Comissão do fotógrafo
+      <div class="percent-input"><input id="settingCommission" type="number" min="0" max="100" step="0.5" value="60" required><span>%</span></div>
+      <small>Aplicada às vendas futuras. Vendas antigas permanecem congeladas.</small>
+    </label>
+
+    <label class="settings-lock">
+      <span>Fotógrafo pode alterar preço</span>
+      <strong>DESATIVADO</strong>
+      <small>O preço é definido pelo CorreFoto para manter o mesmo valor em toda a plataforma.</small>
+    </label>
+
+    <button class="primary" id="saveSalesSettings" type="submit">Salvar configurações</button>
+  </form>
+  <p id="salesSettingsMessage" class="form-message"></p>
+
+  <div class="sales-positioning">
+    <b id="salesPositioningTitle">Uma foto. Qualidade máxima. R$ 14,90.</b>
+    <span>Sem versão básica, média ou premium: quem compra recebe a foto em alta resolução.</span>
+  </div>
+</section>
+
 </main>
 <script src="../js/admin-auth.js?v=20260814-1"></script>
 <script src="../js/ocr.js?v=20260813-2"></script>
@@ -126,4 +163,5 @@
 <script src="../js/admin-orders.js?v=20260813-3"></script>
 <script src="../js/admin-users.js?v=20260814-1"></script>
 <script src="../js/admin-finance.js?v=20260814-1"></script>
+<script src="../js/admin-sales-settings.js?v=20260814-1"></script>
 </body></html>
