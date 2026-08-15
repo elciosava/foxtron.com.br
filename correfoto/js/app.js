@@ -36,10 +36,33 @@ async function loadEvents(){
     if(!r.ok||!data.ok) throw new Error(data.error||'Erro ao carregar eventos.');
     events=data.events||[];
     sel.innerHTML='<option value="">Todos os eventos</option>'+events.map(e=>`<option value="${e.id}">${esc(e.name)}</option>`).join('');
+
+    const requested=new URLSearchParams(location.search).get('event_id');
+    if(requested && events.some(e=>String(e.id)===String(requested))){
+      sel.value=String(requested);
+    }
+    updateGalleryEventHeader();
   }catch(err){
     sel.innerHTML='<option value="">Erro ao carregar eventos</option>';
     console.error(err);
   }
+}
+
+function updateGalleryEventHeader(){
+  const title=$('#galleryEventName'),meta=$('#galleryEventMeta');
+  if(!title||!meta)return;
+  const id=$('#eventFilter')?.value||'';
+  const ev=events.find(e=>String(e.id)===String(id));
+  if(!ev){
+    title.innerHTML='Encontre <em>suas fotos.</em>';
+    meta.textContent='Escolha um evento e use os filtros abaixo.';
+    document.title='CorreFoto — Encontrar fotos';
+    return;
+  }
+  title.textContent=ev.name;
+  const date=ev.event_date?ev.event_date.split('-').reverse().join('/'):'';
+  meta.textContent=[date,ev.location].filter(Boolean).join(' · ');
+  document.title=`${ev.name} — CorreFoto`;
 }
 
 function minutesToClock(total){
@@ -120,7 +143,7 @@ function renderCart(){
 
 $('#search').oninput=render;
 $('#bib').oninput=e=>{e.target.value=e.target.value.replace(/\D/g,'');loadPhotos();};
-$('#eventFilter').onchange=loadPhotos;
+$('#eventFilter').onchange=()=>{updateGalleryEventHeader();loadPhotos();};
 $('#focusSearch').onclick=()=>{$('#search').focus();location.hash='arquivo'};
 $('#cartBtn').onclick=openCart;
 $('#menuBtn').onclick=()=>document.querySelector('.nav nav').classList.toggle('mobile-open');
