@@ -36,11 +36,22 @@ if ($action === 'register') {
     $password=(string)($d['password']??'');
     $role=(string)($d['role']??'customer');
     $phone=trim((string)($d['phone']??''));
+    $photographerTermsAccepted=filter_var($d['photographer_terms_accepted']??false,FILTER_VALIDATE_BOOLEAN);
+    $photographerTermsVersion=trim((string)($d['photographer_terms_version']??''));
 
     if (mb_strlen($name)<2) json_error('Informe seu nome.',422);
     if (!filter_var($email,FILTER_VALIDATE_EMAIL)) json_error('Informe um e-mail válido.',422);
     if (strlen($password)<8) json_error('A senha deve ter pelo menos 8 caracteres.',422);
     if (!in_array($role,['customer','photographer'],true)) $role='customer';
+
+    if($role==='photographer'){
+        if(!$photographerTermsAccepted){
+            json_error('É necessário aceitar os Termos do Fotógrafo para concluir o cadastro.',422);
+        }
+        if($photographerTermsVersion!=='2026-08-14-v1'){
+            json_error('A versão dos Termos do Fotógrafo está desatualizada. Recarregue a página e tente novamente.',409);
+        }
+    }
 
     $status=$role==='photographer'?'pending':'active';
     $hash=password_hash($password,PASSWORD_DEFAULT);
@@ -52,8 +63,10 @@ if ($action === 'register') {
         $id=(int)$pdo->lastInsertId();
 
         if ($role==='photographer') {
-            $p=$pdo->prepare("INSERT INTO photographer_profiles(user_id,phone,commission_percent) VALUES(?,?,60.00)");
-            $p->execute([$id,$phone?:null]);
+            $p=$pdo->prepare("INSERT INTO photographer_profiles(
+                user_id,phone,commission_percent,terms_version,terms_accepted_at
+            ) VALUES(?,?,60.00,?,NOW())");
+            $p->execute([$id,$phone?:null,'2026-08-14-v1']);
         }
         $pdo->commit();
     } catch (PDOException $e) {

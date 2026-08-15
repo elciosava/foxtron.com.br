@@ -9,7 +9,8 @@ if ($_SERVER['REQUEST_METHOD']==='GET') {
         $where[]='u.role=?';$args[]=$role;
     }
     $sql="SELECT u.id,u.name,u.email,u.role,u.status,u.created_at,
-                 pp.phone,pp.pix_key,pp.commission_percent,pp.approved_at
+                 pp.phone,pp.pix_key,pp.commission_percent,pp.approved_at,
+                 pp.terms_version,pp.terms_accepted_at
           FROM users u
           LEFT JOIN photographer_profiles pp ON pp.user_id=u.id";
     if($where)$sql.=' WHERE '.implode(' AND ',$where);

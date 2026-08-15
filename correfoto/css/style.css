@@ -362,7 +362,9 @@ header img {
     padding: 0 16px;
     font: 11px var(--mono);
     text-transform: uppercase;
-    letter-spacing: .1em
+    letter-spacing: .1em;
+    display: flex;
+    align-items: center;
 }
 
 .outline-btn:hover {
@@ -1951,3 +1953,35 @@ footer {
   .gallery-event-title{align-items:flex-start;flex-direction:column}
   .home-hero-actions{align-items:flex-start;flex-direction:column}
 }
+
+/* v1.8.1 — Capa do evento */
+.event-form label small{font:9px var(--mono);color:var(--muted);line-height:1.4;text-transform:none;letter-spacing:0}
+.event-cover-preview{border:1px solid var(--line);padding:8px;margin:-4px 0 12px;display:grid;gap:7px}
+.event-cover-preview img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.event-cover-preview small{font:10px var(--mono);color:var(--muted);overflow:hidden;text-overflow:ellipsis}
+
+
+/* ==========================================================================
+   v1.8.2 — Aceite dos Termos do Fotógrafo
+   ========================================================================== */
+.photographer-terms-box{display:grid;gap:12px}
+.photographer-commercial-summary{border:1px solid var(--line);padding:13px;display:flex;flex-direction:column;gap:5px}
+.photographer-commercial-summary b{font:600 12px var(--mono);text-transform:uppercase}
+.photographer-commercial-summary span{font-size:13px;color:var(--muted)}
+.terms-checkbox{display:grid!important;grid-template-columns:20px 1fr;align-items:start!important;gap:9px!important;text-transform:none!important;letter-spacing:0!important;font-family:var(--sans)!important;font-size:13px!important;line-height:1.45}
+.terms-checkbox input{min-height:auto!important;width:16px;height:16px;margin-top:2px;padding:0!important}
+.terms-checkbox a{color:inherit;font-weight:700}
+.terms-page{padding-top:70px;padding-bottom:100px;max-width:1050px}
+.terms-heading{max-width:850px;margin-bottom:28px}
+.terms-document{padding:clamp(22px,4vw,48px)}
+.terms-document section{padding:20px 0;border-bottom:1px solid var(--line)}
+.terms-document section:first-child{padding-top:0}
+.terms-document h2{font:600 20px var(--sans);margin:0 0 9px}
+.terms-document p{line-height:1.7;margin:7px 0;color:var(--muted)}
+.terms-document strong{color:var(--ink)}
+.terms-highlight{margin-top:30px;border:2px solid var(--ink);padding:18px;display:grid;gap:5px}
+.terms-highlight strong{font:700 13px var(--mono);text-transform:uppercase;margin-bottom:4px}
+.terms-highlight span{font-size:14px}
+.admin-photographer-terms{display:flex;flex-direction:column;gap:4px}
+.admin-photographer-terms small{font:9px var(--mono);color:var(--muted)}
+.admin-photographer-terms span{font:11px var(--mono)}

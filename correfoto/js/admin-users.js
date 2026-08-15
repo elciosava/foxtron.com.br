@@ -8,7 +8,12 @@ async function loadAdminUsers(){
     box.innerHTML=d.users.map(u=>`
       <article class="admin-user">
         <div><b>${uesc(u.name)}</b><small>${uesc(u.email)}</small><span>${uesc(u.role)} · ${uesc(u.status)}</span></div>
-        ${u.role==='photographer'?`<label>Comissão %<input type="number" min="0" max="100" step="0.5" data-user-commission="${u.id}" value="${Number(u.commission_percent||60)}"></label>`:''}
+        ${u.role==='photographer'?`
+          <div class="admin-photographer-terms">
+            <small>TERMOS</small>
+            <span>${u.terms_accepted_at?`✓ Aceitos · ${uesc(u.terms_version||'versão não informada')}`:'⚠ Não registrados'}</span>
+          </div>
+          <label>Comissão %<input type="number" min="0" max="100" step="0.5" data-user-commission="${u.id}" value="${Number(u.commission_percent||60)}"></label>`:''}
         <div class="admin-user-actions">
           ${u.role==='photographer'&&u.status!=='active'?`<button class="primary" data-approve="${u.id}">Aprovar fotógrafo</button>`:''}
           ${u.status!=='blocked'?`<button class="outline-btn" data-block="${u.id}">Bloquear</button>`:`<button class="outline-btn" data-unblock="${u.id}">Ativar</button>`}

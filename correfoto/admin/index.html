@@ -32,6 +32,11 @@
       <label>Nome do evento<input id="eventName" maxlength="180" required placeholder="Ex.: Corrida Noturna 2026"></label>
       <label>Data<input id="eventDate" type="date" required></label>
       <label>Local<input id="eventLocation" maxlength="180" placeholder="Ex.: Curitiba - PR"></label>
+      <label>Capa / folder do evento
+        <input id="eventCover" type="file" accept="image/jpeg,image/png,image/webp">
+        <small>JPG, PNG ou WEBP · até 8 MB. Ideal 1600×1200 ou proporção 4:3.</small>
+      </label>
+      <div id="eventCoverPreview" class="event-cover-preview hidden"></div>
       <button class="primary full" type="submit" id="saveEvent">＋ Cadastrar evento</button>
     </form>
     <p id="eventMessage" class="form-message"></p>

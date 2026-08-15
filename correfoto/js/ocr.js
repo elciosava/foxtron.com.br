@@ -16,7 +16,73 @@ async function loadEvents(selectId=null){
   }catch(e){eventSelect.innerHTML='<option value="">Erro ao carregar eventos</option>';msg(e.message,true)}
 }
 
-eventForm.addEventListener('submit',async e=>{e.preventDefault();const btn=$('#saveEvent'),payload={name:$('#eventName').value.trim(),event_date:$('#eventDate').value,location:$('#eventLocation').value.trim()};if(!payload.name||!payload.event_date)return eventMsg('Informe nome e data.',true);btn.disabled=true;btn.textContent='Cadastrando...';try{const r=await fetch('../backend/api/events.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}),d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||'Erro ao cadastrar.');eventForm.reset();eventMsg('Evento cadastrado.');await loadEvents(d.id)}catch(err){eventMsg(err.message,true)}finally{btn.disabled=false;btn.textContent='＋ Cadastrar evento'}});
+eventForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+
+  const btn=$('#saveEvent');
+  const name=$('#eventName').value.trim();
+  const eventDate=$('#eventDate').value;
+  const location=$('#eventLocation').value.trim();
+  const cover=$('#eventCover')?.files?.[0]||null;
+
+  if(!name||!eventDate)return eventMsg('Informe nome e data.',true);
+
+  btn.disabled=true;
+  btn.textContent='Cadastrando...';
+
+  try{
+    const fd=new FormData();
+    fd.append('name',name);
+    fd.append('event_date',eventDate);
+    fd.append('location',location);
+    if(cover)fd.append('cover',cover);
+
+    const r=await fetch('../backend/api/events.php',{
+      method:'POST',
+      body:fd
+    });
+    const d=await r.json();
+
+    if(!r.ok||!d.ok)throw Error(d.error||'Erro ao cadastrar.');
+
+    eventForm.reset();
+    const preview=$('#eventCoverPreview');
+    if(preview){preview.innerHTML='';preview.classList.add('hidden');}
+
+    eventMsg('Evento cadastrado.');
+    await loadEvents(d.id);
+  }catch(err){
+    eventMsg(err.message,true);
+  }finally{
+    btn.disabled=false;
+    btn.textContent='＋ Cadastrar evento';
+  }
+});
+
+
+const eventCoverInput=$('#eventCover');
+eventCoverInput?.addEventListener('change',()=>{
+  const preview=$('#eventCoverPreview');
+  const file=eventCoverInput.files?.[0];
+  if(!preview)return;
+  if(!file){
+    preview.innerHTML='';
+    preview.classList.add('hidden');
+    return;
+  }
+  if(!['image/jpeg','image/png','image/webp'].includes(file.type)){
+    eventMsg('Use JPG, PNG ou WEBP para a capa.',true);
+    eventCoverInput.value='';
+    preview.innerHTML='';
+    preview.classList.add('hidden');
+    return;
+  }
+  const url=URL.createObjectURL(file);
+  preview.innerHTML=`<img src="${url}" alt="Prévia da capa"><small>${esc(file.name)}</small>`;
+  preview.classList.remove('hidden');
+  const img=preview.querySelector('img');
+  img.onload=()=>URL.revokeObjectURL(url);
+});
 
 function gerarId(){
   if(window.crypto&&typeof window.crypto.randomUUID==='function')return window.crypto.randomUUID();

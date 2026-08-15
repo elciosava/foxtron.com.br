@@ -22,3 +22,31 @@ backend/previews/*
 
 # Credenciais Mercado Pago locais
 backend/config/mercadopago.local.php
+
+
+/correfoto/backend/event-covers/*
+!/correfoto/backend/event-covers/.gitkeep
+!/correfoto/backend/event-covers/.htaccess
+correfoto/backend/event-covers
+
+# Arquivos gerados pelo CorreFoto
+/backend/event-covers/*
+!/backend/event-covers/.gitkeep
+!/backend/event-covers/.htaccess
+
+/backend/previews/*
+!/backend/previews/.gitkeep
+!/backend/previews/.htaccess
+
+/backend/uploads/*
+!/backend/uploads/.gitkeep
+
+/backend/storage/originals/*
+!/backend/storage/originals/.gitkeep
+!/backend/storage/originals/.htaccess
+
+# Configuração privada
+/backend/config/mercadopago.local.php
+
+# Logs
+/backend/logs/*.log
