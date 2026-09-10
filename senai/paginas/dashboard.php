@@ -310,6 +310,8 @@ $taxa_ocupacao = $total_salas_ativas > 0 ? round(($salas_ocupadas / $total_salas
         <div class="nav-links">
             <a href="../index.php" class="btn">Início</a>
             <a href="cursos.php" class="btn">Cursos</a>
+            <a href="entrada_aprendizagem.php" class="btn">🎓 Entrada Aprendizagem</a>
+            <a href="matrizes_aprendizagem.php" class="btn">🧩 Matrizes Aprendizagem</a>
             <a href="professores.php" class="btn">Professores</a>
             <a href="reservas.php" class="btn">Reservas</a>
             <a href="painel_coordenador.php" class="btn">Coordenador</a>

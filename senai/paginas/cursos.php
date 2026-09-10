@@ -1,5 +1,7 @@
 <?php
 require '../conexao/conexao.php';
+require '../conexao/matrizes_aprendizagem.php';
+garantirEstruturaMatrizesAprendizagem($conexao);
 
 // Se enviou o formulário, grava o curso
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,35 +21,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // 👇 tipo do curso (Técnico / Aprendizagem / etc.)
         $tipo = $_POST['tipo'] ?? 'Tecnico';
+        $perfilAprendizagem = strtoupper(trim($_POST['perfil_aprendizagem'] ?? ''));
+        if ($tipo !== 'Aprendizagem') $perfilAprendizagem = '';
+        if ($tipo === 'Aprendizagem' && !in_array($perfilAprendizagem, ['ADM','PROD'], true)) {
+            $msg = 'Para cursos de Aprendizagem, selecione o perfil ADM ou PROD.';
+        }
 
-        if (!empty($nome) && !empty($data_inicio) && !empty($data_fim)) {
-            $sql = "INSERT INTO cursos
-                (nome, cod_curso, cod_turma, cod_matriz,
-                 carga_horaria_total, data_inicio, data_fim,
-                 turno, ano_letivo, horas_por_dia, dias_aula, tipo)
-                VALUES
-                (:nome, :cod_curso, :cod_turma, :cod_matriz,
-                 :carga, :inicio, :fim,
-                 :turno, :ano, :horas_dia, :dias_aula, :tipo)";
+        if (!isset($msg) && !empty($nome) && !empty($data_inicio) && !empty($data_fim)) {
+            try {
+                $conexao->beginTransaction();
+                if ($tipo === 'Aprendizagem' && $cod_curso === '') {
+                    $cod_curso = $perfilAprendizagem === 'ADM' ? 'APR-ADM-TRILHA' : 'APR-PROD-TRILHA';
+                }
+                if ($tipo === 'Aprendizagem') {
+                    $matrizSelecionada = obterMatrizAprendizagem($conexao, $perfilAprendizagem);
+                    if (!$matrizSelecionada) throw new RuntimeException('Matriz padrão não encontrada.');
+                    // A turma principal representa somente a fase regular; as 60h iniciais ficam no módulo de entrada.
+                    $carga = array_sum(array_map(fn($uc) => (int)$uc['eh_entrada'] === 0 ? (float)$uc['carga_horaria'] : 0, $matrizSelecionada['ucs']));
+                    $dias_aula = $perfilAprendizagem === 'ADM' ? 'SEG,TER' : 'QUA,QUI,SEX';
+                }
+                $sql = "INSERT INTO cursos
+                    (nome, cod_curso, cod_turma, cod_matriz,
+                     carga_horaria_total, data_inicio, data_fim,
+                     turno, ano_letivo, horas_por_dia, dias_aula, tipo, perfil_aprendizagem, eh_turma_base, modalidade)
+                    VALUES
+                    (:nome, :cod_curso, :cod_turma, :cod_matriz,
+                     :carga, :inicio, :fim,
+                     :turno, :ano, :horas_dia, :dias_aula, :tipo, :perfil, :base, :modalidade)";
 
-            $stmt = $conexao->prepare($sql);
-            $stmt->execute([
-                ':nome' => $nome,
-                ':cod_curso' => $cod_curso,
-                ':cod_turma' => $cod_turma,
-                ':cod_matriz' => $cod_matriz,
-                ':carga' => $carga,
-                ':inicio' => $data_inicio,
-                ':fim' => $data_fim,
-                ':turno' => $turno,
-                ':ano' => $ano_letivo,
-                ':horas_dia' => $horas_dia,
-                ':dias_aula' => $dias_aula,
-                ':tipo' => $tipo,
-            ]);
-
-            $msg = "Curso cadastrado com sucesso!";
-        } else {
+                $stmt = $conexao->prepare($sql);
+                $stmt->execute([
+                    ':nome' => $nome,
+                    ':cod_curso' => $cod_curso,
+                    ':cod_turma' => $cod_turma,
+                    ':cod_matriz' => $cod_matriz,
+                    ':carga' => $carga,
+                    ':inicio' => $data_inicio,
+                    ':fim' => $data_fim,
+                    ':turno' => $turno,
+                    ':ano' => $ano_letivo,
+                    ':horas_dia' => $horas_dia,
+                    ':dias_aula' => $dias_aula,
+                    ':tipo' => $tipo,
+                    ':perfil' => $perfilAprendizagem ?: null,
+                    ':base' => $tipo === 'Aprendizagem' ? 1 : 0,
+                    ':modalidade' => $tipo === 'Aprendizagem' ? 'APRENDIZAGEM' : 'NORMAL',
+                ]);
+                $novoCursoId = (int)$conexao->lastInsertId();
+                $copiadas = 0;
+                if ($tipo === 'Aprendizagem') {
+                    $copiadas = copiarMatrizParaTurma($conexao, $novoCursoId, $perfilAprendizagem, false);
+                }
+                $conexao->commit();
+                $msg = "Curso cadastrado com sucesso!" . ($copiadas ? " {$copiadas} UCs regulares foram carregadas da matriz padrão." : '');
+            } catch (Throwable $e) {
+                if ($conexao->inTransaction()) $conexao->rollBack();
+                $msg = 'Erro ao cadastrar curso: ' . $e->getMessage();
+            }
+        } else if (!isset($msg)) {
             $msg = "Preencha pelo menos Nome, Data de início e Data de fim.";
         }
     }
@@ -195,6 +226,8 @@ $feriados = $stmtF->fetchAll(PDO::FETCH_COLUMN); // array de 'YYYY-MM-DD'
     <div class="container">
         <a href="../index.php" class="btn">Voltar para geração de calendário</a>
         <a href="professores.php" class="btn">Gerenciar professores</a>
+        <a href="entrada_aprendizagem.php" class="btn">🎓 Módulo de Entrada – Aprendizagem</a>
+        <a href="matrizes_aprendizagem.php" class="btn">🧩 Matrizes de Aprendizagem</a>
 
 
 
@@ -213,6 +246,15 @@ $feriados = $stmtF->fetchAll(PDO::FETCH_COLUMN); // array de 'YYYY-MM-DD'
                 <option value="Tecnico">Técnico / Qualificação</option>
                 <option value="Aprendizagem">Aprendizagem</option>
             </select>
+            <div id="bloco_perfil_aprendizagem" style="display:none; margin-top:10px; padding:10px; background:#f4f7ff; border-radius:6px;">
+                <label>Perfil da Aprendizagem</label>
+                <select name="perfil_aprendizagem" id="perfil_aprendizagem">
+                    <option value="">Selecione...</option>
+                    <option value="ADM">ADM — Assistente Administrativo (escola SEG/TER)</option>
+                    <option value="PROD">PROD — Auxiliar de Linha de Produção (escola QUA/QUI/SEX)</option>
+                </select>
+                <small>Ao cadastrar, as UCs regulares da matriz serão carregadas automaticamente. FCI, RCE/RSP e SST ficam exclusivas do Módulo de Entrada.</small>
+            </div>
 
             <div class="linha">
                 <div>
@@ -448,6 +490,29 @@ $feriados = $stmtF->fetchAll(PDO::FETCH_COLUMN); // array de 'YYYY-MM-DD'
                 }
             });
         });
+
+        const tipoCursoSelect = document.querySelector('select[name="tipo"]');
+        const blocoPerfil = document.getElementById('bloco_perfil_aprendizagem');
+        function atualizarPerfilAprendizagem(){
+            const apr = tipoCursoSelect && tipoCursoSelect.value === 'Aprendizagem';
+            if(blocoPerfil) blocoPerfil.style.display = apr ? 'block' : 'none';
+            const campo = document.getElementById('perfil_aprendizagem');
+            if(campo) campo.required = !!apr;
+        }
+        function aplicarPadraoAprendizagem(){
+            const campo = document.getElementById('perfil_aprendizagem');
+            if(!campo || tipoCursoSelect.value !== 'Aprendizagem') return;
+            const perfil = campo.value;
+            if(!perfil) return;
+            document.getElementById('carga_horaria_total').value = 540;
+            document.getElementById('dias_aula').value = perfil === 'ADM' ? 'SEG,TER' : 'QUA,QUI,SEX';
+            const cod = document.querySelector('input[name="cod_curso"]');
+            if(cod && !cod.value.trim()) cod.value = perfil === 'ADM' ? 'APR-ADM-TRILHA' : 'APR-PROD-TRILHA';
+            calcularDataFim();
+        }
+        if(tipoCursoSelect){ tipoCursoSelect.addEventListener('change', atualizarPerfilAprendizagem); atualizarPerfilAprendizagem(); }
+        const perfilSelect = document.getElementById('perfil_aprendizagem');
+        if(perfilSelect) perfilSelect.addEventListener('change', aplicarPadraoAprendizagem);
     </script>
 
 

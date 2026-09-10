@@ -102,7 +102,7 @@ try {
 }
 
 // Processar aprovação/rejeição de substituição
-if ($_POST['acao'] ?? null === 'processar_substituicao') {
+if (($_POST['acao'] ?? null) === 'processar_substituicao') {
     try {
         $status = $_POST['status'];
         $substituicao_id = $_POST['substituicao_id'];
@@ -324,6 +324,8 @@ if ($_POST['acao'] ?? null === 'processar_substituicao') {
         <div class="nav-links">
             <a href="dashboard.php" class="btn-nav">Dashboard</a>
             <a href="cursos.php" class="btn-nav">Cursos</a>
+            <a href="entrada_aprendizagem.php" class="btn-nav">Entrada Aprendizagem</a>
+            <a href="matrizes_aprendizagem.php" class="btn-nav">Matrizes Aprendizagem</a>
             <a href="professores.php" class="btn-nav">Professores</a>
         </div>
 

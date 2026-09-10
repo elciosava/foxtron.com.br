@@ -1,6 +1,8 @@
 <?php
 // paginas/calendario_curso.php
 require '../conexao/conexao.php';
+require '../conexao/aprendizagem.php';
+garantirEstruturaAprendizagem($conexao);
 
 $curso_id = filter_input(INPUT_GET, 'curso_id', FILTER_VALIDATE_INT);
 
@@ -12,7 +14,7 @@ if (!$curso_id) {
 $sqlCurso = "SELECT id, nome, cod_curso, cod_turma, cod_matriz,
                     carga_horaria_total, data_inicio, data_fim,
                     turno, ano_letivo, horas_por_dia, dias_aula,
-                    tipo
+                    tipo, modalidade, curso_base_id, fase_aprendizagem, data_integracao, uc_integracao_id
              FROM cursos 
              WHERE id = :id";
 
@@ -35,6 +37,16 @@ $curso = $stmtCurso->fetch(PDO::FETCH_ASSOC);
 
 if (!$curso) {
     die("Curso não encontrado.");
+}
+
+$integracaoInfo = null;
+if (cursoEhEntradaAprendizagem($curso) && !empty($curso['curso_base_id'])) {
+    $stmtInt = $conexao->prepare("SELECT cb.nome AS curso_base_nome, u.sigla AS uc_sigla, u.nome AS uc_nome
+                                  FROM cursos cb
+                                  LEFT JOIN unidades_curriculares u ON u.id = :uc_id
+                                  WHERE cb.id = :base_id");
+    $stmtInt->execute([':uc_id' => $curso['uc_integracao_id'], ':base_id' => $curso['curso_base_id']]);
+    $integracaoInfo = $stmtInt->fetch(PDO::FETCH_ASSOC) ?: null;
 }
 
 // Buscar AULAS desse curso (com UC, professor e COR da UC)
@@ -529,6 +541,21 @@ while ($cursor <= $fimMes) {
                 <strong>Dias de aula:</strong> <?= htmlspecialchars($curso['dias_aula']) ?>
             </div>
         </div>
+
+        <?php if ($integracaoInfo): ?>
+            <div class="info-curso" style="margin-top:10px;border-left:4px solid #1a2041;">
+                <div><strong>Módulo de entrada da turma:</strong> <?= htmlspecialchars($integracaoInfo['curso_base_nome'] ?? '') ?></div>
+                <?php if (!empty($curso['data_integracao'])): ?>
+                    <div><strong>Integração prevista:</strong> <?= date('d/m/Y', strtotime($curso['data_integracao'])) ?>
+                        <?php if (!empty($integracaoInfo['uc_nome'])): ?>
+                            | <strong>UC de entrada:</strong> <?= htmlspecialchars(($integracaoInfo['uc_sigla'] ? $integracaoInfo['uc_sigla'].' - ' : '').$integracaoInfo['uc_nome']) ?>
+                        <?php endif; ?>
+                    </div>
+                <?php else: ?>
+                    <div><strong>Integração:</strong> aguardando uma próxima UC disponível no calendário da turma principal.</div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
 
         <div class="botoes-topo">
             <a href="../index.php" class="btn">Voltar para lista de cursos</a>
